@@ -1,0 +1,13 @@
+{
+ "question": "Have bursts in Al-Rawdah become more frequent over 24 months, and do they follow summer temperatures, enough to justify a mains-renewal study next year?",
+ "kind": "descriptive",
+ "datasets": [
+  "repair_orders",
+  "weather"
+ ],
+ "left_unanswered": "Whether road works or pipe age cause the bursts",
+ "request_now": [
+  "Road-works permits through a data-sharing request",
+  "Pipe-network extract through the security approval"
+ ]
+}

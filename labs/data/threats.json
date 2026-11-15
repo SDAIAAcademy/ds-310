@@ -1,0 +1,52 @@
+[
+ {
+  "id": "selection",
+  "name": "Selection",
+  "question": "Were the units compared chosen in a way linked to the outcome?"
+ },
+ {
+  "id": "regression_to_mean",
+  "name": "Regression to the mean",
+  "question": "Was the unit picked because it was extreme just before?"
+ },
+ {
+  "id": "history",
+  "name": "History",
+  "question": "Did something else change at the same time?"
+ },
+ {
+  "id": "measurement_change",
+  "name": "Measurement change",
+  "question": "Did the way the outcome is measured change?"
+ },
+ {
+  "id": "seasonality",
+  "name": "Seasonality",
+  "question": "Do the periods compared differ by season?"
+ },
+ {
+  "id": "construct_proxy",
+  "name": "Construct: the proxy is gamed",
+  "question": "Does the metric still mean what it meant?"
+ },
+ {
+  "id": "missing_data",
+  "name": "Missing or merged records",
+  "question": "Are some events lost or merged in the data?"
+ },
+ {
+  "id": "spillover",
+  "name": "Spillover",
+  "question": "Can the change in one unit affect the units compared with it?"
+ },
+ {
+  "id": "forking_paths",
+  "name": "Forking paths",
+  "question": "Were analysis choices made after seeing the data?"
+ },
+ {
+  "id": "small_sample",
+  "name": "Small sample",
+  "question": "Are there too few units or periods to tell signal from noise?"
+ }
+]

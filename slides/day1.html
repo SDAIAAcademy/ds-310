@@ -1,158 +1,546 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Welcome the room and introduce yourself. Ask: "Who has finished an analysis that nobody used?" Most hands go up: that is the course. Three days: frame the question (today), learn the domain and plan (Day 2), review other people's work (Day 3). The capstone day is a framing card, a plan and a review on a new case, defended live.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Four sessions, each with a 25-minute lab. Lab 1.1 is done without any assistant, like the supervised framing check of the assessment. The other labs allow a tutor that asks questions; it never writes the framing for you.</p></aside>
+</section>
+
+<section class="slide" id="ghadeer-case" data-lo="LO1">
+  <div class="kicker">The case for three days</div>
+  <h2>Ghadeer Water Company has six districts and many vague requests</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>2,400 accounts</b>, 24 months of bills, district bulk meters, leak repairs and a contact-centre log</li>
+      <li>Managers ask about <b>water loss</b>, estimated bills, repeat complaints, loggers and smart meters</li>
+      <li>Every number has a story of how it was made: <b>meters, billing cycles, repair jobs</b></li>
+      <li>All data is synthetic, from a fixed seed</li>
+    </ul>
+    <div class="stack dense">
+      <div class="card c-teal"><h4>Nadia Al-Rubaie</h4><p class="small mb0">Director of non-revenue water and customer operations: the sponsor</p></div>
+      <div class="card c-cyan"><h4>Sultana Al-Kanaan · Mamdouh Al-Qarawi</h4><p class="small mb0">Customer service manager and metering engineer, role-played in Labs 1.3 and 2.1</p></div>
+      <div class="card c-purple"><h4>You: Ghala Al-Muwallad</h4><p class="small mb0">Senior analyst who frames, plans and reviews</p></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Introduce the people once; they return every day. Khalil Al-Sabhi runs billing, Azizah Al-Matrood is the data protection officer, Sabah Al-Huwaidi is the analyst whose notebooks you review on Day 3, and Sareea is the assistant that wrote one of them.</p></aside>
+</section>
+
+<section class="slide" id="setup-check">
+  <div class="kicker">Before the first lab</div>
+  <h2>One notebook proves your setup</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>Colab:</b> open <code>00_setup_check</code> from the course page; it clones the repository</li>
+      <li><b>Laptop:</b> from <code>labs/</code>, run <code>uv sync</code>, then <code>uv run jupyter lab</code></li>
+      <li>Nothing downloads a model; everything runs on a laptop processor</li>
+      <li>A free hosted model key is optional: without it, tutor and assistant cells use a stand-in and say so</li>
+    </ul>
+    <pre class="code" data-file="00_setup_check"><code class="language-text">missing libraries: none
+reads.csv: 57,600 bills, 2,400 accounts, 6 districts
+hosted model: none; labs use stand-ins
+setup complete</code></pre>
+  </div>
+  <aside class="notes"><p>Ask everyone to run the setup check now. Common failures: an old Python (the labs need 3.11 or later), a corporate proxy blocking the clone in Colab (use a personal account), and on Windows a path that is too long (clone into a short folder).</p></aside>
+</section>
 
 <!-- Session 1 -->
 
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO1">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="worry-not-question" data-lo="LO1">
+  <div class="kicker">The request</div>
+  <h2>A request names a worry; a question names a decision</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Mamdouh, request R4</span>The acoustic-logger pilot in Al-Wurud found lots of leaks. Should we buy loggers for more districts?</div>
+    <div class="msg ai bad"><span class="who">Analyst, first reflex</span>I will count the leaks the loggers found and compare districts.</div>
+    <div class="msg ai good"><span class="who">Analyst, framed</span>Should Ghadeer buy loggers for Al-Rawdah and Al-Hamra next year? Buy if detection cut non-revenue water by at least 3 points in Al-Wurud, relative to the other districts.</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Read the request aloud. Ask the room what the first reflex would produce: a count of leaks found. Then ask who would act on that count, and how. The framed version names a choice, a measure of the outcome and the number at which the choice flips. That is the whole of Session 1 in one exchange.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO1">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="five-requests" data-lo="LO1">
+  <div class="kicker">The given</div>
+  <h2>Five requests, five missing decisions</h2>
+  <table class="t small">
+    <tr><th>Request</th><th>From</th><th>What is missing</th></tr>
+    <tr><td>R1 "Water loss in Al-Rawdah is out of control"</td><td>Nadia</td><td>The choice the board faces</td></tr>
+    <tr><td>R2 "Look into the estimated bills"</td><td>Khalil</td><td>A threshold for acting</td></tr>
+    <tr><td>R3 "Find out what is going on" with repeats</td><td>Sultana</td><td>Everything but the topic</td></tr>
+    <tr class="hl"><td>R4 "Should we buy loggers for more districts?"</td><td>Mamdouh</td><td>The outcome: water, not leaks found</td></tr>
+    <tr><td>R5 "Do the smart meters work?"</td><td>Nadia</td><td>Work at what: saving water or measuring it?</td></tr>
+  </table>
+  <aside class="notes"><p>These are the five requests of outcome 1. Lab 1.1 frames R4 and R2; the stretch frames R5. R3 is the interview of Session 3. R1 returns in Session 4. Point out that R4 already contains a decision ("should we buy") but measures it with the wrong thing.</p></aside>
+</section>
+
+<section class="slide" id="decision-first" data-lo="LO1">
+  <div class="kicker">Before the data</div>
+  <h2>The decision comes first: who chooses, between what</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Decision maker</h4><p class="small mb0">A person with the authority and the budget: Nadia, with the capital committee</p></div>
+    <div class="card c-cyan"><h4>The decision</h4><p class="small mb0">A question that ends in a choice: "Should ...?", "Which ...?"</p></div>
+    <div class="card c-coral"><h4>Options</h4><p class="small mb0">At least two, and "do nothing" among them: every option is judged against it</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout note mt"><b>Recap.</b> DS-308 Day 1 frames a decision for a memo; DS-204 Day 1 frames a prediction for a decision. Here the frame goes further: an estimand and a rule.</div>
+  <aside class="notes"><p>Participants who took DS-308 or DS-204 know the first three boxes; keep this to a minute. The new part is what follows: the estimand fixes exactly what number answers the decision, and the rule fixes what that number must be.</p></aside>
+</section>
+
+<section class="slide" id="estimand-parts" data-lo="LO1">
+  <div class="kicker">The estimand</div>
+  <h2>An estimand states exactly which number answers the question</h2>
+  <table class="t small">
+    <tr><th>Part</th><th>Question it answers</th><th>R4, framed</th></tr>
+    <tr><td><b>Population</b></td><td>Which units, which period?</td><td>District-months of six districts, months 1 to 24</td></tr>
+    <tr><td><b>Variable</b></td><td>What is measured on each unit?</td><td>Non-revenue water, % of system input</td></tr>
+    <tr><td><b>Contrast</b></td><td>With what, against what?</td><td>Al-Wurud with detection against five districts without</td></tr>
+    <tr><td><b>Intercurrent events</b></td><td>What happens on the way that changes the meaning?</td><td>The bulk meter was recalibrated in month 13</td></tr>
+    <tr><td><b>Summary</b></td><td>Which one number?</td><td>Difference in differences, in points</td></tr>
+  </table>
+  <aside class="notes"><p>The five attributes come from the ICH E9(R1) addendum on estimands, written for clinical trials and now used well beyond them. Stress the intercurrent event: the Al-Wurud bulk meter over-read for three months and was fixed in the month detection started, so a careless before-after counts a meter repair as a leak saving.</p><p>Sources: ICH E9(R1) Addendum on estimands (2019).</p></aside>
+</section>
+
+<section class="slide" id="leaks-found-trap" data-lo="LO1">
+  <div class="kicker">The variable</div>
+  <h2>Leaks found is an activity; water lost is the outcome</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>Al-Rawdah</span><div class="bar c-coral" style="--w:79%"></div><span class="val">39.3%</span></div>
+      <div class="row"><span>Al-Hamra</span><div class="bar c-amber" style="--w:55%"></div><span class="val">27.7%</span></div>
+      <div class="row"><span>Al-Shifa</span><div class="bar c-cyan" style="--w:54%"></div><span class="val">26.9%</span></div>
+      <div class="row"><span>Al-Wurud</span><div class="bar c-teal" style="--w:53%"></div><span class="val">26.4%</span></div>
+      <div class="row"><span>Al-Salam</span><div class="bar c-cyan" style="--w:45%"></div><span class="val">22.3%</span></div>
+      <div class="row"><span>Al-Nakheel</span><div class="bar c-purple" style="--w:33%"></div><span class="val">16.5%</span></div>
+    </div>
+    <ul class="bullets">
+      <li>Non-revenue water, months 13 to 24, from Lab 1.1</li>
+      <li>Active detection <b>finds more leaks by design</b>: a rise in leaks found says the crews searched</li>
+      <li>The company pays for water lost, so the variable is <b>non-revenue water</b></li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The numbers are the Lab 1.1 baseline: mean non-revenue water by district over the last 12 months. Ask why Al-Nakheel is lowest. Someone may guess "fewer leaks"; the real reason (smart meters bill water the old meters missed) is Day 2. Leave it as a puzzle.</p></aside>
+</section>
+
+<section class="slide" id="decision-rule" data-lo="LO1">
+  <div class="kicker">The rule</div>
+  <h2>A decision rule names the number at which the choice changes</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Not a rule</h4><p class="small mb0">"Buy loggers if detection works well."<br/>"Act if many bills are estimated."</p></div>
+    <div class="card c-teal"><h4>A rule</h4><p class="small mb0">"Buy for a district if detection cut non-revenue water by at least 3 points and the district is above 25%."<br/>"Book second visits if more than 10% of Al-Hamra bills are estimated."</p></div>
+  </div>
+  <div class="callout tip mt"><b>Why write it now.</b> A threshold set after the result is seen bends to the result. Al-Hamra's share is 16.4% (Lab 1.1): the rule was set before anyone looked.</div>
+  <aside class="notes"><p>Ask where the thresholds come from: cost (what a district's loggers cost against the water they save), capacity, or policy. If nobody can say, the rule is a placeholder and the card says so. The 16.4% is the Lab 1.1 run over two years.</p></aside>
+</section>
+
+<section class="slide" id="affected-and-personal-data" data-lo="LO1">
+  <div class="kicker">Responsible framing</div>
+  <h2>Every card says who is affected and whether personal data are needed at all</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>Affected:</b> customers facing interruptions, readers, crews, the budget that funds something else</li>
+      <li><b>Personal data:</b> a district total answers R4; names, mobiles and national IDs do not help</li>
+      <li>Decide it on the card, before the data request is written</li>
+    </ul>
+    <div class="card tint c-navy"><h4>The rule behind it</h4><p class="small mb0">The Personal Data Protection Law limits collected personal data to the minimum the purpose needs; its implementing regulation asks for a map linking each item to a purpose.</p></div>
+  </div>
+  <aside class="notes"><p>This is a design step, not a compliance afterthought. Paraphrase only: Article 11 of the PDPL limits content to the minimum necessary for the purpose, and Article 19 of the implementing regulation repeats data minimisation with data maps. Do not read clauses aloud from memory.</p><p>Sources: Personal Data Protection Law; Implementing Regulation of the PDPL.</p></aside>
+</section>
+
+<section class="slide" id="peer-test" data-lo="LO1">
+  <div class="kicker">The test of a card</div>
+  <h2>A card is done when a peer can plan from it without asking you</h2>
+  <pre class="code" data-file="Lab 1.1"><code class="language-python">U.card_gaps({"decision": "Look into the estimated bills",
+             "decision_rule": "Act if the share is high"})
+# What is the decision maker?  What are the options?
+# Is the decision written as a question that ends in a choice?
+# Estimand: what is the population? ... the summary?
+# Decision rule: at what number does the choice change?
+# What does 'high' mean here, in a number?</code></pre>
+  <aside class="notes"><p>The helper is a rule check, not a judge: it lists the questions a planner would still ask. In the lab, aim for an empty list, then hand the card to a neighbour and ask what data they would fetch first. If they hesitate, the card is not done.</p></aside>
+</section>
+
+<section class="slide" id="check-framing" data-lo="LO1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which gap matters most in this card?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1">
+    <p class="lead">Khalil's card reads: "Measure how accurate Al-Hamra's bills were in 2026, using all billing data, and report the results to management." What should be added first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats more data as more answer: the card's problem is that no answer would change anything">A longer period, so the estimate is more precise</div>
+      <div class="opt" data-ok>The decision it informs and the number at which that decision changes</div>
+      <div class="opt" data-why="Confuses the delivery with the question: a format cannot fix a card with no decision">A chart template for the management report</div>
+      <div class="opt" data-why="Moves too early to method: a model is chosen after the question, not instead of it">A model of which bills will be inaccurate next year</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Without a decision and a rule, any result is "interesting" and none is acted on; the other gaps can wait until the decision is known.</div>
+  </div>
+  <aside class="notes"><p>Answer: the decision and the threshold. If many pick the longer period, ask what Khalil would do differently with a more precise number. If they pick the model, point out the request is about the past year: a prediction answers another question.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>AI-off: no assistant, no chat window. Walk the room at minute 10: most will have a decision that is a topic ("water loss in Al-Wurud") rather than a choice. At minute 18, check that the estimand's intercurrent event mentions the bulk-meter recalibration. Anyone who finishes early does the R5 stretch: are smart meters saving water or measuring it?</p></aside>
 </section>
 
 <!-- Session 2 -->
 
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO6">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide" id="four-labels" data-lo="LO6">
+  <div class="kicker">Four labels</div>
+  <h2>Each kind of question needs a different kind of analysis</h2>
+  <table class="t">
+    <tr><th>Label</th><th>The request asks</th><th>It needs</th></tr>
+    <tr><td><b>Descriptive</b></td><td>What happened, how much, where</td><td>A description</td></tr>
+    <tr><td><b>Predictive</b></td><td>What will happen to each unit</td><td>A predictive model</td></tr>
+    <tr><td><b>Causal</b></td><td>What a change did, or would do</td><td>An experiment if one can still run; otherwise a causal analysis of existing data</td></tr>
+    <tr><td><b>Unanswerable</b></td><td>Something the data cannot reach, or no decision</td><td>No analysis yet: reframe or collect</td></tr>
+  </table>
+  <aside class="notes"><p>These four labels are the course's working set and the ones the assessment uses. The next slide shows a finer map from the literature. Emphasise the last row: "no analysis" is a professional recommendation, not a failure.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO6">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="mistaken-type" data-lo="LO6">
+  <div class="kicker">The commonest error</div>
+  <h2>Most analysis errors start by mistaking the type of question</h2>
+  <div class="cols cols-12">
+    <ul class="bullets">
+      <li>Leek and Peng list six types: descriptive, exploratory, inferential, predictive, causal, mechanistic</li>
+      <li>They call mistaking the type the most common error in data analysis</li>
+    </ul>
+    <table class="t small">
+      <tr><th>Real type</th><th>Taken for</th><th>The error has a name</th></tr>
+      <tr><td>Inferential</td><td>Causal</td><td>Correlation read as causation</td></tr>
+      <tr><td>Exploratory</td><td>Inferential</td><td>Data dredging</td></tr>
+      <tr><td>Exploratory</td><td>Predictive</td><td>Overfitting</td></tr>
+      <tr><td>Descriptive</td><td>Inferential</td><td>An "n of 1" analysis</td></tr>
+    </table>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The table is from Leek and Peng's one-page article in Science. Ask for a Ghadeer example of the first row: "districts with more loggers have fewer leaks, so loggers prevent leaks" when loggers went where crews already were.</p><p>Sources: Leek and Peng (2015), What is the question? Science 347(6228).</p></aside>
+</section>
+
+<section class="slide" id="which-misleads" data-lo="LO6">
+  <div class="kicker">Words mislead</div>
+  <h2>"Which" can open a description or a prediction</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>C1 · descriptive</h4><p class="small mb0">"How many leak repairs did each district have last quarter?" A count of the past.</p></div>
+    <div class="card c-cyan"><h4>C2 · predictive</h4><p class="small mb0">"Which accounts are likely to get an estimated bill next month?" A forecast per account.</p></div>
+    <div class="card c-purple"><h4>C5 · predictive</h4><p class="small mb0">"Which mains are most likely to burst next summer?" A forecast per main.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Ask two things.</b> Past or future? The whole group, or each unit?</div>
+  <aside class="notes"><p>These are three of the eight Lab 1.2 requests. The two questions in the callout sort most requests in seconds. C5 also needs the pipe-network data, which is Secret: that matters on Session 4, not for the label.</p></aside>
+</section>
+
+<section class="slide" id="experiment-or-not" data-lo="LO6">
+  <div class="kicker">Causal questions</div>
+  <h2>An experiment only when the change can still be assigned at random</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>C4 · text before the reader's visit</b>Not done yet: randomise accounts, an experiment</div>
+    <div class="arrow">→</div>
+    <div class="step c-amber"><b>C8 · smart meters in one district</b>Done, one district: causal analysis against similar districts</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>C3 · target in every team at once</b>Done, everywhere: causal analysis of existing data, weakest</div>
+  </div>
+  <div class="callout note mt"><b>Recap.</b> Designing and sizing the experiment is DS-205; here you decide whether one is possible.</div>
+  <aside class="notes"><p>Read the flow left to right as decreasing control. DS-205 participants know which claims need an experiment; the new skill here is to see that the choice is often already made by history. C3 has no untreated group at all: say so in the recommendation.</p></aside>
+</section>
+
+<section class="slide" id="unanswerable" data-lo="LO6">
+  <div class="kicker">The fourth label</div>
+  <h2>"Unanswerable" is an answer, if it comes with a better question</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>C6 as asked</h4><p class="small mb0">"Why do customers distrust us?" No decision, and no data on trust.</p></div>
+    <div class="card c-teal"><h4>C6 reframed</h4><p class="small mb0">"Which contact reasons are followed by a repeat contact within seven days most often, so we fix the top two first?"</p></div>
+  </div>
+  <ul class="bullets mt">
+    <li>Say what data would make it answerable, and what decision it would serve</li>
+    <li>Do not produce a chart that pretends to answer the original</li>
+  </ul>
+  <aside class="notes"><p>The reframed version is the Lab 1.2 stretch. It is answerable from the contact log, and it serves a decision (which two reasons to fix). The original could only be answered by a survey or interviews, and still has no decision.</p></aside>
+</section>
+
+<section class="slide" id="constraint-changes" data-lo="LO6">
+  <div class="kicker">The meeting moves</div>
+  <h2>When a constraint changes, the recommendation changes with it</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Nadia</span>The text-message budget is frozen until next year, and the board wants a decision on meter reading in ten business days. No new trial can run before then.</div>
+    <div class="msg ai good"><span class="who">Analyst</span>Then C4 gets no analysis now: decide the reading schedule on cost and practicality, and run the reminder experiment when the budget returns.</div>
+  </div>
+  <div class="callout tip mt"><b>In the capstone.</b> The sponsor changes one constraint during your talk. You revise out loud.</div>
+  <aside class="notes"><p>This is outcome 6 in miniature and a rehearsal for the defence. Ask the room which other requests the message affects. Answer: none; C4 is the only one that needed a new trial. Someone may argue for a causal analysis of old data: there are no old reminders, so there is nothing to analyse.</p></aside>
+</section>
+
+<section class="slide" id="process-models" data-lo="LO6 LO1">
+  <div class="kicker">Process models</div>
+  <h2>CRISP-DM starts with the business; it does not frame the question for you</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-teal"><b>Business understanding</b>the only phase about the decision</div>
+      <div class="arrow">↓</div>
+      <div class="step c-cyan"><b>Data understanding, preparation, modeling, evaluation, deployment</b>five phases about the data and the model</div>
+    </div>
+    <ul class="bullets">
+      <li>The model is a cycle of <b>six phases</b>: useful as a checklist of stages</li>
+      <li>It assumes a model will be built: no place for "description is enough" or "no analysis"</li>
+      <li>It says little about stakeholders, estimands or when to stop</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Use CRISP-DM as a map of where framing sits, not as a method of framing. The phase list is in IBM's CRISP-DM guide. Its limit for this course: it presumes a modelling project, while half of Ghadeer's requests need a description or nothing.</p><p>Sources: IBM SPSS Modeler, CRISP-DM Help Overview.</p></aside>
+</section>
+
+<section class="slide" id="check-question-type" data-lo="LO6">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does this request need?</h2>
+  <div class="quiz" data-type="single" data-lo="LO6">
+    <p class="lead">In month 13 Ghadeer moved meter reading in all six districts to a new contractor. Khalil asks: "Did the new contractor cut the number of estimated bills?" The decision is whether to renew the contract.</p>
+    <div class="opts">
+      <div class="opt" data-why="Answers how many, not what the contractor did: a before-after count mixes the contractor with everything else that changed">A description of estimated bills by month</div>
+      <div class="opt" data-why="Assumes the change can still be assigned at random: every district already moved, so no trial is possible">An experiment that randomises districts</div>
+      <div class="opt" data-ok>A causal analysis of existing data, stating its weaknesses</div>
+      <div class="opt" data-why="Forecasts next month for each account; the question asks what a past change did">A predictive model of estimated bills</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> It asks what a change did, the change is already made everywhere, and a decision depends on it: a causal analysis of existing data, with no untreated group named as its main weakness.</div>
+  </div>
+  <aside class="notes"><p>Answer: the causal analysis. Those who pick the description have the right data and the wrong question type; ask them what they would tell Khalil about the contractor specifically. Those who pick the experiment: ask which district could still be assigned to the old contractor.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-2" data-auto="lab" data-lab="1.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>AI-tutor allowed: the tutor asks questions about a label, it never labels. At minute 14 read Nadia's message aloud if the room is not there yet in the notebook. Typical disagreements with the key: C8 labelled descriptive ("compared with similar districts" sounds like a description) and C5 labelled descriptive. Ask the two questions: past or future, group or unit.</p></aside>
 </section>
 
 <!-- Session 3 -->
 
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="three-groups" data-lo="LO3 LO1">
+  <div class="kicker">Who to talk to</div>
+  <h2>Map who decides, who uses the answer and who is affected</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Decide</h4><p class="small mb0">Sultana, with Nadia for the call-centre contract</p></div>
+    <div class="card c-cyan"><h4>Use</h4><p class="small mb0">Team leaders; the outsourced call-centre supplier</p></div>
+    <div class="card c-coral"><h4>Affected</h4><p class="small mb0">Customers who call again; agents whose bonus rides on a target; older customers with estimated bills</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> Only the decider is interviewed, and the affected groups appear for the first time in a complaint.</div>
+  <aside class="notes"><p>This is the map participants draw before the Lab 1.3 interview, for request R3. The affected column is where the ethics of the analysis live: the agents' bonuses and the older customers in Al-Hamra both shape what a fair answer looks like.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="open-questions" data-lo="LO3">
+  <div class="kicker">How you ask</div>
+  <h2>Open questions find constraints; closed and leading ones find agreement</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Leading</span>Don't you think it's the agents?</div>
+    <div class="msg ai bad"><span class="who">Sultana</span>Yes, I suppose so.</div>
+    <div class="msg user"><span class="who">Open</span>How do you count a repeat contact today: how do you know it is the same customer?</div>
+    <div class="msg ai good"><span class="who">Sultana</span>The system links contacts by mobile number. When a customer calls from another phone, it is a new customer to us.</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Both answers come from the Lab 1.3 stand-in. The second one changes the analysis: repeat rates are a lower bound. Ask the room to turn "Is it the billing calls?" into an open question ("Which reasons do repeat callers give?").</p></aside>
+</section>
+
+<section class="slide" id="six-topics" data-lo="LO3">
+  <div class="kicker">What to ask</div>
+  <h2>Six topics cover most of what a stakeholder knows and you do not</h2>
+  <ol class="bullets">
+    <li><b>The decision and its date</b>: what will you do differently, and by when?</li>
+    <li><b>How the number is counted</b>: how do you know it is a repeat, a leak, an estimate?</li>
+    <li><b>Acceptable evidence</b>: what would convince you, and what would you not trust?</li>
+    <li><b>Incentives</b>: which targets do people work under?</li>
+    <li><b>What changed</b>: what moved in the last year?</li>
+    <li><b>Rules on data</b>: what may be used, by whom, where?</li>
+  </ol>
+  <aside class="notes"><p>The list is a scaffold, not a script: follow the surprises. Topics 2 and 4 are the ones analysts skip, and they hide the two largest traps of Day 2 (how data are produced, and how targets distort them).</p></aside>
+</section>
+
+<section class="slide" id="hidden-constraints" data-lo="LO3">
+  <div class="kicker">What nobody volunteers</div>
+  <h2>Five constraints changed the analysis before it started</h2>
+  <table class="t small">
+    <tr><th>Heard in the interview</th><th>What it changes</th></tr>
+    <tr><td>Contract renewal in four weeks</td><td>The deadline, and the decision</td></tr>
+    <tr><td>First-contact target in bonuses since month 13</td><td>"Resolved" is no longer a clean measure</td></tr>
+    <tr><td>Contacts linked by mobile number</td><td>Repeats from another phone are missed</td></tr>
+    <tr><td>Recordings need the data protection officer</td><td>No call audio in a two-week plan</td></tr>
+    <tr><td>Trusts repeats within seven days, not the survey</td><td>Which measure the answer uses</td></tr>
+  </table>
+  <aside class="notes"><p>Each row is one of the five constraints in Sultana's role card; the stand-in reports how many your questions reached. With a live role-player, hand out the card after the interview and compare. Ask which row would have hurt most if missed: usually the bonus target.</p></aside>
+</section>
+
+<section class="slide" id="heard-assumed" data-lo="LO3">
+  <div class="kicker">The record</div>
+  <h2>Write what you heard apart from what you assumed</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>Heard</h4><p class="small mb0">"We shortened the call script in month 13. Handling time fell a lot."</p></div>
+    <div class="card c-amber"><h4>Assumed</h4><p class="small mb0">That repeat contacts rose after month 13. Not yet checked in the data.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Why it matters.</b> An assumption written as a fact becomes a finding by Day 3, and nobody remembers it was a guess.</div>
+  <aside class="notes"><p>The record has two columns on purpose. Ask the room what the shorter script might do to repeats: shorter calls may resolve fewer problems. That is an assumption to test, not a fact. Day 2 tests it.</p></aside>
+</section>
+
+<section class="slide" id="acceptable-evidence" data-lo="LO3 LO1">
+  <div class="kicker">Before the analysis</div>
+  <h2>Agree the evidence before you produce it</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Sultana trusts <b>repeat contacts within seven days</b></li>
+      <li>She does not trust the <b>satisfaction survey</b>: few people answer it</li>
+      <li>An analysis built on the survey would be ignored, however good</li>
+    </ul>
+    <div class="card tint c-navy"><h4>On the framing card</h4><p class="small mb0">The variable of the estimand is the evidence the decision maker accepts; if it is not, say why in the card.</p></div>
+  </div>
+  <aside class="notes"><p>Link back to Session 1: the estimand's variable. Acceptable evidence is not the same as good evidence: if the accepted measure is flawed (repeats linked by mobile), the card says so and proposes how to bound the flaw.</p></aside>
+</section>
+
+<section class="slide" id="role-play-rules" data-lo="LO3">
+  <div class="kicker">The lab</div>
+  <h2>The interview is a role-play; the stand-in is for practice</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>In the room</h4><p class="small mb0">The trainer or a neighbour holds Sultana's role card and answers only what is asked. Eight minutes, then swap.</p></div>
+    <div class="card c-cyan"><h4>Alone</h4><p class="small mb0"><code>U.interview("sultana", q)</code> answers by topic, gives agreement to a leading question, and counts the constraints you reached.</p></div>
+  </div>
+  <aside class="notes"><p>Role card rules for the role-player: answer truthfully, never volunteer a constraint, answer a closed question with yes or no, agree with a leading question. The stand-in follows the same rules mechanically; it is cruder than a person but gives instant feedback for self-study.</p></aside>
+</section>
+
+<section class="slide" id="check-interview" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which question finds out how a repeat is counted?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">You suspect the repeat-contact rate is undercounted, but you do not know how the system links contacts. Which question do you ask Sultana?</p>
+    <div class="opts">
+      <div class="opt" data-ok>"How does the system decide that two contacts come from the same customer?"</div>
+      <div class="opt" data-why="A closed question: it gets yes or no and never reveals the mobile-number matching">"Is the repeat rate accurate?"</div>
+      <div class="opt" data-why="A leading question: it gets agreement, and plants your guess in her answer">"Surely some repeats are missed, right?"</div>
+      <div class="opt" data-why="Asks for her opinion of the number rather than how it is produced">"Do you trust the repeat-contact figures?"</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> An open question about the process makes her describe the mechanism (linking by mobile number), and the mechanism tells you the direction of the error.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first. Ask those who chose "do you trust" what they would do with "yes". The point of interviewing for constraints is to learn mechanisms, not opinions.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-3" data-auto="lab" data-lab="1.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Pair participants: one interviews, one plays Sultana from the role card, then swap for the stretch with Azizah's card. If the room is odd-numbered, the stand-in is the partner. Watch for questions that ask for solutions ("Should we retrain agents?"): redirect to constraints and evidence.</p></aside>
 </section>
 
 <!-- Session 4 -->
 
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO1">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="three-clocks" data-lo="LO1 LO4">
+  <div class="kicker">Feasibility</div>
+  <h2>Three clocks decide whether a question is answerable in time</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Data ready</b>access, approval or a sharing request</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Analysis</b>4 business days for this team</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Decision</b>the board meets in 10 business days</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> The data request goes out after the plan is written, and the answer arrives after the decision.</div>
+  <aside class="notes"><p>The numbers are the Lab 1.4 inventory: ten business days to the board, four needed for the analysis, so every dataset must be ready by business day six. Count backwards from the decision, never forwards from the data.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO1">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="inventory-days" data-lo="LO1 LO4">
+  <div class="kicker">The given</div>
+  <h2>The burst question wants five datasets; two arrive in time</h2>
+  <table class="t small">
+    <tr><th>Dataset</th><th>Held by</th><th>Class</th><th class="num">Ready (business days)</th></tr>
+    <tr><td>Leak-repair work orders</td><td>Ghadeer</td><td>Restricted</td><td class="num">1</td></tr>
+    <tr><td>Daily temperature</td><td>Open data</td><td>Public</td><td class="num">0</td></tr>
+    <tr><td>Billing reads</td><td>Ghadeer</td><td>Restricted</td><td class="num">2</td></tr>
+    <tr class="hl"><td>Pipe network</td><td>Ghadeer</td><td>Secret</td><td class="num">8</td></tr>
+    <tr class="hl"><td>Road-works permits</td><td>Regional Roads Office</td><td>Restricted</td><td class="num">15</td></tr>
+  </table>
+  <aside class="notes"><p>From the Lab 1.4 run. Billing reads are ready in time but are dropped for another reason (next slides). Ask the room where the 15 comes from before showing the next slide.</p></aside>
+</section>
+
+<section class="slide" id="sharing-timeframe" data-lo="LO1 LO4">
+  <div class="kicker">Data held by another entity</div>
+  <h2>A sharing request can take three weeks, by policy</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">10 + 5</div><div class="lbl">business days: assess the request, then share once approved</div></div>
+    <ul class="bullets">
+      <li>The NDMO Data Sharing Policy gives the sharing entity up to 10 business days to assess and 5 to share after approval</li>
+      <li>It can extend the time for an extraordinary effort</li>
+      <li>The request must also respect data minimisation</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Paraphrased from the Data Sharing Policy, the clause on the data sharing timeframe. The upper bound is the planning number: you cannot count on a faster answer. The perishable part: these limits can change; the catalog marks them for refresh each edition.</p><p>Sources: NDMO Data Sharing Policy.</p></aside>
+</section>
+
+<section class="slide" id="classification-levels" data-lo="LO1 LO4">
+  <div class="kicker">Classification</div>
+  <h2>The classification of a dataset sets where and how fast you can use it</h2>
+  <div class="cols cols-4">
+    <div class="card c-coral"><h4>Top Secret</h4><p class="small mb0">Not in an analysis plan with a two-week deadline</p></div>
+    <div class="card c-amber"><h4>Secret</h4><p class="small mb0">Pipe network: a security approval, 8 days</p></div>
+    <div class="card c-cyan"><h4>Restricted</h4><p class="small mb0">Billing, repairs, contacts: inside Ghadeer's environment</p></div>
+    <div class="card c-teal"><h4>Public</h4><p class="small mb0">Open temperature data: no request</p></div>
+  </div>
+  <div class="callout note mt"><b>Hosted assistants.</b> A Restricted extract does not go to a public assistant; Day 3 reviews an assistant's work on synthetic data only.</div>
+  <aside class="notes"><p>The four levels are those of the NDMO Data Classification Policy. The times are Ghadeer's own (synthetic). The callout prepares Day 3: the assistant analysis there runs on synthetic data, which is why it may go to a hosted model in this course.</p><p>Sources: NDMO Data Classification Policy.</p></aside>
+</section>
+
+<section class="slide" id="minimise-request" data-lo="LO1">
+  <div class="kicker">Minimisation</div>
+  <h2>Ask for what the purpose needs, not what happens to be ready</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Tempting</h4><p class="small mb0">"Billing reads are ready in two days: take them, we might link bursts to customers later."</p></div>
+    <div class="card c-teal"><h4>Minimised</h4><p class="small mb0">"The burst question needs repairs and temperature. Billing brings names, mobiles and national IDs it does not need."</p></div>
+  </div>
+  <div class="callout tip mt"><b>On the card.</b> Every dataset kept has a reason tied to the question; every personal field dropped has one too.</div>
+  <aside class="notes"><p>"We might need it later" is the phrase to listen for. Under the PDPL the purpose sets the minimum; a later purpose is a later request. Ask: what would linking bursts to customers decide? Usually nothing on this question.</p></aside>
+</section>
+
+<section class="slide" id="cut-scope" data-lo="LO1 LO4">
+  <div class="kicker">Cutting scope</div>
+  <h2>Cut the question until it fits, and say what the cut leaves out</h2>
+  <div class="flow v">
+    <div class="step c-coral"><b>Asked (causal)</b>Do road works explain the bursts in Al-Rawdah, and should renewal go to its oldest mains?</div>
+    <div class="arrow">↓</div>
+    <div class="step c-teal"><b>Scoped (descriptive)</b>Have bursts in Al-Rawdah become more frequent over 24 months, and do they follow summer temperatures, enough to justify a renewal study?</div>
+  </div>
+  <p class="small muted mt-s">Lab 1.4 run: 4.7 repairs a month in year 1, 4.9 in year 2; 4.8 in summer and 4.8 otherwise.</p>
+  <aside class="notes"><p>The scoped question is smaller and honest about its type. The numbers from the run already hint at the answer: no clear rise, no summer pattern. That is a useful result for the board: it says the renewal decision needs the pipe and road-works data, so request them today.</p></aside>
+</section>
+
+<section class="slide" id="phase-two" data-lo="LO4">
+  <div class="kicker">The cost of the cut</div>
+  <h2>A scoped card says what is left unanswered and requests it now</h2>
+  <ul class="bullets">
+    <li><b>Left unanswered:</b> whether road works or pipe age cause the bursts</li>
+    <li><b>Requested today:</b> road-works permits through a data-sharing request; the pipe network through the security approval</li>
+    <li><b>Told to the sponsor:</b> the board gets a description now and a causal answer in about a month</li>
+  </ul>
+  <div class="callout warn mt"><b>What goes wrong.</b> The scoped answer is presented as the answer to the original question.</div>
+  <aside class="notes"><p>This slide closes Day 1's framing arc: decision, type, stakeholders, feasibility. In the capstone, the plan must contain exactly this kind of statement, and the sponsor's constraint change usually lands on it.</p></aside>
+</section>
+
+<section class="slide" id="check-feasibility" data-lo="LO1">
+  <div class="kicker">Checkpoint</div>
+  <h2>How do you answer this data request?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1">
+    <p class="lead">Planning the burst analysis, a colleague asks for the billing extract with national IDs "in case we want to link bursts to customers later". The question is about bursts by month.</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats readiness as a reason: a dataset being quick to get does not make it necessary">Take it: it is ready in two days</div>
+      <div class="opt" data-why="Masks the symptom: hashed IDs are still personal data collected without a purpose">Take it, but hash the national IDs</div>
+      <div class="opt" data-why="Confuses classification with need: an internal Restricted dataset can be used, but only for a purpose that needs it">Refuse it: Restricted data cannot be analysed</div>
+      <div class="opt" data-ok>Leave it out: the burst question needs no personal data; a later purpose gets its own request</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Minimisation ties the data to the purpose. No part of the burst question needs customers, so no personal field enters the plan.</div>
+  </div>
+  <aside class="notes"><p>Answer: leave it out. Hashing is a good control when personal data are needed; here they are not needed at all. The Restricted option is a frequent confusion: Restricted data are used every day inside Ghadeer's environment.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-4" data-auto="lab" data-lab="1.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The lab uses no earlier lab's output. Watch for participants who keep the pipe network because "the security approval might be quick": the plan must use the stated time. Early finishers do the five-day stretch. Close with two scoped questions read aloud.</p></aside>
 </section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">Day 1 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Decision first</h4><p class="small mb0">A framing card names a choice, an estimand with five parts and the number at which the choice changes.</p></div>
+    <div class="card c-coral"><h4>Type before method</h4><p class="small mb0">Descriptive, predictive, causal or unanswerable; and "no analysis" is a valid recommendation.</p></div>
+    <div class="card c-purple"><h4>Feasible by the date</h4><p class="small mb0">Count back from the decision; minimise personal data; say what the cut leaves out.</p></div>
   </div>
+  <aside class="notes"><p>Ask each participant to say which of the three they will use first at work. Collect one framing card per table for the opening of Day 2.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
   <h2>Day 2: Know the domain, plan the work</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <p class="lead">Read the three short files in <code>labs/data/briefing/</code> (metering, billing cycles, leak repair). Tomorrow you learn how the numbers are made before you plan with them.</p>
+  <aside class="notes"><p>The briefing pack takes ten minutes to read. Unfinished labs can be finished at home: each starts from its own supplied files.</p></aside>
 </section>

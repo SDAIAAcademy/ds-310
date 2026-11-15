@@ -1,0 +1,217 @@
+{
+ "sultana": {
+  "name": "Sultana Al-Kanaan",
+  "role": "customer service operations manager",
+  "opening": "Repeat complaints are too high and the board keeps asking me about them.",
+  "topics": [
+   {
+    "id": "target",
+    "keys": [
+     "target",
+     "kpi",
+     "bonus",
+     "measure",
+     "measured",
+     "first-contact",
+     "first contact",
+     "incentive"
+    ],
+    "answer": "Since month 13 the agents have a first-contact resolution target, and it counts towards their bonus.",
+    "constraint": true
+   },
+   {
+    "id": "privacy",
+    "keys": [
+     "recording",
+     "recordings",
+     "personal",
+     "privacy",
+     "data protection",
+     "listen"
+    ],
+    "answer": "We record calls, but I was told nobody may use the recordings for analysis without the data protection officer.",
+    "constraint": true
+   },
+   {
+    "id": "matching",
+    "keys": [
+     "same customer",
+     "count",
+     "counted",
+     "identify",
+     "match",
+     "mobile",
+     "how do you know",
+     "link"
+    ],
+    "answer": "The system links contacts by mobile number. When a customer calls from another phone, it is a new customer to us.",
+    "constraint": true
+   },
+   {
+    "id": "deadline",
+    "keys": [
+     "when",
+     "deadline",
+     "decide",
+     "decision",
+     "timeline",
+     "contract",
+     "by when"
+    ],
+    "answer": "The outsourced call-centre contract is renewed in four weeks. I need to know before then whether to change its terms.",
+    "constraint": true
+   },
+   {
+    "id": "evidence",
+    "keys": [
+     "evidence",
+     "convince",
+     "trust",
+     "believe",
+     "proof",
+     "would show",
+     "survey"
+    ],
+    "answer": "I trust repeat contacts within seven days. I do not trust the satisfaction survey: few people answer it.",
+    "constraint": true
+   },
+   {
+    "id": "affected",
+    "keys": [
+     "affected",
+     "elderly",
+     "groups",
+     "who calls",
+     "who is"
+    ],
+    "answer": "Billing callers are most of the repeats. Older customers in Al-Hamra call the most about estimated bills."
+   },
+   {
+    "id": "tried",
+    "keys": [
+     "tried",
+     "before",
+     "already",
+     "done",
+     "changed"
+    ],
+    "answer": "We shortened the call script in month 13 to save time. Handling time fell a lot."
+   }
+  ]
+ },
+ "mamdouh": {
+  "name": "Mamdouh Al-Qarawi",
+  "role": "metering and leak-repair engineer",
+  "opening": "Ask me anything about meters and repairs. The data are only as good as the process.",
+  "topics": [
+   {
+    "id": "estimate",
+    "keys": [
+     "estimate",
+     "estimated",
+     "access",
+     "cannot read",
+     "locked",
+     "no read"
+    ],
+    "answer": "If the reader cannot reach the meter, the bill is an estimate: the average of the last three actual reads. The next actual read corrects it.",
+    "constraint": true
+   },
+   {
+    "id": "cycle",
+    "keys": [
+     "cycle",
+     "days",
+     "route",
+     "monthly",
+     "period",
+     "when read"
+    ],
+    "answer": "Readers follow routes. A billing period runs from 27 to 35 days, so a 'monthly' bill is not a month of use.",
+    "constraint": true
+   },
+   {
+    "id": "meters",
+    "keys": [
+     "smart",
+     "old",
+     "age",
+     "accuracy",
+     "accurate",
+     "under",
+     "register",
+     "replace"
+    ],
+    "answer": "Old mechanical meters slow down: they miss roughly one and a half per cent more each year. The smart meters in Al-Nakheel register what the old ones missed.",
+    "constraint": true
+   },
+   {
+    "id": "repairs",
+    "keys": [
+     "repair",
+     "close",
+     "closed",
+     "job",
+     "work order",
+     "fix"
+    ],
+    "answer": "Since the three-day target, crews close the job when they leave the site. If the leak comes back, the job is reopened.",
+    "constraint": true
+   },
+   {
+    "id": "bulk",
+    "keys": [
+     "bulk",
+     "input",
+     "supply",
+     "district meter",
+     "flow meter"
+    ],
+    "answer": "The Al-Wurud bulk meter was over-reading for a few months. It was recalibrated in month 13.",
+    "constraint": true
+   }
+  ]
+ },
+ "azizah": {
+  "name": "Azizah Al-Matrood",
+  "role": "data protection officer",
+  "opening": "Tell me what you want to use and why.",
+  "topics": [
+   {
+    "id": "purpose",
+    "keys": [
+     "purpose",
+     "why",
+     "need",
+     "necessary",
+     "minimum"
+    ],
+    "answer": "Use only the personal data the question needs. Counts of repeat contacts need no names.",
+    "constraint": true
+   },
+   {
+    "id": "recordings",
+    "keys": [
+     "recording",
+     "recordings",
+     "listen",
+     "audio"
+    ],
+    "answer": "Recordings are personal data collected to handle the call. A new use needs my review first.",
+    "constraint": true
+   },
+   {
+    "id": "class",
+    "keys": [
+     "classification",
+     "classified",
+     "restricted",
+     "share",
+     "sharing"
+    ],
+    "answer": "The contact-centre extract is Restricted. It stays inside Ghadeer's environment.",
+    "constraint": true
+   }
+  ]
+ }
+}

@@ -1,0 +1,2 @@
+# Colab already ships numpy, pandas and matplotlib; nothing else is needed.
+pandas>=2.2

@@ -1,0 +1,14 @@
+{
+ "question_fit": 1,
+ "data_handling": 1,
+ "method": 0,
+ "inference": 0,
+ "communication": 1,
+ "notes": {
+  "question_fit": "Answers 'most contacts', not 'worst service'.",
+  "data_handling": "Counts contacts, but districts have different numbers of accounts and access issues.",
+  "method": "No rate per account and no measure of service such as repeat contacts.",
+  "inference": "Volume of contacts read as quality of service.",
+  "communication": "Clear, but the recommendation does not follow from the number."
+ }
+}

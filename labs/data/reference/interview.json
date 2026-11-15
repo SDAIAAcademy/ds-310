@@ -1,0 +1,41 @@
+{
+ "map": {
+  "decides": [
+   "Sultana Al-Kanaan, with Nadia Al-Rubaie for the call-centre contract"
+  ],
+  "uses": [
+   "Contact-centre team leaders",
+   "The outsourced call-centre supplier"
+  ],
+  "affected": [
+   "Customers who call again",
+   "Agents whose bonus depends on the target"
+  ]
+ },
+ "questions": [
+  "What decision do you need to take about repeat complaints, and by when?",
+  "How do you count a repeat contact today: how do you know it is the same customer?",
+  "What evidence would convince you that a change worked, and what would you not trust?",
+  "Which targets or incentives do the agents work under at the moment?",
+  "What has changed in the contact centre in the last year that might matter?",
+  "Which data about calls can we use, and what about the call recordings and personal data?"
+ ],
+ "record": {
+  "decision": "Whether to change the terms of the outsourced call-centre contract, renewed in four weeks",
+  "constraints": [
+   "Decision needed within four weeks",
+   "First-contact target counts towards bonuses since month 13",
+   "Contacts are linked by mobile number",
+   "Recordings need the data protection officer's review"
+  ],
+  "acceptable_evidence": [
+   "Repeat contacts within seven days"
+  ],
+  "heard": [
+   "The call script was shortened in month 13"
+  ],
+  "assumed": [
+   "That repeat contacts rose after month 13: not yet checked"
+  ]
+ }
+}

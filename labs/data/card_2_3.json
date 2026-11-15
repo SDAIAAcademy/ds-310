@@ -1,0 +1,23 @@
+{
+ "decision": "Should Ghadeer extend active leak detection to Al-Rawdah and Al-Hamra next year?",
+ "decision_maker": "Nadia Al-Rubaie, with the capital committee",
+ "options": [
+  "Extend to both districts",
+  "Extend to Al-Rawdah only",
+  "Do not extend; repair on customer reports as now"
+ ],
+ "estimand": {
+  "population": "District-months in the six districts, months 1 to 24",
+  "variable": "Real losses as a share of system input (non-revenue water minus estimated apparent losses)",
+  "contrast": "With active detection against without it",
+  "intercurrent": "The Al-Wurud bulk-meter recalibration in month 13; read the months after it",
+  "summary": "Difference in percentage points, Al-Wurud against the other districts, after against before"
+ },
+ "decision_rule": "Extend if real losses fall by at least 3 percentage points in Al-Wurud relative to the other districts",
+ "affected": [
+  "customers in districts with more interruptions during repairs",
+  "repair crews",
+  "the capital budget"
+ ],
+ "personal_data_needed": false
+}
