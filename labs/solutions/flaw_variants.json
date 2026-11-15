@@ -38,7 +38,7 @@
   },
   "F7": {
    "area": "data_handling",
-   "severity": "major",
+   "severity": "critical",
    "cell": "c1",
    "what": "Estimated reads are dropped from billed volume, which inflates non-revenue water"
   }

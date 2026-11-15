@@ -965,12 +965,12 @@
     {
       "id": "q-flaws-03",
       "type": "single",
-      "prompt": "Four flaws in one variant: a chart axis from 20%; no interval reported; estimated bills dropped, which moves the effect by 1.2 points but not across the rule; a before-after with no comparison, which reverses the decision. In which order do the review notes go?",
+      "prompt": "Four flaws in one variant: a chart axis from 20%; no interval reported; volumes not adjusted for the billing period, which moves the effect by 0.4 points but not across the rule; a before-after with no comparison, which reverses the decision. In which order do the review notes go?",
       "options": [
-        "Chart axis, interval, estimated bills, before-after",
-        "Before-after, estimated bills, interval, chart axis",
-        "Estimated bills, before-after, chart axis, interval",
-        "Interval, before-after, estimated bills, chart axis"
+        "Chart axis, interval, billing periods, before-after",
+        "Before-after, billing periods, interval, chart axis",
+        "Billing periods, before-after, chart axis, interval",
+        "Interval, before-after, billing periods, chart axis"
       ],
       "correct": [
         1

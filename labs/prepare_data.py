@@ -499,7 +499,7 @@ FLAWS = {
            "what": "Billed volume is not adjusted for billing-cycle length"},
     "F6": {"area": "communication", "severity": "minor", "cell": "c6",
            "what": "The chart's axis starts at 20%, which magnifies the fall"},
-    "F7": {"area": "data_handling", "severity": "major", "cell": "c1",
+    "F7": {"area": "data_handling", "severity": "critical", "cell": "c1",
            "what": "Estimated reads are dropped from billed volume, which inflates non-revenue water"},
 }
 
