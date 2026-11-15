@@ -9,7 +9,7 @@
     "en": "Problem Framing and Analytical Review",
     "ar": "صياغة المشكلات التحليلية ومراجعة التحليلات"
   },
-  "tagline": "REPLACE: one line under the title: what participants can do after the course",
+  "tagline": "Turn vague requests into answerable decision questions, plan the analysis, and review analyses by people and assistants by consequence",
   "description": "Participants practise the work before and after an analysis, using requests from Ghadeer Water Company, a fictional water utility. They turn vague requests into decision questions with an estimand, a metric and a decision rule, interview a role-played manager, use domain knowledge of metering, billing and repair to see where the data mislead, and test whether data and deadline make the question answerable. They then review analyses by peers and by an assistant and write review notes ranked by consequence. Metric definition is DS-307; team review standards are DS-407.",
   "track": "data-science",
   "level": 300,
@@ -22,7 +22,8 @@
     "DS-204 Machine Learning for Tabular Data: Baselines and Validation",
     "DS-205 Designing and Reading Experiments",
     "Has completed at least one analysis for a stakeholder",
-    "Reads a notebook in Python or R and reruns it"
+    "Reads a notebook in Python or R and reruns it",
+    "Setup: a laptop processor with uv, or Google Colab. Nothing downloads a model; a free hosted model key is optional (every assistant cell has a stand-in). Run 00_setup_check before Day 1; see labs/README.md."
   ],
   "site": {
     "url": "https://sdaiaacademy.github.io/ds-310/",
@@ -67,8 +68,8 @@
     }
   ],
   "case_study": {
-    "name": "REPLACE: the name of the fictional organisation every lab works on",
-    "summary": "REPLACE: two sentences on the case study and its synthetic data"
+    "name": "Ghadeer Water Company",
+    "summary": "Ghadeer Water Company is a fictional water utility with six districts whose managers send vague requests about water loss, leak repair, billing and complaints. Participants frame those requests with an estimand and a decision rule, interview a role-played operations manager and metering engineer, map how meter reads become bills, stress-test the water-loss and customer-service metric tree, write and attack analysis plans, and review three seeded-flaw analyses, one written by the assistant Sareea. The capstone moves to a second case, the Building Permits Department of Hima Municipality and its permits backlog. All data is synthetic and generated with a fixed seed."
   },
   "format": "intensive",
   "format_note": "Intensive: 3 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task",
@@ -89,69 +90,177 @@
       "sessions": [
         {
           "title": "Requests are not questions",
+          "summary": "From a manager's worry to a decision question with an estimand, a metric and a decision rule",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Separate the decision behind a request from the topic it names",
+            "State an estimand with population, variable, contrast and summary",
+            "Write a decision rule a peer can apply without asking you"
           ],
           "lo": [
             "LO1"
           ],
           "lab": {
             "id": "1.1",
-            "title": "Reframe two vague requests as decision questions with an estimand (AI-off)",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Two framing cards (AI-off)",
             "minutes": 25,
-            "href": "D1_1_reframe_two_vague.ipynb"
+            "summary": "Reframe two vague requests as decision questions with an estimand (AI-off): two framing cards that a peer can plan from without further questions.",
+            "href": "D1_1_reframe_two_vague.ipynb",
+            "steps": [
+              {
+                "text": "Read the two requests and the baseline numbers",
+                "minutes": 4
+              },
+              {
+                "text": "Card 1: decision maker, decision and options",
+                "minutes": 6
+              },
+              {
+                "text": "Card 1: estimand and decision rule",
+                "minutes": 6
+              },
+              {
+                "text": "Card 2: the same, faster",
+                "minutes": 6
+              },
+              {
+                "text": "Peer test: what a planner would still ask",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Frame a third request and swap it with a neighbour"
           }
         },
         {
           "title": "Question types",
+          "summary": "Descriptive, predictive, causal or unanswerable, and the kind of analysis each one needs",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Classify a request as descriptive, predictive, causal or unanswerable",
+            "Match each type to description, an experiment, a causal analysis, a model or no analysis",
+            "Change the recommendation when a constraint changes"
           ],
           "lo": [
-            "LO6"
+            "LO6",
+            "LO1"
           ],
           "lab": {
             "id": "1.2",
-            "title": "Classify eight requests as descriptive, predictive, causal or unanswerable",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Eight requests classified",
             "minutes": 25,
-            "href": "D1_2_classify_eight_requests.ipynb"
+            "summary": "Classify eight requests as descriptive, predictive, causal or unanswerable, name the analysis each needs, and revise when the sponsor changes a constraint.",
+            "href": "D1_2_classify_eight_requests.ipynb",
+            "steps": [
+              {
+                "text": "Read the four labels and the eight requests",
+                "minutes": 3
+              },
+              {
+                "text": "Classify each request",
+                "minutes": 8
+              },
+              {
+                "text": "Name the analysis each one needs",
+                "minutes": 6
+              },
+              {
+                "text": "The sponsor changes a constraint: revise",
+                "minutes": 5
+              },
+              {
+                "text": "Compare with the key and explain one disagreement",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Rewrite the unanswerable request so that data could answer it"
           }
         },
         {
           "title": "Interviewing a stakeholder",
+          "summary": "Find the constraints, the acceptable evidence and the people affected before any analysis",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Map decision makers, users and affected groups for a request",
+            "Ask open questions that surface constraints and acceptable evidence",
+            "Record what was said apart from what was assumed"
           ],
           "lo": [
-            "LO3"
+            "LO3",
+            "LO1"
           ],
           "lab": {
             "id": "1.3",
-            "title": "Interview a role-played operations manager and record constraints and acceptable evidence",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Interview the operations manager",
             "minutes": 25,
-            "href": "D1_3_interview_role_played.ipynb"
+            "summary": "Interview a role-played operations manager and record constraints and acceptable evidence: an interview record with the constraints found and the questions left.",
+            "href": "D1_3_interview_role_played.ipynb",
+            "steps": [
+              {
+                "text": "Read the request and the stakeholder map",
+                "minutes": 3
+              },
+              {
+                "text": "Write six open questions",
+                "minutes": 6
+              },
+              {
+                "text": "Interview: a role-play or the stand-in",
+                "minutes": 8
+              },
+              {
+                "text": "Record constraints and acceptable evidence",
+                "minutes": 6
+              },
+              {
+                "text": "List what you did not ask",
+                "minutes": 2
+              }
+            ],
+            "stretch": "Interview the data protection officer about the same request"
           }
         },
         {
           "title": "Feasibility and scope",
+          "summary": "Test a question against the data, their classification, the time to get them and the deadline",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Estimate when each dataset in a plan can be ready",
+            "Apply classification, sharing time limits and minimisation to a data request",
+            "Cut a question's scope until it fits the deadline"
           ],
           "lo": [
-            "LO1"
+            "LO1",
+            "LO4"
           ],
           "lab": {
             "id": "1.4",
-            "title": "Check one question against the data inventory and the deadline and cut its scope",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Check and cut one question",
             "minutes": 25,
-            "href": "D1_4_check_one_question.ipynb"
+            "summary": "Check one question against the data inventory and the deadline and cut its scope until it is answerable in ten business days.",
+            "href": "D1_4_check_one_question.ipynb",
+            "steps": [
+              {
+                "text": "Read the card and the data inventory",
+                "minutes": 3
+              },
+              {
+                "text": "Days until each dataset is ready",
+                "minutes": 7
+              },
+              {
+                "text": "Classification and personal data per dataset",
+                "minutes": 5
+              },
+              {
+                "text": "Cut the scope to fit ten business days",
+                "minutes": 7
+              },
+              {
+                "text": "Write the scoped card",
+                "minutes": 3
+              }
+            ],
+            "stretch": "The sponsor moves the deadline to five business days: cut again"
           }
         }
-      ]
+      ],
+      "subtitle": "A request names a worry; a question names a decision, an estimand and a rule"
     },
     {
       "id": "day2",
@@ -161,69 +270,175 @@
       "sessions": [
         {
           "title": "How the data are made",
+          "summary": "Meter reads become bills through estimates, billing cycles and meter swaps, and each step can mislead",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Read a briefing pack and an expert interview for how a metric is produced",
+            "Draw the meter-to-bill process as a diagram",
+            "Mark where the data can mislead, with a number from the data"
           ],
           "lo": [
             "LO3"
           ],
           "lab": {
             "id": "2.1",
-            "title": "Map the meter-to-bill process and mark where the data can mislead",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "The meter-to-bill map",
             "minutes": 25,
-            "href": "D2_1_map_meter_bill.ipynb"
+            "summary": "Map the meter-to-bill process and mark where the data can mislead: a Mermaid process map with three marked points, each with its number from the data.",
+            "href": "D2_1_map_meter_bill.ipynb",
+            "steps": [
+              {
+                "text": "Read the briefing pack",
+                "minutes": 5
+              },
+              {
+                "text": "Ask the metering engineer three questions",
+                "minutes": 5
+              },
+              {
+                "text": "The process as a Mermaid map",
+                "minutes": 5
+              },
+              {
+                "text": "Three points where the data mislead, with numbers",
+                "minutes": 8
+              },
+              {
+                "text": "Save the map",
+                "minutes": 2
+              }
+            ],
+            "stretch": "Add a fourth mark on the leak-repair work order"
           }
         },
         {
           "title": "Metrics and proxies",
+          "summary": "A metric tree is a set of proxies; under a target, each one can be gamed",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Trace a goal to the proxies a metric tree uses for it",
+            "Recognise the four ways a proxy fails under pressure",
+            "Propose guardrail metrics that expose the gaming"
           ],
           "lo": [
             "LO2"
           ],
           "lab": {
             "id": "2.2",
-            "title": "Stress-test the water-loss metric tree for gaming and add guardrails",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Stress-test the metric tree",
             "minutes": 25,
-            "href": "D2_2_stress_test_water.ipynb"
+            "summary": "Stress-test the water-loss and customer-service metric tree for gaming, label each failure, and add two guardrails with the behaviour each prevents.",
+            "href": "D2_2_stress_test_water.ipynb",
+            "steps": [
+              {
+                "text": "Read the tree and the date the targets started",
+                "minutes": 3
+              },
+              {
+                "text": "Repair time before and after the target",
+                "minutes": 6
+              },
+              {
+                "text": "First-contact resolution and repeat contacts",
+                "minutes": 6
+              },
+              {
+                "text": "Label each gamed metric with its mechanism",
+                "minutes": 4
+              },
+              {
+                "text": "Two guardrails and the behaviour each prevents",
+                "minutes": 6
+              }
+            ],
+            "stretch": "A guardrail for estimated reads inside non-revenue water"
           }
         },
         {
           "title": "Analysis plans",
+          "summary": "Data, method, threats and the result that would change the decision, fixed before outcomes are seen",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Write an analysis plan with data, method and threats to validity",
+            "Compute what change the available data can detect",
+            "State in advance the result that would change the decision"
           ],
           "lo": [
             "LO4"
           ],
           "lab": {
             "id": "2.3",
-            "title": "Write a plan for a framed question, including the result that would change the decision",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "A plan for a framed question",
             "minutes": 25,
-            "href": "D2_3_write_plan_framed.ipynb"
+            "summary": "Write a plan for a framed question, including the result that would change the decision, and score it against the rubric.",
+            "href": "D2_3_write_plan_framed.ipynb",
+            "steps": [
+              {
+                "text": "Read the card, the inventory and the deadline",
+                "minutes": 3
+              },
+              {
+                "text": "Data and method",
+                "minutes": 7
+              },
+              {
+                "text": "What change the data can detect",
+                "minutes": 5
+              },
+              {
+                "text": "Threats and the result that changes the decision",
+                "minutes": 7
+              },
+              {
+                "text": "Score the plan against the rubric",
+                "minutes": 3
+              }
+            ],
+            "stretch": "Plan B, if the meter data arrive a week late"
           }
         },
         {
           "title": "Threats to validity",
+          "summary": "What could make the answer wrong: selection, regression to the mean, measurement change and more",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Name the main threats to the validity of a plan",
+            "Show regression to the mean in data chosen for being extreme",
+            "Rank threats by how much they could change the decision"
           ],
           "lo": [
-            "LO4"
+            "LO4",
+            "LO5"
           ],
           "lab": {
             "id": "2.4",
-            "title": "Swap plans with a peer and list each other's three main threats",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Three threats each",
             "minutes": 25,
-            "href": "D2_4_swap_plans_peer.ipynb"
+            "summary": "Swap plans with a peer and list each other's three main threats, after doing the same for two supplied plans.",
+            "href": "D2_4_swap_plans_peer.ipynb",
+            "steps": [
+              {
+                "text": "Read the threat catalogue",
+                "minutes": 3
+              },
+              {
+                "text": "Plan A: its three main threats",
+                "minutes": 7
+              },
+              {
+                "text": "Regression to the mean in the data",
+                "minutes": 5
+              },
+              {
+                "text": "Plan B: its three main threats",
+                "minutes": 5
+              },
+              {
+                "text": "Swap with your neighbour and list theirs",
+                "minutes": 5
+              }
+            ],
+            "stretch": "Rewrite one plan so that its worst threat is answered"
           }
         }
-      ]
+      ],
+      "subtitle": "Learn how the numbers are made before you plan what to do with them"
     },
     {
       "id": "day3",
@@ -233,103 +448,211 @@
       "sessions": [
         {
           "title": "A review checklist",
+          "summary": "Rerun first, then check five areas from question to conclusion",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Rerun an analysis before judging it",
+            "Apply a checklist of five areas from question fit to communication",
+            "Score an analysis so another reviewer would score it alike"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.1",
-            "title": "Apply the checklist to a short notebook and score it",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Score a short notebook",
             "minutes": 25,
-            "href": "D3_1_apply_checklist_short.ipynb"
+            "summary": "Apply the checklist to a short notebook and score it in five areas, then compare with the reference score.",
+            "href": "D3_1_apply_checklist_short.ipynb",
+            "steps": [
+              {
+                "text": "Rerun the short notebook",
+                "minutes": 5
+              },
+              {
+                "text": "Score question fit and data handling",
+                "minutes": 6
+              },
+              {
+                "text": "Score method and inference",
+                "minutes": 6
+              },
+              {
+                "text": "Score communication and the total",
+                "minutes": 4
+              },
+              {
+                "text": "Compare with the reference score",
+                "minutes": 4
+              }
+            ],
+            "stretch": "Name the one change that would raise the score most"
           }
         },
         {
           "title": "Finding the flaws that matter",
+          "summary": "Rank flaws by what they do to the decision, not by how easy they were to find",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Locate seeded flaws cell by cell",
+            "Measure each flaw's consequence with a recomputed number",
+            "Rank flaws by their effect on the decision"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.2",
-            "title": "Review a seeded-flaw notebook and rank its flaws by consequence",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Rank the flaws of your variant",
             "minutes": 25,
-            "href": "D3_2_review_seeded_flaw.ipynb"
+            "summary": "Review a seeded-flaw notebook, a variant of its own for each participant, and rank its flaws by consequence.",
+            "href": "D3_2_review_seeded_flaw.ipynb",
+            "steps": [
+              {
+                "text": "Load your variant and rerun it",
+                "minutes": 5
+              },
+              {
+                "text": "Find the flaws, cell by cell",
+                "minutes": 9
+              },
+              {
+                "text": "Consequence of each, with a recomputed number",
+                "minutes": 6
+              },
+              {
+                "text": "Rank by consequence",
+                "minutes": 3
+              },
+              {
+                "text": "Check your flags",
+                "minutes": 2
+              }
+            ],
+            "stretch": "Fix the top flaw and rerun the analysis"
           }
         },
         {
           "title": "Reviewing assistant-generated analysis",
+          "summary": "An assistant's analysis looks finished; rerun it and verify every number before anyone uses it",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Name the failures typical of assistant-generated analyses",
+            "Rerun an assistant's notebook and reconcile its summary with its output",
+            "Write a verification note that meets the duty to verify"
           ],
           "lo": [
             "LO5"
           ],
           "lab": {
             "id": "3.3",
-            "title": "Rerun an assistant-generated analysis, find where it fails and write a verification note",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Verify the assistant's analysis",
             "minutes": 25,
-            "href": "D3_3_rerun_assistant_generated.ipynb"
+            "summary": "Rerun an assistant-generated analysis, find where it fails and write a verification note.",
+            "href": "D3_3_rerun_assistant_generated.ipynb",
+            "steps": [
+              {
+                "text": "Read the prompt and the summary the assistant gave",
+                "minutes": 3
+              },
+              {
+                "text": "Rerun the notebook",
+                "minutes": 5
+              },
+              {
+                "text": "Where it fails: four checks",
+                "minutes": 9
+              },
+              {
+                "text": "Write the verification note",
+                "minutes": 6
+              },
+              {
+                "text": "Label the assistant's part",
+                "minutes": 2
+              }
+            ],
+            "stretch": "Ask a free hosted model for the same analysis and verify its answer"
           }
         },
         {
           "title": "Review notes people act on",
+          "summary": "Each note states the problem, its consequence and a fix; the note that matters most comes first",
           "outcomes": [
-            "REPLACE: what a participant can do after this session"
+            "Rewrite a vague note as problem, consequence and fix",
+            "Order notes by consequence for the decision",
+            "Recommend the kind of analysis the request needed"
           ],
           "lo": [
-            "LO5"
+            "LO5",
+            "LO6"
           ],
           "lab": {
             "id": "3.4",
-            "title": "Rewrite review notes so each states the problem, its consequence and a fix",
-            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "title": "Notes that get acted on",
             "minutes": 25,
-            "href": "D3_4_rewrite_review_notes.ipynb"
+            "summary": "Rewrite review notes so each states the problem, its consequence and a fix, rank them, and choose the review target of the capstone.",
+            "href": "D3_4_rewrite_review_notes.ipynb",
+            "steps": [
+              {
+                "text": "Read the eight weak notes",
+                "minutes": 3
+              },
+              {
+                "text": "Rewrite each: problem, consequence, fix",
+                "minutes": 12
+              },
+              {
+                "text": "Rank by consequence",
+                "minutes": 4
+              },
+              {
+                "text": "Tutor feedback and one revision",
+                "minutes": 4
+              },
+              {
+                "text": "Open the capstone brief",
+                "minutes": 2
+              }
+            ],
+            "stretch": "Write the summary paragraph a manager reads first"
           }
         }
-      ]
+      ],
+      "subtitle": "Review the question, the data, the method, the inference and the words, then rank by consequence"
     },
     {
       "id": "capstone",
       "kind": "capstone",
       "title": "Capstone project presentations",
       "deck": "slides/capstone.html",
-      "subtitle": "REPLACE: the catalog gives no length for the presentations; set capstone.talk_minutes and capstone.qa_minutes in course.json, write them on the format slide, add a timer for each to the now-presenting slide, and remove this line"
+      "subtitle": "An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence"
     }
   ],
   "capstone": {
     "summary": "A framing card, analysis plan and peer review for a second synthetic case (a municipal permits backlog), submitted as a repository and presented while the role-played sponsor changes a constraint, with ten minutes of defence",
-    "submission": "REPLACE: what participants submit and how: a public repository link, or a shared folder for a course without code",
+    "submission": "A public GitHub repository link holding the framing card, the analysis plan and the review notes, with the capstone README filled in",
     "rubric": [
       {
-        "criterion": "REPLACE: rubric criterion 1 and its weight (the weights add up to 100)",
-        "weight": 25
-      },
-      {
-        "criterion": "REPLACE: rubric criterion 2 and its weight (the weights add up to 100)",
-        "weight": 25
-      },
-      {
-        "criterion": "REPLACE: rubric criterion 3 and its weight (the weights add up to 100)",
+        "criterion": "Framing card a peer can plan from",
         "weight": 20
       },
       {
-        "criterion": "REPLACE: rubric criterion 4 and its weight (the weights add up to 100)",
+        "criterion": "Analysis plan, threats and the deciding result",
         "weight": 20
       },
       {
-        "criterion": "REPLACE: rubric criterion 5 and its weight (the weights add up to 100)",
+        "criterion": "Review notes ranked by consequence",
+        "weight": 20
+      },
+      {
+        "criterion": "The kind of analysis recommended",
         "weight": 10
+      },
+      {
+        "criterion": "Defence under the changed constraint",
+        "weight": 30
       }
-    ]
+    ],
+    "talk_minutes": 8,
+    "qa_minutes": 10
   },
   "labs": {
     "kind": "notebooks",
@@ -363,6 +686,101 @@
       "examples": [
         "a free hosted open-weight model",
         "any commercial coding assistant"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "group": "Framing and question types",
+      "items": [
+        {
+          "title": "Leek and Peng (2015), What is the question? Science 347(6228)",
+          "url": "https://doi.org/10.1126/science.aaa6146"
+        },
+        {
+          "title": "ICH E9(R1) Addendum on estimands and sensitivity analysis in clinical trials (2019)",
+          "url": "https://database.ich.org/sites/default/files/E9-R1_Step4_Guideline_2019_1203.pdf"
+        },
+        {
+          "title": "IBM SPSS Modeler, CRISP-DM Help Overview",
+          "url": "https://www.ibm.com/docs/en/spss-modeler/saas?topic=dm-crisp-help-overview"
+        }
+      ]
+    },
+    {
+      "group": "Metrics, plans and validity",
+      "items": [
+        {
+          "title": "Manheim and Garrabrant (2018), Categorizing Variants of Goodhart's Law",
+          "url": "https://arxiv.org/abs/1803.04585"
+        },
+        {
+          "title": "Gelman and Loken (2013), The garden of forking paths",
+          "url": "https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf"
+        }
+      ]
+    },
+    {
+      "group": "Water utility domain",
+      "items": [
+        {
+          "title": "Alliance for Water Efficiency, Water Audit (the IWA and AWWA water balance)",
+          "url": "https://allianceforwaterefficiency.org/resource/water-audit/"
+        }
+      ]
+    },
+    {
+      "group": "National references",
+      "items": [
+        {
+          "title": "Personal Data Protection Law",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Implementing Regulation of the Personal Data Protection Law",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf"
+        },
+        {
+          "title": "Data Classification Policy (NDMO)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf"
+        },
+        {
+          "title": "Data Sharing Policy (NDMO)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/DataSharingPolicyEN.pdf"
+        },
+        {
+          "title": "Principles of AI Ethics (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf"
+        },
+        {
+          "title": "Generative AI Guidelines for Government (SDAIA)",
+          "url": "https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf"
+        }
+      ]
+    },
+    {
+      "group": "Tools",
+      "items": [
+        {
+          "title": "Jupyter",
+          "url": "https://jupyter.org/"
+        },
+        {
+          "title": "marimo",
+          "url": "https://marimo.io/"
+        },
+        {
+          "title": "Quarto",
+          "url": "https://quarto.org/"
+        },
+        {
+          "title": "draw.io",
+          "url": "https://www.drawio.com/"
+        },
+        {
+          "title": "OpenRouter free models",
+          "url": "https://openrouter.ai/models?max_price=0"
+        }
       ]
     }
   ]
