@@ -366,3 +366,103 @@ def assistant(prompt: str) -> tuple[str, str]:
     if reply:
         return MODEL, reply
     return "recorded answer (no model answered)", text("review/sareea/notebook.py") + "\n" + text("review/sareea/summary.md")
+
+
+# ------------------------------------------------------------------ Lab 3.2: Sabah's leak-detection analysis, with seeded flaws
+FLAW_CATALOGUE = {
+    "F1": "Success is measured by an activity instead of the outcome the decision needs",
+    "F2": "A join on a text key silently drops rows",
+    "F3": "A before-after in one unit, with no comparison, over months that mix other changes",
+    "F4": "A claim of significance or certainty with no interval",
+    "F5": "Volumes are not adjusted for the length of the billing period",
+    "F6": "A chart axis that does not start at zero magnifies a change",
+    "F7": "Estimated bills are dropped from billed volume",
+}
+
+
+def variant_flaws(variant: int) -> list[str]:
+    """Which flaws a variant holds is checked by hash (flags_correct); this only rebuilds the analysis."""
+    import random
+    if variant == 0:
+        return ["F1", "F2", "F3", "F6"]
+    r = random.Random(310 * 1000 + variant)
+    crit = r.choice(["F1", "F3"])
+    rest = r.sample([f for f in FLAW_CATALOGUE if f != crit], 3)
+    return sorted([crit] + rest)
+
+
+def seeded_analysis(variant: int, fix: list[str] | None = None) -> str:
+    """The analysis notebook of a variant, as cells marked '# cell <id>'. fix removes flaws, to measure their consequence."""
+    f = set(variant_flaws(variant)) - set(fix or [])
+    c1 = ["bills = U.csv('reads')"]
+    if "F7" in f:
+        c1.append("bills = bills[bills.read_type == 'actual']  # estimates are not real reads")
+    c1.append("bills['m3'] = bills.billed_m3" + ("" if "F5" in f else " / bills.cycle_days * 30"))
+    c1 += ["billed = bills.groupby(['district', 'month']).m3.sum().rename('billed').reset_index()",
+           "nrw = U.csv('supply').merge(billed, on=['district', 'month'])",
+           "nrw['pct'] = 100 * (nrw.system_input_m3 - nrw.billed) / nrw.system_input_m3"]
+    c2 = ["rep = U.csv('repairs')"]
+    if "F2" not in f:
+        c2.append("rep['district_name'] = rep.district_name.str.replace('Al Wurud', 'Al-Wurud')")
+    c2 += ["ids = pd.DataFrame({'district': list(U.DISTRICTS), 'district_name': list(U.DISTRICTS.values())})",
+           "rep = rep.merge(ids, on='district_name')",
+           "found = rep[rep.district == 'D2'].groupby(rep.month >= 13).size()",
+           "print('leaks recorded in Al-Wurud, year 1 and year 2:', found.tolist())"]
+    if "F3" in f:
+        c3 = ["d2 = nrw[nrw.district == 'D2']",
+              "before = d2[d2.month.between(10, 12)].pct.mean()",
+              "after = d2[d2.month.between(13, 15)].pct.mean()",
+              "effect = before - after",
+              "n_before, n_after, sd = 3, 3, d2[d2.month <= 9].pct.std()"]
+    else:
+        c3 = ["comp = nrw[~nrw.district.isin(['D2', 'D3'])]  # Al-Nakheel left out: smart meters from month 13",
+              "d2 = nrw[nrw.district == 'D2']",
+              "pre, post = range(1, 10), range(15, 25)",
+              "change_d2 = d2[d2.month.isin(post)].pct.mean() - d2[d2.month.isin(pre)].pct.mean()",
+              "change_comp = comp[comp.month.isin(post)].pct.mean() - comp[comp.month.isin(pre)].pct.mean()",
+              "effect = -(change_d2 - change_comp)",
+              "n_before, n_after = 9, 10",
+              "sd = comp[comp.month <= 12].groupby('district').pct.std().pow(2).mean() ** 0.5"]
+    if "F1" in f:
+        c4 = ["ratio = found[True] / found[False]",
+              "headline = f'Active detection worked: leaks found rose {ratio:.1f} times'",
+              "decision = 'buy loggers'"]
+    else:
+        c4 = ["headline = f'Active detection cut non-revenue water by {effect:.1f} points'",
+              "decision = 'buy loggers' if effect >= 3 else 'do not buy loggers'"]
+    if "F4" in f:
+        c5 = ["print(headline + ': a significant improvement.')"]
+    else:
+        c5 = ["se = sd * (1 / n_before + 1 / n_after) ** 0.5",
+              "interval = f' (95% interval {effect - 1.96 * se:.1f} to {effect + 1.96 * se:.1f} points)'",
+              "print(headline + ('' if 'ratio' in globals() else interval))"]
+    c6 = ["import matplotlib",
+          "matplotlib.use('Agg')",
+          "import matplotlib.pyplot as plt",
+          "ax = d2.plot(x='month', y='pct', legend=False, title='Al-Wurud non-revenue water, %')",
+          "ax.set_ylim(" + ("20, 40" if "F6" in f else "0, 45") + ")",
+          "plt.close('all')"]
+    c7 = ["print('Recommendation:', decision)"]
+    cells = {"c1": c1, "c2": c2, "c3": c3, "c4": c4, "c5": c5, "c6": c6, "c7": c7}
+    return "".join(f"# cell {k}\n" + "\n".join(v) + "\n" for k, v in cells.items())
+
+
+def run_seeded(variant: int, fix: list[str] | None = None) -> dict:
+    """Run a variant; returns the headline effect in points (None when the headline is not about water), the decision and
+    the printed output."""
+    res = run_cells(seeded_analysis(variant, fix))
+    env = res["_env"]
+    out = "".join(v["out"] for k, v in res.items() if k != "_env")
+    water = "ratio" not in env
+    return {"effect_points": round(float(env["effect"]), 2) if water else None, "decision": env.get("decision"),
+            "output": out}
+
+
+def consequence(variant: int, flaw: str) -> dict:
+    """What one flaw alone does to the answer: the analysis with only this flaw, against the analysis with none."""
+    others = [x for x in FLAW_CATALOGUE if x != flaw]
+    clean, alone = run_seeded(variant, fix=list(FLAW_CATALOGUE)), run_seeded(variant, fix=others)
+    delta = None if alone["effect_points"] is None else round(alone["effect_points"] - clean["effect_points"], 2)
+    return {"flaw": flaw, "clean_effect": clean["effect_points"], "flawed_effect": alone["effect_points"],
+            "change_points": delta, "flips_decision": alone["decision"] != clean["decision"],
+            "clean_decision": clean["decision"], "flawed_decision": alone["decision"]}

@@ -123,7 +123,7 @@ def make_supply(rng: random.Random, true_use: dict) -> list[dict]:
             use = true_use[(d, m)]
             real = loss
             if d == "D2" and m >= TARGET_MONTH + 2:
-                real = loss * 0.78  # active leak detection removes about a fifth of real losses, with a lag
+                real = loss * 0.885  # active leak detection removes about a ninth of real losses, with a lag
             if d == "D1":
                 real = loss * (1 + 0.004 * m)  # ageing mains
             unauthorised = 0.02
@@ -440,12 +440,12 @@ print(by_district)
 print("Al-Hamra (D4) has the most contacts, so it is where service is worst.")
 print("Recommendation: move two agents to the Al-Hamra queue.")
 '''
-SHORT_REFERENCE = {"question_fit": 1, "data_handling": 1, "method": 0, "inference": 0, "communication": 1,
+SHORT_REFERENCE = {"question_fit": 1, "data_handling": 1, "method": 0, "inference": 0, "communication": 0,
                    "notes": {"question_fit": "Answers 'most contacts', not 'worst service'.",
                              "data_handling": "Counts contacts, but districts have different numbers of accounts and access issues.",
                              "method": "No rate per account and no measure of service such as repeat contacts.",
                              "inference": "Volume of contacts read as quality of service.",
-                             "communication": "Clear, but the recommendation does not follow from the number."}}
+                             "communication": "The text names Al-Hamra as highest; the rerun shows Al-Salam (707) above Al-Hamra (705)."}}
 
 SAREEA = {
     "prompt.md": """# The request Sabah gave the assistant Sareea
@@ -600,6 +600,33 @@ REF_INTERVIEW = {
         "assumed": ["That repeat contacts rose after month 13: not yet checked"],
     },
 }
+REF_NOTES = [
+    {"id": "N8", "problem": "Cell c4 measures success as leaks found, which rose 3.4 times, not as water lost",
+     "consequence": "The recommendation to buy loggers rests on activity; measured on water, the effect is 2.3 points and the decision is not to buy",
+     "fix": "Report the change in non-revenue water against the other districts as the headline, and leaks found as context"},
+    {"id": "N4", "problem": "Cell c3 compares Al-Wurud's months 10 to 12 with 13 to 15, with no comparison districts",
+     "consequence": "The bulk-meter drift and regression to the mean add about 1.8 points, enough to cross the 3-point rule and reverse the decision",
+     "fix": "Use months 1 to 9 against 15 to 24, bills rescaled to 30 days, against the other districts without Al-Nakheel"},
+    {"id": "N6", "problem": "Sareea's summary cites an industry benchmark of 15% with no source",
+     "consequence": "A number nobody can verify becomes the reason to roll out meters; the decision would rest on it",
+     "fix": "Remove the benchmark, or replace it with a sourced figure and its reference"},
+    {"id": "N7", "problem": "Sareea's analysis treats estimated bills in Al-Nakheel as actual reads",
+     "consequence": "Estimates repeat past reads, so the before-after mixes billing timing with metering and the 11.5% rise is overstated or understated",
+     "fix": "Recompute on actual reads only and report the share of estimates beside the result"},
+    {"id": "N1", "problem": "Cell c2 joins repairs on the district name, and rows spelt 'Al Wurud' are dropped",
+     "consequence": "About a third of Al-Wurud's repairs vanish from the leaks-found count, so any count-based claim is wrong",
+     "fix": "Normalise the spelling or join on a district code, and assert the row count before and after the join"},
+    {"id": "N3", "problem": "Sareea's summary states the fall as a fact with no interval or check of noise",
+     "consequence": "The reader cannot tell a real change from month-to-month swing, so the claim looks more certain than it is",
+     "fix": "Report an interval, as the corrected analysis does (1.4 to 3.3 points), and say what it means for the rule"},
+    {"id": "N2", "problem": "The chart in cell c6 starts its axis at 20%, which makes a small fall look steep",
+     "consequence": "The picture overstates the change for readers who look at the chart rather than the number in the text",
+     "fix": "Start the axis at zero, or mark the axis break clearly and print the change on the chart"},
+    {"id": "N5", "problem": "The repairs export spells the district as both 'Al Wurud' and 'Al-Wurud'",
+     "consequence": "Cosmetic in the report itself, but it is the cause of the dropped rows of note N1",
+     "fix": "Ask the export owner to use one spelling, and keep the join on the district code"},
+]
+
 REF_SCOPED = {
     "question": "Have bursts in Al-Rawdah become more frequent over 24 months, and do they follow summer temperatures, "
                 "enough to justify a mains-renewal study next year?",
@@ -690,6 +717,7 @@ def main():
     write_json(R / "card_2_3.json", CARD_23)
     write_json(R / "interview.json", REF_INTERVIEW)
     write_json(R / "scoped.json", REF_SCOPED)
+    write_json(R / "review_notes.json", REF_NOTES)
 
     write_text(CAP.parent / "BRIEF.md", CAP_BRIEF)
     write_csv(CAP / "permits.csv", make_permits(random.Random(SEED + 1)))

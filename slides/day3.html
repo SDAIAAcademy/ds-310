@@ -1,158 +1,469 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Day 3 turns the participant into a reviewer. Three analyses: a short notebook, a seeded-flaw notebook with a variant per participant, and an assistant's analysis. The day ends with review notes people act on and the capstone kickoff. Hand out participant numbers 1 to 40 now: Lab 3.2 needs them.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Every lab today starts from supplied files. The review notes of Lab 3.4 cover the analyses of Labs 3.2 and 3.3, but in their supplied form: nobody needs their own earlier output.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO2 LO4">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which plan is protected against yesterday's main threats?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">Three plans for the logger decision. Which one answers the bulk-meter drift and the month-13 changes?</p>
+    <div class="opts">
+      <div class="opt" data-why="Uses the drift months as the baseline: the recalibration then looks like a saving">Al-Wurud months 10 to 12 against 13 to 15</div>
+      <div class="opt" data-why="Answers seasonality but not history: everything that changed in month 13 still lands on detection">Al-Wurud year 1 against year 2</div>
+      <div class="opt" data-why="Measures an activity: leaks found rise with searching, whatever happens to water lost">Leaks found in Al-Wurud, year 1 against year 2</div>
+      <div class="opt" data-ok>Al-Wurud against the other districts, months 1 to 9 against 15 to 24, without Al-Nakheel</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The comparison cancels shared history, the excluded months remove the drift, and leaving out Al-Nakheel removes its meter change.</div>
+  </div>
+  <aside class="notes"><p>Answer: the last. This plan is the "clean" analysis of Lab 3.2. Ask the room to predict whether it will say buy or not buy; reveal in Session 2.</p></aside>
+</section>
 
 <!-- Session 1 -->
 
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="rerun-first" data-lo="LO5">
+  <div class="kicker">The first step</div>
+  <h2>A review starts by running the analysis, not by reading it</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Rerun</b>does it run, from the supplied data?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Reconcile</b>does every sentence match the output above it?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Check five areas</b>from question to communication</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout warn mt"><b>What goes wrong.</b> The reviewer reads a fluent text, agrees, and never sees that the code prints something else.</div>
+  <aside class="notes"><p>The order matters: rerunning first stops the prose from setting your expectations. In Lab 3.1 the rerun alone catches one of the flaws.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="five-areas" data-lo="LO5">
+  <div class="kicker">The checklist</div>
+  <h2>Five areas, from the question to the words, scored 0 to 2</h2>
+  <table class="t small">
+    <tr><th>Area</th><th>2</th><th>1</th><th>0</th></tr>
+    <tr><td><b>Question fit</b></td><td>Answers the decision asked</td><td>A nearby question</td><td>Another question</td></tr>
+    <tr><td><b>Data handling</b></td><td>Right rows and denominators, checked</td><td>One unchecked step</td><td>A step that changes the answer</td></tr>
+    <tr><td><b>Method</b></td><td>Fits the question type, with a comparison</td><td>Fits, but weak</td><td>Does not fit</td></tr>
+    <tr><td><b>Inference</b></td><td>Claims match evidence, uncertainty stated</td><td>Some overreach</td><td>Claims what the data cannot show</td></tr>
+    <tr><td><b>Communication</b></td><td>The reader acts correctly</td><td>Misleading in part</td><td>Misleads</td></tr>
+  </table>
+  <aside class="notes"><p>The five areas are those of outcome 5. Anchored levels are what make two reviewers agree: a score without a sentence of evidence is an opinion. DS-407 later turns such a checklist into a team standard; here it is a personal tool.</p></aside>
+</section>
+
+<section class="slide" id="short-notebook" data-lo="LO5">
+  <div class="kicker">The rerun catches it</div>
+  <h2>The sentence was not written from the output</h2>
+  <div class="cols cols-2">
+    <pre class="code" data-file="cell 2 output"><code class="language-text">district
+D5    707
+D4    705
+D3    699
+D6    684
+D1    668
+D2    635</code></pre>
+    <div class="stack">
+      <div class="card c-coral"><h4>Cell 3 prints</h4><p class="small mb0">"Al-Hamra (D4) has the most contacts, so it is where service is worst. Move two agents to the Al-Hamra queue."</p></div>
+      <div class="card c-teal"><h4>The output says</h4><p class="small mb0">Al-Salam (D5) has the most contacts, 707 against 705: and a count of contacts is not a measure of service anyway.</p></div>
+    </div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>From the Lab 3.1 rerun, contacts in months 13 to 24. Two flaws on one slide: the text contradicts the output (communication), and volume is read as quality (method and inference). Ask how many in the room would have caught the first without rerunning.</p></aside>
+</section>
+
+<section class="slide" id="service-measure" data-lo="LO5">
+  <div class="kicker">Method</div>
+  <h2>A measure of service ranks the districts differently</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>Al-Rawdah</span><div class="bar c-coral" style="--w:84%"></div><span class="val">28.0%</span></div>
+      <div class="row"><span>Al-Shifa</span><div class="bar c-amber" style="--w:82%"></div><span class="val">27.2%</span></div>
+      <div class="row"><span>Al-Salam</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">26.6%</span></div>
+      <div class="row"><span>Al-Hamra</span><div class="bar c-cyan" style="--w:79%"></div><span class="val">26.4%</span></div>
+      <div class="row"><span>Al-Wurud</span><div class="bar c-cyan" style="--w:78%"></div><span class="val">26.0%</span></div>
+      <div class="row"><span>Al-Nakheel</span><div class="bar c-cyan" style="--w:76%"></div><span class="val">25.3%</span></div>
+    </div>
+    <ul class="bullets">
+      <li>Contacts followed by another within 7 days, months 13 to 24</li>
+      <li>The districts sit within three points of each other: no district stands out</li>
+      <li>A reviewer may run one check of their own; they do not redo the analysis</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Lab 3.1, task 3. The differences are small and likely noise: the honest finding is "no district is clearly worse", which also means moving agents to Al-Hamra is unsupported. Keep the reviewer's role clear: one check that tests the claim, then a note.</p></aside>
+</section>
+
+<section class="slide" id="score-sheet" data-lo="LO5">
+  <div class="kicker">The score</div>
+  <h2>Two points out of ten, each with its sentence</h2>
+  <table class="t small">
+    <tr><th>Area</th><th class="num">Score</th><th>Why</th></tr>
+    <tr><td>Question fit</td><td class="num">1</td><td>Answers "most contacts", not "worst service"</td></tr>
+    <tr><td>Data handling</td><td class="num">1</td><td>Raw counts; Al-Hamra's access problems drive billing calls</td></tr>
+    <tr><td>Method</td><td class="num">0</td><td>A count of contacts does not measure service</td></tr>
+    <tr><td>Inference</td><td class="num">0</td><td>Volume read as quality; staff moved on it</td></tr>
+    <tr><td>Communication</td><td class="num">0</td><td>Names Al-Hamra; the output shows Al-Salam first</td></tr>
+  </table>
+  <aside class="notes"><p>The reference score of Lab 3.1. The lab accepts a score within one point per area. Where a participant is two points away, ask for their sentence: usually they read the text and skipped the output.</p></aside>
+</section>
+
+<section class="slide" id="reviewer-agreement" data-lo="LO5">
+  <div class="kicker">Calibration</div>
+  <h2>A checklist is useful when two reviewers land within a point</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Anchors</h4><p class="small mb0">What a 2, a 1 and a 0 look like, written down before scoring</p></div>
+    <div class="card c-cyan"><h4>Evidence</h4><p class="small mb0">One sentence per score that points at a cell or a number</p></div>
+    <div class="card c-purple"><h4>Compare</h4><p class="small mb0">Two reviewers score alone, then discuss only the gaps of two points</p></div>
+  </div>
+  <div class="callout note mt"><b>Pointer.</b> Team review standards (who reviews what, sign-off rules) are DS-407.</div>
+  <aside class="notes"><p>Calibration is cheap: ten minutes on a shared notebook once a quarter. The pointer marks the boundary set by the catalog: this course is about the individual reviewer's judgement.</p></aside>
+</section>
+
+<section class="slide" id="check-checklist" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which area does this flaw belong to?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">An analysis of estimated bills prints "estimated share: 16.4%" for Al-Hamra. The summary below says "about one bill in four is estimated in Al-Hamra".</p>
+    <div class="opts">
+      <div class="opt" data-why="Blames the data step: the data were handled correctly and the right number was printed">Data handling</div>
+      <div class="opt" data-ok>Communication: the words misstate the output</div>
+      <div class="opt" data-why="Confuses a wrong sentence with a wrong method: the computation is the right one for the question">Method</div>
+      <div class="opt" data-why="Inference is about claims beyond the evidence; here the claim contradicts the evidence printed above it">Inference</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The number is right and the sentence is wrong: one in six, not one in four. Only a reviewer who reads the output against the words catches it.</div>
+  </div>
+  <aside class="notes"><p>Answer: communication. A borderline case: some will say inference. Accept the discussion, and point to the anchors: inference is overreach from evidence; communication is the reader being misled about what the evidence is.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-1" data-auto="lab" data-lab="3.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Insist on the rerun before any score. Walk the room at minute 12: participants who scored communication 1 have not compared cell 3 with cell 2. Pairs compare scores in task 5 before the reference.</p></aside>
 </section>
 
 <!-- Session 2 -->
 
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide" id="seven-kinds" data-lo="LO5">
+  <div class="kicker">The pool</div>
+  <h2>Seven kinds of flaw, four in each variant</h2>
+  <table class="t small">
+    <tr><th></th><th>Kind of flaw</th><th>Area</th></tr>
+    <tr><td>F1</td><td>Success measured by an activity, not the outcome</td><td>Question fit</td></tr>
+    <tr><td>F2</td><td>A join on a text key silently drops rows</td><td>Data handling</td></tr>
+    <tr><td>F3</td><td>Before-after in one unit, no comparison, months that mix changes</td><td>Method</td></tr>
+    <tr><td>F4</td><td>Significance or certainty claimed with no interval</td><td>Inference</td></tr>
+    <tr><td>F5</td><td>Volumes not adjusted for the billing period</td><td>Data handling</td></tr>
+    <tr><td>F6</td><td>A chart axis that does not start at zero</td><td>Communication</td></tr>
+    <tr><td>F7</td><td>Estimated bills dropped from billed volume</td><td>Data handling</td></tr>
+  </table>
+  <aside class="notes"><p>Every participant's variant of Sabah's analysis holds four of these, always with at least one of F1 or F3. The pool is public; which four you have is not. Each kind was met on Days 1 and 2: the review uses that domain knowledge.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
+<section class="slide" id="consequence-defined" data-lo="LO5">
+  <div class="kicker">Consequence</div>
+  <h2>The consequence of a flaw is what it does to the answer, measured</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+    <div class="step c-teal"><b>The analysis with no flaw</b>the reference answer</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>The analysis with only this flaw</b>the flawed answer</div>
+    <div class="arrow">→</div>
+    <div class="step c-navy"><b>The difference</b>points moved, and does the decision flip?</div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <pre class="code mt" data-file="Lab 3.2"><code class="language-python">U.consequence(MY_NUMBER, "F3")
+# clean 2.34 → flawed 4.12 points; decision: do not buy → buy</code></pre>
+  <aside class="notes"><p>Isolating one flaw at a time keeps flaws from masking each other: with F1 present, no flaw changes the printed number, because the headline is about leaks. In real reviews you rarely have the clean version; you estimate the consequence by fixing the flaw and rerunning, as the stretch does.</p></aside>
+</section>
+
+<section class="slide" id="variant-zero" data-lo="LO5">
+  <div class="kicker">Variant 0</div>
+  <h2>Two of four flaws reverse the recommendation; two change nothing</h2>
+  <table class="t">
+    <tr><th>Flaw alone</th><th class="num">Effect, points</th><th>Decision</th></tr>
+    <tr class="hl"><td>F1 · success measured as leaks found (rose 3.4 times)</td><td class="num">none</td><td>buy</td></tr>
+    <tr class="hl"><td>F3 · months 10 to 12 against 13 to 15, Al-Wurud only</td><td class="num">4.12</td><td>buy</td></tr>
+    <tr><td>F2 · join drops rows spelt "Al Wurud"</td><td class="num">2.34</td><td>do not buy</td></tr>
+    <tr><td>F6 · chart axis from 20%</td><td class="num">2.34</td><td>do not buy</td></tr>
+  </table>
+  <aside class="notes"><p>The Lab 3.2 run of variant 0, the one you demonstrate. F2 drops about a third of Al-Wurud's repair rows and changes the effect by nothing: the effect comes from the water balance. A reviewer who leads with F2 because it was the first found has the order wrong.</p></aside>
+</section>
+
+<section class="slide" id="clean-answer" data-lo="LO5 LO4">
+  <div class="kicker">The answer</div>
+  <h2>Without the flaws, detection cut non-revenue water by 2.3 points: do not buy</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">2.3</div><div class="lbl">points, 95% interval 1.4 to 3.3, against the other districts without Al-Nakheel</div></div>
+    <ul class="bullets">
+      <li>The plan of Lab 2.3 fixed the rule before: below 3 points, do not buy</li>
+      <li>Sabah's notebook said buy, on leaks found rising 3.4 times</li>
+      <li>The fall is real but small: worth knowing, not worth the loggers at this price</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Reveal the prediction from the Day 2 review checkpoint. The interval reaches above 3, so say it plainly: the data are consistent with a benefit up to 3.3 points, and the rule written in advance says do not buy. That is what pre-commitment is for.</p></aside>
+</section>
+
+<section class="slide" id="rank-rule" data-lo="LO5">
+  <div class="kicker">Ranking</div>
+  <h2>Rank by consequence, not by the order you found the flaws</h2>
+  <ol class="bullets">
+    <li><b>Flips the decision</b>: F1 and F3 in variant 0</li>
+    <li><b>Moves the number</b>, by how many points: none here; F7 can move it by almost 2 in other variants</li>
+    <li><b>Misleads without moving a number</b>: an axis, an unstated uncertainty</li>
+    <li><b>No effect on this answer</b>: still worth a note if it can bite elsewhere (the join)</li>
+  </ol>
+  <aside class="notes"><p>This is the ranking rule the lab checks. Flaws found first are usually the easiest to see (a chart, a spelling), which is exactly why the order of finding is a poor order of reporting.</p></aside>
+</section>
+
+<section class="slide" id="own-variant" data-lo="LO5">
+  <div class="kicker">Authenticity</div>
+  <h2>Each participant reviews a variant of their own, checked without a visible key</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Your participant number picks four flaws from the pool</li>
+      <li><code>U.flags_correct</code> compares a hash of your flags with the variant's</li>
+      <li>Right or wrong, without revealing which flaws you missed</li>
+    </ul>
+    <div class="card tint c-navy"><h4>In the capstone</h4><p class="small mb0">The assessed review uses unseen variants made for each participant; review notes are matched against your own seeded flaws.</p></div>
+  </div>
+  <aside class="notes"><p>The lab's variants are practice: their generator is in the public repository. The capstone variants are prepared by the trainer outside the repository and are never published. Tell participants this openly; it removes the temptation and explains the design.</p></aside>
+</section>
+
+<section class="slide" id="check-consequence" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which flaw goes first in the review?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">A variant holds: a chart from 20%, unadjusted billing periods (moves the effect by 0.02 points), significance with no interval, and a before-after with no comparison (moves the effect from 2.3 to 4.1, past the 3-point rule).</p>
+    <div class="opts">
+      <div class="opt" data-why="Ranks by visibility: the chart is the easiest to see but changes no number and no decision">The chart axis</div>
+      <div class="opt" data-why="Ranks by the area's prestige: an unstated interval misleads, but the decision flips elsewhere">The missing interval</div>
+      <div class="opt" data-ok>The before-after with no comparison</div>
+      <div class="opt" data-why="Ranks a real but negligible flaw by principle: 0.02 points cannot change anything here">The unadjusted billing periods</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> It alone moves the answer across the decision rule, from do not buy to buy; the others mislead less or not at all.</div>
+  </div>
+  <aside class="notes"><p>Answer: the before-after. The numbers are those of variant 17 in the Lab 3.2 run (F5 moves 0.02 points). The missing interval is a close second: it would let a reader believe the wrong answer more firmly.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-2" data-auto="lab" data-lab="3.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Each participant sets MY_NUMBER to their number. Demonstrate variant 0 only. If the hash check fails, do not reveal the flaws: point to the area of the checklist they have not scored yet. Early finishers fix the top flaw and rerun.</p></aside>
 </section>
 
 <!-- Session 3 -->
 
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="assistant-failures" data-lo="LO5">
+  <div class="kicker">What to expect</div>
+  <h2>An assistant's analysis looks finished; check five things before believing it</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li><b>It may not run</b>: a column or a function that does not exist</li>
+      <li><b>Its numbers may not come from its code</b>: a summary written beside the output</li>
+      <li><b>Outside numbers</b> with no source: benchmarks, norms</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <ul class="bullets">
+      <li><b>The direction</b> of a change reversed in the words</li>
+      <li><b>The method</b> answers an easier question than the one asked</li>
+    </ul>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout note mt"><b>Recap.</b> Recomputing and running a request twice are DS-206; here you review someone else's assistant-generated work.</div>
+  <aside class="notes"><p>The perishable part of this session: which assistants are used and their typical failures change each edition. The five checks are durable. Lab 3.3 meets four of them at once.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="sareea-summary" data-lo="LO5">
+  <div class="kicker">The case</div>
+  <h2>Sareea's summary reversed the direction of the change</h2>
+  <table class="t">
+    <tr><th>Al-Nakheel, billed m3 per account per month</th><th class="num">Before</th><th class="num">After</th><th class="num">Change</th></tr>
+    <tr><td>Sareea's summary</td><td class="num">21.4</td><td class="num">19.6</td><td class="num">-8.2%</td></tr>
+    <tr class="hl"><td>Recomputed from reads.csv</td><td class="num">25.8</td><td class="num">28.7</td><td class="num">+11.5%</td></tr>
+  </table>
+  <div class="callout warn mt"><b>And.</b> The notebook stops at cell s2 (no column "consumption"), and the "industry benchmark of 15%" has no source.</div>
+  <aside class="notes"><p>Lab 3.3 run. None of the summary's numbers can be found in the data, and the notebook as delivered could never have produced them. Ask: how many of you would have forwarded the summary had it arrived with a chart?</p></aside>
+</section>
+
+<section class="slide" id="four-checks" data-lo="LO5">
+  <div class="kicker">Four checks</div>
+  <h2>All four checks fail, each with its evidence</h2>
+  <table class="t small">
+    <tr><th>Check</th><th>Result</th><th>Evidence</th></tr>
+    <tr><td>Reruns as delivered</td><td>fail</td><td>KeyError: "consumption" is not a column</td></tr>
+    <tr><td>Every number traced to output</td><td>fail</td><td>21.4, 19.6 and -8.2% appear nowhere</td></tr>
+    <tr><td>Outside numbers sourced</td><td>fail</td><td>The 15% benchmark has no source</td></tr>
+    <tr><td>Method fits the question</td><td>fail</td><td>Bills measure what the meters register, not what people use</td></tr>
+  </table>
+  <aside class="notes"><p>The last check is the one participants miss: even the corrected computation answers "did bills change", not "did consumption change". That is Day 2's measurement change, met again in an assistant's output.</p></aside>
+</section>
+
+<section class="slide" id="duty-to-verify" data-lo="LO5">
+  <div class="kicker">The national guideline</div>
+  <h2>Verifying assistant output before use is a duty, not a courtesy</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Identify content generated with generative AI</li>
+      <li>Check it for factual accuracy, especially in official reports</li>
+      <li>Verify generated code before using or running it</li>
+    </ul>
+    <div class="card tint c-navy"><h4>Source</h4><p class="small mb0">SDAIA's Generative AI Guidelines for Government, in its sections on reliability and on users' responsibilities.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Paraphrased, not quoted: the guideline asks users to identify generated content, proofread it for accuracy, verify outputs particularly for official reports, and verify generated code before executing it. The verification note of the lab is how a reviewer shows that duty was met.</p><p>Sources: SDAIA, Generative AI Guidelines for Government.</p></aside>
+</section>
+
+<section class="slide" id="verification-note" data-lo="LO5">
+  <div class="kicker">The deliverable</div>
+  <h2>A verification note says what may be used, what may not, and what next</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Status</h4><p class="small mb0">Not verified: do not use the summary</p></div>
+    <div class="card c-teal"><h4>May be used</h4><p class="small mb0">Billed m3 per account in Al-Nakheel rose from 25.8 to 28.7 (+11.5%) after the smart meters</p></div>
+    <div class="card c-amber"><h4>May not be used</h4><p class="small mb0">The 8.2% fall, the 15% benchmark, the roll-out advice</p></div>
+    <div class="card c-navy"><h4>Next</h4><p class="small mb0">Measure use another way (night flow at the district meter), against districts without smart meters</p></div>
+  </div>
+  <aside class="notes"><p>The note ends with a label: assistant-generated, by whom, verified by whom, and with what result. A verified analysis keeps its label too: the reader deserves to know how it was made.</p></aside>
+</section>
+
+<section class="slide" id="hosted-models" data-lo="LO5">
+  <div class="kicker">In the lab</div>
+  <h2>A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The stretch sends the same prompt to a free hosted open-weight model, and you verify its answer the same way</li>
+      <li>Without a key, the lab returns Sareea's recorded answer and says so</li>
+    </ul>
+    <div class="callout warn"><b>Classification.</b> Billing and contact extracts are Restricted: they do not go to a public assistant. The course data is synthetic, which is why it may.</div>
+  </div>
+  <aside class="notes"><p>Free model names change every few weeks: the lab reads ASSISTANT_MODEL and falls back to a stand-in. The classification rule is from Day 1; repeat it here because this is where people break it.</p></aside>
+</section>
+
+<section class="slide" id="check-assistant" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>What do you do with this summary?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">An assistant's notebook runs, and its summary's three numbers all appear in the output. The summary concludes that smart meters "cut leakage in Al-Nakheel by nine points".</p>
+    <div class="opts">
+      <div class="opt" data-ok>Withhold it: the numbers are right but the method measures billing, not leakage</div>
+      <div class="opt" data-why="Treats traced numbers as a verified conclusion: tracing checks the arithmetic, not what it measures">Accept it: every number traces to the output</div>
+      <div class="opt" data-why="Assumes the problem is presentation: a clearer chart of the wrong measure still misleads">Accept it once a chart is added</div>
+      <div class="opt" data-why="Blames the tool rather than the analysis: the same flaw would sink a human-written version">Reject it because an assistant wrote it</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Passing three checks is not passing four: non-revenue water fell because the new meters bill more, so the claim about leakage is a measurement change.</div>
+  </div>
+  <aside class="notes"><p>Answer: withhold it. The last option matters: assistant-generated is a reason to verify, not to reject. The checks apply to any analysis.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-3" data-auto="lab" data-lab="3.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Participants often fix the column and stop: push them to the fourth check. If a participant has a working key, the stretch shows a live model's answer; compare two participants' answers to the same prompt to show variability.</p></aside>
 </section>
 
 <!-- Session 4 -->
 
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="weak-strong-note" data-lo="LO5">
+  <div class="kicker">One note, twice</div>
+  <h2>A note gets acted on when it names the problem, the consequence and the fix</h2>
   <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-coral"><h4>Weak</h4><p class="small mb0">"The join looks off."</p></div>
+    <div class="card c-teal"><h4>Acted on</h4><p class="small mb0"><b>Problem:</b> cell c2 joins repairs on the district name; rows spelt "Al Wurud" are dropped. <b>Consequence:</b> about a third of Al-Wurud's repairs vanish from the count. <b>Fix:</b> join on a district code and assert the row count.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Note N1 of Lab 3.4, before and after. The weak note is right: it is simply useless to the author, who cannot tell where, how much or what to do.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="note-parts" data-lo="LO5">
+  <div class="kicker">The parts</div>
+  <h2>Three parts, each a full sentence</h2>
+  <div class="cols cols-3">
+    <div class="card c-navy"><h4>Problem</h4><p class="small mb0">Where, and exactly what: the cell, the line, the number</p></div>
+    <div class="card c-coral"><h4>Consequence</h4><p class="small mb0">What it does to the number or the decision, in points or in the choice</p></div>
+    <div class="card c-teal"><h4>Fix</h4><p class="small mb0">An action: "join on the code", not "consider the join"</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <div class="callout tip mt"><b>Tone.</b> Write about the analysis, not the analyst: "cell c3 compares" rather than "you compared".</div>
+  <aside class="notes"><p>The lab's helper flags a note whose consequence names neither a number nor the decision, and a fix that starts with "consider" or "maybe". Tone matters because notes are read by the author first: a defensive author fixes less.</p></aside>
+</section>
+
+<section class="slide" id="ranked-notes" data-lo="LO5">
+  <div class="kicker">The order</div>
+  <h2>Eight notes, ranked by what they do to the decision</h2>
+  <table class="t small">
+    <tr><th>Rank</th><th>Note</th><th>Consequence</th></tr>
+    <tr class="hl"><td>1</td><td>Success measured as leaks found</td><td>Reverses the decision</td></tr>
+    <tr class="hl"><td>2</td><td>Before-after with no comparison</td><td>Adds about 1.8 points, past the rule</td></tr>
+    <tr><td>3 to 6</td><td>The unsourced 15%; estimates as actual reads; the join; no interval</td><td>A wrong or unverifiable number</td></tr>
+    <tr><td>7, 8</td><td>Chart axis; the spelling in the export</td><td>Cosmetic, or a cause handled elsewhere</td></tr>
+  </table>
+  <aside class="notes"><p>The order of the Lab 3.4 solution, which the check accepts when the two critical notes come first and the two cosmetic ones last. The middle four can be argued; ask two participants to defend different orders.</p></aside>
+</section>
+
+<section class="slide" id="verdict-first" data-lo="LO5 LO6">
+  <div class="kicker">The first lines</div>
+  <h2>A review opens with its verdict on the decision</h2>
+  <div class="card c-teal"><h4>For Nadia</h4><p class="small mb0">The recommendation to buy loggers does not hold. Measured on water lost against the other districts, detection cut non-revenue water by 2.3 points, below the 3-point rule; the analysis counted leaks found and compared the wrong months. Sabah will rerun it with the fixes below before the capital committee meets.</p></div>
+  <aside class="notes"><p>The Lab 3.4 stretch. Three sentences: verdict, main reason with its number, what happens next. Everything else is the numbered notes below it.</p></aside>
+</section>
+
+<section class="slide" id="recommend-kind" data-lo="LO6">
+  <div class="kicker">After the review</div>
+  <h2>A review can conclude that the request needed another kind of analysis</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Sareea's request asked a causal question and got a description of bills</li>
+      <li>The right answer is a causal analysis against districts without smart meters, on a measure of use</li>
+      <li>Sometimes the right recommendation is <b>no analysis yet</b>: the data cannot reach the question by the date</li>
+    </ul>
+    <div class="card tint c-navy"><h4>In the capstone defence</h4><p class="small mb0">You recommend the kind of analysis, and defend it when the sponsor changes a constraint.</p></div>
+  </div>
+  <aside class="notes"><p>Outcome 6 closes the loop with Day 1, Session 2. The capstone rubric gives this recommendation its own criterion. A changed constraint (a frozen budget, a shorter deadline) often moves it from "experiment" to "causal analysis" or to "no analysis now".</p></aside>
+</section>
+
+<section class="slide" id="capstone-brief" data-lo="LO1 LO4 LO5 LO6">
+  <div class="kicker">Capstone kickoff</div>
+  <h2>Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>Sponsor:</b> Fahda Al-Bishr, director of permits: "Should we hire six more plan reviewers?"</li>
+      <li><b>Data:</b> 3,600 synthetic applications, an inventory, and an assistant-drafted analysis to review</li>
+      <li><b>Hand in:</b> a framing card, a two-page plan, ranked review notes, in a public repository</li>
+    </ul>
+    <div class="stack dense">
+      <div class="stat center"><div class="big">8 + 10</div><div class="lbl">minutes: the talk, during which the sponsor changes a constraint, then the defence</div></div>
+    </div>
+  </div>
+  <aside class="notes"><p>The brief is labs/capstone/BRIEF.md. Point out the trap the head of plan review hints at: incomplete online applications, returned to applicants. The practice constraint change is in the repository; the one used in the defence is unseen. Individual work; AI-full is allowed, and an assistant-drafted analysis is itself an object of review.</p></aside>
+</section>
+
+<section class="slide" id="check-notes" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which note will the author act on?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">Four notes on the same flaw in Sareea's analysis, which treats estimated bills as actual reads.</p>
+    <div class="opts">
+      <div class="opt" data-why="Names the topic only: the author cannot tell where or why it matters">"What about estimated reads?"</div>
+      <div class="opt" data-why="Has a fix but no consequence: the author cannot judge whether it is worth doing first">"Use actual reads only."</div>
+      <div class="opt" data-why="States a consequence with no location or fix, and about the author rather than the analysis">"You have overstated the change."</div>
+      <div class="opt" data-ok>"Cell s2 averages estimated bills as reads, so the change mixes billing timing with metering; recompute on actual reads and report the estimated share."</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the last says where, what it does to the result, and what to do, in words about the analysis.</div>
+  </div>
+  <aside class="notes"><p>Answer: the last. Each wrong option is missing exactly one part, so use them to recap the three parts and the tone rule.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-4" data-auto="lab" data-lab="3.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Twelve minutes for eight rewrites is tight: suggest the two critical notes first, then the rest. The last two minutes are the capstone brief; collect questions on it for the start of the capstone day.</p></aside>
 </section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">Day 3 · wrap-up</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Rerun, then read</h4><p class="small mb0">Run the analysis, reconcile every sentence with its output, then score five areas.</p></div>
+    <div class="card c-coral"><h4>Rank by consequence</h4><p class="small mb0">A flaw that flips the decision goes first, whatever order you found it in.</p></div>
+    <div class="card c-purple"><h4>Verify, label, then use</h4><p class="small mb0">Assistant output passes four checks and carries its label before anyone acts on it.</p></div>
   </div>
+  <aside class="notes"><p>Close the teaching days by returning to the opening question of Day 1: an analysis nobody used. Now participants can frame it so it is usable, plan it so it is sound, and review it so it is trusted.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
   <div class="kicker">Next</div>
-  <h2>Capstone: Capstone project presentations</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <h2>Capstone day: Hima Municipality's permits backlog</h2>
+  <p class="lead">Read <code>labs/capstone/BRIEF.md</code>, start your repository from <code>labs/capstone/README.md</code>, and draft the framing card. Bring questions for the sponsor.</p>
+  <aside class="notes"><p>The guided self-study hours of the format go here: framing card and first plan draft before the capstone day. The tracked follow-up task after the course is one framing card for a real request at work, with personal data kept out.</p></aside>
 </section>
