@@ -255,7 +255,7 @@ def score_plan(plan: dict, deadline_business_days: int = 10) -> dict:
     unknown = [d for d in data if d not in inv]
     s["data_feasible"] = 2 if data and not late and not unknown else (1 if data and not unknown else 0)
     method = str(plan.get("method", "")).lower()
-    s["method_has_comparison"] = 2 if any(w in method for w in ("compar", "difference-in-differences", "other districts", "control")) else 0
+    s["method_has_comparison"] = 2 if re.search(r"compar|difference.in.difference|other (\w+ )?districts|control|against", method) else 0
     threats = plan.get("threats", []) if isinstance(plan.get("threats"), list) else []
     s["threats"] = 2 if len(threats) >= 3 else (1 if threats else 0)
     wc = str(plan.get("would_change", ""))

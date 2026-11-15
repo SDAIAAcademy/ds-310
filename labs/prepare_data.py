@@ -260,7 +260,7 @@ ROLES = {
         "name": "Mamdouh Al-Qarawi", "role": "metering and leak-repair engineer",
         "opening": "Ask me anything about meters and repairs. The data are only as good as the process.",
         "topics": [
-            {"id": "estimate", "keys": ["estimate", "estimated", "access", "cannot read", "locked", "no read"],
+            {"id": "estimate", "keys": ["estimate", "estimated", "access", "cannot read", "reach", "locked", "no read"],
              "answer": "If the reader cannot reach the meter, the bill is an estimate: the average of the last three actual reads. "
                        "The next actual read corrects it.", "constraint": True},
             {"id": "cycle", "keys": ["cycle", "days", "route", "monthly", "period", "when read"],
