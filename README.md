@@ -33,7 +33,7 @@ Participants practise the work before and after an analysis, using requests from
 | Day 1 | From request to question | Requests are not questions; Question types; Interviewing a stakeholder; Feasibility and scope | [`slides/day1.html`](slides/day1.html) |
 | Day 2 | Know the domain, plan the work | How the data are made; Metrics and proxies; Analysis plans; Threats to validity | [`slides/day2.html`](slides/day2.html) |
 | Day 3 | Review others' work | A review checklist; Finding the flaws that matter; Reviewing assistant-generated analysis; Review notes people act on | [`slides/day3.html`](slides/day3.html) |
-| Capstone | Capstone project presentations |  | [`slides/capstone.html`](slides/capstone.html) |
+| Capstone | Capstone: the permits backlog, framed and defended |  | [`slides/capstone.html`](slides/capstone.html) |
 <!-- /academy:units -->
 
 ## Case study
@@ -80,8 +80,8 @@ Every lab is a notebook in `labs/`. Open it in Google Colab from the course page
 A framing card, analysis plan and peer review for a second synthetic case (a municipal permits backlog), submitted as a repository and presented while the role-played sponsor changes a constraint, with ten minutes of defence
 
 **Submission:** a link to a public GitHub repository holding the framing card, the analysis plan (two pages at
-most) and the review notes on the supplied analysis, ranked by consequence, with the capstone README filled in. The
-capstone is individual. The brief and its synthetic data are in `labs/capstone/`. The talk lasts eight minutes; during
+most) and the review notes on the participant's own variant of the supplied analysis, ranked by consequence, with the
+capstone README (`labs/capstone/README.md`) filled in. The capstone is individual. The brief and its synthetic data are in `labs/capstone/`. The talk lasts eight minutes; during
 it the sponsor changes one constraint, and ten minutes of defence follow.
 
 **Assessment.** A supervised framing check without AI assistance (three requests framed in 40 minutes, 20%), the
