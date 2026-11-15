@@ -1,91 +1,183 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">Today is theirs: keep your own talking to the opening and the closing. Confirm the running order and the demo setup (screen sharing, accounts, a recorded backup) first.</aside>
+  <aside class="notes"><p>Capstone day. Check three things before the room fills: the three unseen requests for the supervised framing check, one unseen constraint change per defence, and each participant's own review variant of the backlog analysis. All three are prepared outside the repository and never published.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-label="Agenda">
-  <div class="kicker">Capstone</div>
-  <h2>How the presentations run</h2>
+  <div class="kicker">Capstone day</div>
+  <h2>Frame alone, finish, then present and defend</h2>
   <div class="agenda">
-    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, a last rehearsal, then the first presentations</small></div></div>
-    <div class="item"><div><b>Presentations</b><small>each one timed, with questions after it</small></div></div>
-    <div class="item"><div><b>Review and closing</b><small>peer feedback, the trainer's review, what next</small></div></div>
+    <div class="item now"><div><b>Supervised framing check</b><small>three requests framed without AI assistance, on paper or offline</small></div></div>
+    <div class="item"><div><b>Finish and publish</b><small>framing card, plan and ranked review notes, in a public repository by the deadline</small></div></div>
+    <div class="item"><div><b>Present and defend</b><small>the talk, during which the sponsor changes a constraint, then the defence</small></div></div>
+    <div class="item"><div><b>Review and closing</b><small>what the room learned, the follow-up task</small></div></div>
   </div>
+  <aside class="notes"><p>Write the publishing deadline on the board. A participant who is behind cuts scope in the plan (one method, fewer threats discussed) rather than missing the deadline: a short plan that a peer could run beats a long one that arrives late.</p></aside>
 </section>
 
-<section class="slide" id="rubric" data-label="The rubric">
-  <div class="kicker">How presentations are scored</div>
-  <h2>The rubric</h2>
-  <div class="bars">
-    <div class="row"><span>REPLACE: rubric criterion 1 and its weight (the weights add up to 100)</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>REPLACE: rubric criterion 2 and its weight (the weights add up to 100)</span><div class="bar c-cyan" style="--w:100%"></div><span class="val">25%</span></div>
-    <div class="row"><span>REPLACE: rubric criterion 3 and its weight (the weights add up to 100)</span><div class="bar c-coral" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>REPLACE: rubric criterion 4 and its weight (the weights add up to 100)</span><div class="bar c-purple" style="--w:80%"></div><span class="val">20%</span></div>
-    <div class="row"><span>REPLACE: rubric criterion 5 and its weight (the weights add up to 100)</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10%</span></div>
+<section class="slide" id="framing-check" data-label="Framing check" data-lo="LO1">
+  <div class="kicker">20% of the result</div>
+  <h2>The supervised framing check: three requests, 40 minutes, no AI</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Three short requests you have not seen, from three managers</li>
+      <li>One framing card each: decision, estimand (population, variable, comparison, summary), metric, decision rule, what would change it</li>
+      <li>Marked on whether a peer could plan from it without further questions</li>
+    </ul>
+    <div class="stack dense">
+      <div class="timer" data-minutes="40"></div>
+    </div>
   </div>
-  <div class="callout tip mt"><b>Show results from at least two measured runs.</b> A claim without a number is a plan, not a result.</div>
-  <aside class="notes">Walk through each criterion with one example of what full marks look like.</aside>
+  <aside class="notes"><p>Phones and laptops closed, or laptops offline with only a text editor. The requests are in the trainer's private exam folder, a new set per cohort. Mark with the framing-card checklist of Lab 1.4; a missing decision rule is the most common loss.</p></aside>
 </section>
 
-<section class="slide" id="format" data-label="Format">
-  <div class="kicker">Format</div>
-  <h2>REPLACE: how many minutes each presentation and its questions take</h2>
+<section class="slide" id="the-brief" data-label="The brief" data-lo="LO1 LO4 LO5 LO6">
+  <div class="kicker">The case</div>
+  <h2>Hima Municipality: the permits backlog doubled after applications moved online</h2>
+  <div class="cols cols-2">
+    <div class="chat">
+      <div class="msg user"><span class="who">Fahda Al-Bishr, director of permits</span>Should we hire six more plan reviewers? Tell me what to do.</div>
+      <div class="msg user"><span class="who">Daifallah Al-Juaid, head of plan review</span>Many online applications arrive without the documents we need, and files go back to applicants, sometimes twice.</div>
+    </div>
+    <ul class="bullets">
+      <li><code>permits.csv</code>: 3,600 synthetic applications of one year</li>
+      <li><code>inventory.json</code>: what data exist, who holds them, how long they take</li>
+      <li><code>review/backlog_analysis.py</code>: an analysis drafted with an assistant, to review</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The brief is labs/capstone/BRIEF.md. Do not help participants frame it: the framing is assessed. Answer questions as Fahda would, in a sentence, and only what she would know.</p></aside>
+</section>
+
+<section class="slide" id="hand-in" data-label="What you hand in" data-lo="LO1 LO4 LO5">
+  <div class="kicker">The repository</div>
+  <h2>Three files and a README, in a public repository</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>1 · The problem</h4><p class="small mb0">Who, what, why now. One slide.</p></div>
-    <div class="card c-cyan"><h4>2 · What you built</h4><p class="small mb0">Design, decisions, trade-offs. Then the live demo.</p></div>
-    <div class="card c-coral"><h4>3 · What you measured</h4><p class="small mb0">Baseline, improvement, failures found, what comes next.</p></div>
+    <div class="card c-teal"><h4>framing_card.md</h4><p class="small mb0">The decision, the estimand, the metric, the rule, and the guardrail you watch</p></div>
+    <div class="card c-cyan"><h4>analysis_plan.md</h4><p class="small mb0">At most two pages: data, method, threats, the result that would change the decision, feasibility by the date</p></div>
+    <div class="card c-coral"><h4>review_notes.md</h4><p class="small mb0">Notes on your variant of the backlog analysis: problem, consequence, fix, ranked by consequence</p></div>
   </div>
-  <div class="callout note mt"><b>Peer feedback.</b> After each talk, everyone writes one strength, one question and one suggestion.</div>
+  <div class="callout note mt"><b>Start from</b> <code>labs/capstone/README.md</code>: copy it to your repository and fill it in. No personal data, and the synthetic data only.</div>
+  <aside class="notes"><p>The README records which parts were assistant-generated and how they were verified: AI-full is allowed in the capstone, and the label is part of the review criterion. A plan longer than two pages loses marks on the plan criterion: the limit is part of the skill.</p></aside>
+</section>
+
+<section class="slide" id="own-variant" data-label="Your variant" data-lo="LO5">
+  <div class="kicker">Authenticity</div>
+  <h2>Each participant reviews a variant of the backlog analysis of their own</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The repository holds one version, for practice</li>
+      <li>The trainer gives you your own variant this morning, with its seeded flaws</li>
+      <li>Your review notes are matched against your variant's flaws</li>
+    </ul>
+    <div class="card tint c-navy"><h4>As in Lab 3.2</h4><p class="small mb0">The same pool of kinds of flaw, the same ranking rule: what the flaw does to the decision comes first.</p></div>
+  </div>
+  <aside class="notes"><p>The variants and their key are prepared by the trainer outside the repository. The variant machinery of Lab 3.2 is public and is practice only: do not reuse its key for assessment. Hand the variants out as files, one per participant, and record which participant had which.</p></aside>
+</section>
+
+<section class="slide" id="rubric" data-label="The rubric" data-lo="LO1 LO4 LO5 LO6">
+  <div class="kicker">The capstone and its defence</div>
+  <h2>Five criteria, 100 points</h2>
+  <div class="bars">
+    <div class="row"><span>Framing card a peer can plan from</span><div class="bar c-teal" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>Analysis plan, threats and the deciding result</span><div class="bar c-cyan" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>Review notes ranked by consequence</span><div class="bar c-coral" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>The kind of analysis recommended</span><div class="bar c-purple" style="--w:33%"></div><span class="val">10%</span></div>
+    <div class="row"><span>Defence under the changed constraint</span><div class="bar c-amber" style="--w:100%"></div><span class="val">30%</span></div>
+  </div>
+  <aside class="notes"><p>Full marks, one example each: a card a colleague turns into a plan without asking anything; a plan whose deciding result is a number written before the data; the note that flips the decision first; a recommendation that names its kind (description, experiment, causal analysis, prediction or none) and why; a defence that changes the plan where the constraint bites and keeps it where it does not.</p></aside>
+</section>
+
+<section class="slide" id="weights" data-label="How the result is made">
+  <div class="kicker">The result</div>
+  <h2>Three parts make the result; the defence has its own floor</h2>
+  <table class="t">
+    <tr><th>Part</th><th class="num">Weight</th></tr>
+    <tr><td>Supervised framing check, without AI</td><td class="num">20%</td></tr>
+    <tr><td>Framing card, plan and review notes, on the rubric</td><td class="num">50%</td></tr>
+    <tr><td>Live defence with an unseen change of constraint</td><td class="num">30%</td></tr>
+  </table>
+  <div class="callout tip mt"><b>To pass:</b> 70% overall, and at least 60% on the live defence.</div>
+  <aside class="notes"><p>The rubric's first four criteria (70 points) make the 50% of the written work; its fifth (30 points) is the defence. A strong repository cannot carry a defence below 60%: the defence is where the decisions are shown to be the participant's.</p></aside>
+</section>
+
+<section class="slide" id="format" data-label="The talk" data-lo="LO6">
+  <div class="kicker">Eight minutes, then ten</div>
+  <h2>The talk, the changed constraint, the defence</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>3 min · the question</h4><p class="small mb0">The framing card: the decision, the estimand, the rule</p></div>
+    <div class="card c-cyan"><h4>3 min · the plan</h4><p class="small mb0">Method, the main threat, the result that would change the decision</p></div>
+    <div class="card c-coral"><h4>2 min · the review</h4><p class="small mb0">The top note of your variant and its consequence</p></div>
+  </div>
+  <div class="callout warn mt"><b>During the talk</b> the sponsor changes one constraint. The ten-minute defence starts from it: what changes in your recommendation, and what does not?</div>
+  <aside class="notes"><p>The assessor plays Fahda. Deliver the change at about minute five, in her voice, in one sentence. Kinds of change that work: a frozen budget, a deadline brought forward, a dataset that becomes unavailable, a council member's new question. Use a different one for each participant.</p></aside>
+</section>
+
+<section class="slide" id="practice-change" data-label="Practise the change" data-lo="LO6">
+  <div class="kicker">Practise it now</div>
+  <h2>A practice constraint change: what happens to your plan?</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Fahda Al-Bishr</span>The council has frozen hiring for this year. Whatever you recommend must work with the reviewers we have.</div>
+  </div>
+  <ul class="bullets mt">
+    <li>Does the decision still exist? Which options are left?</li>
+    <li>Does the kind of analysis change: from a causal question about staff to a description of where time is lost?</li>
+    <li>What stays the same in your plan, and why?</li>
+  </ul>
+  <aside class="notes"><p>This one is in the repository (practice_constraint_change.md); the defence uses another. Give pairs five minutes: one plays Fahda, one answers in two minutes. The common weak answer restarts the plan from nothing; the strong one says exactly which line of the card and the plan moves.</p></aside>
 </section>
 
 <section class="slide order" id="running-order" data-label="Running order">
   <div class="kicker">Running order</div>
   <h2>Who presents when</h2>
   <table class="t small">
-    <tr><th>#</th><th>Presenter</th><th>Project</th></tr>
-    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
+    <tr><th>#</th><th>Participant</th><th>Repository</th></tr>
+    <tr><td>1</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>2</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>3</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>4</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>5</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>6</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
   </table>
-  <aside class="notes">Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too.</aside>
+  <aside class="notes"><p>Type the names in at the start; the fields are not saved, so keep the list in your notes. Eighteen minutes per participant plus two for changeover: six participants fill two hours.</p></aside>
 </section>
 
-<section class="slide dark" id="final-prep" data-label="Before the first presentation">
-  <div class="kicker">Before the first presentation</div>
-  <h1>Final prep · 20 minutes</h1>
-  <div class="timer" data-minutes="20"></div>
-  <p class="lead">Rehearse once, record a backup, try the demo on this screen.</p>
-  <aside class="notes">Press T to start the timer. Breaks are not slides: press B when the room needs one.</aside>
+<section class="slide dark" id="final-prep" data-label="Final prep">
+  <div class="kicker">Before the first talk</div>
+  <h1>Fifteen minutes: open your repository as a stranger would</h1>
+  <div class="timer" data-minutes="15"></div>
+  <p class="lead">Open the public link in a private window. Are the three files there, and could a peer plan from your card alone?</p>
+  <aside class="notes"><p>A private window catches a private repository and a missing push, the two most common reasons a submission cannot be marked.</p></aside>
 </section>
 
 <section class="slide dark presenting" id="now-presenting" data-label="Now presenting">
   <div class="kicker center">Now presenting</div>
-  <div class="center"><input placeholder="Presenter · project"></div>
-  <aside class="notes">Type the presenter's name and press T to start the timer. Reuse this slide for every presenter.</aside>
+  <div class="center"><input placeholder="Name and repository"></div>
+  <div class="timers mt">
+    <div><h3>Talk</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Defence</h3><div class="timer" data-minutes="10"></div></div>
+  </div>
+  <aside class="notes"><p>Start the talk timer; deliver the constraint change at about minute five. Start the defence timer when the talk ends. Questions to keep ready: which result would make you recommend hiring? What did your top review note change? Which kind of analysis now, and why not an experiment?</p></aside>
 </section>
 
-<section class="slide" id="review" data-label="Trainer review">
-  <div class="kicker">Trainer review</div>
-  <h2>What the presentations showed</h2>
+<section class="slide" id="review" data-label="Review">
+  <div class="kicker">After the defences</div>
+  <h2>What the room learned</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Strongest patterns</h4><p class="small mb0">What several projects got right.</p></div>
-    <div class="card c-coral"><h4>Common gaps</h4><p class="small mb0">What most projects would fix next.</p></div>
-    <div class="card c-purple"><h4>One surprise</h4><p class="small mb0">Something nobody expected.</p></div>
+    <div class="card c-teal"><h4>The best framing</h4><p class="small mb0">Which card could the room plan from without a single question?</p></div>
+    <div class="card c-coral"><h4>The flaw most missed</h4><p class="small mb0">Which seeded flaw went unranked or ranked low most often?</p></div>
+    <div class="card c-purple"><h4>The best defence</h4><p class="small mb0">Who moved exactly the part of the plan the constraint touched?</p></div>
   </div>
-  <aside class="notes">Fill these in from your scoring notes during the last break. Name projects for strengths; keep gaps anonymous.</aside>
+  <aside class="notes"><p>Fill these in from your scoring notes during the last changeover. Name participants for strengths; keep gaps anonymous.</p></aside>
 </section>
 
 <section class="slide" id="what-next" data-label="After the course">
   <div class="kicker">After the course</div>
-  <h2>Keep going</h2>
+  <h2>The follow-up task, and what comes next</h2>
   <ul class="bullets">
-    <li><b>Your project stays yours:</b> keep it reproducible and add the next improvement you named today</li>
-    <li><b>Next Academy course:</b> REPLACE: the course that follows this one</li>
+    <li><b>Follow-up task.</b> Within four weeks, write one framing card for a real request at work and have a colleague plan from it; keep personal and Restricted data out of anything you share.</li>
+    <li><b>Keep the repository.</b> It is evidence for the DS Associate badge.</li>
+    <li><b>Next.</b> Metric definition in depth is DS-307; team review standards are DS-407.</li>
   </ul>
+  <aside class="notes"><p>The catalog names a tracked follow-up task for this format; confirm its wording and deadline with the programme office before the cohort, and replace the first bullet if it differs.</p></aside>
 </section>
 
 <section class="slide dark" id="thanks" data-label="Thank you">
