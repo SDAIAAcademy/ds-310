@@ -3,164 +3,1172 @@
   "version": 1,
   "questions": [
     {
-      "id": "q-example-1",
+      "id": "q-framing-01",
       "type": "single",
-      "prompt": "REPLACE: a practice question on LO1, as a short scenario",
+      "prompt": "Sultana writes: \"We need to know if the new call script is working.\" Her decision is whether to keep the script after the quarter. Which framing gives her a decision rule?",
       "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
+        "Report first-contact resolution every month for the next quarter, by district",
+        "Keep it if 7-day repeat contacts fall 2 points against the old script",
+        "Survey a sample of callers on whether they prefer the new script to the old",
+        "Keep the script if agents mark more calls resolved than they did last year"
       ],
       "correct": [
         1
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
+      "explanation": "A rule names the number at which the choice changes and what it is compared with; repeat contacts measure resolution without relying on what agents mark.",
       "misconceptions": [
-        "REPLACE: the misconception behind this option",
+        "Takes monitoring for a rule: nothing says which number changes the choice",
         "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
+        "Changes the question to satisfaction, with no threshold for the choice",
+        "Uses the measure the script can game as the rule, with no comparison"
       ],
       "lo": [
         "LO1"
       ],
       "day": "day1",
       "session": 1,
+      "slide": "decision-rule",
       "level": "apply",
       "pool": "practice",
       "weight": 1
     },
     {
-      "id": "q-example-2",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO2 that is true",
+      "id": "q-framing-02",
+      "type": "single",
+      "prompt": "An analyst frames whether leak detection cut water loss in one district over 24 months. In month 14 a burst main closes part of the district's network for three weeks. Which part of the estimand records how the burst is handled?",
       "options": [
-        "True",
-        "False"
+        "The population: which districts and which months are included in it",
+        "The contrast: what the district is compared with, and over which months",
+        "The summary: which single number answers the question, in points",
+        "Intercurrent events: what happens on the way that changes the meaning"
       ],
       "correct": [
-        0
+        3
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
+      "explanation": "An event after the start that changes what the measure means is an intercurrent event; the estimand says how it is handled, for example by excluding those weeks.",
       "misconceptions": [
-        "",
-        "REPLACE: the misconception behind this option"
+        "Thinks any event in the period changes the units studied",
+        "Confuses an event during the study with the choice of comparison",
+        "Thinks the burst only changes how the result is summarised",
+        ""
       ],
       "lo": [
-        "LO2"
+        "LO1"
       ],
       "day": "day1",
       "session": 1,
+      "slide": "estimand-parts",
       "level": "understand",
       "pool": "practice",
       "weight": 1
     },
     {
-      "id": "q-example-3",
+      "id": "q-framing-03",
       "type": "single",
-      "prompt": "REPLACE: a practice question on LO3, as a short scenario",
+      "prompt": "Four framing cards answer Khalil's request about estimated bills. Which one can a colleague plan from without asking anything further?",
       "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
-      ],
-      "correct": [
-        1
-      ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
-      "misconceptions": [
-        "REPLACE: the misconception behind this option",
-        "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
-      ],
-      "lo": [
-        "LO3"
-      ],
-      "day": "day1",
-      "session": 1,
-      "level": "apply",
-      "pool": "practice",
-      "weight": 1
-    },
-    {
-      "id": "q-example-4",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO4 that is true",
-      "options": [
-        "True",
-        "False"
+        "Population: Al-Hamra accounts, last 12 months. Metric: share of bills estimated. Rule: book second visits above 10%",
+        "Population: all Ghadeer accounts. Metric: estimated bills. Rule: act if estimates seem too many",
+        "Population: Al-Hamra accounts, last 12 months. Metric: share of bills estimated. Rule: decide after seeing the result",
+        "Population: accounts that complained. Metric: complaints about estimated bills. Rule: book visits if complaints rise"
       ],
       "correct": [
         0
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
+      "explanation": "Only the first names the units and period, a measure with its denominator, and the number at which the choice changes.",
       "misconceptions": [
         "",
-        "REPLACE: the misconception behind this option"
+        "Accepts a rule with no threshold and a metric with no denominator",
+        "Leaves the rule for after the result, where it bends to the number",
+        "Measures complaints, which depend on who chooses to call, not on estimates"
       ],
       "lo": [
-        "LO4"
+        "LO1"
       ],
       "day": "day1",
       "session": 1,
-      "level": "understand",
+      "slide": "peer-test",
+      "level": "evaluate",
       "pool": "practice",
       "weight": 1
     },
     {
-      "id": "q-example-5",
+      "id": "q-framing-04",
       "type": "single",
-      "prompt": "REPLACE: a practice question on LO5, as a short scenario",
+      "prompt": "Nadia asks whether active leak detection \"is working\" in a district. The detection crews report that leaks found rose from 40 to 130 in a year. Which metric belongs on the framing card?",
       "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
+        "Leaks found per month in the district by the detection crews",
+        "Leaks repaired per month in the district",
+        "Non-revenue water as a share of the district's supply",
+        "Hours worked by the detection crews"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The decision is about water lost; non-revenue water as a share of supply measures it, while leaks found rises with the search itself.",
+      "misconceptions": [
+        "Takes an activity count for the outcome: searching harder finds more leaks whatever happens to loss",
+        "Swaps one activity for another: repairs follow from finding",
+        "",
+        "Measures effort, which says nothing about water lost"
+      ],
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "leaks-found-trap",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-types-01",
+      "type": "single",
+      "prompt": "Khalil asks: \"Which accounts are likely to be estimated next month, so that we send readers there first?\" Which kind of analysis does the request need?",
+      "options": [
+        "A description of last year's estimated bills by district",
+        "A predictive model scoring each account",
+        "A causal analysis of why bills are estimated",
+        "An experiment that sends readers to some accounts at random"
       ],
       "correct": [
         1
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
+      "explanation": "The request asks what will happen to each unit, which is a prediction; the reasons behind it are not needed to choose where readers go first.",
       "misconceptions": [
-        "REPLACE: the misconception behind this option",
+        "Stops at what happened, when the request is about each account next month",
         "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
-      ],
-      "lo": [
-        "LO5"
-      ],
-      "day": "day1",
-      "session": 1,
-      "level": "apply",
-      "pool": "practice",
-      "weight": 1
-    },
-    {
-      "id": "q-example-6",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO6 that is true",
-      "options": [
-        "True",
-        "False"
-      ],
-      "correct": [
-        0
-      ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
-      "misconceptions": [
-        "",
-        "REPLACE: the misconception behind this option"
+        "Answers why, when the decision only needs who",
+        "Tests an action, when the request is to rank accounts"
       ],
       "lo": [
         "LO6"
       ],
       "day": "day1",
-      "session": 1,
+      "session": 2,
+      "slide": "four-labels",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-types-02",
+      "type": "single",
+      "prompt": "Nadia asks whether a text-message reminder would reduce late payments. The reminder can start next month for any accounts she chooses, and the decision is in four months. Which kind of analysis fits?",
+      "options": [
+        "A description of late payments by district and by month",
+        "A causal analysis of last year's payment data by district",
+        "A predictive model of which accounts are likely to pay late",
+        "A random experiment: reminders to half the accounts"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The question is causal and the action can still be assigned at random before the decision, so an experiment answers it most directly.",
+      "misconceptions": [
+        "Describes the problem, not what the reminder would change",
+        "Uses existing data when a cleaner test can still run in time",
+        "Ranks accounts but says nothing about the effect of the reminder",
+        ""
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "day1",
+      "session": 2,
+      "slide": "experiment-or-not",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-types-03",
+      "type": "single",
+      "prompt": "A manager asks whether a tariff change in 2019 reduced consumption. Meter reads before 2021 were not kept, and no decision depends on the answer. What should the analyst recommend?",
+      "options": [
+        "A causal analysis comparing consumption in 2021 with that in 2024",
+        "No analysis: the data cannot reach it, and no decision waits",
+        "A description of consumption in each year since 2021",
+        "A predictive model of consumption for next year by district"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The data start after the change and there is no decision to inform, so the honest recommendation is to reframe or not to analyse.",
+      "misconceptions": [
+        "Compares years that are both after the change, so it cannot show its effect",
+        "",
+        "Answers a nearby question and presents it as the one asked",
+        "Answers a question nobody asked"
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "day1",
+      "session": 2,
+      "slide": "unanswerable",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-interview-01",
+      "type": "single",
+      "prompt": "You interview Sultana about the repeat-contact figure in her monthly report. Which question is most likely to show how the number is produced?",
+      "options": [
+        "How does the system decide that a contact is a repeat?",
+        "Is the repeat-contact figure in your monthly report accurate?",
+        "Would you agree that repeat contacts are rising?",
+        "Should we use repeat contacts as the main metric?"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "An open question about the counting rule makes the stakeholder describe the process, which is where the data can mislead.",
+      "misconceptions": [
+        "",
+        "Asks for a yes or no, which tells you nothing about how it is counted",
+        "Leads the answer toward your own belief",
+        "Hands the analyst's choice to the stakeholder"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day1",
+      "session": 3,
+      "slide": "open-questions",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-interview-02",
+      "type": "single",
+      "prompt": "Sultana said the first-contact target is 85%, that the supplier's bonus depends on it, and that the call script was shortened in month 13. Which line of the analyst's notes should be marked \"assumed\" rather than \"heard\"?",
+      "options": [
+        "The first-contact target is 85%",
+        "The supplier's bonus under the contract depends on the target",
+        "Agents close calls early to reach the target",
+        "The script was shortened in month 13"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Nobody said agents close calls early; it is the analyst's inference from the incentive, and it must be tested in the data before it is used.",
+      "misconceptions": [
+        "Treats every number in the notes as suspect, although she stated it",
+        "Forgets that she said it herself",
+        "",
+        "Confuses a stated date with an inference"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day1",
+      "session": 3,
+      "slide": "heard-assumed",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-interview-03",
+      "type": "single",
+      "prompt": "Asked what she will do differently, Sultana answers: \"Renew the call-centre contract or change its terms, at the board meeting on 1 March.\" Which part of the framing card does this answer fill?",
+      "options": [
+        "The metric and its denominator",
+        "The population and its period",
+        "The comparison and its baseline",
+        "The decision and its date"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "The answer names the choice between options and when it is made, which is the decision the card starts from.",
+      "misconceptions": [
+        "Confuses the action with the measure that informs it",
+        "Thinks the contract defines which units are studied",
+        "Reads the two options as the contrast of the estimand",
+        ""
+      ],
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 3,
+      "slide": "six-topics",
       "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-feasible-01",
+      "type": "single",
+      "prompt": "A plan needs road-works records held by another government entity. Under the national data-sharing timeframe the request is assessed within 10 business days and shared within 5 of approval. The decision is in 12 business days. What follows?",
+      "options": [
+        "The records arrive within 5 business days, so request them today",
+        "The records cannot be shared between government entities at all",
+        "They may take up to 15 business days, so phase one goes without them",
+        "Start the analysis now and add the records to it when they arrive later"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Assessment and delivery together can take 15 business days, more than the 12 available, so the plan cannot depend on them.",
+      "misconceptions": [
+        "Counts the delivery time and forgets the assessment",
+        "Thinks the policy forbids sharing rather than setting a timeframe",
+        "",
+        "Ignores that they may arrive after the decision"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day1",
+      "session": 4,
+      "slide": "sharing-timeframe",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-feasible-02",
+      "type": "single",
+      "prompt": "To measure the share of estimated bills by district and month, an analyst writes a data request for the billing system. Which request fits the minimisation rule of the Personal Data Protection Law?",
+      "options": [
+        "Account ID, district, month and the estimated flag",
+        "The full billing table, including names and national IDs",
+        "Names and addresses, so that readers can be sent",
+        "A sample of 100 bills with every field"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Minimisation limits the data to what the purpose needs: here an account key, district, month and the flag are enough.",
+      "misconceptions": [
+        "",
+        "Asks for everything in case it is useful later",
+        "Mixes the analysis with an operational task it does not need",
+        "Thinks a small sample excuses fields the purpose does not need"
+      ],
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 4,
+      "slide": "minimise-request",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-feasible-03",
+      "type": "single",
+      "prompt": "The board decides in 10 business days and the analysis takes 4. Dataset A is ready in 2 business days, B in 8 and C in 20. Which scope should the plan take?",
+      "options": [
+        "All three datasets, with the analysis starting on day 20",
+        "A and B, with the analysis finishing on day 12",
+        "None: tell the board the question cannot be answered",
+        "A now, with B and C in a second phase"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Only A arrives early enough to leave the 4 days of analysis before day 10; B and C belong to a second phase.",
+      "misconceptions": [
+        "Puts completeness above the decision date",
+        "Forgets to add the analysis time to the arrival of B",
+        "Gives up when a smaller answer fits the date",
+        ""
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day1",
+      "session": 4,
+      "slide": "cut-scope",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-datamade-01",
+      "type": "single",
+      "prompt": "Billed volume in one district fell 9% from June to July. June's bills covered 33 days and July's covered 30. What is the most likely explanation?",
+      "options": [
+        "Use per day did not change: July's bills cover fewer days",
+        "Customers in the district used less water in July than in June",
+        "More water was lost to leaks in July",
+        "More bills were estimated in July"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "30 days is 9% fewer than 33, which accounts for the whole fall; volumes must be rescaled to the same number of days before they are compared.",
+      "misconceptions": [
+        "",
+        "Reads billed volume as use without checking the period",
+        "Blames loss for a change in billing",
+        "Reaches for another known problem the data do not point to"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "billing-cycles",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-datamade-02",
+      "type": "single",
+      "prompt": "In a district where many bills are estimated, billed volume jumps in the month after a run of estimates, then falls back. What produces the jump?",
+      "options": [
+        "A rise in consumption that month",
+        "The actual read bills the water the estimates missed",
+        "A bulk meter at the district inlet that drifted upward",
+        "New accounts added to the district"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "An estimate repeats past use; when a reader finally reaches the meter, the bill catches up with everything the estimates did not count.",
+      "misconceptions": [
+        "Reads a billing pattern as behaviour",
+        "",
+        "Looks at the supply side when the jump is in billing",
+        "Assumes a change in the population without evidence"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "estimated-bills",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-datamade-03",
+      "type": "single",
+      "prompt": "Smart meters replace old meters in one district in month 13. From that month non-revenue water in that district falls by 8 points, and in no other district. Which point in the process map explains it?",
+      "options": [
+        "Customers reduced their use after seeing it on the new meters",
+        "The bulk meter at the district inlet drifted",
+        "New meters register water the old ones missed, so billing rose",
+        "The billing cycle in that district became shorter from month 13"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Old meters under-register; new ones bill more of the same water, so non-revenue water falls with no change in what is lost.",
+      "misconceptions": [
+        "Reads a measurement change as a change in behaviour",
+        "Looks at supply when only the customer meters changed",
+        "",
+        "Picks a known cause the scenario does not mention"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "smart-meter-step",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-proxy-01",
+      "type": "single",
+      "prompt": "After a target on repair time, the median days from report to closed job fell from 4 to 2. Which guardrail would show whether jobs are closed before leaks are fixed?",
+      "options": [
+        "The number of jobs closed per month",
+        "The share of jobs reopened after closure",
+        "The average cost of a repair",
+        "The median days from report to job opened"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "A job closed before the fix comes back as a reopened job, so the reopen rate worsens exactly when repair time is gamed.",
+      "misconceptions": [
+        "Counts activity, which rises with early closing",
+        "",
+        "Watches a measure early closing does not move",
+        "Measures a step before the one being gamed"
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "guardrails",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-proxy-02",
+      "type": "single",
+      "prompt": "Repair time once tracked customer satisfaction well while it ranged from 3 to 10 days. After it fell below one day, satisfaction stopped moving with it. Which kind of proxy failure is this?",
+      "options": [
+        "Regressional: selecting on a noisy proxy selects the noise",
+        "Extremal: the old relation does not hold in a new range",
+        "Causal: acting on the proxy broke its link to the goal",
+        "Adversarial: people gamed the measure"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The relation held only in the range where it was observed; pushed outside it, the proxy no longer tracks the goal.",
+      "misconceptions": [
+        "Confuses noise in selection with a change of range",
+        "",
+        "Sees an action where only the range changed",
+        "Assumes gaming without any sign of it"
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "goodhart-four",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-proxy-03",
+      "type": "single",
+      "prompt": "Ghadeer wants a guardrail for its first-contact resolution target. Which measure is the best guardrail?",
+      "options": [
+        "Average handle time per call, in minutes, by agent",
+        "The number of calls answered per agent per day",
+        "A survey of customer satisfaction, run once a year",
+        "Contacts followed by another within 7 days"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "A call marked resolved that was not comes back as a repeat contact, so this measure worsens when the target is gamed.",
+      "misconceptions": [
+        "Moves in the same direction as the gaming: short calls help reach the target",
+        "Counts volume, which gaming does not reduce",
+        "Too slow and too rare to show gaming within the year",
+        ""
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "good-guardrail",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-proxy-04",
+      "type": "single",
+      "prompt": "In the water-loss tree, non-revenue water splits into real losses and apparent losses. Which of these is an apparent loss?",
+      "options": [
+        "A burst main",
+        "A leak on a service pipe",
+        "Meter under-registration",
+        "A tank overflowing at night"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "Apparent losses are water used but not billed, such as meter error or unauthorised use; the others are water that leaves the network.",
+      "misconceptions": [
+        "Water physically lost is a real loss",
+        "Water physically lost is a real loss",
+        "",
+        "Water physically lost is a real loss"
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "metric-tree",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-proxy-05",
+      "type": "single",
+      "prompt": "After a target on first-contact resolution, calls marked resolved rose from 70% to 84%, contacts followed by another within 7 days rose from 21% to 25%, and handle time fell from 8.0 to 6.8 minutes. What do these numbers show?",
+      "options": [
+        "Calls are marked resolved that were not resolved",
+        "Service improved: more calls are resolved, faster",
+        "Customers are calling more about unrelated matters",
+        "Agents became more efficient with the new script"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "If more calls were truly resolved, fewer customers would call again; repeat contacts rose with shorter calls, the mark of a gamed target.",
+      "misconceptions": [
+        "",
+        "Takes the targeted measure at face value",
+        "Explains the repeats away without evidence",
+        "Ignores that repeats rose while resolution \"improved\""
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "fcr-gamed",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-plan-01",
+      "type": "single",
+      "prompt": "A plan compares 8 months before with 8 months after. Monthly non-revenue water has a standard deviation of 2.0 points. With detectable change = 2.8 × sd × √(1/n1 + 1/n2), what is the smallest change the plan can detect?",
+      "options": [
+        "1.4 points",
+        "2.0 points",
+        "2.8 points",
+        "7.9 points"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "2.8 × 2.0 × √(1/8 + 1/8) = 2.8 × 2.0 × 0.5 = 2.8 points.",
+      "misconceptions": [
+        "Divides by n without the square root",
+        "Stops at the standard deviation",
+        "",
+        "Forgets to divide by the number of months"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "detectable-change",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-plan-02",
+      "type": "single",
+      "prompt": "Which line of an analysis plan states the result that would change the decision to buy leak loggers?",
+      "options": [
+        "Buy if the effect is 3 points or more, with the interval above 1",
+        "Buy if the fall in non-revenue water is statistically significant at 5%",
+        "Look at the results together with the sponsor, then decide",
+        "Report the effect with a clear chart and its 95% interval"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Only the first fixes, before the data, the size of effect at which the choice changes and how sure it must be.",
+      "misconceptions": [
+        "",
+        "Takes significance for size: a tiny effect can be significant",
+        "Leaves the rule for after the result",
+        "Describes reporting, not the rule"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "would-change",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-plan-03",
+      "type": "single",
+      "prompt": "Why does a plan fix the comparison months and districts before anyone looks at the data?",
+      "options": [
+        "So the choices cannot bend toward the hoped-for answer",
+        "Data seen after the plan is written cannot legally be used",
+        "Because the sponsor asks for a fixed timeline",
+        "Because fewer choices make the code run faster"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Each choice made after seeing the data is a fork that can favour the expected answer; fixing them first keeps the result honest.",
+      "misconceptions": [
+        "",
+        "Invents a rule that does not exist",
+        "Mistakes scheduling for validity",
+        "Thinks the reason is technical"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "fixed-before",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-threats-01",
+      "type": "single",
+      "prompt": "Leak detection started in the district with the worst non-revenue water of the last quarter. The next quarter it fell by 3 points. Which threat must the plan answer first?",
+      "options": [
+        "Seasonality between quarters",
+        "Spillover to other districts",
+        "Small sample of months",
+        "Regression to the mean"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "A district picked for an extreme value tends to move back toward its usual level whatever is done; only a comparison shows what detection added.",
+      "misconceptions": [
+        "Possible, but the choice of district points to a stronger threat",
+        "Assumes the detection affected other districts",
+        "Blames the size of the data, not how the district was chosen",
+        ""
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "regression-to-mean",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-threats-02",
+      "type": "single",
+      "prompt": "A new tariff started in all six districts in the same month as leak detection started in one of them. A before-after in the one district would suffer from which threat?",
+      "options": [
+        "History: something else changed at the same time",
+        "Selection: the district was chosen in a way linked to the outcome",
+        "Spillover: one unit affects the others",
+        "Construct: the metric means something different"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The tariff happened at the same time as detection, so a before-after cannot separate them; districts without detection share the tariff and remove it.",
+      "misconceptions": [
+        "",
+        "Names a real threat the scenario does not describe",
+        "Confuses an outside event with units affecting each other",
+        "Thinks the tariff changed what the metric measures"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "history-month-13",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-threats-03",
+      "type": "single",
+      "prompt": "You review a peer's plan with three threats: seasonality (both periods are full years), small sample (16 months), and smart meters installed in one comparison district during the study, which moved its non-revenue water by 8 points. Which threat goes first in your review?",
+      "options": [
+        "Seasonality",
+        "The smart meters in the comparison district",
+        "Small sample",
+        "All three equally, in the order of the plan"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "An 8-point measurement change in a comparison district can reverse the result; the other two are answered or minor.",
+      "misconceptions": [
+        "Ranks by how familiar a threat is: full years already answer it",
+        "",
+        "Ranks a general weakness above one that moves the answer",
+        "Ranks by order of writing, not by consequence"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "rank-threats",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-checklist-01",
+      "type": "single",
+      "prompt": "A colleague sends a notebook with a clear summary at the top. Why does the review start by rerunning the notebook rather than reading the summary?",
+      "options": [
+        "A rerun shows what the code does, a summary what the author thinks",
+        "Reading the summary before the rerun would be unfair to the author",
+        "Notebooks always hold errors that only a rerun of every cell shows",
+        "The checklist asks for a rerun before any score is given for an area"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "Prose can say something the output does not; rerunning first stops the summary from setting the reviewer's expectations.",
+      "misconceptions": [
+        "",
+        "Makes it a matter of courtesy, not evidence",
+        "Overstates: the point is checking, not assuming errors",
+        "Gives the rule without the reason for it"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 1,
+      "slide": "rerun-first",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-checklist-02",
+      "type": "single",
+      "prompt": "An analysis compares complaint counts across districts without dividing by the number of accounts. The districts have from 300 to 500 accounts. Which area of the checklist does this flaw belong to?",
+      "options": [
+        "Question fit",
+        "Inference",
+        "Communication",
+        "Data handling"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "A missing denominator is a step in handling the data that changes the answer: larger districts have more complaints whatever the service.",
+      "misconceptions": [
+        "Thinks the question is wrong when the computation is",
+        "Places it at the claim, although the error is in the numbers",
+        "Places it in the words, although the numbers themselves are wrong",
+        ""
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 1,
+      "slide": "five-areas",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-checklist-03",
+      "type": "single",
+      "prompt": "Two reviewers score the method of the same notebook: one gives 2, the other 0. What should they do?",
+      "options": [
+        "Record the average, 1",
+        "Keep the higher score, to be fair to the author",
+        "Compare their evidence against the anchors",
+        "Ask the author which score is right"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "A two-point gap means one reviewer missed something; the anchors and the sentences of evidence show which.",
+      "misconceptions": [
+        "Hides the disagreement instead of finding its cause",
+        "Resolves by kindness, not evidence",
+        "",
+        "Hands the judgement to the person reviewed"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 1,
+      "slide": "reviewer-agreement",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-flaws-01",
+      "type": "single",
+      "prompt": "The rule is to buy loggers if the effect is at least 3 points. With no flaw, the analysis gives 2.1 points. With only flaw F3, it gives 3.6. What is the consequence of F3?",
+      "options": [
+        "It moves the effect by 3.6 points",
+        "It moves the effect by 1.5 points; no other consequence",
+        "It reverses the decision, from do not buy to buy",
+        "None: both numbers show that detection works"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The flaw lifts the effect across the 3-point rule, which turns the answer from do not buy to buy.",
+      "misconceptions": [
+        "Reports the flawed number, not the change",
+        "Measures the size but misses that the rule is crossed",
+        "",
+        "Ignores the decision rule"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 2,
+      "slide": "consequence-defined",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-flaws-02",
+      "type": "single",
+      "prompt": "A join on district names drops a third of one district's repair rows. The effect on non-revenue water is computed from the water balance, not from repairs. What does the join do to the effect?",
+      "options": [
+        "Nothing: it changes only the count of leaks found",
+        "It shrinks the effect in proportion to the rows dropped",
+        "It reverses the decision",
+        "It widens the interval only"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The effect does not use the repair rows, so the join cannot move it; it still deserves a note because any count of leaks is wrong.",
+      "misconceptions": [
+        "",
+        "Assumes every flaw moves the headline number",
+        "Ranks by how alarming the flaw looks",
+        "Guesses a subtler effect without tracing the data"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 2,
+      "slide": "variant-zero",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-flaws-03",
+      "type": "single",
+      "prompt": "Four flaws in one variant: a chart axis from 20%; no interval reported; estimated bills dropped, which moves the effect by 1.2 points but not across the rule; a before-after with no comparison, which reverses the decision. In which order do the review notes go?",
+      "options": [
+        "Chart axis, interval, estimated bills, before-after",
+        "Before-after, estimated bills, interval, chart axis",
+        "Estimated bills, before-after, chart axis, interval",
+        "Interval, before-after, estimated bills, chart axis"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "A flaw that reverses the decision comes first, then the one that moves the number, then those that mislead without moving it.",
+      "misconceptions": [
+        "Ranks in the order flaws are easiest to see",
+        "",
+        "Ranks by the size of a number, not by the decision",
+        "Ranks a principle above a flaw that reverses the decision"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 2,
+      "slide": "rank-rule",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-assistant-01",
+      "type": "single",
+      "prompt": "An assistant's notebook runs. Its summary says use fell by 12%; the output above it shows a fall of 7%. Which check fails?",
+      "options": [
+        "Reruns as delivered",
+        "Every number traced to output",
+        "Outside numbers sourced",
+        "Method fits the question asked"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The 12% appears nowhere in the output: a number in the summary must be found in what the code printed.",
+      "misconceptions": [
+        "The notebook ran, so this check passes",
+        "",
+        "Both numbers come from the data, not from outside",
+        "The mismatch is between the words and the output, not the method"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 3,
+      "slide": "four-checks",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-assistant-02",
+      "type": "single",
+      "prompt": "An analyst wants a public hosted assistant to analyse Ghadeer's real billing extract, classified Restricted. What should the analyst do?",
+      "options": [
+        "Paste the extract, since the assistant does not keep data",
+        "Paste it after removing names only",
+        "Paste a sample of 200 rows instead",
+        "Keep it inside; use synthetic data with the assistant"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "Restricted data does not go to a public assistant; synthetic data with the same columns lets the analyst use the tool without the risk.",
+      "misconceptions": [
+        "Trusts a claim about the service in place of the classification rule",
+        "Thinks removing one field changes the classification of the whole extract",
+        "Thinks a sample is not the same data",
+        ""
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 3,
+      "slide": "hosted-models",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-assistant-03",
+      "type": "single",
+      "prompt": "An analyst uses an assistant's code and summary in a report for a government sponsor. What do SDAIA's Generative AI Guidelines for Government ask of the analyst?",
+      "options": [
+        "Identify the generated content and verify it, code included",
+        "Nothing more, if the entity has approved the assistant for use",
+        "Rewrite every generated sentence by hand",
+        "Avoid generated code in official work"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "The guidelines ask users to identify AI-generated content and check it for accuracy, and to verify generated code before using it.",
+      "misconceptions": [
+        "",
+        "Thinks approval of a tool removes the duty to check its output",
+        "Confuses verification with rewriting",
+        "Turns a duty to verify into a ban"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 3,
+      "slide": "duty-to-verify",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-notes-01",
+      "type": "single",
+      "prompt": "A review note reads: \"Cell 4 compares months 10 to 12 with 13 to 15; use months 1 to 9 against 15 to 24.\" Which part does the author still need?",
+      "options": [
+        "The problem",
+        "The fix",
+        "The consequence",
+        "A friendlier tone"
+      ],
+      "correct": [
+        2
+      ],
+      "explanation": "The author cannot tell how much the flaw matters: the note must say what it does to the number or the decision.",
+      "misconceptions": [
+        "The note already says where and what",
+        "The note already says what to do",
+        "",
+        "The tone is already about the analysis, not the author"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day3",
+      "session": 4,
+      "slide": "note-parts",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-notes-02",
+      "type": "single",
+      "prompt": "A review shows that an assistant answered \"did the smart meters change consumption?\" with a before-after of billed volume. The meters are already installed everywhere they will be. Which kind of analysis should the review recommend?",
+      "options": [
+        "A description of billed volume by district, before and after",
+        "A causal analysis of use, against districts without smart meters",
+        "An experiment that removes the new meters from a random set of homes",
+        "A predictive model of next year's billed volume by district"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "The question is causal and the change cannot be assigned again, so it needs a comparison with districts without the meters, on a measure the meters do not change.",
+      "misconceptions": [
+        "Repeats the measure that the meters themselves changed",
+        "",
+        "Proposes an action that is no longer possible",
+        "Answers a question nobody asked"
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "day3",
+      "session": 4,
+      "slide": "recommend-kind",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-notes-03",
+      "type": "single",
+      "prompt": "Your plan for the board is a causal analysis that needs night-flow data, which take 8 business days to obtain. The board now wants an answer in 3 business days. What do you recommend?",
+      "options": [
+        "Keep the plan as it is and deliver the answer after the board has met",
+        "Run the causal analysis on billed volume, which is ready today",
+        "Drop the question: tell the board it cannot be answered in three days",
+        "Describe the data on hand and their limits; the causal answer later"
+      ],
+      "correct": [
+        3
+      ],
+      "explanation": "A changed deadline changes the kind of analysis: a description with its limits stated now, and the causal answer when the data arrive.",
+      "misconceptions": [
+        "Puts the method above the decision date",
+        "Swaps in a measure the plan already rejected",
+        "Gives up when a smaller answer fits",
+        ""
+      ],
+      "lo": [
+        "LO6"
+      ],
+      "day": "day3",
+      "session": 4,
+      "slide": "recommend-kind",
+      "level": "evaluate",
       "pool": "practice",
       "weight": 1
     }
