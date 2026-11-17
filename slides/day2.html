@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2 · Know the domain, plan the work · Problem Framing and Analytical Review</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day2.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Problem Framing and Analytical Review" data-track="data-science" data-day="Day 2">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Problem Framing and Analytical Review</div>
+  <h1>Know the domain, plan the work</h1>
+  <p class="lead mt">Day 2: Learn how the numbers are made before you plan what to do with them</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-310</span></div>
+  <aside class="notes"><p>Day 2 moves from the question to the work behind it. Morning: how the numbers are made and how targets bend them. Afternoon: a plan written before any result, and the threats that could make it wrong. Open with one framing card from yesterday, read aloud, and ask a planner in the room what data they would fetch first.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Know the domain, plan the work</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · How the data are made</b><small>Meter reads become bills through estimates, billing cycles and meter swaps, and each step can mislead</small></div></div><div class="item"><div><b>Session 2 · Metrics and proxies</b><small>A metric tree is a set of proxies; under a target, each one can be gamed</small></div></div><div class="item"><div><b>Session 3 · Analysis plans</b><small>Data, method, threats and the result that would change the decision, fixed before outcomes are seen</small></div></div><div class="item"><div><b>Session 4 · Threats to validity</b><small>What could make the answer wrong: selection, regression to the mean, measurement change and more</small></div></div></div>
+  <aside class="notes"><p>Four sessions and four labs, all on the synthetic Ghadeer data. Lab 2.1 has a role-played engineer; the trainer plays Mamdouh from the role card, or participants use the stand-in.</p></aside>
+</section>
+
+<section class="slide" id="review-day1" data-lo="LO1 LO6" data-n="3">
+  <div class="kicker">Review of Day 1</div>
+  <h2>Which card is ready to plan from?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="review-day1-q1">
+    <p class="lead">Four drafts for Mamdouh's logger request. Which one could a peer plan from without asking anything?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">"Should Ghadeer buy loggers for Al-Rawdah next year? Buy if detection cut non-revenue water by 3 points or more in Al-Wurud against the other districts."</div>
+      <div class="opt" data-why="Names a topic and an activity: leaks found rise with searching, and no number would change a choice" data-k="B">"Analyse how many leaks the loggers found in Al-Wurud."</div>
+      <div class="opt" data-why="A decision with no threshold: 'works' is undefined, so any result can be read either way" data-k="C">"Should Ghadeer buy loggers if detection works?"</div>
+      <div class="opt" data-why="A method in place of a question: a model of leaks does not say what to buy" data-k="D">"Build a model of leak risk by district."</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the first names a choice, the outcome that matters and the number at which the choice flips.</div>
+  </div>
+  <aside class="notes"><p>Answer: the first. Use the wrong options to recall the three Day 1 failures: activity as outcome, no threshold, method before question. Two minutes, then move on.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>How the data are made</h1>
+  <ul class="bullets outcomes"><li>Read a briefing pack and an expert interview for how a metric is produced</li><li>Draw the meter-to-bill process as a diagram</li><li>Mark where the data can mislead, with a number from the data</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="water-balance" data-lo="LO3" data-n="5" data-session="1">
+  <div class="kicker">The domain</div>
+  <h2>Non-revenue water mixes water that leaked with water that was not billed</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>System input</b>what the bulk meters measure</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Billed consumption</b>what the bills say</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>Non-revenue water</b>the difference</div>
+  </div>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral"><h4>Real losses</h4><p class="small mb0">Leaks, bursts and overflows up to the customer meter</p></div>
+    <div class="card c-amber"><h4>Apparent losses</h4><p class="small mb0">Meter inaccuracy, billing data errors, unauthorised use: water delivered but not billed</p></div>
+  </div>
+  <aside class="notes"><p>This is the IWA and AWWA water balance, as described by the Alliance for Water Efficiency. The key line for analysts: a change in billing or metering moves non-revenue water without a drop of water saved. Every request about water loss must say which of the two it is about.</p><p>Sources: Alliance for Water Efficiency, Water Audit (the IWA and AWWA water balance).</p></aside>
+</section>
+
+<section class="slide" id="meter-to-bill" data-lo="LO3" data-n="6" data-session="1">
+  <div class="kicker">The process</div>
+  <h2>Seven steps turn water at a meter into a percentage in a report</h2>
+  <ol class="bullets">
+    <li>Water passes the customer meter</li>
+    <li>A reader visits on a route, every 27 to 35 days</li>
+    <li>A read is taken, or the bill is estimated from the last three reads</li>
+    <li>A bill is issued for the period ending this month</li>
+    <li>Bills are summed by district and month</li>
+    <li>The bulk meter gives district input for the calendar month</li>
+    <li>Non-revenue water is input minus billed</li>
+  </ol>
+  <aside class="notes"><p>The steps come from the briefing pack and the engineer's answers: the solution of Lab 2.1. Ask the room at which step a number could go wrong without anyone doing anything wrong. Collect answers; the next three slides measure three of them.</p></aside>
+</section>
+
+<section class="slide" id="estimated-bills" data-lo="LO3" data-n="7" data-session="1">
+  <div class="kicker">Step 3</div>
+  <h2>Al-Hamra estimates one bill in six, and estimates miss the summer</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>Al-Hamra</span><div class="bar c-coral" style="--w:82%"></div><span class="val">16.4%</span></div>
+      <div class="row"><span>Al-Rawdah</span><div class="bar c-cyan" style="--w:22%"></div><span class="val">4.3%</span></div>
+      <div class="row"><span>Al-Salam</span><div class="bar c-cyan" style="--w:16%"></div><span class="val">3.2%</span></div>
+      <div class="row"><span>Al-Shifa</span><div class="bar c-cyan" style="--w:15%"></div><span class="val">2.9%</span></div>
+      <div class="row"><span>Al-Wurud</span><div class="bar c-cyan" style="--w:12%"></div><span class="val">2.4%</span></div>
+      <div class="row"><span>Al-Nakheel</span><div class="bar c-cyan" style="--w:12%"></div><span class="val">2.3%</span></div>
+    </div>
+    <ul class="bullets">
+      <li>An estimate is the <b>average of the last three actual reads</b></li>
+      <li>It does not follow the summer rise, so summer bills come in low</li>
+      <li>The next actual read catches up: the error <b>moves between months</b></li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Share of bills estimated over the two years, Lab 2.1 exercise 4a. Ask: what does this do to Al-Hamra's non-revenue water in summer? It rises (billed too low), then falls when the catch-up bill arrives. A month-by-month analysis of Al-Hamra reads billing timing as water loss.</p></aside>
+</section>
+
+<section class="slide" id="billing-cycles" data-lo="LO3" data-n="8" data-session="1">
+  <div class="kicker">Step 2</div>
+  <h2>A "monthly" bill covers 27 to 35 days, and that alone moves the percentage</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">4.29 → 0.85</div><div class="lbl">standard deviation of monthly non-revenue water in Al-Salam, months 1 to 12, in points: raw, then bills rescaled to 30 days</div></div>
+    <ul class="bullets">
+      <li>The bulk meter measures a calendar month; the bill measures a reading period</li>
+      <li>A 35-day bill in a 30-day month makes the district look tight</li>
+      <li>Rescaling each bill to 30 days removes about four fifths of the swing</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>From Lab 2.1 exercise 4b. Nothing happened in Al-Salam in year 1; all of the raw swing is how the data are made. This number returns in Session 3: with raw bills, a plan cannot detect the 3-point change it needs.</p></aside>
+</section>
+
+<section class="slide" id="smart-meter-step" data-lo="LO3" data-n="9" data-session="1">
+  <div class="kicker">Step 1</div>
+  <h2>Smart meters raised Al-Nakheel's bills by measuring, not by use</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Billed per account per 30 days, year 2 against year 1</th><th class="num">Change</th></tr>
+      <tr class="hl"><td>Al-Nakheel, smart meters from month 13</td><td class="num">+12.1%</td></tr>
+      <tr><td>The other five districts</td><td class="num">-1.6%</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>Old mechanical meters miss about <b>1.5% more each year</b></li>
+      <li>New meters bill water the old ones missed: <b>apparent losses</b> fall</li>
+      <li>This is why Al-Nakheel had the lowest non-revenue water on Day 1</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Lab 2.1 exercise 4c, actual reads only. This answers yesterday's puzzle and request R5: the smart meters "work" at billing, and say nothing yet about leaks. The other districts drift down slowly as their meters age. Ask: if R5 is framed as "did consumption rise", what does the board conclude? Something false.</p></aside>
+</section>
+
+<section class="slide" id="ask-the-engineer" data-lo="LO3" data-n="10" data-session="1">
+  <div class="kicker">The expert interview</div>
+  <h2>The engineer knows what the documents leave out</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">You</span>How is the district input measured, and has anything changed with those meters?</div>
+    <div class="msg ai good"><span class="who">Mamdouh</span>The Al-Wurud bulk meter was over-reading for a few months. It was recalibrated in month 13.</div>
+    <div class="msg user"><span class="who">You</span>When is a repair job closed?</div>
+    <div class="msg ai good"><span class="who">Mamdouh</span>Since the three-day target, crews close the job when they leave the site. If the leak comes back, it is reopened.</div>
+  </div>
+  <aside class="notes"><p>Two answers from the role card that are in no document. The bulk-meter drift becomes the main threat to Plan A in Session 4; the closing rule becomes the gaming of Session 2. Interviewing for how data are produced is outcome 3: domain documents plus an expert.</p></aside>
+</section>
+
+<section class="slide" id="map-with-marks" data-lo="LO3" data-n="11" data-session="1">
+  <div class="kicker">The deliverable</div>
+  <h2>A process map is done when it marks where the data mislead, with a number</h2>
+  <pre class="code" data-file="out/meter_to_bill.mmd"><code class="language-text">flowchart LR
+  S1[&quot;1. Water passes the customer meter&quot;] --&gt; S2[&quot;2. Reader visits ...&quot;]
+  S2 --&gt; S3[&quot;3. Read taken, or estimate ...&quot;]
+  M3([&quot;⚠ Estimates: 16.4% of Al-Hamra bills&quot;]) -.- S3
+  M2([&quot;⚠ Cycle 27 to 35 days: sd 4.29 raw, 0.85 rescaled&quot;]) -.- S2
+  M1([&quot;⚠ Smart meters: billed +12.1% against -1.6%&quot;]) -.- S1</code></pre>
+  <p class="small muted">Mermaid text renders in a Mermaid viewer or in draw.io; the lab writes it for you.</p>
+  <aside class="notes"><p>Shortened from the file Lab 2.1 writes. The tools are examples: any diagram tool works, but text diagrams live in the repository next to the analysis and change with it. The capstone needs one map of this kind for the permits process.</p></aside>
+</section>
+
+<section class="slide" id="check-data-made" data-lo="LO3" data-n="12" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does the rise in recorded leaks show?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-data-made-q1">
+    <p class="lead">From month 13, Al-Wurud's crews search for leaks with acoustic loggers. Recorded leaks in Al-Wurud triple. A manager says "the network there is getting worse".</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads the count as the state of the pipes: the count depends on how hard anyone looks" data-k="A">The network in Al-Wurud is deteriorating</div>
+      <div class="opt" data-why="Assumes recorded leaks measure water saved: finding a leak is a step, the saving shows in the water balance" data-k="B">The loggers have already cut water loss threefold</div>
+      <div class="opt" data-why="Blames the data without a mechanism: the records are correct, they count something else" data-k="C">The repair records are unreliable and should be ignored</div>
+      <div class="opt" data-ok data-k="D">The crews are searching; whether less water is lost must be read from non-revenue water</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> How a number is made decides what it means: leaks found counts search effort plus leaks, so only the water balance can say whether losses fell.</div>
+  </div>
+  <aside class="notes"><p>Answer: the last. It connects the process map to the metric tree of the next session, where leaks found is labelled a causal failure of a proxy.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-1" data-auto="lab" data-lab="2.1" data-label="Lab 2.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.1 · 25 min</div><h2>The meter-to-bill map</h2><p class="lead small">Map the meter-to-bill process and mark where the data can mislead: a Mermaid process map with three marked points, each with its number from the data.</p><a class="nb" href="../labs/D2_1_map_meter_bill.ipynb">D2_1_map_meter_bill.ipynb</a></div><ul class="checklist"><li>Read the briefing pack <span class="min">5 min</span></li><li>Ask the metering engineer three questions <span class="min">5 min</span></li><li>The process as a Mermaid map <span class="min">5 min</span></li><li>Three points where the data mislead, with numbers <span class="min">8 min</span></li><li>Save the map <span class="min">2 min</span></li><li class="stretch">✱ Stretch: Add a fourth mark on the leak-repair work order</li></ul></div>
+  <aside class="notes"><p>Play Mamdouh for one table at a time, or let tables use the stand-in. Answer only what is asked. Typical problem: maps with twelve steps and no marks. Push for three marks, each with a number from the data. Early finishers do the repair-order stretch, which sets up Lab 2.2.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="14">
+  <div class="kicker">Session 2</div>
+  <h1>Metrics and proxies</h1>
+  <ul class="bullets outcomes"><li>Trace a goal to the proxies a metric tree uses for it</li><li>Recognise the four ways a proxy fails under pressure</li><li>Propose guardrail metrics that expose the gaming</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="metric-tree" data-lo="LO2" data-n="15" data-session="2">
+  <div class="kicker">The given</div>
+  <h2>Ghadeer's metric tree runs from a goal to leaves people can move</h2>
+  <div class="cols cols-2">
+    <div class="flow v">
+      <div class="step c-navy"><b>Goal</b>Little loss, good service</div>
+      <div class="arrow">↓</div>
+      <div class="step c-teal"><b>Outcomes</b>Non-revenue water · customer service</div>
+      <div class="arrow">↓</div>
+      <div class="step c-coral"><b>Leaves</b>Repair time · leaks found · estimated share · first-contact resolution · handling minutes</div>
+    </div>
+    <ul class="bullets">
+      <li>From month 13, two leaves became <b>targets</b>: repair time of 3 days or less; first-contact resolution of 85% or more</li>
+      <li>A leaf is a <b>proxy</b>: it stands for the goal while nobody pushes on it</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The tree is the given of outcome 2. Defining metrics well (grain, filters, owner) is DS-307; this session takes a tree as given and asks how it breaks under pressure.</p></aside>
+</section>
+
+<section class="slide" id="goodhart-four" data-lo="LO2" data-n="16" data-session="2">
+  <div class="kicker">Goodhart's law</div>
+  <h2>A proxy fails under pressure in four ways</h2>
+  <div class="cols cols-4">
+    <div class="card c-teal"><h4>Regressional</h4><p class="small mb0">Selecting on a noisy proxy also selects the noise</p></div>
+    <div class="card c-cyan"><h4>Extremal</h4><p class="small mb0">Pushed into a range where the old relation no longer holds</p></div>
+    <div class="card c-amber"><h4>Causal</h4><p class="small mb0">The action taken on the proxy breaks its link to the goal</p></div>
+    <div class="card c-coral"><h4>Adversarial</h4><p class="small mb0">People with other goals game the measure</p></div>
+  </div>
+  <div class="callout note mt"><b>The original law.</b> An observed regularity tends to collapse once pressure is placed on it for control.</div>
+  <aside class="notes"><p>The four categories are Manheim and Garrabrant's. Ghadeer examples: regressional, Plan A picking the worst month; causal, leaks found rising because crews search; adversarial, the two targets on the next slides. Extremal appears when a target pushes a measure far beyond its usual range.</p><p>Sources: Manheim and Garrabrant (2018), Categorizing Variants of Goodhart's Law.</p></aside>
+</section>
+
+<section class="slide" id="repair-time-gamed" data-lo="LO2" data-n="17" data-session="2">
+  <div class="kicker">The first target</div>
+  <h2>Repair time halved; the customer's wait did not</h2>
+  <table class="t">
+    <tr><th>Repair jobs</th><th class="num">Months 1 to 12</th><th class="num">Months 13 to 24</th></tr>
+    <tr class="hl"><td>Median days, job created to job closed (the target)</td><td class="num">4</td><td class="num">2</td></tr>
+    <tr><td>Jobs reopened after closure</td><td class="num">5.6%</td><td class="num">25.7%</td></tr>
+    <tr><td>Mean days, customer report to job created</td><td class="num">0.25</td><td class="num">1.81</td></tr>
+    <tr><td>Mean days, customer report to final fix</td><td class="num">4.85</td><td class="num">5.17</td></tr>
+  </table>
+  <aside class="notes"><p>From Lab 2.2, task 2. Read the table bottom-up: on average, what the customer lives with got slightly worse. If someone checks the median report-to-fix time, it fell from 5 to 4 days: most fixes are a little quicker, while reopened jobs add a long tail that raises the mean. Say so; the guardrail is still the reopening rate. Two behaviours: crews close at the first visit (reopenings fourfold) and dispatchers start the clock later (job creation delayed). Both are adversarial in the four-way sense, though nobody needs to be dishonest: the target rewards it.</p></aside>
+</section>
+
+<section class="slide" id="fcr-gamed" data-lo="LO2" data-n="18" data-session="2">
+  <div class="kicker">The second target</div>
+  <h2>More calls were marked resolved, and more customers called again</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">73.5 → 85.9%</div><div class="lbl">contacts marked resolved</div></div>
+    <div class="stat center"><div class="big">22.7 → 26.6%</div><div class="lbl">contacts followed by another within 7 days</div></div>
+    <div class="stat center"><div class="big">7.7 → 6.6</div><div class="lbl">average handling minutes</div></div>
+  </div>
+  <div class="callout warn mt"><b>Two changes in one month.</b> The target and a shorter call script both started in month 13 (Lab 1.3): the repeat rise has two candidate causes.</div>
+  <aside class="notes"><p>Lab 2.2, task 3, months 1 to 12 against 13 to 24. The callout is a preview of the history threat in Session 4. Remind the room of Sultana's constraint: repeats are linked by mobile number, so the true repeat rate is higher than 26.6%.</p></aside>
+</section>
+
+<section class="slide" id="guardrails" data-lo="LO2" data-n="19" data-session="2">
+  <div class="kicker">Guardrails</div>
+  <h2>A guardrail is a second metric that worsens when the first is gamed</h2>
+  <table class="t">
+    <tr><th>Guardrail</th><th>Guards</th><th>Behaviour it exposes</th><th class="num">Before → after</th></tr>
+    <tr><td>Jobs reopened after closure</td><td>Repair time</td><td>Closing before the leak is fixed</td><td class="num">5.6 → 25.7%</td></tr>
+    <tr><td>Contacts followed by another within 7 days</td><td>First-contact resolution</td><td>Marking a call resolved when the customer must call again</td><td class="num">22.7 → 26.6%</td></tr>
+  </table>
+  <aside class="notes"><p>These are the two guardrails of the Lab 2.2 solution. Each comes with its behaviour: the evidence of outcome 2 asks for exactly that pairing. Ask how a crew could game the reopening guardrail (log the second visit as a new job). Answer it with a rule: a new job at the same address within 30 days counts as a reopening.</p></aside>
+</section>
+
+<section class="slide" id="good-guardrail" data-lo="LO2" data-n="20" data-session="2">
+  <div class="kicker">Design</div>
+  <h2>A good guardrail is hard to game in the same move</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Opposite direction</h4><p class="small mb0">It worsens when the target is gamed: reopenings rise when jobs close early</p></div>
+    <div class="card c-cyan"><h4>Different owner</h4><p class="small mb0">Someone other than the people under the target produces it: the customer's next call</p></div>
+    <div class="card c-purple"><h4>Closer to the goal</h4><p class="small mb0">It measures what the customer or the network lives with: report to final fix</p></div>
+  </div>
+  <div class="callout note mt"><b>Pointer.</b> Writing the definition of each metric (grain, filters, owner) is DS-307, Day 1.</div>
+  <aside class="notes"><p>Three tests for any proposed guardrail. Repeat contacts pass all three; "agent self-assessed quality" fails the second. The pointer keeps the boundary with DS-307: this course does not teach metric definition.</p></aside>
+</section>
+
+<section class="slide" id="tree-annotated" data-lo="LO2" data-n="21" data-session="2">
+  <div class="kicker">The deliverable</div>
+  <h2>The annotated tree shows each failure and its guardrail on one page</h2>
+  <pre class="code s" data-file="out/metric_tree_annotated.mmd"><code class="language-text">flowchart TD
+  nrw --&gt; repair_time[&quot;Median days, job created to closed
+     ⚠ adversarial: closed at first visit, jobs created later&quot;]
+  nrw --&gt; leaks_found[&quot;Leaks found per month
+     ⚠ causal: searching harder raises the count&quot;]
+  service --&gt; fcr[&quot;First-contact resolution
+     ⚠ adversarial: marked resolved for the bonus&quot;]
+  GR1{{&quot;Guardrail: jobs reopened, %&quot;}} -.- repair_time
+  GR2{{&quot;Guardrail: repeat within 7 days, %&quot;}} -.- fcr</code></pre>
+  <aside class="notes"><p>Shortened from the file Lab 2.2 writes. The outcome's evidence is "an annotated tree with two guardrails and the behaviour each prevents": this is its shape. In the capstone, the permits case has its own tree: decisions per reviewer per week is the obvious target to stress.</p></aside>
+</section>
+
+<section class="slide" id="check-proxies" data-lo="LO2" data-n="22" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which guardrail fits this target?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-proxies-q1">
+    <p class="lead">Ghadeer sets readers a new target: 98% of meters read on the scheduled day. Which guardrail best exposes gaming of it?</p>
+    <div class="opts">
+      <div class="opt" data-why="Measures effort, not quality: more visits can rise while reads are faked" data-k="A">Number of reader visits per day</div>
+      <div class="opt" data-ok data-k="B">Size of the correction at the next actual read, by reader</div>
+      <div class="opt" data-why="Moves with the target, not against it: it rises when reads are faked" data-k="C">Share of meters read on the scheduled day, by district</div>
+      <div class="opt" data-why="Comes from the people under the target, so it is gamed in the same move" data-k="D">Readers' own notes on access problems</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A guessed read must be corrected later; large corrections by one reader expose it, and the next read is made by the meter, not by the reader's report.</div>
+  </div>
+  <aside class="notes"><p>Answer: correction size at the next actual read. Apply the three tests of the design slide: opposite direction, a different producer, closer to the goal (an accurate bill).</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-2" data-auto="lab" data-lab="2.2" data-label="Lab 2.2" data-n="23" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.2 · 25 min</div><h2>Stress-test the metric tree</h2><p class="lead small">Stress-test the water-loss and customer-service metric tree for gaming, label each failure, and add two guardrails with the behaviour each prevents.</p><a class="nb" href="../labs/D2_2_stress_test_water.ipynb">D2_2_stress_test_water.ipynb</a></div><ul class="checklist"><li>Read the tree and the date the targets started <span class="min">3 min</span></li><li>Repair time before and after the target <span class="min">6 min</span></li><li>First-contact resolution and repeat contacts <span class="min">6 min</span></li><li>Label each gamed metric with its mechanism <span class="min">4 min</span></li><li>Two guardrails and the behaviour each prevents <span class="min">6 min</span></li><li class="stretch">✱ Stretch: A guardrail for estimated reads inside non-revenue water</li></ul></div>
+  <aside class="notes"><p>The tricky step is task 3: the repeat flag needs the next contact of the same account, so sort by account and day before shifting. If someone gets a repeat rate near 50%, they compared with the previous contact of any account. Early finishers do the estimated-reads stretch.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="24">
+  <div class="kicker">Session 3</div>
+  <h1>Analysis plans</h1>
+  <ul class="bullets outcomes"><li>Write an analysis plan with data, method and threats to validity</li><li>Compute what change the available data can detect</li><li>State in advance the result that would change the decision</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="plan-sections" data-lo="LO4" data-n="25" data-session="3">
+  <div class="kicker">An analysis plan</div>
+  <h2>Seven sections, two pages, written before any result</h2>
+  <div class="cols cols-2">
+    <ol class="bullets">
+      <li><b>Question</b>: the framed decision</li>
+      <li><b>Data</b>: datasets, fields, grain, when ready</li>
+      <li><b>Method</b>: with its comparison</li>
+      <li><b>Detectable change</b>: can the data see the effect?</li>
+    </ol>
+    <ol class="bullets" start="5">
+      <li><b>Threats</b>: at least three, each with its answer</li>
+      <li><b>The result that changes the decision</b>, in numbers</li>
+      <li><b>Timeline</b>: in business days, back from the decision</li>
+    </ol>
+  </div>
+  <aside class="notes"><p>These are the sections the rubric checks (U.score_plan) and the capstone rubric scores. The plan is for Lab 2.3's supplied card, the logger decision, so everyone works on the same question whatever their Day 1 card looked like.</p></aside>
+</section>
+
+<section class="slide" id="fixed-before" data-lo="LO4" data-n="26" data-session="3">
+  <div class="kicker">Why before</div>
+  <h2>Choices made after seeing the data bend the answer, even without fishing</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Which months, which districts, raw or rescaled, mean or median: each choice is a fork</li>
+      <li>Made after looking, each fork drifts toward the result someone hoped for</li>
+      <li>Gelman and Loken: a multiple-comparisons problem arises even with <b>one analysis and no conscious fishing</b></li>
+    </ul>
+    <div class="card tint c-navy"><h4>In Lab 2.3</h4><p class="small mb0">You do not compute the effect of detection. You write the method, the threshold and the exclusions first.</p></div>
+  </div>
+  <div class="callout note mt"><b>Recap.</b> DS-205 pre-registers an experiment; here the same discipline covers any analysis.</div>
+  <aside class="notes"><p>Ask: in Plan A, which fork would you be tempted to take after seeing the numbers? Months 10 to 12 as the "before", because they make the fall look large. That is exactly what Gelman and Loken describe.</p><p>Sources: Gelman and Loken (2013), The garden of forking paths.</p></aside>
+</section>
+
+<section class="slide" id="plan-data-grain" data-lo="LO4" data-n="27" data-session="3">
+  <div class="kicker">Data</div>
+  <h2>Ask for the grain the method needs, not the rows the system holds</h2>
+  <table class="t small">
+    <tr><th>Dataset</th><th>What the plan asks for</th><th class="num">Ready</th></tr>
+    <tr><td>Bulk supply</td><td>Input by district and month</td><td class="num">1 day</td></tr>
+    <tr class="hl"><td>Billing reads</td><td>Billed m3 and billing days as district-month totals: no names, mobiles or national IDs</td><td class="num">2 days</td></tr>
+    <tr><td>Pipe network, road works</td><td>Not needed for this question</td><td class="num">8 and 15 days</td></tr>
+  </table>
+  <aside class="notes"><p>The billing team can produce totals inside their system: the personal fields never leave it. That is minimisation applied at the grain, and it also makes the extract faster to approve.</p></aside>
+</section>
+
+<section class="slide" id="plan-method" data-lo="LO4" data-n="28" data-session="3">
+  <div class="kicker">Method</div>
+  <h2>Compare Al-Wurud with the other districts, and skip the months that mix effects</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Before: months 1 to 9</b>Al-Wurud and five districts</div>
+    <div class="arrow">→</div>
+    <div class="step c-amber"><b>Months 10 to 14 left out</b>meter drift, recalibration, detection starting</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>After: months 15 to 24</b>the same districts</div>
+  </div>
+  <p class="lead mt">Difference in differences: Al-Wurud's change minus the other districts' change, bills rescaled to 30 days.</p>
+  <aside class="notes"><p>The comparison answers shared history (targets, seasons). The exclusions answer the measurement change only Al-Wurud had. Say clearly: the choice of months is written now, before anyone computes the result; it does not change after.</p></aside>
+</section>
+
+<section class="slide" id="detectable-change" data-lo="LO4" data-n="29" data-session="3">
+  <div class="kicker">Detectable change</div>
+  <h2>With raw bills the plan cannot see the 3 points it needs</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>Raw bills</span><div class="bar c-coral" style="--w:86%"></div><span class="val">6.45 points</span></div>
+      <div class="row"><span>Rescaled to 30 days</span><div class="bar c-teal" style="--w:17%"></div><span class="val">1.27 points</span></div>
+      <div class="row"><span>The decision rule</span><div class="bar c-navy" style="--w:40%"></div><span class="val">3 points</span></div>
+    </div>
+    <ul class="bullets">
+      <li>Smallest change 9 months before and 10 after can detect: about 2.8 standard errors</li>
+      <li>Noise from the five comparison districts in year 1</li>
+      <li>Knowing this <b>before</b> the analysis changes the method</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Lab 2.3, task 3: pooled monthly standard deviation 5.01 points raw and 0.99 rescaled, turned into a detectable change with the 2.8 rule (80% power, 5% two-sided). DS-205 participants know the power calculation; the point here is when to do it: in the plan.</p></aside>
+</section>
+
+<section class="slide" id="would-change" data-lo="LO4" data-n="30" data-session="3">
+  <div class="kicker">The deciding result</div>
+  <h2>Write the result that would change the decision, in numbers</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Vague</h4><p class="small mb0">"If detection shows a meaningful effect, consider extending it."</p></div>
+    <div class="card c-teal"><h4>Deciding</h4><p class="small mb0">"Below 3 points, or an interval that reaches 0: do not buy. 3 points or more: buy for Al-Rawdah (39.3%) and consider Al-Hamra."</p></div>
+  </div>
+  <aside class="notes"><p>The deciding result is the decision rule of the framing card, plus what to do with uncertainty. Ask the room what they would do with an estimate of 3.5 points and an interval from 0.5 to 6.5. A plan should already say.</p></aside>
+</section>
+
+<section class="slide" id="plan-rubric" data-lo="LO4" data-n="31" data-session="3">
+  <div class="kicker">Scoring</div>
+  <h2>A rule check catches missing parts; a reader judges the rest</h2>
+  <pre class="code" data-file="Lab 2.3"><code class="language-python">U.score_plan(plan)
+{<span class="hljs-string">&#x27;complete&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;data_feasible&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;method_has_comparison&#x27;</span>: <span class="hljs-number">2</span>,
+ <span class="hljs-string">&#x27;threats&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;would_change_numeric&#x27;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;fits_two_pages&#x27;</span>: <span class="hljs-number">2</span>,
+ <span class="hljs-string">&#x27;total&#x27;</span>: <span class="hljs-number">12</span>, <span class="hljs-string">&#x27;max&#x27;</span>: <span class="hljs-number">12</span>}</code></pre>
+  <div class="callout warn mt"><b>Necessary, not sufficient.</b> A plan can score 12 and pick the wrong comparison. The peer swap of Session 4 is the second check.</div>
+  <aside class="notes"><p>The output is the Lab 2.3 solution run. The capstone rubric weighs the plan for a fifth of the grade and a person scores it; the rule check is a self-test before submission.</p></aside>
+</section>
+
+<section class="slide" id="check-plans" data-lo="LO4" data-n="32" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What is wrong with this plan?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-plans-q1">
+    <p class="lead">An analyst computes non-revenue water for all six districts, sees which districts moved like Al-Wurud before month 13, and then writes into the plan that those two are the comparison.</p>
+    <div class="opts">
+      <div class="opt" data-why="Treats a smaller comparison as the flaw: two well-chosen districts can be a fine comparison if chosen in advance" data-k="A">Two comparison districts are too few</div>
+      <div class="opt" data-why="Mistakes looking at the pre-period for the problem: the issue is choosing after seeing outcomes, not seeing data" data-k="B">Pre-period data should never be looked at</div>
+      <div class="opt" data-ok data-k="C">The comparison was chosen after seeing the data, so it can bend toward a hoped-for result</div>
+      <div class="opt" data-why="Assumes a method label makes a plan valid: the name of the method says nothing about when its choices were made" data-k="D">It should say "difference in differences" explicitly</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A fork taken after looking is a forking path: write the rule for choosing comparison districts first, then apply it.</div>
+  </div>
+  <aside class="notes"><p>Answer: the forking path. Matching on the pre-period is legitimate when the rule is written first ("the districts whose year-1 trend is closest") and applied blind to the outcome period.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-3" data-auto="lab" data-lab="2.3" data-label="Lab 2.3" data-n="33" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.3 · 25 min</div><h2>A plan for a framed question</h2><p class="lead small">Write a plan for a framed question, including the result that would change the decision, and score it against the rubric.</p><a class="nb" href="../labs/D2_3_write_plan_framed.ipynb">D2_3_write_plan_framed.ipynb</a></div><ul class="checklist"><li>Read the card, the inventory and the deadline <span class="min">3 min</span></li><li>Data and method <span class="min">7 min</span></li><li>What change the data can detect <span class="min">5 min</span></li><li>Threats and the result that changes the decision <span class="min">7 min</span></li><li>Score the plan against the rubric <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Plan B, if the meter data arrive a week late</li></ul></div>
+  <aside class="notes"><p>Insist on no peeking at months 15 to 24. Common problems: data listed without grain (asks for the whole billing extract); threats without answers; a deciding result without a number. Each table reads one plan aloud at the end. The plan is used in the swap of Lab 2.4.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="34">
+  <div class="kicker">Session 4</div>
+  <h1>Threats to validity</h1>
+  <ul class="bullets outcomes"><li>Name the main threats to the validity of a plan</li><li>Show regression to the mean in data chosen for being extreme</li><li>Rank threats by how much they could change the decision</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="threat-catalogue" data-lo="LO4" data-n="35" data-session="4">
+  <div class="kicker">Ten threats</div>
+  <h2>Ten questions that could make the answer wrong</h2>
+  <table class="t small">
+    <tr><th>Threat</th><th>The question</th><th>Threat</th><th>The question</th></tr>
+    <tr><td>Selection</td><td>Chosen in a way linked to the outcome?</td><td>Construct</td><td>Does the metric still mean what it meant?</td></tr>
+    <tr><td>Regression to the mean</td><td>Picked because it was extreme?</td><td>Missing or merged</td><td>Are events lost or merged?</td></tr>
+    <tr><td>History</td><td>Did something else change at once?</td><td>Spillover</td><td>Does one unit affect the others?</td></tr>
+    <tr><td>Measurement change</td><td>Did the way of measuring change?</td><td>Forking paths</td><td>Choices made after seeing the data?</td></tr>
+    <tr><td>Seasonality</td><td>Do the periods differ by season?</td><td>Small sample</td><td>Too few units to see the signal?</td></tr>
+  </table>
+  <aside class="notes"><p>The catalogue is in data/threats.json. It is a working list, not a taxonomy to memorise. The left column are classic threats to internal validity; the right column mixes construct, measurement and analysis threats.</p></aside>
+</section>
+
+<section class="slide" id="regression-to-mean" data-lo="LO4" data-n="36" data-session="4">
+  <div class="kicker">In the data</div>
+  <h2>The district picked for its worst month improves next month on its own</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">-3.42</div><div class="lbl">points: next-month change of the district with the highest non-revenue water, months 1 to 12</div></div>
+    <div class="stat center"><div class="big">+0.33</div><div class="lbl">points: next-month change of all districts in the same months</div></div>
+  </div>
+  <div class="callout warn mt"><b>Plan A.</b> Al-Wurud was chosen because it was highest in month 12. Part of its fall would have happened with no detection at all.</div>
+  <aside class="notes"><p>Lab 2.4, task 3, raw bills, before any change. Part of an extreme value is noise; the noise does not repeat. Ask the room for a Ghadeer example outside water loss: the agent with the worst month of complaints, put on a coaching plan, "improves".</p></aside>
+</section>
+
+<section class="slide" id="measurement-change" data-lo="LO4" data-n="37" data-session="4">
+  <div class="kicker">Measurement change</div>
+  <h2>Plan A's "before" months were inflated by a meter fault</h2>
+  <table class="t">
+    <tr><th>Non-revenue water, bills rescaled to 30 days</th><th class="num">Al-Wurud</th><th class="num">Other districts</th></tr>
+    <tr><td>Months 1 to 9</td><td class="num">31.5%</td><td class="num">29.0%</td></tr>
+    <tr class="hl"><td>Months 10 to 12 (bulk meter over-reading)</td><td class="num">36.2%</td><td class="num">29.1%</td></tr>
+    <tr><td>Months 13 to 15</td><td class="num">32.1%</td><td class="num">27.4%</td></tr>
+  </table>
+  <aside class="notes"><p>Lab 2.4 prints these. Plan A compares months 10 to 12 with 13 to 15: a fall of about 4 points, most of which is the recalibration. Do not show the later months or a final effect: plans in this session are still fixed before outcomes. Day 3 reveals what the full comparison says.</p></aside>
+</section>
+
+<section class="slide" id="history-month-13" data-lo="LO4" data-n="38" data-session="4">
+  <div class="kicker">History</div>
+  <h2>Month 13 changed five things at once</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Active detection in Al-Wurud</li>
+      <li>Bulk-meter recalibration in Al-Wurud</li>
+      <li>Smart meters in Al-Nakheel</li>
+      <li>Repair-time and first-contact targets everywhere</li>
+      <li>A shorter call script in the contact centre</li>
+    </ul>
+    <div class="card c-amber"><h4>What a comparison answers</h4><p class="small mb0">Changes shared by every district cancel out. Changes in one district, such as Al-Nakheel's meters, distort the comparison: run it with and without that district.</p></div>
+  </div>
+  <aside class="notes"><p>This list is why the Lab 2.3 plan runs the comparison with and without Al-Nakheel. Ask which item threatens Plan B (the first-contact target): the shorter call script.</p></aside>
+</section>
+
+<section class="slide" id="construct-threat" data-lo="LO4 LO5" data-n="39" data-session="4">
+  <div class="kicker">Construct</div>
+  <h2>Plan B measures the target with the metric the target corrupted</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Plan B</h4><p class="small mb0">"First-contact resolution rose by 12 points: keep the target." The flag is set by the agents whose bonus depends on it.</p></div>
+    <div class="card c-teal"><h4>Better</h4><p class="small mb0">Judge the target by repeat contacts within seven days, which the customer produces, and state that mobile-number linking undercounts them.</p></div>
+  </div>
+  <aside class="notes"><p>Ties Session 2 to validity: a gamed proxy is a construct threat when the plan uses it as the outcome. The missing-data threat (linking by mobile) remains even with the better measure: say it, bound it, do not hide it.</p></aside>
+</section>
+
+<section class="slide" id="rank-threats" data-lo="LO4 LO5" data-n="40" data-session="4">
+  <div class="kicker">Ranking</div>
+  <h2>List three threats, ordered by how much each could change the decision</h2>
+  <ol class="bullets">
+    <li><b>Could reverse the decision</b>: the estimate may be mostly artefact (regression to the mean, measurement change)</li>
+    <li><b>Could move it across the threshold</b>: a bias of a few points near the 3-point rule (history)</li>
+    <li><b>Adds noise only</b>: mention it, do not lead with it (small sample, when the detectable change is small)</li>
+  </ol>
+  <div class="callout tip mt"><b>Tomorrow.</b> Review notes are ranked the same way: by consequence, not by the order you found them.</div>
+  <aside class="notes"><p>This is the bridge to Day 3. A threat list of ten items is not wrong, but nobody acts on it. The reviewers' key for Plan A is regression to the mean, measurement change, history; for Plan B construct, history, missing data.</p></aside>
+</section>
+
+<section class="slide" id="peer-swap" data-lo="LO4 LO5" data-n="41" data-session="4">
+  <div class="kicker">The swap</div>
+  <h2>Give a peer three threats, most dangerous first, with one sentence each</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Reviewer</span>1. Measurement change: you use months 10 to 12 as "before", and the bulk meter over-read then. 2. History: Al-Nakheel's smart meters change one comparison district. 3. Seasonality: the periods hold different months.</div>
+    <div class="msg ai good"><span class="who">Author</span>Agreed on 1 and 2. On 3: both periods compare against districts measured in the same months, so seasonality cancels.</div>
+  </div>
+  <aside class="notes"><p>Model the exchange: specific, ordered, each with its mechanism, and the author answers with the design. Disagreement about the order is useful. This is the Lab 2.4 task 5 and a rehearsal of the capstone peer review.</p></aside>
+</section>
+
+<section class="slide" id="check-threats" data-lo="LO4" data-n="42" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>What is the main threat to this plan?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-threats-q1">
+    <p class="lead">A plan compares Al-Nakheel's non-revenue water, bills rescaled to 30 days, in year 1 (27.7%) and year 2 (19.0%), after the smart meters, and concludes that the meters cut leakage.</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">Measurement change: the new meters bill water the old ones missed</div>
+      <div class="opt" data-why="Assumes the fall is noise: nine points is far beyond the monthly swing of rescaled bills" data-k="B">Small sample: twelve months each side are too few</div>
+      <div class="opt" data-why="Applies the threat to the wrong choice: Al-Nakheel was not picked for an extreme month" data-k="C">Regression to the mean: Al-Nakheel was picked for a bad month</div>
+      <div class="opt" data-why="Real but secondary: seasons repeat in both years, so they do not explain a step at month 13" data-k="D">Seasonality: summer months differ</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The meters change how consumption is measured; the fall is apparent losses becoming bills, and leakage needs another measure.</div>
+  </div>
+  <aside class="notes"><p>Answer: measurement change. It repeats Session 1 (smart-meter step) from the angle of validity. Ask what measure would show leakage in Al-Nakheel: night flow at the bulk meter, which the meters do not touch.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-2-4" data-auto="lab" data-lab="2.4" data-label="Lab 2.4" data-n="43" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 2.4 · 25 min</div><h2>Three threats each</h2><p class="lead small">Swap plans with a peer and list each other's three main threats, after doing the same for two supplied plans.</p><a class="nb" href="../labs/D2_4_swap_plans_peer.ipynb">D2_4_swap_plans_peer.ipynb</a></div><ul class="checklist"><li>Read the threat catalogue <span class="min">3 min</span></li><li>Plan A: its three main threats <span class="min">7 min</span></li><li>Regression to the mean in the data <span class="min">5 min</span></li><li>Plan B: its three main threats <span class="min">5 min</span></li><li>Swap with your neighbour and list theirs <span class="min">5 min</span></li><li class="stretch">✱ Stretch: Rewrite one plan so that its worst threat is answered</li></ul></div>
+  <aside class="notes"><p>Pairs swap their Lab 2.3 plans for task 5. Anyone without a plan swaps the supplied card's plan. Typical problem: threats named without the mechanism ("history might matter"). Ask for the event and the direction of the bias.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="44" data-session="4">
+  <div class="kicker">Day 2 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Know how it is made</h4><p class="small mb0">Estimates, billing cycles and meter swaps move non-revenue water without a drop saved.</p></div>
+    <div class="card c-coral"><h4>Targets bend proxies</h4><p class="small mb0">Pair every target with a guardrail that worsens when it is gamed.</p></div>
+    <div class="card c-purple"><h4>Plan, then look</h4><p class="small mb0">Method, exclusions, detectable change and the deciding result are fixed before the outcome.</p></div>
+  </div>
+  <aside class="notes"><p>Ask each table for the one threat they would not have seen without the engineer's interview. Usually the bulk-meter drift.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="45" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Day 3: Review others' work</h2>
+  <p class="lead">Tomorrow you review three analyses of Sabah's and one by the assistant Sareea. Bring your threat list from Lab 2.4: it is the start of a review checklist.</p>
+  <aside class="notes"><p>Remind participants that tomorrow's Lab 3.2 gives each participant a variant of their own: they need a participant number from the trainer (1 to 40).</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:42:45Z","version":"2027.1.0","commit":"95ffc6b"},"course":{"id":"ds-310","code":"DS-310","title":"Problem Framing and Analytical Review","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-310/","repo":"SDAIAAcademy/ds-310","home":"../index.html"},"deck":{"id":"day2","kind":"day","day":2,"label":"Day 2","title":"Know the domain, plan the work","prev":"day1.html","next":"day3.html","md":"day2.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"How the data are made","slide":"s1","outcomes":["Read a briefing pack and an expert interview for how a metric is produced","Draw the meter-to-bill process as a diagram","Mark where the data can mislead, with a number from the data"],"minutes":50,"lab":{"id":"2.1","title":"The meter-to-bill map","minutes":25,"href":"../labs/D2_1_map_meter_bill.ipynb"}},{"n":2,"label":"Session 2","title":"Metrics and proxies","slide":"s2","outcomes":["Trace a goal to the proxies a metric tree uses for it","Recognise the four ways a proxy fails under pressure","Propose guardrail metrics that expose the gaming"],"minutes":50,"lab":{"id":"2.2","title":"Stress-test the metric tree","minutes":25,"href":"../labs/D2_2_stress_test_water.ipynb"}},{"n":3,"label":"Session 3","title":"Analysis plans","slide":"s3","outcomes":["Write an analysis plan with data, method and threats to validity","Compute what change the available data can detect","State in advance the result that would change the decision"],"minutes":50,"lab":{"id":"2.3","title":"A plan for a framed question","minutes":25,"href":"../labs/D2_3_write_plan_framed.ipynb"}},{"n":4,"label":"Session 4","title":"Threats to validity","slide":"s4","outcomes":["Name the main threats to the validity of a plan","Show regression to the mean in data chosen for being extreme","Rank threats by how much they could change the decision"],"minutes":50,"lab":{"id":"2.4","title":"Three threats each","minutes":25,"href":"../labs/D2_4_swap_plans_peer.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Know the domain, plan the work","kind":"title","session":0,"hash":"25aea9ec","md":"#### [day2#title] Know the domain, plan the work\n\n*SDAIA Academy · Problem Framing and Analytical Review*\n\nDay 2: Learn how the numbers are made before you plan what to do with them\n\nData Science Track · 3 teaching days + capstone day · 4 sessions · 4 labs · DS-310","notes":"Day 2 moves from the question to the work behind it. Morning: how the numbers are made and how targets bend them. Afternoon: a plan written before any result, and the threats that could make it wrong. Open with one framing card from yesterday, read aloud, and ask a planner in the room what data they would fetch first.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Know the domain, plan the work","kind":"content","session":0,"hash":"790bfb2d","md":"#### [day2#agenda] Know the domain, plan the work\n\n*Today*\n\n- **Session 1 · How the data are made**: Meter reads become bills through estimates, billing cycles and meter swaps, and each step can mislead\n- **Session 2 · Metrics and proxies**: A metric tree is a set of proxies; under a target, each one can be gamed\n- **Session 3 · Analysis plans**: Data, method, threats and the result that would change the decision, fixed before outcomes are seen\n- **Session 4 · Threats to validity**: What could make the answer wrong: selection, regression to the mean, measurement change and more","notes":"Four sessions and four labs, all on the synthetic Ghadeer data. Lab 2.1 has a role-played engineer; the trainer plays Mamdouh from the role card, or participants use the stand-in.","minutes":null,"lo":[]},{"id":"review-day1","n":3,"title":"Which card is ready to plan from?","kind":"quiz","session":0,"hash":"862e5276","md":"#### [day2#review-day1] Which card is ready to plan from?\n\n*Review of Day 1*\n\n**Question:** Four drafts for Mamdouh's logger request. Which one could a peer plan from without asking anything?\n\n- A. \"Should Ghadeer buy loggers for Al-Rawdah next year? Buy if detection cut non-revenue water by 3 points or more in Al-Wurud against the other districts.\"\n- B. \"Analyse how many leaks the loggers found in Al-Wurud.\"\n- C. \"Should Ghadeer buy loggers if detection works?\"\n- D. \"Build a model of leak risk by district.\"","notes":"Answer: the first. Use the wrong options to recall the three Day 1 failures: activity as outcome, no threshold, method before question. Two minutes, then move on.","minutes":null,"lo":["LO1","LO6"]},{"id":"s1","n":4,"title":"How the data are made","kind":"section","session":1,"hash":"107ce81e","md":"#### [day2#s1] How the data are made\n\n*Session 1*\n\n- Read a briefing pack and an expert interview for how a metric is produced\n- Draw the meter-to-bill process as a diagram\n- Mark where the data can mislead, with a number from the data","notes":"","minutes":null,"lo":["LO3"]},{"id":"water-balance","n":5,"title":"Non-revenue water mixes water that leaked with water that was not billed","kind":"content","session":1,"hash":"e7be8d71","md":"#### [day2#water-balance] Non-revenue water mixes water that leaked with water that was not billed\n\n*The domain*\n\n1. **System input** what the bulk meters measure\n2. **Billed consumption** what the bills say\n3. **Non-revenue water** the difference\n\n- **Real losses.** Leaks, bursts and overflows up to the customer meter\n- **Apparent losses.** Meter inaccuracy, billing data errors, unauthorised use: water delivered but not billed","notes":"This is the IWA and AWWA water balance, as described by the Alliance for Water Efficiency. The key line for analysts: a change in billing or metering moves non-revenue water without a drop of water saved. Every request about water loss must say which of the two it is about.\n\nSources: Alliance for Water Efficiency, Water Audit (the IWA and AWWA water balance).","minutes":null,"lo":["LO3"]},{"id":"meter-to-bill","n":6,"title":"Seven steps turn water at a meter into a percentage in a report","kind":"content","session":1,"hash":"f99e4ad2","md":"#### [day2#meter-to-bill] Seven steps turn water at a meter into a percentage in a report\n\n*The process*\n\n1. Water passes the customer meter\n2. A reader visits on a route, every 27 to 35 days\n3. A read is taken, or the bill is estimated from the last three reads\n4. A bill is issued for the period ending this month\n5. Bills are summed by district and month\n6. The bulk meter gives district input for the calendar month\n7. Non-revenue water is input minus billed","notes":"The steps come from the briefing pack and the engineer's answers: the solution of Lab 2.1. Ask the room at which step a number could go wrong without anyone doing anything wrong. Collect answers; the next three slides measure three of them.","minutes":null,"lo":["LO3"]},{"id":"estimated-bills","n":7,"title":"Al-Hamra estimates one bill in six, and estimates miss the summer","kind":"content","session":1,"hash":"bbda6246","md":"#### [day2#estimated-bills] Al-Hamra estimates one bill in six, and estimates miss the summer\n\n*Step 3*\n\n| Item | Value |\n| --- | --- |\n| Al-Hamra | 16.4% |\n| Al-Rawdah | 4.3% |\n| Al-Salam | 3.2% |\n| Al-Shifa | 2.9% |\n| Al-Wurud | 2.4% |\n| Al-Nakheel | 2.3% |\n\n- An estimate is the **average of the last three actual reads**\n- It does not follow the summer rise, so summer bills come in low\n- The next actual read catches up: the error **moves between months**","notes":"Share of bills estimated over the two years, Lab 2.1 exercise 4a. Ask: what does this do to Al-Hamra's non-revenue water in summer? It rises (billed too low), then falls when the catch-up bill arrives. A month-by-month analysis of Al-Hamra reads billing timing as water loss.","minutes":null,"lo":["LO3"]},{"id":"billing-cycles","n":8,"title":"A \"monthly\" bill covers 27 to 35 days, and that alone moves the percentage","kind":"content","session":1,"hash":"f06ff2bd","md":"#### [day2#billing-cycles] A \"monthly\" bill covers 27 to 35 days, and that alone moves the percentage\n\n*Step 2*\n\n**4.29 → 0.85** standard deviation of monthly non-revenue water in Al-Salam, months 1 to 12, in points: raw, then bills rescaled to 30 days\n\n- The bulk meter measures a calendar month; the bill measures a reading period\n- A 35-day bill in a 30-day month makes the district look tight\n- Rescaling each bill to 30 days removes about four fifths of the swing","notes":"From Lab 2.1 exercise 4b. Nothing happened in Al-Salam in year 1; all of the raw swing is how the data are made. This number returns in Session 3: with raw bills, a plan cannot detect the 3-point change it needs.","minutes":null,"lo":["LO3"]},{"id":"smart-meter-step","n":9,"title":"Smart meters raised Al-Nakheel's bills by measuring, not by use","kind":"content","session":1,"hash":"9602297e","md":"#### [day2#smart-meter-step] Smart meters raised Al-Nakheel's bills by measuring, not by use\n\n*Step 1*\n\n| Billed per account per 30 days, year 2 against year 1 | Change |\n| --- | --- |\n| Al-Nakheel, smart meters from month 13 | +12.1% |\n| The other five districts | -1.6% |\n\n- Old mechanical meters miss about **1.5% more each year**\n- New meters bill water the old ones missed: **apparent losses** fall\n- This is why Al-Nakheel had the lowest non-revenue water on Day 1","notes":"Lab 2.1 exercise 4c, actual reads only. This answers yesterday's puzzle and request R5: the smart meters \"work\" at billing, and say nothing yet about leaks. The other districts drift down slowly as their meters age. Ask: if R5 is framed as \"did consumption rise\", what does the board conclude? Something false.","minutes":null,"lo":["LO3"]},{"id":"ask-the-engineer","n":10,"title":"The engineer knows what the documents leave out","kind":"content","session":1,"hash":"508a29ba","md":"#### [day2#ask-the-engineer] The engineer knows what the documents leave out\n\n*The expert interview*\n\n**You:** How is the district input measured, and has anything changed with those meters?\n\n**Mamdouh (good example):** The Al-Wurud bulk meter was over-reading for a few months. It was recalibrated in month 13.\n\n**You:** When is a repair job closed?\n\n**Mamdouh (good example):** Since the three-day target, crews close the job when they leave the site. If the leak comes back, it is reopened.","notes":"Two answers from the role card that are in no document. The bulk-meter drift becomes the main threat to Plan A in Session 4; the closing rule becomes the gaming of Session 2. Interviewing for how data are produced is outcome 3: domain documents plus an expert.","minutes":null,"lo":["LO3"]},{"id":"map-with-marks","n":11,"title":"A process map is done when it marks where the data mislead, with a number","kind":"content","session":1,"hash":"f7a60484","md":"#### [day2#map-with-marks] A process map is done when it marks where the data mislead, with a number\n\n*The deliverable*\n\n```text\n# file: out/meter_to_bill.mmd\nflowchart LR\n  S1[\"1. Water passes the customer meter\"] --> S2[\"2. Reader visits ...\"]\n  S2 --> S3[\"3. Read taken, or estimate ...\"]\n  M3([\"⚠ Estimates: 16.4% of Al-Hamra bills\"]) -.- S3\n  M2([\"⚠ Cycle 27 to 35 days: sd 4.29 raw, 0.85 rescaled\"]) -.- S2\n  M1([\"⚠ Smart meters: billed +12.1% against -1.6%\"]) -.- S1\n```\n\nMermaid text renders in a Mermaid viewer or in draw.io; the lab writes it for you.","notes":"Shortened from the file Lab 2.1 writes. The tools are examples: any diagram tool works, but text diagrams live in the repository next to the analysis and change with it. The capstone needs one map of this kind for the permits process.","minutes":null,"lo":["LO3"]},{"id":"check-data-made","n":12,"title":"What does the rise in recorded leaks show?","kind":"quiz","session":1,"hash":"1ad4d320","md":"#### [day2#check-data-made] What does the rise in recorded leaks show?\n\n*Checkpoint*\n\n**Question:** From month 13, Al-Wurud's crews search for leaks with acoustic loggers. Recorded leaks in Al-Wurud triple. A manager says \"the network there is getting worse\".\n\n- A. The network in Al-Wurud is deteriorating\n- B. The loggers have already cut water loss threefold\n- C. The repair records are unreliable and should be ignored\n- D. The crews are searching; whether less water is lost must be read from non-revenue water","notes":"Answer: the last. It connects the process map to the metric tree of the next session, where leaks found is labelled a causal failure of a proxy.","minutes":null,"lo":["LO3"]},{"id":"lab-2-1","n":13,"title":"The meter-to-bill map","kind":"lab","session":1,"hash":"6148cea8","md":"#### [day2#lab-2-1] The meter-to-bill map\n\nLab 2.1 · 25 min\n\nMap the meter-to-bill process and mark where the data can mislead: a Mermaid process map with three marked points, each with its number from the data.\n\n[D2_1_map_meter_bill.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D2_1_map_meter_bill.ipynb)\n\n- [ ] Read the briefing pack (5 min)\n- [ ] Ask the metering engineer three questions (5 min)\n- [ ] The process as a Mermaid map (5 min)\n- [ ] Three points where the data mislead, with numbers (8 min)\n- [ ] Save the map (2 min)\n- [ ] ✱ Stretch: Add a fourth mark on the leak-repair work order","notes":"Play Mamdouh for one table at a time, or let tables use the stand-in. Answer only what is asked. Typical problem: maps with twelve steps and no marks. Push for three marks, each with a number from the data. Early finishers do the repair-order stretch, which sets up Lab 2.2.","minutes":null,"lo":[]},{"id":"s2","n":14,"title":"Metrics and proxies","kind":"section","session":2,"hash":"92eb8fdb","md":"#### [day2#s2] Metrics and proxies\n\n*Session 2*\n\n- Trace a goal to the proxies a metric tree uses for it\n- Recognise the four ways a proxy fails under pressure\n- Propose guardrail metrics that expose the gaming","notes":"","minutes":null,"lo":["LO2"]},{"id":"metric-tree","n":15,"title":"Ghadeer's metric tree runs from a goal to leaves people can move","kind":"content","session":2,"hash":"2ae7c55a","md":"#### [day2#metric-tree] Ghadeer's metric tree runs from a goal to leaves people can move\n\n*The given*\n\n1. **Goal** Little loss, good service\n2. **Outcomes** Non-revenue water · customer service\n3. **Leaves** Repair time · leaks found · estimated share · first-contact resolution · handling minutes\n\n- From month 13, two leaves became **targets**: repair time of 3 days or less; first-contact resolution of 85% or more\n- A leaf is a **proxy**: it stands for the goal while nobody pushes on it","notes":"The tree is the given of outcome 2. Defining metrics well (grain, filters, owner) is DS-307; this session takes a tree as given and asks how it breaks under pressure.","minutes":null,"lo":["LO2"]},{"id":"goodhart-four","n":16,"title":"A proxy fails under pressure in four ways","kind":"content","session":2,"hash":"96ea8dbc","md":"#### [day2#goodhart-four] A proxy fails under pressure in four ways\n\n*Goodhart's law*\n\n- **Regressional.** Selecting on a noisy proxy also selects the noise\n- **Extremal.** Pushed into a range where the old relation no longer holds\n- **Causal.** The action taken on the proxy breaks its link to the goal\n- **Adversarial.** People with other goals game the measure\n\n> **The original law.** An observed regularity tends to collapse once pressure is placed on it for control.","notes":"The four categories are Manheim and Garrabrant's. Ghadeer examples: regressional, Plan A picking the worst month; causal, leaks found rising because crews search; adversarial, the two targets on the next slides. Extremal appears when a target pushes a measure far beyond its usual range.\n\nSources: Manheim and Garrabrant (2018), Categorizing Variants of Goodhart's Law.","minutes":null,"lo":["LO2"]},{"id":"repair-time-gamed","n":17,"title":"Repair time halved; the customer's wait did not","kind":"content","session":2,"hash":"9aa27cb9","md":"#### [day2#repair-time-gamed] Repair time halved; the customer's wait did not\n\n*The first target*\n\n| Repair jobs | Months 1 to 12 | Months 13 to 24 |\n| --- | --- | --- |\n| Median days, job created to job closed (the target) | 4 | 2 |\n| Jobs reopened after closure | 5.6% | 25.7% |\n| Mean days, customer report to job created | 0.25 | 1.81 |\n| Mean days, customer report to final fix | 4.85 | 5.17 |","notes":"From Lab 2.2, task 2. Read the table bottom-up: on average, what the customer lives with got slightly worse. If someone checks the median report-to-fix time, it fell from 5 to 4 days: most fixes are a little quicker, while reopened jobs add a long tail that raises the mean. Say so; the guardrail is still the reopening rate. Two behaviours: crews close at the first visit (reopenings fourfold) and dispatchers start the clock later (job creation delayed). Both are adversarial in the four-way sense, though nobody needs to be dishonest: the target rewards it.","minutes":null,"lo":["LO2"]},{"id":"fcr-gamed","n":18,"title":"More calls were marked resolved, and more customers called again","kind":"content","session":2,"hash":"bd8c365f","md":"#### [day2#fcr-gamed] More calls were marked resolved, and more customers called again\n\n*The second target*\n\n- **73.5 → 85.9%** contacts marked resolved\n- **22.7 → 26.6%** contacts followed by another within 7 days\n- **7.7 → 6.6** average handling minutes\n\n> **Two changes in one month.** The target and a shorter call script both started in month 13 (Lab 1.3): the repeat rise has two candidate causes.","notes":"Lab 2.2, task 3, months 1 to 12 against 13 to 24. The callout is a preview of the history threat in Session 4. Remind the room of Sultana's constraint: repeats are linked by mobile number, so the true repeat rate is higher than 26.6%.","minutes":null,"lo":["LO2"]},{"id":"guardrails","n":19,"title":"A guardrail is a second metric that worsens when the first is gamed","kind":"content","session":2,"hash":"b8db0a4c","md":"#### [day2#guardrails] A guardrail is a second metric that worsens when the first is gamed\n\n*Guardrails*\n\n| Guardrail | Guards | Behaviour it exposes | Before → after |\n| --- | --- | --- | --- |\n| Jobs reopened after closure | Repair time | Closing before the leak is fixed | 5.6 → 25.7% |\n| Contacts followed by another within 7 days | First-contact resolution | Marking a call resolved when the customer must call again | 22.7 → 26.6% |","notes":"These are the two guardrails of the Lab 2.2 solution. Each comes with its behaviour: the evidence of outcome 2 asks for exactly that pairing. Ask how a crew could game the reopening guardrail (log the second visit as a new job). Answer it with a rule: a new job at the same address within 30 days counts as a reopening.","minutes":null,"lo":["LO2"]},{"id":"good-guardrail","n":20,"title":"A good guardrail is hard to game in the same move","kind":"content","session":2,"hash":"eb4eee71","md":"#### [day2#good-guardrail] A good guardrail is hard to game in the same move\n\n*Design*\n\n- **Opposite direction.** It worsens when the target is gamed: reopenings rise when jobs close early\n- **Different owner.** Someone other than the people under the target produces it: the customer's next call\n- **Closer to the goal.** It measures what the customer or the network lives with: report to final fix\n\n> **Pointer.** Writing the definition of each metric (grain, filters, owner) is DS-307, Day 1.","notes":"Three tests for any proposed guardrail. Repeat contacts pass all three; \"agent self-assessed quality\" fails the second. The pointer keeps the boundary with DS-307: this course does not teach metric definition.","minutes":null,"lo":["LO2"]},{"id":"tree-annotated","n":21,"title":"The annotated tree shows each failure and its guardrail on one page","kind":"content","session":2,"hash":"391433f0","md":"#### [day2#tree-annotated] The annotated tree shows each failure and its guardrail on one page\n\n*The deliverable*\n\n```text\n# file: out/metric_tree_annotated.mmd\nflowchart TD\n  nrw --> repair_time[\"Median days, job created to closed\n     ⚠ adversarial: closed at first visit, jobs created later\"]\n  nrw --> leaks_found[\"Leaks found per month\n     ⚠ causal: searching harder raises the count\"]\n  service --> fcr[\"First-contact resolution\n     ⚠ adversarial: marked resolved for the bonus\"]\n  GR1{{\"Guardrail: jobs reopened, %\"}} -.- repair_time\n  GR2{{\"Guardrail: repeat within 7 days, %\"}} -.- fcr\n```","notes":"Shortened from the file Lab 2.2 writes. The outcome's evidence is \"an annotated tree with two guardrails and the behaviour each prevents\": this is its shape. In the capstone, the permits case has its own tree: decisions per reviewer per week is the obvious target to stress.","minutes":null,"lo":["LO2"]},{"id":"check-proxies","n":22,"title":"Which guardrail fits this target?","kind":"quiz","session":2,"hash":"0cda4a93","md":"#### [day2#check-proxies] Which guardrail fits this target?\n\n*Checkpoint*\n\n**Question:** Ghadeer sets readers a new target: 98% of meters read on the scheduled day. Which guardrail best exposes gaming of it?\n\n- A. Number of reader visits per day\n- B. Size of the correction at the next actual read, by reader\n- C. Share of meters read on the scheduled day, by district\n- D. Readers' own notes on access problems","notes":"Answer: correction size at the next actual read. Apply the three tests of the design slide: opposite direction, a different producer, closer to the goal (an accurate bill).","minutes":null,"lo":["LO2"]},{"id":"lab-2-2","n":23,"title":"Stress-test the metric tree","kind":"lab","session":2,"hash":"148ceaa8","md":"#### [day2#lab-2-2] Stress-test the metric tree\n\nLab 2.2 · 25 min\n\nStress-test the water-loss and customer-service metric tree for gaming, label each failure, and add two guardrails with the behaviour each prevents.\n\n[D2_2_stress_test_water.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D2_2_stress_test_water.ipynb)\n\n- [ ] Read the tree and the date the targets started (3 min)\n- [ ] Repair time before and after the target (6 min)\n- [ ] First-contact resolution and repeat contacts (6 min)\n- [ ] Label each gamed metric with its mechanism (4 min)\n- [ ] Two guardrails and the behaviour each prevents (6 min)\n- [ ] ✱ Stretch: A guardrail for estimated reads inside non-revenue water","notes":"The tricky step is task 3: the repeat flag needs the next contact of the same account, so sort by account and day before shifting. If someone gets a repeat rate near 50%, they compared with the previous contact of any account. Early finishers do the estimated-reads stretch.","minutes":null,"lo":[]},{"id":"s3","n":24,"title":"Analysis plans","kind":"section","session":3,"hash":"bf02b9cf","md":"#### [day2#s3] Analysis plans\n\n*Session 3*\n\n- Write an analysis plan with data, method and threats to validity\n- Compute what change the available data can detect\n- State in advance the result that would change the decision","notes":"","minutes":null,"lo":["LO4"]},{"id":"plan-sections","n":25,"title":"Seven sections, two pages, written before any result","kind":"content","session":3,"hash":"13ca6afe","md":"#### [day2#plan-sections] Seven sections, two pages, written before any result\n\n*An analysis plan*\n\n1. **Question**: the framed decision\n2. **Data**: datasets, fields, grain, when ready\n3. **Method**: with its comparison\n4. **Detectable change**: can the data see the effect?\n\n5. **Threats**: at least three, each with its answer\n6. **The result that changes the decision**, in numbers\n7. **Timeline**: in business days, back from the decision","notes":"These are the sections the rubric checks (U.score_plan) and the capstone rubric scores. The plan is for Lab 2.3's supplied card, the logger decision, so everyone works on the same question whatever their Day 1 card looked like.","minutes":null,"lo":["LO4"]},{"id":"fixed-before","n":26,"title":"Choices made after seeing the data bend the answer, even without fishing","kind":"content","session":3,"hash":"2139b50d","md":"#### [day2#fixed-before] Choices made after seeing the data bend the answer, even without fishing\n\n*Why before*\n\n- Which months, which districts, raw or rescaled, mean or median: each choice is a fork\n- Made after looking, each fork drifts toward the result someone hoped for\n- Gelman and Loken: a multiple-comparisons problem arises even with **one analysis and no conscious fishing**\n\n- **In Lab 2.3.** You do not compute the effect of detection. You write the method, the threshold and the exclusions first.\n\n> **Recap.** DS-205 pre-registers an experiment; here the same discipline covers any analysis.","notes":"Ask: in Plan A, which fork would you be tempted to take after seeing the numbers? Months 10 to 12 as the \"before\", because they make the fall look large. That is exactly what Gelman and Loken describe.\n\nSources: Gelman and Loken (2013), The garden of forking paths.","minutes":null,"lo":["LO4"]},{"id":"plan-data-grain","n":27,"title":"Ask for the grain the method needs, not the rows the system holds","kind":"content","session":3,"hash":"ee494099","md":"#### [day2#plan-data-grain] Ask for the grain the method needs, not the rows the system holds\n\n*Data*\n\n| Dataset | What the plan asks for | Ready |\n| --- | --- | --- |\n| Bulk supply | Input by district and month | 1 day |\n| Billing reads | Billed m3 and billing days as district-month totals: no names, mobiles or national IDs | 2 days |\n| Pipe network, road works | Not needed for this question | 8 and 15 days |","notes":"The billing team can produce totals inside their system: the personal fields never leave it. That is minimisation applied at the grain, and it also makes the extract faster to approve.","minutes":null,"lo":["LO4"]},{"id":"plan-method","n":28,"title":"Compare Al-Wurud with the other districts, and skip the months that mix effects","kind":"content","session":3,"hash":"e11efc80","md":"#### [day2#plan-method] Compare Al-Wurud with the other districts, and skip the months that mix effects\n\n*Method*\n\n1. **Before: months 1 to 9** Al-Wurud and five districts\n2. **Months 10 to 14 left out** meter drift, recalibration, detection starting\n3. **After: months 15 to 24** the same districts\n\nDifference in differences: Al-Wurud's change minus the other districts' change, bills rescaled to 30 days.","notes":"The comparison answers shared history (targets, seasons). The exclusions answer the measurement change only Al-Wurud had. Say clearly: the choice of months is written now, before anyone computes the result; it does not change after.","minutes":null,"lo":["LO4"]},{"id":"detectable-change","n":29,"title":"With raw bills the plan cannot see the 3 points it needs","kind":"content","session":3,"hash":"50f2bcc7","md":"#### [day2#detectable-change] With raw bills the plan cannot see the 3 points it needs\n\n*Detectable change*\n\n| Item | Value |\n| --- | --- |\n| Raw bills | 6.45 points |\n| Rescaled to 30 days | 1.27 points |\n| The decision rule | 3 points |\n\n- Smallest change 9 months before and 10 after can detect: about 2.8 standard errors\n- Noise from the five comparison districts in year 1\n- Knowing this **before** the analysis changes the method","notes":"Lab 2.3, task 3: pooled monthly standard deviation 5.01 points raw and 0.99 rescaled, turned into a detectable change with the 2.8 rule (80% power, 5% two-sided). DS-205 participants know the power calculation; the point here is when to do it: in the plan.","minutes":null,"lo":["LO4"]},{"id":"would-change","n":30,"title":"Write the result that would change the decision, in numbers","kind":"content","session":3,"hash":"4fd45ee6","md":"#### [day2#would-change] Write the result that would change the decision, in numbers\n\n*The deciding result*\n\n- **Vague.** \"If detection shows a meaningful effect, consider extending it.\"\n- **Deciding.** \"Below 3 points, or an interval that reaches 0: do not buy. 3 points or more: buy for Al-Rawdah (39.3%) and consider Al-Hamra.\"","notes":"The deciding result is the decision rule of the framing card, plus what to do with uncertainty. Ask the room what they would do with an estimate of 3.5 points and an interval from 0.5 to 6.5. A plan should already say.","minutes":null,"lo":["LO4"]},{"id":"plan-rubric","n":31,"title":"A rule check catches missing parts; a reader judges the rest","kind":"content","session":3,"hash":"1371a733","md":"#### [day2#plan-rubric] A rule check catches missing parts; a reader judges the rest\n\n*Scoring*\n\n```python\n# file: Lab 2.3\nU.score_plan(plan)\n{'complete': 2, 'data_feasible': 2, 'method_has_comparison': 2,\n 'threats': 2, 'would_change_numeric': 2, 'fits_two_pages': 2,\n 'total': 12, 'max': 12}\n```\n\n> **Necessary, not sufficient.** A plan can score 12 and pick the wrong comparison. The peer swap of Session 4 is the second check.","notes":"The output is the Lab 2.3 solution run. The capstone rubric weighs the plan for a fifth of the grade and a person scores it; the rule check is a self-test before submission.","minutes":null,"lo":["LO4"]},{"id":"check-plans","n":32,"title":"What is wrong with this plan?","kind":"quiz","session":3,"hash":"1af4484d","md":"#### [day2#check-plans] What is wrong with this plan?\n\n*Checkpoint*\n\n**Question:** An analyst computes non-revenue water for all six districts, sees which districts moved like Al-Wurud before month 13, and then writes into the plan that those two are the comparison.\n\n- A. Two comparison districts are too few\n- B. Pre-period data should never be looked at\n- C. The comparison was chosen after seeing the data, so it can bend toward a hoped-for result\n- D. It should say \"difference in differences\" explicitly","notes":"Answer: the forking path. Matching on the pre-period is legitimate when the rule is written first (\"the districts whose year-1 trend is closest\") and applied blind to the outcome period.","minutes":null,"lo":["LO4"]},{"id":"lab-2-3","n":33,"title":"A plan for a framed question","kind":"lab","session":3,"hash":"92421910","md":"#### [day2#lab-2-3] A plan for a framed question\n\nLab 2.3 · 25 min\n\nWrite a plan for a framed question, including the result that would change the decision, and score it against the rubric.\n\n[D2_3_write_plan_framed.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D2_3_write_plan_framed.ipynb)\n\n- [ ] Read the card, the inventory and the deadline (3 min)\n- [ ] Data and method (7 min)\n- [ ] What change the data can detect (5 min)\n- [ ] Threats and the result that changes the decision (7 min)\n- [ ] Score the plan against the rubric (3 min)\n- [ ] ✱ Stretch: Plan B, if the meter data arrive a week late","notes":"Insist on no peeking at months 15 to 24. Common problems: data listed without grain (asks for the whole billing extract); threats without answers; a deciding result without a number. Each table reads one plan aloud at the end. The plan is used in the swap of Lab 2.4.","minutes":null,"lo":[]},{"id":"s4","n":34,"title":"Threats to validity","kind":"section","session":4,"hash":"de5594b7","md":"#### [day2#s4] Threats to validity\n\n*Session 4*\n\n- Name the main threats to the validity of a plan\n- Show regression to the mean in data chosen for being extreme\n- Rank threats by how much they could change the decision","notes":"","minutes":null,"lo":["LO4","LO5"]},{"id":"threat-catalogue","n":35,"title":"Ten questions that could make the answer wrong","kind":"content","session":4,"hash":"da8b7cff","md":"#### [day2#threat-catalogue] Ten questions that could make the answer wrong\n\n*Ten threats*\n\n| Threat | The question | Threat | The question |\n| --- | --- | --- | --- |\n| Selection | Chosen in a way linked to the outcome? | Construct | Does the metric still mean what it meant? |\n| Regression to the mean | Picked because it was extreme? | Missing or merged | Are events lost or merged? |\n| History | Did something else change at once? | Spillover | Does one unit affect the others? |\n| Measurement change | Did the way of measuring change? | Forking paths | Choices made after seeing the data? |\n| Seasonality | Do the periods differ by season? | Small sample | Too few units to see the signal? |","notes":"The catalogue is in data/threats.json. It is a working list, not a taxonomy to memorise. The left column are classic threats to internal validity; the right column mixes construct, measurement and analysis threats.","minutes":null,"lo":["LO4"]},{"id":"regression-to-mean","n":36,"title":"The district picked for its worst month improves next month on its own","kind":"content","session":4,"hash":"c90f9d4f","md":"#### [day2#regression-to-mean] The district picked for its worst month improves next month on its own\n\n*In the data*\n\n- **-3.42** points: next-month change of the district with the highest non-revenue water, months 1 to 12\n- **+0.33** points: next-month change of all districts in the same months\n\n> **Plan A.** Al-Wurud was chosen because it was highest in month 12. Part of its fall would have happened with no detection at all.","notes":"Lab 2.4, task 3, raw bills, before any change. Part of an extreme value is noise; the noise does not repeat. Ask the room for a Ghadeer example outside water loss: the agent with the worst month of complaints, put on a coaching plan, \"improves\".","minutes":null,"lo":["LO4"]},{"id":"measurement-change","n":37,"title":"Plan A's \"before\" months were inflated by a meter fault","kind":"content","session":4,"hash":"9e598d6e","md":"#### [day2#measurement-change] Plan A's \"before\" months were inflated by a meter fault\n\n*Measurement change*\n\n| Non-revenue water, bills rescaled to 30 days | Al-Wurud | Other districts |\n| --- | --- | --- |\n| Months 1 to 9 | 31.5% | 29.0% |\n| Months 10 to 12 (bulk meter over-reading) | 36.2% | 29.1% |\n| Months 13 to 15 | 32.1% | 27.4% |","notes":"Lab 2.4 prints these. Plan A compares months 10 to 12 with 13 to 15: a fall of about 4 points, most of which is the recalibration. Do not show the later months or a final effect: plans in this session are still fixed before outcomes. Day 3 reveals what the full comparison says.","minutes":null,"lo":["LO4"]},{"id":"history-month-13","n":38,"title":"Month 13 changed five things at once","kind":"content","session":4,"hash":"c77d0274","md":"#### [day2#history-month-13] Month 13 changed five things at once\n\n*History*\n\n- Active detection in Al-Wurud\n- Bulk-meter recalibration in Al-Wurud\n- Smart meters in Al-Nakheel\n- Repair-time and first-contact targets everywhere\n- A shorter call script in the contact centre\n\n- **What a comparison answers.** Changes shared by every district cancel out. Changes in one district, such as Al-Nakheel's meters, distort the comparison: run it with and without that district.","notes":"This list is why the Lab 2.3 plan runs the comparison with and without Al-Nakheel. Ask which item threatens Plan B (the first-contact target): the shorter call script.","minutes":null,"lo":["LO4"]},{"id":"construct-threat","n":39,"title":"Plan B measures the target with the metric the target corrupted","kind":"content","session":4,"hash":"92c58c70","md":"#### [day2#construct-threat] Plan B measures the target with the metric the target corrupted\n\n*Construct*\n\n- **Plan B.** \"First-contact resolution rose by 12 points: keep the target.\" The flag is set by the agents whose bonus depends on it.\n- **Better.** Judge the target by repeat contacts within seven days, which the customer produces, and state that mobile-number linking undercounts them.","notes":"Ties Session 2 to validity: a gamed proxy is a construct threat when the plan uses it as the outcome. The missing-data threat (linking by mobile) remains even with the better measure: say it, bound it, do not hide it.","minutes":null,"lo":["LO4","LO5"]},{"id":"rank-threats","n":40,"title":"List three threats, ordered by how much each could change the decision","kind":"content","session":4,"hash":"c3c93efd","md":"#### [day2#rank-threats] List three threats, ordered by how much each could change the decision\n\n*Ranking*\n\n1. **Could reverse the decision**: the estimate may be mostly artefact (regression to the mean, measurement change)\n2. **Could move it across the threshold**: a bias of a few points near the 3-point rule (history)\n3. **Adds noise only**: mention it, do not lead with it (small sample, when the detectable change is small)\n\n> **Tomorrow.** Review notes are ranked the same way: by consequence, not by the order you found them.","notes":"This is the bridge to Day 3. A threat list of ten items is not wrong, but nobody acts on it. The reviewers' key for Plan A is regression to the mean, measurement change, history; for Plan B construct, history, missing data.","minutes":null,"lo":["LO4","LO5"]},{"id":"peer-swap","n":41,"title":"Give a peer three threats, most dangerous first, with one sentence each","kind":"content","session":4,"hash":"0e09feca","md":"#### [day2#peer-swap] Give a peer three threats, most dangerous first, with one sentence each\n\n*The swap*\n\n**Reviewer:** 1. Measurement change: you use months 10 to 12 as \"before\", and the bulk meter over-read then. 2. History: Al-Nakheel's smart meters change one comparison district. 3. Seasonality: the periods hold different months.\n\n**Author (good example):** Agreed on 1 and 2. On 3: both periods compare against districts measured in the same months, so seasonality cancels.","notes":"Model the exchange: specific, ordered, each with its mechanism, and the author answers with the design. Disagreement about the order is useful. This is the Lab 2.4 task 5 and a rehearsal of the capstone peer review.","minutes":null,"lo":["LO4","LO5"]},{"id":"check-threats","n":42,"title":"What is the main threat to this plan?","kind":"quiz","session":4,"hash":"dc11bc19","md":"#### [day2#check-threats] What is the main threat to this plan?\n\n*Checkpoint*\n\n**Question:** A plan compares Al-Nakheel's non-revenue water, bills rescaled to 30 days, in year 1 (27.7%) and year 2 (19.0%), after the smart meters, and concludes that the meters cut leakage.\n\n- A. Measurement change: the new meters bill water the old ones missed\n- B. Small sample: twelve months each side are too few\n- C. Regression to the mean: Al-Nakheel was picked for a bad month\n- D. Seasonality: summer months differ","notes":"Answer: measurement change. It repeats Session 1 (smart-meter step) from the angle of validity. Ask what measure would show leakage in Al-Nakheel: night flow at the bulk meter, which the meters do not touch.","minutes":null,"lo":["LO4"]},{"id":"lab-2-4","n":43,"title":"Three threats each","kind":"lab","session":4,"hash":"aa390d13","md":"#### [day2#lab-2-4] Three threats each\n\nLab 2.4 · 25 min\n\nSwap plans with a peer and list each other's three main threats, after doing the same for two supplied plans.\n\n[D2_4_swap_plans_peer.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D2_4_swap_plans_peer.ipynb)\n\n- [ ] Read the threat catalogue (3 min)\n- [ ] Plan A: its three main threats (7 min)\n- [ ] Regression to the mean in the data (5 min)\n- [ ] Plan B: its three main threats (5 min)\n- [ ] Swap with your neighbour and list theirs (5 min)\n- [ ] ✱ Stretch: Rewrite one plan so that its worst threat is answered","notes":"Pairs swap their Lab 2.3 plans for task 5. Anyone without a plan swaps the supplied card's plan. Typical problem: threats named without the mechanism (\"history might matter\"). Ask for the event and the direction of the bias.","minutes":null,"lo":[]},{"id":"wrap-up","n":44,"title":"Three things to keep","kind":"content","session":4,"hash":"d545a9be","md":"#### [day2#wrap-up] Three things to keep\n\n*Day 2 · wrap-up*\n\n- **Know how it is made.** Estimates, billing cycles and meter swaps move non-revenue water without a drop saved.\n- **Targets bend proxies.** Pair every target with a guardrail that worsens when it is gamed.\n- **Plan, then look.** Method, exclusions, detectable change and the deciding result are fixed before the outcome.","notes":"Ask each table for the one threat they would not have seen without the engineer's interview. Usually the bulk-meter drift.","minutes":null,"lo":[]},{"id":"next","n":45,"title":"Day 3: Review others' work","kind":"content","session":4,"hash":"61d0fa36","md":"#### [day2#next] Day 3: Review others' work\n\n*Next*\n\nTomorrow you review three analyses of Sabah's and one by the assistant Sareea. Bring your threat list from Lab 2.4: it is the start of a review checklist.","notes":"Remind participants that tomorrow's Lab 3.2 gives each participant a variant of their own: they need a participant number from the trainer (1 to 40).","minutes":null,"lo":[]}],"activities":[{"id":"review-day1-q1","slide":"review-day1","type":"single","prompt":"Four drafts for Mamdouh's logger request. Which one could a peer plan from without asking anything?","options":[{"key":"A","text":"\"Should Ghadeer buy loggers for Al-Rawdah next year? Buy if detection cut non-revenue water by 3 points or more in Al-Wurud against the other districts.\""},{"key":"B","text":"\"Analyse how many leaks the loggers found in Al-Wurud.\""},{"key":"C","text":"\"Should Ghadeer buy loggers if detection works?\""},{"key":"D","text":"\"Build a model of leak risk by district.\""}],"correct":[0],"explanation":"Only the first names a choice, the outcome that matters and the number at which the choice flips.","misconceptions":["","Names a topic and an activity: leaks found rise with searching, and no number would change a choice","A decision with no threshold: 'works' is undefined, so any result can be read either way","A method in place of a question: a model of leaks does not say what to buy"],"lo":["LO1"]},{"id":"check-data-made-q1","slide":"check-data-made","type":"single","prompt":"From month 13, Al-Wurud's crews search for leaks with acoustic loggers. Recorded leaks in Al-Wurud triple. A manager says \"the network there is getting worse\".","options":[{"key":"A","text":"The network in Al-Wurud is deteriorating"},{"key":"B","text":"The loggers have already cut water loss threefold"},{"key":"C","text":"The repair records are unreliable and should be ignored"},{"key":"D","text":"The crews are searching; whether less water is lost must be read from non-revenue water"}],"correct":[3],"explanation":"How a number is made decides what it means: leaks found counts search effort plus leaks, so only the water balance can say whether losses fell.","misconceptions":["Reads the count as the state of the pipes: the count depends on how hard anyone looks","Assumes recorded leaks measure water saved: finding a leak is a step, the saving shows in the water balance","Blames the data without a mechanism: the records are correct, they count something else",""],"lo":["LO3"]},{"id":"check-proxies-q1","slide":"check-proxies","type":"single","prompt":"Ghadeer sets readers a new target: 98% of meters read on the scheduled day. Which guardrail best exposes gaming of it?","options":[{"key":"A","text":"Number of reader visits per day"},{"key":"B","text":"Size of the correction at the next actual read, by reader"},{"key":"C","text":"Share of meters read on the scheduled day, by district"},{"key":"D","text":"Readers' own notes on access problems"}],"correct":[1],"explanation":"A guessed read must be corrected later; large corrections by one reader expose it, and the next read is made by the meter, not by the reader's report.","misconceptions":["Measures effort, not quality: more visits can rise while reads are faked","","Moves with the target, not against it: it rises when reads are faked","Comes from the people under the target, so it is gamed in the same move"],"lo":["LO2"]},{"id":"check-plans-q1","slide":"check-plans","type":"single","prompt":"An analyst computes non-revenue water for all six districts, sees which districts moved like Al-Wurud before month 13, and then writes into the plan that those two are the comparison.","options":[{"key":"A","text":"Two comparison districts are too few"},{"key":"B","text":"Pre-period data should never be looked at"},{"key":"C","text":"The comparison was chosen after seeing the data, so it can bend toward a hoped-for result"},{"key":"D","text":"It should say \"difference in differences\" explicitly"}],"correct":[2],"explanation":"A fork taken after looking is a forking path: write the rule for choosing comparison districts first, then apply it.","misconceptions":["Treats a smaller comparison as the flaw: two well-chosen districts can be a fine comparison if chosen in advance","Mistakes looking at the pre-period for the problem: the issue is choosing after seeing outcomes, not seeing data","","Assumes a method label makes a plan valid: the name of the method says nothing about when its choices were made"],"lo":["LO4"]},{"id":"check-threats-q1","slide":"check-threats","type":"single","prompt":"A plan compares Al-Nakheel's non-revenue water, bills rescaled to 30 days, in year 1 (27.7%) and year 2 (19.0%), after the smart meters, and concludes that the meters cut leakage.","options":[{"key":"A","text":"Measurement change: the new meters bill water the old ones missed"},{"key":"B","text":"Small sample: twelve months each side are too few"},{"key":"C","text":"Regression to the mean: Al-Nakheel was picked for a bad month"},{"key":"D","text":"Seasonality: summer months differ"}],"correct":[0],"explanation":"The meters change how consumption is measured; the fall is apparent losses becoming bills, and leakage needs another measure.","misconceptions":["","Assumes the fall is noise: nine points is far beyond the monthly swing of rescaled bills","Applies the threat to the wrong choice: Al-Nakheel was not picked for an extreme month","Real but secondary: seasons repeat in both years, so they do not explain a step at month 13"],"lo":["LO4"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day2.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

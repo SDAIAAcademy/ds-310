@@ -1,0 +1,68 @@
+{
+ "framing": [
+  {
+   "id": "R1",
+   "from": "Nadia Al-Rubaie, director of non-revenue water and customer operations",
+   "text": "Water loss in Al-Rawdah is out of control. I need to know why before the board meets in two weeks."
+  },
+  {
+   "id": "R2",
+   "from": "Khalil Al-Sabhi, billing manager",
+   "text": "Customers in Al-Hamra say their bills are wrong. Can you look into the estimated bills?"
+  },
+  {
+   "id": "R3",
+   "from": "Sultana Al-Kanaan, customer service operations manager",
+   "text": "Repeat complaints are too high. Find out what is going on."
+  },
+  {
+   "id": "R4",
+   "from": "Mamdouh Al-Qarawi, metering and leak-repair engineer",
+   "text": "The acoustic-logger pilot in Al-Wurud found lots of leaks. Should we buy loggers for more districts?"
+  },
+  {
+   "id": "R5",
+   "from": "Nadia Al-Rubaie, director of non-revenue water and customer operations",
+   "text": "Do the smart meters work? Al-Nakheel's consumption went up after we installed them."
+  }
+ ],
+ "classify": [
+  {
+   "id": "C1",
+   "text": "How many leak repairs did each district have last quarter?"
+  },
+  {
+   "id": "C2",
+   "text": "Which accounts are likely to get an estimated bill next month because the reader cannot reach the meter?"
+  },
+  {
+   "id": "C3",
+   "text": "Did the first-contact target, introduced in every team at once, improve service?"
+  },
+  {
+   "id": "C4",
+   "text": "Would a text message the day before the reader's visit raise the share of meters read?"
+  },
+  {
+   "id": "C5",
+   "text": "Which mains are most likely to burst next summer?"
+  },
+  {
+   "id": "C6",
+   "text": "Why do customers distrust us?"
+  },
+  {
+   "id": "C7",
+   "text": "What share of bills in Al-Hamra were estimated this year?"
+  },
+  {
+   "id": "C8",
+   "text": "Did the move to smart meters in Al-Nakheel reduce water loss there, compared with similar districts?"
+  }
+ ],
+ "constraint_change": {
+  "from": "Nadia Al-Rubaie",
+  "text": "Change of plan: the text-message budget is frozen until next year, and the board wants a decision on meter reading in ten business days. No new trial can run before then.",
+  "affects": "C4"
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "F1": {
+  "area": "question_fit",
+  "cell": "c4"
+ },
+ "F2": {
+  "area": "data_handling",
+  "cell": "c2"
+ },
+ "F3": {
+  "area": "method",
+  "cell": "c3"
+ },
+ "F4": {
+  "area": "inference",
+  "cell": "c5"
+ },
+ "F5": {
+  "area": "data_handling",
+  "cell": "c1"
+ },
+ "F6": {
+  "area": "communication",
+  "cell": "c6"
+ },
+ "F7": {
+  "area": "data_handling",
+  "cell": "c1"
+ }
+}

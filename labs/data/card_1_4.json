@@ -1,0 +1,12 @@
+{
+ "question": "Do road works near the mains explain the bursts in Al-Rawdah, and should next year's renewal budget go to the oldest mains there?",
+ "decision_maker": "Nadia Al-Rubaie",
+ "deadline_business_days": 10,
+ "datasets_wanted": [
+  "repair_orders",
+  "pipe_network",
+  "roadworks",
+  "billing_reads",
+  "weather"
+ ]
+}

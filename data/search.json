@@ -1,0 +1,1354 @@
+{
+  "v": 1,
+  "engine": "1.0.0",
+  "build": {
+    "at": "2026-11-15T18:42:45Z",
+    "version": "2027.1.0",
+    "commit": "95ffc6b"
+  },
+  "lang": "en",
+  "dir": "ltr",
+  "slides": [
+    {
+      "deck": "day1",
+      "id": "title",
+      "n": 1,
+      "session": 0,
+      "title": "From request to question",
+      "text": "SDAIA Academy · Problem Framing and Analytical Review From request to question Day 1: A request names a worry; a question names a decision, an estimand and a rule Data Science Track3 teaching days + capstone day4 sessions · 4 labsDS-310",
+      "href": "../slides/day1.html#title"
+    },
+    {
+      "deck": "day1",
+      "id": "agenda",
+      "n": 2,
+      "session": 0,
+      "title": "From request to question",
+      "text": "Today From request to question Session 1 · Requests are not questions From a manager's worry to a decision question with an estimand, a metric and a decision rule Session 2 · Question types Descriptive, predictive, causal or unanswerable, and the kind of analysis each one needs Session 3 · Interviewing a stakeholder Find the constraints, the acceptable evidence and the people affected before any analysis Session 4 · Feasibility and scope Test a question against the data, their classification, the time to get them and the deadline",
+      "href": "../slides/day1.html#agenda"
+    },
+    {
+      "deck": "day1",
+      "id": "ghadeer-case",
+      "n": 3,
+      "session": 0,
+      "title": "Ghadeer Water Company has six districts and many vague requests",
+      "text": "The case for three days Ghadeer Water Company has six districts and many vague requests 2,400 accounts , 24 months of bills, district bulk meters, leak repairs and a contact-centre log Managers ask about water loss, estimated bills, repeat complaints, loggers and smart meters Every number has a story of how it was made: meters, billing cycles, repair jobs All data is synthetic, from a fixed seed Nadia Al-Rubaie Director of non-revenue water and customer operations: the sponsor Sultana Al-Kanaan · Mamdouh Al-Qarawi Customer service manager and metering engineer, role-played in Labs 1.3 and 2.1 You: Ghala Al-Muwallad Senior analyst who frames, plans and reviews",
+      "href": "../slides/day1.html#ghadeer-case"
+    },
+    {
+      "deck": "day1",
+      "id": "setup-check",
+      "n": 4,
+      "session": 0,
+      "title": "One notebook proves your setup",
+      "text": "Before the first lab One notebook proves your setup Colab: open 00_setup_check from the course page; it clones the repository Laptop: from labs/, run uv sync, then uv run jupyter lab Nothing downloads a model; everything runs on a laptop processor A free hosted model key is optional: without it, tutor and assistant cells use a stand-in and say so missing libraries: none reads.csv: 57,600 bills, 2,400 accounts, 6 districts hosted model: none; labs use stand-ins setup complete",
+      "href": "../slides/day1.html#setup-check"
+    },
+    {
+      "deck": "day1",
+      "id": "s1",
+      "n": 5,
+      "session": 1,
+      "title": "Requests are not questions",
+      "text": "Session 1 Requests are not questions Separate the decision behind a request from the topic it names State an estimand with population, variable, contrast and summary Write a decision rule a peer can apply without asking you 01",
+      "href": "../slides/day1.html#s1"
+    },
+    {
+      "deck": "day1",
+      "id": "worry-not-question",
+      "n": 6,
+      "session": 1,
+      "title": "A request names a worry; a question names a decision",
+      "text": "The request A request names a worry; a question names a decision Mamdouh, request R4The acoustic-logger pilot in Al-Wurud found lots of leaks. Should we buy loggers for more districts? Analyst, first reflexI will count the leaks the loggers found and compare districts. Analyst, framedShould Ghadeer buy loggers for Al-Rawdah and Al-Hamra next year? Buy if detection cut non-revenue water by at least 3 points in Al-Wurud, relative to the other districts.",
+      "href": "../slides/day1.html#worry-not-question"
+    },
+    {
+      "deck": "day1",
+      "id": "five-requests",
+      "n": 7,
+      "session": 1,
+      "title": "Five requests, five missing decisions",
+      "text": "The given Five requests, five missing decisions Request From What is missing R1 \"Water loss in Al-Rawdah is out of control\" Nadia The choice the board faces R2 \"Look into the estimated bills\" Khalil A threshold for acting R3 \"Find out what is going on\" with repeats Sultana Everything but the topic R4 \"Should we buy loggers for more districts?\" Mamdouh The outcome: water, not leaks found R5 \"Do the smart meters work?\" Nadia Work at what: saving water or measuring it?",
+      "href": "../slides/day1.html#five-requests"
+    },
+    {
+      "deck": "day1",
+      "id": "decision-first",
+      "n": 8,
+      "session": 1,
+      "title": "The decision comes first: who chooses, between what",
+      "text": "Before the data The decision comes first: who chooses, between what Decision maker A person with the authority and the budget: Nadia, with the capital committee The decision A question that ends in a choice: \"Should ...?\", \"Which ...?\" Options At least two, and \"do nothing\" among them: every option is judged against it Recap. DS-308 Day 1 frames a decision for a memo; DS-204 Day 1 frames a prediction for a decision. Here the frame goes further: an estimand and a rule.",
+      "href": "../slides/day1.html#decision-first"
+    },
+    {
+      "deck": "day1",
+      "id": "estimand-parts",
+      "n": 9,
+      "session": 1,
+      "title": "An estimand states exactly which number answers the question",
+      "text": "The estimand An estimand states exactly which number answers the question Part Question it answers R4, framed Population Which units, which period? District-months of six districts, months 1 to 24 Variable What is measured on each unit? Non-revenue water, % of system input Contrast With what, against what? Al-Wurud with detection against five districts without Intercurrent events What happens on the way that changes the meaning? The bulk meter was recalibrated in month 13 Summary Which one number? Difference in differences, in points",
+      "href": "../slides/day1.html#estimand-parts"
+    },
+    {
+      "deck": "day1",
+      "id": "leaks-found-trap",
+      "n": 10,
+      "session": 1,
+      "title": "Leaks found is an activity; water lost is the outcome",
+      "text": "The variable Leaks found is an activity; water lost is the outcome Al-Rawdah 39.3% Al-Wurud 28.0% Al-Hamra 27.7% Al-Shifa 26.9% Al-Salam 22.3% Al-Nakheel 16.5% Non-revenue water, months 13 to 24, from Lab 1.1 Active detection finds more leaks by design: a rise in leaks found says the crews searched The company pays for water lost, so the variable is non-revenue water",
+      "href": "../slides/day1.html#leaks-found-trap"
+    },
+    {
+      "deck": "day1",
+      "id": "decision-rule",
+      "n": 11,
+      "session": 1,
+      "title": "A decision rule names the number at which the choice changes",
+      "text": "The rule A decision rule names the number at which the choice changes Not a rule \"Buy loggers if detection works well.\" \"Act if many bills are estimated.\" A rule \"Buy for a district if detection cut non-revenue water by at least 3 points and the district is above 25%.\" \"Book second visits if more than 10% of Al-Hamra bills are estimated.\" Why write it now. A threshold set after the result is seen bends to the result. Al-Hamra's share is 16.4% (Lab 1.1): the rule was set before anyone looked.",
+      "href": "../slides/day1.html#decision-rule"
+    },
+    {
+      "deck": "day1",
+      "id": "affected-and-personal-data",
+      "n": 12,
+      "session": 1,
+      "title": "Every card says who is affected and whether personal data are needed at all",
+      "text": "Responsible framing Every card says who is affected and whether personal data are needed at all Affected: customers facing interruptions, readers, crews, the budget that funds something else Personal data: a district total answers R4; names, mobiles and national IDs do not help Decide it on the card, before the data request is written The rule behind it The Personal Data Protection Law limits collected personal data to the minimum the purpose needs; its implementing regulation asks for a map linking each item to a purpose.",
+      "href": "../slides/day1.html#affected-and-personal-data"
+    },
+    {
+      "deck": "day1",
+      "id": "peer-test",
+      "n": 13,
+      "session": 1,
+      "title": "A card is done when a peer can plan from it without asking you",
+      "text": "The test of a card A card is done when a peer can plan from it without asking you U.card_gaps({\"decision\": \"Look into the estimated bills\", \"decision_rule\": \"Act if the share is high\"}) # What is the decision maker? What are the options? # Is the decision written as a question that ends in a choice? # Estimand: what is the population? ... the summary? # Decision rule: at what number does the choice change? # What does 'high' mean here, in a number?",
+      "href": "../slides/day1.html#peer-test"
+    },
+    {
+      "deck": "day1",
+      "id": "check-framing",
+      "n": 14,
+      "session": 1,
+      "title": "Which gap matters most in this card?",
+      "text": "Checkpoint Which gap matters most in this card? Khalil's card reads: \"Measure how accurate Al-Hamra's bills were in 2026, using all billing data, and report the results to management.\" What should be added first? A longer period, so the estimate is more precise The decision it informs and the number at which that decision changes A chart template for the management report A model of which bills will be inaccurate next year",
+      "href": "../slides/day1.html#check-framing"
+    },
+    {
+      "deck": "day1",
+      "id": "lab-1-1",
+      "n": 15,
+      "session": 1,
+      "title": "Two framing cards (AI-off)",
+      "text": "Lab 1.1 · 25 min Two framing cards (AI-off) Reframe two vague requests as decision questions with an estimand (AI-off): two framing cards that a peer can plan from without further questions. D1_1_reframe_two_vague.ipynb Read the two requests and the baseline numbers 4 min Card 1: decision maker, decision and options 6 min Card 1: estimand and decision rule 6 min Card 2: the same, faster 6 min Peer test: what a planner would still ask 3 min ✱ Stretch: Frame a third request and swap it with a neighbour",
+      "href": "../slides/day1.html#lab-1-1"
+    },
+    {
+      "deck": "day1",
+      "id": "s2",
+      "n": 16,
+      "session": 2,
+      "title": "Question types",
+      "text": "Session 2 Question types Classify a request as descriptive, predictive, causal or unanswerable Match each type to description, an experiment, a causal analysis, a model or no analysis Change the recommendation when a constraint changes 02",
+      "href": "../slides/day1.html#s2"
+    },
+    {
+      "deck": "day1",
+      "id": "four-labels",
+      "n": 17,
+      "session": 2,
+      "title": "Each kind of question needs a different kind of analysis",
+      "text": "Four labels Each kind of question needs a different kind of analysis Label The request asks It needs Descriptive What happened, how much, where A description Predictive What will happen to each unit A predictive model Causal What a change did, or would do An experiment if one can still run; otherwise a causal analysis of existing data Unanswerable Something the data cannot reach, or no decision No analysis yet: reframe or collect",
+      "href": "../slides/day1.html#four-labels"
+    },
+    {
+      "deck": "day1",
+      "id": "mistaken-type",
+      "n": 18,
+      "session": 2,
+      "title": "Most analysis errors start by mistaking the type of question",
+      "text": "The commonest error Most analysis errors start by mistaking the type of question Leek and Peng list six types: descriptive, exploratory, inferential, predictive, causal, mechanistic They call mistaking the type the most common error in data analysis Real type Taken for The error has a name Inferential Causal Correlation read as causation Exploratory Inferential Data dredging Exploratory Predictive Overfitting Descriptive Inferential An \"n of 1\" analysis",
+      "href": "../slides/day1.html#mistaken-type"
+    },
+    {
+      "deck": "day1",
+      "id": "which-misleads",
+      "n": 19,
+      "session": 2,
+      "title": "\"Which\" can open a description or a prediction",
+      "text": "Words mislead \"Which\" can open a description or a prediction C1 · descriptive \"How many leak repairs did each district have last quarter?\" A count of the past. C2 · predictive \"Which accounts are likely to get an estimated bill next month?\" A forecast per account. C5 · predictive \"Which mains are most likely to burst next summer?\" A forecast per main. Ask two things. Past or future? The whole group, or each unit?",
+      "href": "../slides/day1.html#which-misleads"
+    },
+    {
+      "deck": "day1",
+      "id": "experiment-or-not",
+      "n": 20,
+      "session": 2,
+      "title": "An experiment only when the change can still be assigned at random",
+      "text": "Causal questions An experiment only when the change can still be assigned at random C4 · text before the reader's visit Not done yet: randomise accounts, an experiment → C8 · smart meters in one district Done, one district: causal analysis against similar districts → C3 · target in every team at once Done, everywhere: causal analysis of existing data, weakest Recap. Designing and sizing the experiment is DS-205; here you decide whether one is possible.",
+      "href": "../slides/day1.html#experiment-or-not"
+    },
+    {
+      "deck": "day1",
+      "id": "unanswerable",
+      "n": 21,
+      "session": 2,
+      "title": "\"Unanswerable\" is an answer, if it comes with a better question",
+      "text": "The fourth label \"Unanswerable\" is an answer, if it comes with a better question C6 as asked \"Why do customers distrust us?\" No decision, and no data on trust. C6 reframed \"Which contact reasons are followed by a repeat contact within seven days most often, so we fix the top two first?\" Say what data would make it answerable, and what decision it would serve Do not produce a chart that pretends to answer the original",
+      "href": "../slides/day1.html#unanswerable"
+    },
+    {
+      "deck": "day1",
+      "id": "constraint-changes",
+      "n": 22,
+      "session": 2,
+      "title": "When a constraint changes, the recommendation changes with it",
+      "text": "The meeting moves When a constraint changes, the recommendation changes with it NadiaThe text-message budget is frozen until next year, and the board wants a decision on meter reading in ten business days. No new trial can run before then. AnalystThen C4 gets no analysis now: decide the reading schedule on cost and practicality, and run the reminder experiment when the budget returns. In the capstone. The sponsor changes one constraint during your talk. You revise out loud.",
+      "href": "../slides/day1.html#constraint-changes"
+    },
+    {
+      "deck": "day1",
+      "id": "process-models",
+      "n": 23,
+      "session": 2,
+      "title": "CRISP-DM starts with the business; it does not frame the question for you",
+      "text": "Process models CRISP-DM starts with the business; it does not frame the question for you Business understanding the only phase about the decision ↓ Data understanding, preparation, modeling, evaluation, deployment five phases about the data and the model The model is a cycle of six phases: useful as a checklist of stages It assumes a model will be built: no place for \"description is enough\" or \"no analysis\" It says little about stakeholders, estimands or when to stop",
+      "href": "../slides/day1.html#process-models"
+    },
+    {
+      "deck": "day1",
+      "id": "check-question-type",
+      "n": 24,
+      "session": 2,
+      "title": "What does this request need?",
+      "text": "Checkpoint What does this request need? In month 13 Ghadeer moved meter reading in all six districts to a new contractor. Khalil asks: \"Did the new contractor cut the number of estimated bills?\" The decision is whether to renew the contract. A description of estimated bills by month An experiment that randomises districts A causal analysis of existing data, stating its weaknesses A predictive model of estimated bills",
+      "href": "../slides/day1.html#check-question-type"
+    },
+    {
+      "deck": "day1",
+      "id": "lab-1-2",
+      "n": 25,
+      "session": 2,
+      "title": "Eight requests classified",
+      "text": "Lab 1.2 · 25 min Eight requests classified Classify eight requests as descriptive, predictive, causal or unanswerable, name the analysis each needs, and revise when the sponsor changes a constraint. D1_2_classify_eight_requests.ipynb Read the four labels and the eight requests 3 min Classify each request 8 min Name the analysis each one needs 6 min The sponsor changes a constraint: revise 5 min Compare with the key and explain one disagreement 3 min ✱ Stretch: Rewrite the unanswerable request so that data could answer it",
+      "href": "../slides/day1.html#lab-1-2"
+    },
+    {
+      "deck": "day1",
+      "id": "s3",
+      "n": 26,
+      "session": 3,
+      "title": "Interviewing a stakeholder",
+      "text": "Session 3 Interviewing a stakeholder Map decision makers, users and affected groups for a request Ask open questions that surface constraints and acceptable evidence Record what was said apart from what was assumed 03",
+      "href": "../slides/day1.html#s3"
+    },
+    {
+      "deck": "day1",
+      "id": "three-groups",
+      "n": 27,
+      "session": 3,
+      "title": "Map who decides, who uses the answer and who is affected",
+      "text": "Who to talk to Map who decides, who uses the answer and who is affected Decide Sultana, with Nadia for the call-centre contract Use Team leaders; the outsourced call-centre supplier Affected Customers who call again; agents whose bonus rides on a target; older customers with estimated bills What goes wrong. Only the decider is interviewed, and the affected groups appear for the first time in a complaint.",
+      "href": "../slides/day1.html#three-groups"
+    },
+    {
+      "deck": "day1",
+      "id": "open-questions",
+      "n": 28,
+      "session": 3,
+      "title": "Open questions find constraints; closed and leading ones find agreement",
+      "text": "How you ask Open questions find constraints; closed and leading ones find agreement LeadingDon't you think it's the agents? SultanaYes, I suppose so. OpenHow do you count a repeat contact today: how do you know it is the same customer? SultanaThe system links contacts by mobile number. When a customer calls from another phone, it is a new customer to us.",
+      "href": "../slides/day1.html#open-questions"
+    },
+    {
+      "deck": "day1",
+      "id": "six-topics",
+      "n": 29,
+      "session": 3,
+      "title": "Six topics cover most of what a stakeholder knows and you do not",
+      "text": "What to ask Six topics cover most of what a stakeholder knows and you do not The decision and its date : what will you do differently, and by when? How the number is counted : how do you know it is a repeat, a leak, an estimate? Acceptable evidence : what would convince you, and what would you not trust? Incentives : which targets do people work under? What changed : what moved in the last year? Rules on data : what may be used, by whom, where?",
+      "href": "../slides/day1.html#six-topics"
+    },
+    {
+      "deck": "day1",
+      "id": "hidden-constraints",
+      "n": 30,
+      "session": 3,
+      "title": "Five constraints changed the analysis before it started",
+      "text": "What nobody volunteers Five constraints changed the analysis before it started Heard in the interview What it changes Contract renewal in four weeks The deadline, and the decision First-contact target in bonuses since month 13 \"Resolved\" is no longer a clean measure Contacts linked by mobile number Repeats from another phone are missed Recordings need the data protection officer No call audio in a two-week plan Trusts repeats within seven days, not the survey Which measure the answer uses",
+      "href": "../slides/day1.html#hidden-constraints"
+    },
+    {
+      "deck": "day1",
+      "id": "heard-assumed",
+      "n": 31,
+      "session": 3,
+      "title": "Write what you heard apart from what you assumed",
+      "text": "The record Write what you heard apart from what you assumed Heard \"We shortened the call script in month 13. Handling time fell a lot.\" Assumed That repeat contacts rose after month 13. Not yet checked in the data. Why it matters. An assumption written as a fact becomes a finding by Day 3, and nobody remembers it was a guess.",
+      "href": "../slides/day1.html#heard-assumed"
+    },
+    {
+      "deck": "day1",
+      "id": "acceptable-evidence",
+      "n": 32,
+      "session": 3,
+      "title": "Agree the evidence before you produce it",
+      "text": "Before the analysis Agree the evidence before you produce it Sultana trusts repeat contacts within seven days She does not trust the satisfaction survey: few people answer it An analysis built on the survey would be ignored, however good On the framing card The variable of the estimand is the evidence the decision maker accepts; if it is not, say why in the card.",
+      "href": "../slides/day1.html#acceptable-evidence"
+    },
+    {
+      "deck": "day1",
+      "id": "role-play-rules",
+      "n": 33,
+      "session": 3,
+      "title": "The interview is a role-play; the stand-in is for practice",
+      "text": "The lab The interview is a role-play; the stand-in is for practice In the room The trainer or a neighbour holds Sultana's role card and answers only what is asked. Eight minutes, then swap. Alone U.interview(\"sultana\", q) answers by topic, gives agreement to a leading question, and counts the constraints you reached.",
+      "href": "../slides/day1.html#role-play-rules"
+    },
+    {
+      "deck": "day1",
+      "id": "check-interview",
+      "n": 34,
+      "session": 3,
+      "title": "Which question finds out how a repeat is counted?",
+      "text": "Checkpoint Which question finds out how a repeat is counted? You suspect the repeat-contact rate is undercounted, but you do not know how the system links contacts. Which question do you ask Sultana? \"How does the system decide that two contacts come from the same customer?\" \"Is the repeat rate accurate?\" \"Surely some repeats are missed, right?\" \"Do you trust the repeat-contact figures?\"",
+      "href": "../slides/day1.html#check-interview"
+    },
+    {
+      "deck": "day1",
+      "id": "lab-1-3",
+      "n": 35,
+      "session": 3,
+      "title": "Interview the operations manager",
+      "text": "Lab 1.3 · 25 min Interview the operations manager Interview a role-played operations manager and record constraints and acceptable evidence: an interview record with the constraints found and the questions left. D1_3_interview_role_played.ipynb Read the request and the stakeholder map 3 min Write six open questions 6 min Interview: a role-play or the stand-in 8 min Record constraints and acceptable evidence 6 min List what you did not ask 2 min ✱ Stretch: Interview the data protection officer about the same request",
+      "href": "../slides/day1.html#lab-1-3"
+    },
+    {
+      "deck": "day1",
+      "id": "s4",
+      "n": 36,
+      "session": 4,
+      "title": "Feasibility and scope",
+      "text": "Session 4 Feasibility and scope Estimate when each dataset in a plan can be ready Apply classification, sharing time limits and minimisation to a data request Cut a question's scope until it fits the deadline 04",
+      "href": "../slides/day1.html#s4"
+    },
+    {
+      "deck": "day1",
+      "id": "three-clocks",
+      "n": 37,
+      "session": 4,
+      "title": "Three clocks decide whether a question is answerable in time",
+      "text": "Feasibility Three clocks decide whether a question is answerable in time Data ready access, approval or a sharing request → Analysis 4 business days for this team → Decision the board meets in 10 business days What goes wrong. The data request goes out after the plan is written, and the answer arrives after the decision.",
+      "href": "../slides/day1.html#three-clocks"
+    },
+    {
+      "deck": "day1",
+      "id": "inventory-days",
+      "n": 38,
+      "session": 4,
+      "title": "The burst question wants five datasets; two arrive in time",
+      "text": "The given The burst question wants five datasets; two arrive in time Dataset Held by Class Ready (business days) Leak-repair work orders Ghadeer Restricted 1 Daily temperature Open data Public 0 Billing reads Ghadeer Restricted 2 Pipe network Ghadeer Secret 8 Road-works permits Regional Roads Office Restricted 15",
+      "href": "../slides/day1.html#inventory-days"
+    },
+    {
+      "deck": "day1",
+      "id": "sharing-timeframe",
+      "n": 39,
+      "session": 4,
+      "title": "A sharing request can take three weeks, by policy",
+      "text": "Data held by another entity A sharing request can take three weeks, by policy 10 + 5 business days: assess the request, then share once approved The NDMO Data Sharing Policy gives the sharing entity up to 10 business days to assess and 5 to share after approval It can extend the time for an extraordinary effort The request must also respect data minimisation",
+      "href": "../slides/day1.html#sharing-timeframe"
+    },
+    {
+      "deck": "day1",
+      "id": "classification-levels",
+      "n": 40,
+      "session": 4,
+      "title": "The classification of a dataset sets where and how fast you can use it",
+      "text": "Classification The classification of a dataset sets where and how fast you can use it Top Secret Not in an analysis plan with a two-week deadline Secret Pipe network: a security approval, 8 days Restricted Billing, repairs, contacts: inside Ghadeer's environment Public Open temperature data: no request Hosted assistants. A Restricted extract does not go to a public assistant; Day 3 reviews an assistant's work on synthetic data only.",
+      "href": "../slides/day1.html#classification-levels"
+    },
+    {
+      "deck": "day1",
+      "id": "minimise-request",
+      "n": 41,
+      "session": 4,
+      "title": "Ask for what the purpose needs, not what happens to be ready",
+      "text": "Minimisation Ask for what the purpose needs, not what happens to be ready Tempting \"Billing reads are ready in two days: take them, we might link bursts to customers later.\" Minimised \"The burst question needs repairs and temperature. Billing brings names, mobiles and national IDs it does not need.\" On the card. Every dataset kept has a reason tied to the question; every personal field dropped has one too.",
+      "href": "../slides/day1.html#minimise-request"
+    },
+    {
+      "deck": "day1",
+      "id": "cut-scope",
+      "n": 42,
+      "session": 4,
+      "title": "Cut the question until it fits, and say what the cut leaves out",
+      "text": "Cutting scope Cut the question until it fits, and say what the cut leaves out Asked (causal) Do road works explain the bursts in Al-Rawdah, and should renewal go to its oldest mains? ↓ Scoped (descriptive) Have bursts in Al-Rawdah become more frequent over 24 months, and do they follow summer temperatures, enough to justify a renewal study? Lab 1.4 run: 4.7 repairs a month in year 1, 4.9 in year 2; 4.8 in summer and 4.8 otherwise.",
+      "href": "../slides/day1.html#cut-scope"
+    },
+    {
+      "deck": "day1",
+      "id": "phase-two",
+      "n": 43,
+      "session": 4,
+      "title": "A scoped card says what is left unanswered and requests it now",
+      "text": "The cost of the cut A scoped card says what is left unanswered and requests it now Left unanswered: whether road works or pipe age cause the bursts Requested today: road-works permits through a data-sharing request; the pipe network through the security approval Told to the sponsor: the board gets a description now and a causal answer in about a month What goes wrong. The scoped answer is presented as the answer to the original question.",
+      "href": "../slides/day1.html#phase-two"
+    },
+    {
+      "deck": "day1",
+      "id": "check-feasibility",
+      "n": 44,
+      "session": 4,
+      "title": "How do you answer this data request?",
+      "text": "Checkpoint How do you answer this data request? Planning the burst analysis, a colleague asks for the billing extract with national IDs \"in case we want to link bursts to customers later\". The question is about bursts by month. Take it: it is ready in two days Take it, but hash the national IDs Refuse it: Restricted data cannot be analysed Leave it out: the burst question needs no personal data; a later purpose gets its own request",
+      "href": "../slides/day1.html#check-feasibility"
+    },
+    {
+      "deck": "day1",
+      "id": "lab-1-4",
+      "n": 45,
+      "session": 4,
+      "title": "Check and cut one question",
+      "text": "Lab 1.4 · 25 min Check and cut one question Check one question against the data inventory and the deadline and cut its scope until it is answerable in ten business days. D1_4_check_one_question.ipynb Read the card and the data inventory 3 min Days until each dataset is ready 7 min Classification and personal data per dataset 5 min Cut the scope to fit ten business days 7 min Write the scoped card 3 min ✱ Stretch: The sponsor moves the deadline to five business days: cut again",
+      "href": "../slides/day1.html#lab-1-4"
+    },
+    {
+      "deck": "day1",
+      "id": "wrap-up",
+      "n": 46,
+      "session": 4,
+      "title": "Three things to keep",
+      "text": "Day 1 · wrap-up Three things to keep Decision first A framing card names a choice, an estimand with five parts and the number at which the choice changes. Type before method Descriptive, predictive, causal or unanswerable; and \"no analysis\" is a valid recommendation. Feasible by the date Count back from the decision; minimise personal data; say what the cut leaves out.",
+      "href": "../slides/day1.html#wrap-up"
+    },
+    {
+      "deck": "day1",
+      "id": "next",
+      "n": 47,
+      "session": 4,
+      "title": "Day 2: Know the domain, plan the work",
+      "text": "Next Day 2: Know the domain, plan the work Read the three short files in labs/data/briefing/ (metering, billing cycles, leak repair). Tomorrow you learn how the numbers are made before you plan with them.",
+      "href": "../slides/day1.html#next"
+    },
+    {
+      "deck": "day2",
+      "id": "title",
+      "n": 1,
+      "session": 0,
+      "title": "Know the domain, plan the work",
+      "text": "SDAIA Academy · Problem Framing and Analytical Review Know the domain, plan the work Day 2: Learn how the numbers are made before you plan what to do with them Data Science Track3 teaching days + capstone day4 sessions · 4 labsDS-310",
+      "href": "../slides/day2.html#title"
+    },
+    {
+      "deck": "day2",
+      "id": "agenda",
+      "n": 2,
+      "session": 0,
+      "title": "Know the domain, plan the work",
+      "text": "Today Know the domain, plan the work Session 1 · How the data are made Meter reads become bills through estimates, billing cycles and meter swaps, and each step can mislead Session 2 · Metrics and proxies A metric tree is a set of proxies; under a target, each one can be gamed Session 3 · Analysis plans Data, method, threats and the result that would change the decision, fixed before outcomes are seen Session 4 · Threats to validity What could make the answer wrong: selection, regression to the mean, measurement change and more",
+      "href": "../slides/day2.html#agenda"
+    },
+    {
+      "deck": "day2",
+      "id": "review-day1",
+      "n": 3,
+      "session": 0,
+      "title": "Which card is ready to plan from?",
+      "text": "Review of Day 1 Which card is ready to plan from? Four drafts for Mamdouh's logger request. Which one could a peer plan from without asking anything? \"Should Ghadeer buy loggers for Al-Rawdah next year? Buy if detection cut non-revenue water by 3 points or more in Al-Wurud against the other districts.\" \"Analyse how many leaks the loggers found in Al-Wurud.\" \"Should Ghadeer buy loggers if detection works?\" \"Build a model of leak risk by district.\"",
+      "href": "../slides/day2.html#review-day1"
+    },
+    {
+      "deck": "day2",
+      "id": "s1",
+      "n": 4,
+      "session": 1,
+      "title": "How the data are made",
+      "text": "Session 1 How the data are made Read a briefing pack and an expert interview for how a metric is produced Draw the meter-to-bill process as a diagram Mark where the data can mislead, with a number from the data 01",
+      "href": "../slides/day2.html#s1"
+    },
+    {
+      "deck": "day2",
+      "id": "water-balance",
+      "n": 5,
+      "session": 1,
+      "title": "Non-revenue water mixes water that leaked with water that was not billed",
+      "text": "The domain Non-revenue water mixes water that leaked with water that was not billed System input what the bulk meters measure → Billed consumption what the bills say → Non-revenue water the difference Real losses Leaks, bursts and overflows up to the customer meter Apparent losses Meter inaccuracy, billing data errors, unauthorised use: water delivered but not billed",
+      "href": "../slides/day2.html#water-balance"
+    },
+    {
+      "deck": "day2",
+      "id": "meter-to-bill",
+      "n": 6,
+      "session": 1,
+      "title": "Seven steps turn water at a meter into a percentage in a report",
+      "text": "The process Seven steps turn water at a meter into a percentage in a report Water passes the customer meter A reader visits on a route, every 27 to 35 days A read is taken, or the bill is estimated from the last three reads A bill is issued for the period ending this month Bills are summed by district and month The bulk meter gives district input for the calendar month Non-revenue water is input minus billed",
+      "href": "../slides/day2.html#meter-to-bill"
+    },
+    {
+      "deck": "day2",
+      "id": "estimated-bills",
+      "n": 7,
+      "session": 1,
+      "title": "Al-Hamra estimates one bill in six, and estimates miss the summer",
+      "text": "Step 3 Al-Hamra estimates one bill in six, and estimates miss the summer Al-Hamra 16.4% Al-Rawdah 4.3% Al-Salam 3.2% Al-Shifa 2.9% Al-Wurud 2.4% Al-Nakheel 2.3% An estimate is the average of the last three actual reads It does not follow the summer rise, so summer bills come in low The next actual read catches up: the error moves between months",
+      "href": "../slides/day2.html#estimated-bills"
+    },
+    {
+      "deck": "day2",
+      "id": "billing-cycles",
+      "n": 8,
+      "session": 1,
+      "title": "A \"monthly\" bill covers 27 to 35 days, and that alone moves the percentage",
+      "text": "Step 2 A \"monthly\" bill covers 27 to 35 days, and that alone moves the percentage 4.29 → 0.85 standard deviation of monthly non-revenue water in Al-Salam, months 1 to 12, in points: raw, then bills rescaled to 30 days The bulk meter measures a calendar month; the bill measures a reading period A 35-day bill in a 30-day month makes the district look tight Rescaling each bill to 30 days removes about four fifths of the swing",
+      "href": "../slides/day2.html#billing-cycles"
+    },
+    {
+      "deck": "day2",
+      "id": "smart-meter-step",
+      "n": 9,
+      "session": 1,
+      "title": "Smart meters raised Al-Nakheel's bills by measuring, not by use",
+      "text": "Step 1 Smart meters raised Al-Nakheel's bills by measuring, not by use Billed per account per 30 days, year 2 against year 1 Change Al-Nakheel, smart meters from month 13 +12.1% The other five districts -1.6% Old mechanical meters miss about 1.5% more each year New meters bill water the old ones missed: apparent losses fall This is why Al-Nakheel had the lowest non-revenue water on Day 1",
+      "href": "../slides/day2.html#smart-meter-step"
+    },
+    {
+      "deck": "day2",
+      "id": "ask-the-engineer",
+      "n": 10,
+      "session": 1,
+      "title": "The engineer knows what the documents leave out",
+      "text": "The expert interview The engineer knows what the documents leave out YouHow is the district input measured, and has anything changed with those meters? MamdouhThe Al-Wurud bulk meter was over-reading for a few months. It was recalibrated in month 13. YouWhen is a repair job closed? MamdouhSince the three-day target, crews close the job when they leave the site. If the leak comes back, it is reopened.",
+      "href": "../slides/day2.html#ask-the-engineer"
+    },
+    {
+      "deck": "day2",
+      "id": "map-with-marks",
+      "n": 11,
+      "session": 1,
+      "title": "A process map is done when it marks where the data mislead, with a number",
+      "text": "The deliverable A process map is done when it marks where the data mislead, with a number flowchart LR S1[\"1. Water passes the customer meter\"] --> S2[\"2. Reader visits ...\"] S2 --> S3[\"3. Read taken, or estimate ...\"] M3([\"⚠ Estimates: 16.4% of Al-Hamra bills\"]) -.- S3 M2([\"⚠ Cycle 27 to 35 days: sd 4.29 raw, 0.85 rescaled\"]) -.- S2 M1([\"⚠ Smart meters: billed +12.1% against -1.6%\"]) -.- S1 Mermaid text renders in a Mermaid viewer or in draw.io; the lab writes it for you.",
+      "href": "../slides/day2.html#map-with-marks"
+    },
+    {
+      "deck": "day2",
+      "id": "check-data-made",
+      "n": 12,
+      "session": 1,
+      "title": "What does the rise in recorded leaks show?",
+      "text": "Checkpoint What does the rise in recorded leaks show? From month 13, Al-Wurud's crews search for leaks with acoustic loggers. Recorded leaks in Al-Wurud triple. A manager says \"the network there is getting worse\". The network in Al-Wurud is deteriorating The loggers have already cut water loss threefold The repair records are unreliable and should be ignored The crews are searching; whether less water is lost must be read from non-revenue water",
+      "href": "../slides/day2.html#check-data-made"
+    },
+    {
+      "deck": "day2",
+      "id": "lab-2-1",
+      "n": 13,
+      "session": 1,
+      "title": "The meter-to-bill map",
+      "text": "Lab 2.1 · 25 min The meter-to-bill map Map the meter-to-bill process and mark where the data can mislead: a Mermaid process map with three marked points, each with its number from the data. D2_1_map_meter_bill.ipynb Read the briefing pack 5 min Ask the metering engineer three questions 5 min The process as a Mermaid map 5 min Three points where the data mislead, with numbers 8 min Save the map 2 min ✱ Stretch: Add a fourth mark on the leak-repair work order",
+      "href": "../slides/day2.html#lab-2-1"
+    },
+    {
+      "deck": "day2",
+      "id": "s2",
+      "n": 14,
+      "session": 2,
+      "title": "Metrics and proxies",
+      "text": "Session 2 Metrics and proxies Trace a goal to the proxies a metric tree uses for it Recognise the four ways a proxy fails under pressure Propose guardrail metrics that expose the gaming 02",
+      "href": "../slides/day2.html#s2"
+    },
+    {
+      "deck": "day2",
+      "id": "metric-tree",
+      "n": 15,
+      "session": 2,
+      "title": "Ghadeer's metric tree runs from a goal to leaves people can move",
+      "text": "The given Ghadeer's metric tree runs from a goal to leaves people can move Goal Little loss, good service ↓ Outcomes Non-revenue water · customer service ↓ Leaves Repair time · leaks found · estimated share · first-contact resolution · handling minutes From month 13, two leaves became targets: repair time of 3 days or less; first-contact resolution of 85% or more A leaf is a proxy: it stands for the goal while nobody pushes on it",
+      "href": "../slides/day2.html#metric-tree"
+    },
+    {
+      "deck": "day2",
+      "id": "goodhart-four",
+      "n": 16,
+      "session": 2,
+      "title": "A proxy fails under pressure in four ways",
+      "text": "Goodhart's law A proxy fails under pressure in four ways Regressional Selecting on a noisy proxy also selects the noise Extremal Pushed into a range where the old relation no longer holds Causal The action taken on the proxy breaks its link to the goal Adversarial People with other goals game the measure The original law. An observed regularity tends to collapse once pressure is placed on it for control.",
+      "href": "../slides/day2.html#goodhart-four"
+    },
+    {
+      "deck": "day2",
+      "id": "repair-time-gamed",
+      "n": 17,
+      "session": 2,
+      "title": "Repair time halved; the customer's wait did not",
+      "text": "The first target Repair time halved; the customer's wait did not Repair jobs Months 1 to 12 Months 13 to 24 Median days, job created to job closed (the target) 4 2 Jobs reopened after closure 5.6% 25.7% Mean days, customer report to job created 0.25 1.81 Mean days, customer report to final fix 4.85 5.17",
+      "href": "../slides/day2.html#repair-time-gamed"
+    },
+    {
+      "deck": "day2",
+      "id": "fcr-gamed",
+      "n": 18,
+      "session": 2,
+      "title": "More calls were marked resolved, and more customers called again",
+      "text": "The second target More calls were marked resolved, and more customers called again 73.5 → 85.9% contacts marked resolved 22.7 → 26.6% contacts followed by another within 7 days 7.7 → 6.6 average handling minutes Two changes in one month. The target and a shorter call script both started in month 13 (Lab 1.3): the repeat rise has two candidate causes.",
+      "href": "../slides/day2.html#fcr-gamed"
+    },
+    {
+      "deck": "day2",
+      "id": "guardrails",
+      "n": 19,
+      "session": 2,
+      "title": "A guardrail is a second metric that worsens when the first is gamed",
+      "text": "Guardrails A guardrail is a second metric that worsens when the first is gamed Guardrail Guards Behaviour it exposes Before → after Jobs reopened after closure Repair time Closing before the leak is fixed 5.6 → 25.7% Contacts followed by another within 7 days First-contact resolution Marking a call resolved when the customer must call again 22.7 → 26.6%",
+      "href": "../slides/day2.html#guardrails"
+    },
+    {
+      "deck": "day2",
+      "id": "good-guardrail",
+      "n": 20,
+      "session": 2,
+      "title": "A good guardrail is hard to game in the same move",
+      "text": "Design A good guardrail is hard to game in the same move Opposite direction It worsens when the target is gamed: reopenings rise when jobs close early Different owner Someone other than the people under the target produces it: the customer's next call Closer to the goal It measures what the customer or the network lives with: report to final fix Pointer. Writing the definition of each metric (grain, filters, owner) is DS-307, Day 1.",
+      "href": "../slides/day2.html#good-guardrail"
+    },
+    {
+      "deck": "day2",
+      "id": "tree-annotated",
+      "n": 21,
+      "session": 2,
+      "title": "The annotated tree shows each failure and its guardrail on one page",
+      "text": "The deliverable The annotated tree shows each failure and its guardrail on one page flowchart TD nrw --> repair_time[\"Median days, job created to closed ⚠ adversarial: closed at first visit, jobs created later\"] nrw --> leaks_found[\"Leaks found per month ⚠ causal: searching harder raises the count\"] service --> fcr[\"First-contact resolution ⚠ adversarial: marked resolved for the bonus\"] GR1{{\"Guardrail: jobs reopened, %\"}} -.- repair_time GR2{{\"Guardrail: repeat within 7 days, %\"}} -.- fcr",
+      "href": "../slides/day2.html#tree-annotated"
+    },
+    {
+      "deck": "day2",
+      "id": "check-proxies",
+      "n": 22,
+      "session": 2,
+      "title": "Which guardrail fits this target?",
+      "text": "Checkpoint Which guardrail fits this target? Ghadeer sets readers a new target: 98% of meters read on the scheduled day. Which guardrail best exposes gaming of it? Number of reader visits per day Size of the correction at the next actual read, by reader Share of meters read on the scheduled day, by district Readers' own notes on access problems",
+      "href": "../slides/day2.html#check-proxies"
+    },
+    {
+      "deck": "day2",
+      "id": "lab-2-2",
+      "n": 23,
+      "session": 2,
+      "title": "Stress-test the metric tree",
+      "text": "Lab 2.2 · 25 min Stress-test the metric tree Stress-test the water-loss and customer-service metric tree for gaming, label each failure, and add two guardrails with the behaviour each prevents. D2_2_stress_test_water.ipynb Read the tree and the date the targets started 3 min Repair time before and after the target 6 min First-contact resolution and repeat contacts 6 min Label each gamed metric with its mechanism 4 min Two guardrails and the behaviour each prevents 6 min ✱ Stretch: A guardrail for estimated reads inside non-revenue water",
+      "href": "../slides/day2.html#lab-2-2"
+    },
+    {
+      "deck": "day2",
+      "id": "s3",
+      "n": 24,
+      "session": 3,
+      "title": "Analysis plans",
+      "text": "Session 3 Analysis plans Write an analysis plan with data, method and threats to validity Compute what change the available data can detect State in advance the result that would change the decision 03",
+      "href": "../slides/day2.html#s3"
+    },
+    {
+      "deck": "day2",
+      "id": "plan-sections",
+      "n": 25,
+      "session": 3,
+      "title": "Seven sections, two pages, written before any result",
+      "text": "An analysis plan Seven sections, two pages, written before any result Question : the framed decision Data : datasets, fields, grain, when ready Method : with its comparison Detectable change : can the data see the effect? Threats : at least three, each with its answer The result that changes the decision , in numbers Timeline : in business days, back from the decision",
+      "href": "../slides/day2.html#plan-sections"
+    },
+    {
+      "deck": "day2",
+      "id": "fixed-before",
+      "n": 26,
+      "session": 3,
+      "title": "Choices made after seeing the data bend the answer, even without fishing",
+      "text": "Why before Choices made after seeing the data bend the answer, even without fishing Which months, which districts, raw or rescaled, mean or median: each choice is a fork Made after looking, each fork drifts toward the result someone hoped for Gelman and Loken: a multiple-comparisons problem arises even with one analysis and no conscious fishing In Lab 2.3 You do not compute the effect of detection. You write the method, the threshold and the exclusions first. Recap. DS-205 pre-registers an experiment; here the same discipline covers any analysis.",
+      "href": "../slides/day2.html#fixed-before"
+    },
+    {
+      "deck": "day2",
+      "id": "plan-data-grain",
+      "n": 27,
+      "session": 3,
+      "title": "Ask for the grain the method needs, not the rows the system holds",
+      "text": "Data Ask for the grain the method needs, not the rows the system holds Dataset What the plan asks for Ready Bulk supply Input by district and month 1 day Billing reads Billed m3 and billing days as district-month totals: no names, mobiles or national IDs 2 days Pipe network, road works Not needed for this question 8 and 15 days",
+      "href": "../slides/day2.html#plan-data-grain"
+    },
+    {
+      "deck": "day2",
+      "id": "plan-method",
+      "n": 28,
+      "session": 3,
+      "title": "Compare Al-Wurud with the other districts, and skip the months that mix effects",
+      "text": "Method Compare Al-Wurud with the other districts, and skip the months that mix effects Before: months 1 to 9 Al-Wurud and five districts → Months 10 to 14 left out meter drift, recalibration, detection starting → After: months 15 to 24 the same districts Difference in differences: Al-Wurud's change minus the other districts' change, bills rescaled to 30 days.",
+      "href": "../slides/day2.html#plan-method"
+    },
+    {
+      "deck": "day2",
+      "id": "detectable-change",
+      "n": 29,
+      "session": 3,
+      "title": "With raw bills the plan cannot see the 3 points it needs",
+      "text": "Detectable change With raw bills the plan cannot see the 3 points it needs Raw bills 6.45 points Rescaled to 30 days 1.27 points The decision rule 3 points Smallest change 9 months before and 10 after can detect: about 2.8 standard errors Noise from the five comparison districts in year 1 Knowing this before the analysis changes the method",
+      "href": "../slides/day2.html#detectable-change"
+    },
+    {
+      "deck": "day2",
+      "id": "would-change",
+      "n": 30,
+      "session": 3,
+      "title": "Write the result that would change the decision, in numbers",
+      "text": "The deciding result Write the result that would change the decision, in numbers Vague \"If detection shows a meaningful effect, consider extending it.\" Deciding \"Below 3 points, or an interval that reaches 0: do not buy. 3 points or more: buy for Al-Rawdah (39.3%) and consider Al-Hamra.\"",
+      "href": "../slides/day2.html#would-change"
+    },
+    {
+      "deck": "day2",
+      "id": "plan-rubric",
+      "n": 31,
+      "session": 3,
+      "title": "A rule check catches missing parts; a reader judges the rest",
+      "text": "Scoring A rule check catches missing parts; a reader judges the rest U.score_plan(plan) {'complete': 2, 'data_feasible': 2, 'method_has_comparison': 2, 'threats': 2, 'would_change_numeric': 2, 'fits_two_pages': 2, 'total': 12, 'max': 12} Necessary, not sufficient. A plan can score 12 and pick the wrong comparison. The peer swap of Session 4 is the second check.",
+      "href": "../slides/day2.html#plan-rubric"
+    },
+    {
+      "deck": "day2",
+      "id": "check-plans",
+      "n": 32,
+      "session": 3,
+      "title": "What is wrong with this plan?",
+      "text": "Checkpoint What is wrong with this plan? An analyst computes non-revenue water for all six districts, sees which districts moved like Al-Wurud before month 13, and then writes into the plan that those two are the comparison. Two comparison districts are too few Pre-period data should never be looked at The comparison was chosen after seeing the data, so it can bend toward a hoped-for result It should say \"difference in differences\" explicitly",
+      "href": "../slides/day2.html#check-plans"
+    },
+    {
+      "deck": "day2",
+      "id": "lab-2-3",
+      "n": 33,
+      "session": 3,
+      "title": "A plan for a framed question",
+      "text": "Lab 2.3 · 25 min A plan for a framed question Write a plan for a framed question, including the result that would change the decision, and score it against the rubric. D2_3_write_plan_framed.ipynb Read the card, the inventory and the deadline 3 min Data and method 7 min What change the data can detect 5 min Threats and the result that changes the decision 7 min Score the plan against the rubric 3 min ✱ Stretch: Plan B, if the meter data arrive a week late",
+      "href": "../slides/day2.html#lab-2-3"
+    },
+    {
+      "deck": "day2",
+      "id": "s4",
+      "n": 34,
+      "session": 4,
+      "title": "Threats to validity",
+      "text": "Session 4 Threats to validity Name the main threats to the validity of a plan Show regression to the mean in data chosen for being extreme Rank threats by how much they could change the decision 04",
+      "href": "../slides/day2.html#s4"
+    },
+    {
+      "deck": "day2",
+      "id": "threat-catalogue",
+      "n": 35,
+      "session": 4,
+      "title": "Ten questions that could make the answer wrong",
+      "text": "Ten threats Ten questions that could make the answer wrong Threat The question Threat The question Selection Chosen in a way linked to the outcome? Construct Does the metric still mean what it meant? Regression to the mean Picked because it was extreme? Missing or merged Are events lost or merged? History Did something else change at once? Spillover Does one unit affect the others? Measurement change Did the way of measuring change? Forking paths Choices made after seeing the data? Seasonality Do the periods differ by season? Small sample Too few units to see the signal?",
+      "href": "../slides/day2.html#threat-catalogue"
+    },
+    {
+      "deck": "day2",
+      "id": "regression-to-mean",
+      "n": 36,
+      "session": 4,
+      "title": "The district picked for its worst month improves next month on its own",
+      "text": "In the data The district picked for its worst month improves next month on its own -3.42 points: next-month change of the district with the highest non-revenue water, months 1 to 12 +0.33 points: next-month change of all districts in the same months Plan A. Al-Wurud was chosen because it was highest in month 12. Part of its fall would have happened with no detection at all.",
+      "href": "../slides/day2.html#regression-to-mean"
+    },
+    {
+      "deck": "day2",
+      "id": "measurement-change",
+      "n": 37,
+      "session": 4,
+      "title": "Plan A's \"before\" months were inflated by a meter fault",
+      "text": "Measurement change Plan A's \"before\" months were inflated by a meter fault Non-revenue water, bills rescaled to 30 days Al-Wurud Other districts Months 1 to 9 31.5% 29.0% Months 10 to 12 (bulk meter over-reading) 36.2% 29.1% Months 13 to 15 32.1% 27.4%",
+      "href": "../slides/day2.html#measurement-change"
+    },
+    {
+      "deck": "day2",
+      "id": "history-month-13",
+      "n": 38,
+      "session": 4,
+      "title": "Month 13 changed five things at once",
+      "text": "History Month 13 changed five things at once Active detection in Al-Wurud Bulk-meter recalibration in Al-Wurud Smart meters in Al-Nakheel Repair-time and first-contact targets everywhere A shorter call script in the contact centre What a comparison answers Changes shared by every district cancel out. Changes in one district, such as Al-Nakheel's meters, distort the comparison: run it with and without that district.",
+      "href": "../slides/day2.html#history-month-13"
+    },
+    {
+      "deck": "day2",
+      "id": "construct-threat",
+      "n": 39,
+      "session": 4,
+      "title": "Plan B measures the target with the metric the target corrupted",
+      "text": "Construct Plan B measures the target with the metric the target corrupted Plan B \"First-contact resolution rose by 12 points: keep the target.\" The flag is set by the agents whose bonus depends on it. Better Judge the target by repeat contacts within seven days, which the customer produces, and state that mobile-number linking undercounts them.",
+      "href": "../slides/day2.html#construct-threat"
+    },
+    {
+      "deck": "day2",
+      "id": "rank-threats",
+      "n": 40,
+      "session": 4,
+      "title": "List three threats, ordered by how much each could change the decision",
+      "text": "Ranking List three threats, ordered by how much each could change the decision Could reverse the decision : the estimate may be mostly artefact (regression to the mean, measurement change) Could move it across the threshold : a bias of a few points near the 3-point rule (history) Adds noise only : mention it, do not lead with it (small sample, when the detectable change is small) Tomorrow. Review notes are ranked the same way: by consequence, not by the order you found them.",
+      "href": "../slides/day2.html#rank-threats"
+    },
+    {
+      "deck": "day2",
+      "id": "peer-swap",
+      "n": 41,
+      "session": 4,
+      "title": "Give a peer three threats, most dangerous first, with one sentence each",
+      "text": "The swap Give a peer three threats, most dangerous first, with one sentence each Reviewer1. Measurement change: you use months 10 to 12 as \"before\", and the bulk meter over-read then. 2. History: Al-Nakheel's smart meters change one comparison district. 3. Seasonality: the periods hold different months. AuthorAgreed on 1 and 2. On 3: both periods compare against districts measured in the same months, so seasonality cancels.",
+      "href": "../slides/day2.html#peer-swap"
+    },
+    {
+      "deck": "day2",
+      "id": "check-threats",
+      "n": 42,
+      "session": 4,
+      "title": "What is the main threat to this plan?",
+      "text": "Checkpoint What is the main threat to this plan? A plan compares Al-Nakheel's non-revenue water, bills rescaled to 30 days, in year 1 (27.7%) and year 2 (19.0%), after the smart meters, and concludes that the meters cut leakage. Measurement change: the new meters bill water the old ones missed Small sample: twelve months each side are too few Regression to the mean: Al-Nakheel was picked for a bad month Seasonality: summer months differ",
+      "href": "../slides/day2.html#check-threats"
+    },
+    {
+      "deck": "day2",
+      "id": "lab-2-4",
+      "n": 43,
+      "session": 4,
+      "title": "Three threats each",
+      "text": "Lab 2.4 · 25 min Three threats each Swap plans with a peer and list each other's three main threats, after doing the same for two supplied plans. D2_4_swap_plans_peer.ipynb Read the threat catalogue 3 min Plan A: its three main threats 7 min Regression to the mean in the data 5 min Plan B: its three main threats 5 min Swap with your neighbour and list theirs 5 min ✱ Stretch: Rewrite one plan so that its worst threat is answered",
+      "href": "../slides/day2.html#lab-2-4"
+    },
+    {
+      "deck": "day2",
+      "id": "wrap-up",
+      "n": 44,
+      "session": 4,
+      "title": "Three things to keep",
+      "text": "Day 2 · wrap-up Three things to keep Know how it is made Estimates, billing cycles and meter swaps move non-revenue water without a drop saved. Targets bend proxies Pair every target with a guardrail that worsens when it is gamed. Plan, then look Method, exclusions, detectable change and the deciding result are fixed before the outcome.",
+      "href": "../slides/day2.html#wrap-up"
+    },
+    {
+      "deck": "day2",
+      "id": "next",
+      "n": 45,
+      "session": 4,
+      "title": "Day 3: Review others' work",
+      "text": "Next Day 3: Review others' work Tomorrow you review three analyses of Sabah's and one by the assistant Sareea. Bring your threat list from Lab 2.4: it is the start of a review checklist.",
+      "href": "../slides/day2.html#next"
+    },
+    {
+      "deck": "day3",
+      "id": "title",
+      "n": 1,
+      "session": 0,
+      "title": "Review others' work",
+      "text": "SDAIA Academy · Problem Framing and Analytical Review Review others' work Day 3: Review the question, the data, the method, the inference and the words, then rank by consequence Data Science Track3 teaching days + capstone day4 sessions · 4 labsDS-310",
+      "href": "../slides/day3.html#title"
+    },
+    {
+      "deck": "day3",
+      "id": "agenda",
+      "n": 2,
+      "session": 0,
+      "title": "Review others' work",
+      "text": "Today Review others' work Session 1 · A review checklist Rerun first, then check five areas from question to conclusion Session 2 · Finding the flaws that matter Rank flaws by what they do to the decision, not by how easy they were to find Session 3 · Reviewing assistant-generated analysis An assistant's analysis looks finished; rerun it and verify every number before anyone uses it Session 4 · Review notes people act on Each note states the problem, its consequence and a fix; the note that matters most comes first",
+      "href": "../slides/day3.html#agenda"
+    },
+    {
+      "deck": "day3",
+      "id": "review-day2",
+      "n": 3,
+      "session": 0,
+      "title": "Which plan is protected against yesterday's main threats?",
+      "text": "Review of Day 2 Which plan is protected against yesterday's main threats? Three plans for the logger decision. Which one answers the bulk-meter drift and the month-13 changes? Al-Wurud months 10 to 12 against 13 to 15 Al-Wurud year 1 against year 2 Leaks found in Al-Wurud, year 1 against year 2 Al-Wurud against the other districts, months 1 to 9 against 15 to 24, without Al-Nakheel",
+      "href": "../slides/day3.html#review-day2"
+    },
+    {
+      "deck": "day3",
+      "id": "s1",
+      "n": 4,
+      "session": 1,
+      "title": "A review checklist",
+      "text": "Session 1 A review checklist Rerun an analysis before judging it Apply a checklist of five areas from question fit to communication Score an analysis so another reviewer would score it alike 01",
+      "href": "../slides/day3.html#s1"
+    },
+    {
+      "deck": "day3",
+      "id": "rerun-first",
+      "n": 5,
+      "session": 1,
+      "title": "A review starts by running the analysis, not by reading it",
+      "text": "The first step A review starts by running the analysis, not by reading it Rerun does it run, from the supplied data? → Reconcile does every sentence match the output above it? → Check five areas from question to communication What goes wrong. The reviewer reads a fluent text, agrees, and never sees that the code prints something else.",
+      "href": "../slides/day3.html#rerun-first"
+    },
+    {
+      "deck": "day3",
+      "id": "five-areas",
+      "n": 6,
+      "session": 1,
+      "title": "Five areas, from the question to the words, scored 0 to 2",
+      "text": "The checklist Five areas, from the question to the words, scored 0 to 2 Area 2 1 0 Question fit Answers the decision asked A nearby question Another question Data handling Right rows and denominators, checked One unchecked step A step that changes the answer Method Fits the question type, with a comparison Fits, but weak Does not fit Inference Claims match evidence, uncertainty stated Some overreach Claims what the data cannot show Communication The reader acts correctly Misleading in part Misleads",
+      "href": "../slides/day3.html#five-areas"
+    },
+    {
+      "deck": "day3",
+      "id": "short-notebook",
+      "n": 7,
+      "session": 1,
+      "title": "The sentence was not written from the output",
+      "text": "The rerun catches it The sentence was not written from the output district D5 707 D4 705 D3 699 D6 684 D1 668 D2 635 Cell 3 prints \"Al-Hamra (D4) has the most contacts, so it is where service is worst. Move two agents to the Al-Hamra queue.\" The output says Al-Salam (D5) has the most contacts, 707 against 705: and a count of contacts is not a measure of service anyway.",
+      "href": "../slides/day3.html#short-notebook"
+    },
+    {
+      "deck": "day3",
+      "id": "service-measure",
+      "n": 8,
+      "session": 1,
+      "title": "A measure of service ranks the districts differently",
+      "text": "Method A measure of service ranks the districts differently Al-Rawdah 28.0% Al-Shifa 27.2% Al-Salam 26.6% Al-Hamra 26.4% Al-Wurud 26.0% Al-Nakheel 25.3% Contacts followed by another within 7 days, months 13 to 24 The districts sit within three points of each other: no district stands out A reviewer may run one check of their own; they do not redo the analysis",
+      "href": "../slides/day3.html#service-measure"
+    },
+    {
+      "deck": "day3",
+      "id": "score-sheet",
+      "n": 9,
+      "session": 1,
+      "title": "Two points out of ten, each with its sentence",
+      "text": "The score Two points out of ten, each with its sentence Area Score Why Question fit 1 Answers \"most contacts\", not \"worst service\" Data handling 1 Raw counts; Al-Hamra's access problems drive billing calls Method 0 A count of contacts does not measure service Inference 0 Volume read as quality; staff moved on it Communication 0 Names Al-Hamra; the output shows Al-Salam first",
+      "href": "../slides/day3.html#score-sheet"
+    },
+    {
+      "deck": "day3",
+      "id": "reviewer-agreement",
+      "n": 10,
+      "session": 1,
+      "title": "A checklist is useful when two reviewers land within a point",
+      "text": "Calibration A checklist is useful when two reviewers land within a point Anchors What a 2, a 1 and a 0 look like, written down before scoring Evidence One sentence per score that points at a cell or a number Compare Two reviewers score alone, then discuss only the gaps of two points Pointer. Team review standards (who reviews what, sign-off rules) are DS-407.",
+      "href": "../slides/day3.html#reviewer-agreement"
+    },
+    {
+      "deck": "day3",
+      "id": "check-checklist",
+      "n": 11,
+      "session": 1,
+      "title": "Which area does this flaw belong to?",
+      "text": "Checkpoint Which area does this flaw belong to? An analysis of estimated bills prints \"estimated share: 16.4%\" for Al-Hamra. The summary below says \"about one bill in four is estimated in Al-Hamra\". Data handling Communication: the words misstate the output Method Inference",
+      "href": "../slides/day3.html#check-checklist"
+    },
+    {
+      "deck": "day3",
+      "id": "lab-3-1",
+      "n": 12,
+      "session": 1,
+      "title": "Score a short notebook",
+      "text": "Lab 3.1 · 25 min Score a short notebook Apply the checklist to a short notebook and score it in five areas, then compare with the reference score. D3_1_apply_checklist_short.ipynb Rerun the short notebook 5 min Score question fit and data handling 6 min Score method and inference 6 min Score communication and the total 4 min Compare with the reference score 4 min ✱ Stretch: Name the one change that would raise the score most",
+      "href": "../slides/day3.html#lab-3-1"
+    },
+    {
+      "deck": "day3",
+      "id": "s2",
+      "n": 13,
+      "session": 2,
+      "title": "Finding the flaws that matter",
+      "text": "Session 2 Finding the flaws that matter Locate seeded flaws cell by cell Measure each flaw's consequence with a recomputed number Rank flaws by their effect on the decision 02",
+      "href": "../slides/day3.html#s2"
+    },
+    {
+      "deck": "day3",
+      "id": "seven-kinds",
+      "n": 14,
+      "session": 2,
+      "title": "Seven kinds of flaw, four in each variant",
+      "text": "The pool Seven kinds of flaw, four in each variant Kind of flaw Area F1 Success measured by an activity, not the outcome Question fit F2 A join on a text key silently drops rows Data handling F3 Before-after in one unit, no comparison, months that mix changes Method F4 Significance or certainty claimed with no interval Inference F5 Volumes not adjusted for the billing period Data handling F6 A chart axis that does not start at zero Communication F7 Estimated bills dropped from billed volume Data handling",
+      "href": "../slides/day3.html#seven-kinds"
+    },
+    {
+      "deck": "day3",
+      "id": "consequence-defined",
+      "n": 15,
+      "session": 2,
+      "title": "The consequence of a flaw is what it does to the answer, measured",
+      "text": "Consequence The consequence of a flaw is what it does to the answer, measured The analysis with no flaw the reference answer → The analysis with only this flaw the flawed answer → The difference points moved, and does the decision flip? U.consequence(MY_NUMBER, \"F3\") # clean 2.34 → flawed 4.12 points; decision: do not buy → buy",
+      "href": "../slides/day3.html#consequence-defined"
+    },
+    {
+      "deck": "day3",
+      "id": "variant-zero",
+      "n": 16,
+      "session": 2,
+      "title": "Two of four flaws reverse the recommendation; two change nothing",
+      "text": "Variant 0 Two of four flaws reverse the recommendation; two change nothing Flaw alone Effect, points Decision F1 · success measured as leaks found (rose 3.4 times) none buy F3 · months 10 to 12 against 13 to 15, Al-Wurud only 4.12 buy F2 · join drops rows spelt \"Al Wurud\" 2.34 do not buy F6 · chart axis from 20% 2.34 do not buy",
+      "href": "../slides/day3.html#variant-zero"
+    },
+    {
+      "deck": "day3",
+      "id": "clean-answer",
+      "n": 17,
+      "session": 2,
+      "title": "Without the flaws, detection cut non-revenue water by 2.3 points: do not buy",
+      "text": "The answer Without the flaws, detection cut non-revenue water by 2.3 points: do not buy 2.3 points, 95% interval 1.4 to 3.3, against the other districts without Al-Nakheel The plan of Lab 2.3 fixed the rule before: below 3 points, do not buy Sabah's notebook said buy, on leaks found rising 3.4 times The fall is real but small: worth knowing, not worth the loggers at this price",
+      "href": "../slides/day3.html#clean-answer"
+    },
+    {
+      "deck": "day3",
+      "id": "rank-rule",
+      "n": 18,
+      "session": 2,
+      "title": "Rank by consequence, not by the order you found the flaws",
+      "text": "Ranking Rank by consequence, not by the order you found the flaws Flips the decision : F1 and F3 in variant 0; F7 too where it appears (+1.8 points, past the rule) Moves the number , by how many points: none here; F5 moves it by 0.02 in other variants Misleads without moving a number : an axis, an unstated uncertainty No effect on this answer : still worth a note if it can bite elsewhere (the join)",
+      "href": "../slides/day3.html#rank-rule"
+    },
+    {
+      "deck": "day3",
+      "id": "own-variant",
+      "n": 19,
+      "session": 2,
+      "title": "Each participant reviews a variant of their own, checked without a visible key",
+      "text": "Authenticity Each participant reviews a variant of their own, checked without a visible key Your participant number picks four flaws from the pool U.flags_correct compares a hash of your flags with the variant's Right or wrong, without revealing which flaws you missed In the capstone The assessed review uses unseen variants made for each participant; review notes are matched against your own seeded flaws.",
+      "href": "../slides/day3.html#own-variant"
+    },
+    {
+      "deck": "day3",
+      "id": "check-consequence",
+      "n": 20,
+      "session": 2,
+      "title": "Which flaw goes first in the review?",
+      "text": "Checkpoint Which flaw goes first in the review? A variant holds: a chart from 20%, unadjusted billing periods (moves the effect by 0.02 points), significance with no interval, and a before-after with no comparison (moves the effect from 2.3 to 4.1, past the 3-point rule). The chart axis The missing interval The before-after with no comparison The unadjusted billing periods",
+      "href": "../slides/day3.html#check-consequence"
+    },
+    {
+      "deck": "day3",
+      "id": "lab-3-2",
+      "n": 21,
+      "session": 2,
+      "title": "Rank the flaws of your variant",
+      "text": "Lab 3.2 · 25 min Rank the flaws of your variant Review a seeded-flaw notebook, a variant of its own for each participant, and rank its flaws by consequence. D3_2_review_seeded_flaw.ipynb Load your variant and rerun it 5 min Find the flaws, cell by cell 9 min Consequence of each, with a recomputed number 6 min Rank by consequence 3 min Check your flags 2 min ✱ Stretch: Fix the top flaw and rerun the analysis",
+      "href": "../slides/day3.html#lab-3-2"
+    },
+    {
+      "deck": "day3",
+      "id": "s3",
+      "n": 22,
+      "session": 3,
+      "title": "Reviewing assistant-generated analysis",
+      "text": "Session 3 Reviewing assistant-generated analysis Name the failures typical of assistant-generated analyses Rerun an assistant's notebook and reconcile its summary with its output Write a verification note that meets the duty to verify 03",
+      "href": "../slides/day3.html#s3"
+    },
+    {
+      "deck": "day3",
+      "id": "assistant-failures",
+      "n": 23,
+      "session": 3,
+      "title": "An assistant's analysis looks finished; check five things before believing it",
+      "text": "What to expect An assistant's analysis looks finished; check five things before believing it It may not run : a column or a function that does not exist Its numbers may not come from its code : a summary written beside the output Outside numbers with no source: benchmarks, norms The direction of a change reversed in the words The method answers an easier question than the one asked Recap. Recomputing and running a request twice are DS-206; here you review someone else's assistant-generated work.",
+      "href": "../slides/day3.html#assistant-failures"
+    },
+    {
+      "deck": "day3",
+      "id": "sareea-summary",
+      "n": 24,
+      "session": 3,
+      "title": "Sareea's summary reversed the direction of the change",
+      "text": "The case Sareea's summary reversed the direction of the change Al-Nakheel, billed m3 per account per month Before After Change Sareea's summary 21.4 19.6 -8.2% Recomputed from reads.csv 25.8 28.7 +11.5% And. The notebook stops at cell s2 (no column \"consumption\"), and the \"industry benchmark of 15%\" has no source.",
+      "href": "../slides/day3.html#sareea-summary"
+    },
+    {
+      "deck": "day3",
+      "id": "four-checks",
+      "n": 25,
+      "session": 3,
+      "title": "All four checks fail, each with its evidence",
+      "text": "Four checks All four checks fail, each with its evidence Check Result Evidence Reruns as delivered fail KeyError: \"consumption\" is not a column Every number traced to output fail 21.4, 19.6 and -8.2% appear nowhere Outside numbers sourced fail The 15% benchmark has no source Method fits the question fail Bills measure what the meters register, not what people use",
+      "href": "../slides/day3.html#four-checks"
+    },
+    {
+      "deck": "day3",
+      "id": "duty-to-verify",
+      "n": 26,
+      "session": 3,
+      "title": "Verifying assistant output before use is a duty, not a courtesy",
+      "text": "The national guideline Verifying assistant output before use is a duty, not a courtesy Identify content generated with generative AI Check it for factual accuracy, especially in official reports Verify generated code before using or running it Source SDAIA's Generative AI Guidelines for Government, in its sections on reliability and on users' responsibilities.",
+      "href": "../slides/day3.html#duty-to-verify"
+    },
+    {
+      "deck": "day3",
+      "id": "verification-note",
+      "n": 27,
+      "session": 3,
+      "title": "A verification note says what may be used, what may not, and what next",
+      "text": "The deliverable A verification note says what may be used, what may not, and what next Status Not verified: do not use the summary May be used Billed m3 per account in Al-Nakheel rose from 25.8 to 28.7 (+11.5%) after the smart meters May not be used The 8.2% fall, the 15% benchmark, the roll-out advice Next Measure use another way (night flow at the district meter), against districts without smart meters",
+      "href": "../slides/day3.html#verification-note"
+    },
+    {
+      "deck": "day3",
+      "id": "hosted-models",
+      "n": 28,
+      "session": 3,
+      "title": "A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside",
+      "text": "In the lab A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside The stretch sends the same prompt to a free hosted open-weight model, and you verify its answer the same way Without a key, the lab returns Sareea's recorded answer and says so Classification. Billing and contact extracts are Restricted: they do not go to a public assistant. The course data is synthetic, which is why it may.",
+      "href": "../slides/day3.html#hosted-models"
+    },
+    {
+      "deck": "day3",
+      "id": "check-assistant",
+      "n": 29,
+      "session": 3,
+      "title": "What do you do with this summary?",
+      "text": "Checkpoint What do you do with this summary? An assistant's notebook runs, and its summary's three numbers all appear in the output. The summary concludes that smart meters \"cut leakage in Al-Nakheel by nine points\". Withhold it: the numbers are right but the method measures billing, not leakage Accept it: every number traces to the output Accept it once a chart is added Reject it because an assistant wrote it",
+      "href": "../slides/day3.html#check-assistant"
+    },
+    {
+      "deck": "day3",
+      "id": "lab-3-3",
+      "n": 30,
+      "session": 3,
+      "title": "Verify the assistant's analysis",
+      "text": "Lab 3.3 · 25 min Verify the assistant's analysis Rerun an assistant-generated analysis, find where it fails and write a verification note. D3_3_rerun_assistant_generated.ipynb Read the prompt and the summary the assistant gave 3 min Rerun the notebook 5 min Where it fails: four checks 9 min Write the verification note 6 min Label the assistant's part 2 min ✱ Stretch: Ask a free hosted model for the same analysis and verify its answer",
+      "href": "../slides/day3.html#lab-3-3"
+    },
+    {
+      "deck": "day3",
+      "id": "s4",
+      "n": 31,
+      "session": 4,
+      "title": "Review notes people act on",
+      "text": "Session 4 Review notes people act on Rewrite a vague note as problem, consequence and fix Order notes by consequence for the decision Recommend the kind of analysis the request needed 04",
+      "href": "../slides/day3.html#s4"
+    },
+    {
+      "deck": "day3",
+      "id": "weak-strong-note",
+      "n": 32,
+      "session": 4,
+      "title": "A note gets acted on when it names the problem, the consequence and the fix",
+      "text": "One note, twice A note gets acted on when it names the problem, the consequence and the fix Weak \"The join looks off.\" Acted on Problem: cell c2 joins repairs on the district name; rows spelt \"Al Wurud\" are dropped. Consequence: about a third of Al-Wurud's repairs vanish from the count. Fix: join on a district code and assert the row count.",
+      "href": "../slides/day3.html#weak-strong-note"
+    },
+    {
+      "deck": "day3",
+      "id": "note-parts",
+      "n": 33,
+      "session": 4,
+      "title": "Three parts, each a full sentence",
+      "text": "The parts Three parts, each a full sentence Problem Where, and exactly what: the cell, the line, the number Consequence What it does to the number or the decision, in points or in the choice Fix An action: \"join on the code\", not \"consider the join\" Tone. Write about the analysis, not the analyst: \"cell c3 compares\" rather than \"you compared\".",
+      "href": "../slides/day3.html#note-parts"
+    },
+    {
+      "deck": "day3",
+      "id": "ranked-notes",
+      "n": 34,
+      "session": 4,
+      "title": "Eight notes, ranked by what they do to the decision",
+      "text": "The order Eight notes, ranked by what they do to the decision Rank Note Consequence 1 Success measured as leaks found Reverses the decision 2 Before-after with no comparison Adds about 1.8 points, past the rule 3 to 6 The unsourced 15%; estimates as actual reads; the join; no interval A wrong or unverifiable number 7, 8 Chart axis; the spelling in the export Cosmetic, or a cause handled elsewhere",
+      "href": "../slides/day3.html#ranked-notes"
+    },
+    {
+      "deck": "day3",
+      "id": "verdict-first",
+      "n": 35,
+      "session": 4,
+      "title": "A review opens with its verdict on the decision",
+      "text": "The first lines A review opens with its verdict on the decision For Nadia The recommendation to buy loggers does not hold. Measured on water lost against the other districts, detection cut non-revenue water by 2.3 points, below the 3-point rule; the analysis counted leaks found and compared the wrong months. Sabah will rerun it with the fixes below before the capital committee meets.",
+      "href": "../slides/day3.html#verdict-first"
+    },
+    {
+      "deck": "day3",
+      "id": "recommend-kind",
+      "n": 36,
+      "session": 4,
+      "title": "A review can conclude that the request needed another kind of analysis",
+      "text": "After the review A review can conclude that the request needed another kind of analysis Sareea's request asked a causal question and got a description of bills The right answer is a causal analysis against districts without smart meters, on a measure of use Sometimes the right recommendation is no analysis yet: the data cannot reach the question by the date In the capstone defence You recommend the kind of analysis, and defend it when the sponsor changes a constraint.",
+      "href": "../slides/day3.html#recommend-kind"
+    },
+    {
+      "deck": "day3",
+      "id": "capstone-brief",
+      "n": 37,
+      "session": 4,
+      "title": "Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it",
+      "text": "Capstone kickoff Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it Sponsor: Fahda Al-Bishr, director of permits: \"Should we hire six more plan reviewers?\" Data: 3,600 synthetic applications, an inventory, and an assistant-drafted analysis to review Hand in: a framing card, a two-page plan, ranked review notes, in a public repository 8 + 10 minutes: the talk, during which the sponsor changes a constraint, then the defence",
+      "href": "../slides/day3.html#capstone-brief"
+    },
+    {
+      "deck": "day3",
+      "id": "check-notes",
+      "n": 38,
+      "session": 4,
+      "title": "Which note will the author act on?",
+      "text": "Checkpoint Which note will the author act on? Four notes on the same flaw in Sareea's analysis, which treats estimated bills as actual reads. \"What about estimated reads?\" \"Use actual reads only.\" \"You have overstated the change.\" \"Cell s2 averages estimated bills as reads, so the change mixes billing timing with metering; recompute on actual reads and report the estimated share.\"",
+      "href": "../slides/day3.html#check-notes"
+    },
+    {
+      "deck": "day3",
+      "id": "lab-3-4",
+      "n": 39,
+      "session": 4,
+      "title": "Notes that get acted on",
+      "text": "Lab 3.4 · 25 min Notes that get acted on Rewrite review notes so each states the problem, its consequence and a fix, rank them, and choose the review target of the capstone. D3_4_rewrite_review_notes.ipynb Read the eight weak notes 3 min Rewrite each: problem, consequence, fix 12 min Rank by consequence 4 min Tutor feedback and one revision 4 min Open the capstone brief 2 min ✱ Stretch: Write the summary paragraph a manager reads first",
+      "href": "../slides/day3.html#lab-3-4"
+    },
+    {
+      "deck": "day3",
+      "id": "wrap-up",
+      "n": 40,
+      "session": 4,
+      "title": "Three things to keep",
+      "text": "Day 3 · wrap-up Three things to keep Rerun, then read Run the analysis, reconcile every sentence with its output, then score five areas. Rank by consequence A flaw that flips the decision goes first, whatever order you found it in. Verify, label, then use Assistant output passes four checks and carries its label before anyone acts on it.",
+      "href": "../slides/day3.html#wrap-up"
+    },
+    {
+      "deck": "day3",
+      "id": "next",
+      "n": 41,
+      "session": 4,
+      "title": "Capstone day: Hima Municipality's permits backlog",
+      "text": "Next Capstone day: Hima Municipality's permits backlog Read labs/capstone/BRIEF.md, start your repository from labs/capstone/README.md, and draft the framing card. Bring questions for the sponsor.",
+      "href": "../slides/day3.html#next"
+    },
+    {
+      "deck": "capstone",
+      "id": "title",
+      "n": 1,
+      "session": 0,
+      "title": "Capstone: the permits backlog, framed and defended",
+      "text": "SDAIA Academy · Problem Framing and Analytical Review Capstone: the permits backlog, framed and defended Capstone: An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence Data Science Track3 teaching days + capstone day8 min talk and demo · 10 min Q&ADS-310",
+      "href": "../slides/capstone.html#title"
+    },
+    {
+      "deck": "capstone",
+      "id": "agenda",
+      "n": 2,
+      "session": 0,
+      "title": "Frame alone, finish, then present and defend",
+      "text": "Capstone day Frame alone, finish, then present and defend Supervised framing check three requests framed without AI assistance, on paper or offline Finish and publish framing card, plan and ranked review notes, in a public repository by the deadline Present and defend the talk, during which the sponsor changes a constraint, then the defence Review and closing what the room learned, the follow-up task",
+      "href": "../slides/capstone.html#agenda"
+    },
+    {
+      "deck": "capstone",
+      "id": "framing-check",
+      "n": 3,
+      "session": 0,
+      "title": "The supervised framing check: three requests, 40 minutes, no AI",
+      "text": "20% of the result The supervised framing check: three requests, 40 minutes, no AI Three short requests you have not seen, from three managers One framing card each: decision, estimand (population, variable, comparison, summary), metric, decision rule, what would change it Marked on whether a peer could plan from it without further questions",
+      "href": "../slides/capstone.html#framing-check"
+    },
+    {
+      "deck": "capstone",
+      "id": "the-brief",
+      "n": 4,
+      "session": 0,
+      "title": "Hima Municipality: the permits backlog doubled after applications moved online",
+      "text": "The case Hima Municipality: the permits backlog doubled after applications moved online Fahda Al-Bishr, director of permitsShould we hire six more plan reviewers? Tell me what to do. Daifallah Al-Juaid, head of plan reviewMany online applications arrive without the documents we need, and files go back to applicants, sometimes twice. permits.csv: 3,600 synthetic applications of one year inventory.json: what data exist, who holds them, how long they take review/backlog_analysis.py: an analysis drafted with an assistant, to review",
+      "href": "../slides/capstone.html#the-brief"
+    },
+    {
+      "deck": "capstone",
+      "id": "hand-in",
+      "n": 5,
+      "session": 0,
+      "title": "Three files and a README, in a public repository",
+      "text": "The repository Three files and a README, in a public repository framing_card.md The decision, the estimand, the metric, the rule, and the guardrail you watch analysis_plan.md At most two pages: data, method, threats, the result that would change the decision, feasibility by the date review_notes.md Notes on your variant of the backlog analysis: problem, consequence, fix, ranked by consequence Start from labs/capstone/README.md: copy it to your repository and fill it in. No personal data, and the synthetic data only.",
+      "href": "../slides/capstone.html#hand-in"
+    },
+    {
+      "deck": "capstone",
+      "id": "own-variant",
+      "n": 6,
+      "session": 0,
+      "title": "Each participant reviews a variant of the backlog analysis of their own",
+      "text": "Authenticity Each participant reviews a variant of the backlog analysis of their own The repository holds one version, for practice The trainer gives you your own variant this morning, with its seeded flaws Your review notes are matched against your variant's flaws As in Lab 3.2 The same pool of kinds of flaw, the same ranking rule: what the flaw does to the decision comes first.",
+      "href": "../slides/capstone.html#own-variant"
+    },
+    {
+      "deck": "capstone",
+      "id": "rubric",
+      "n": 7,
+      "session": 0,
+      "title": "Five criteria, 100 points",
+      "text": "The capstone and its defence Five criteria, 100 points Framing card a peer can plan from 20% Analysis plan, threats and the deciding result 20% Review notes ranked by consequence 20% The kind of analysis recommended 10% Defence under the changed constraint 30%",
+      "href": "../slides/capstone.html#rubric"
+    },
+    {
+      "deck": "capstone",
+      "id": "weights",
+      "n": 8,
+      "session": 0,
+      "title": "Three parts make the result; the defence has its own floor",
+      "text": "The result Three parts make the result; the defence has its own floor Part Weight Supervised framing check, without AI 20% Framing card, plan and review notes, on the rubric 50% Live defence with an unseen change of constraint 30% To pass: 70% overall, and at least 60% on the live defence.",
+      "href": "../slides/capstone.html#weights"
+    },
+    {
+      "deck": "capstone",
+      "id": "format",
+      "n": 9,
+      "session": 0,
+      "title": "The talk, the changed constraint, the defence",
+      "text": "Eight minutes, then ten The talk, the changed constraint, the defence 3 min · the question The framing card: the decision, the estimand, the rule 3 min · the plan Method, the main threat, the result that would change the decision 2 min · the review The top note of your variant and its consequence During the talk the sponsor changes one constraint. The ten-minute defence starts from it: what changes in your recommendation, and what does not?",
+      "href": "../slides/capstone.html#format"
+    },
+    {
+      "deck": "capstone",
+      "id": "practice-change",
+      "n": 10,
+      "session": 0,
+      "title": "A practice constraint change: what happens to your plan?",
+      "text": "Practise it now A practice constraint change: what happens to your plan? Fahda Al-BishrThe council has frozen hiring for this year. Whatever you recommend must work with the reviewers we have. Does the decision still exist? Which options are left? Does the kind of analysis change: from a causal question about staff to a description of where time is lost? What stays the same in your plan, and why?",
+      "href": "../slides/capstone.html#practice-change"
+    },
+    {
+      "deck": "capstone",
+      "id": "running-order",
+      "n": 11,
+      "session": 0,
+      "title": "Who presents when",
+      "text": "Running order Who presents when # Participant Repository 1 2 3 4 5 6",
+      "href": "../slides/capstone.html#running-order"
+    },
+    {
+      "deck": "capstone",
+      "id": "final-prep",
+      "n": 12,
+      "session": 0,
+      "title": "Fifteen minutes: open your repository as a stranger would",
+      "text": "Before the first talk Fifteen minutes: open your repository as a stranger would Open the public link in a private window. Are the three files there, and could a peer plan from your card alone?",
+      "href": "../slides/capstone.html#final-prep"
+    },
+    {
+      "deck": "capstone",
+      "id": "now-presenting",
+      "n": 13,
+      "session": 0,
+      "title": "Talk",
+      "text": "Now presenting Talk Defence",
+      "href": "../slides/capstone.html#now-presenting"
+    },
+    {
+      "deck": "capstone",
+      "id": "review",
+      "n": 14,
+      "session": 0,
+      "title": "What the room learned",
+      "text": "After the defences What the room learned The best framing Which card could the room plan from without a single question? The flaw most missed Which seeded flaw went unranked or ranked low most often? The best defence Who moved exactly the part of the plan the constraint touched?",
+      "href": "../slides/capstone.html#review"
+    },
+    {
+      "deck": "capstone",
+      "id": "what-next",
+      "n": 15,
+      "session": 0,
+      "title": "The follow-up task, and what comes next",
+      "text": "After the course The follow-up task, and what comes next Follow-up task. Within four weeks, write one framing card for a real request at work and have a colleague plan from it; keep personal and Restricted data out of anything you share. Keep the repository. It is evidence for the DS Associate badge. Next. Metric definition in depth is DS-307; team review standards are DS-407.",
+      "href": "../slides/capstone.html#what-next"
+    },
+    {
+      "deck": "capstone",
+      "id": "thanks",
+      "n": 16,
+      "session": 0,
+      "title": "Thank you",
+      "text": "SDAIA Academy Thank you Problem Framing and Analytical Review",
+      "href": "../slides/capstone.html#thanks"
+    }
+  ]
+}

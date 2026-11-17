@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="page" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problem Framing and Analytical Review · SDAIA Academy</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<meta name="description" content="Turn vague requests into answerable decision questions, plan the analysis, and review analyses by people and assistants by consequence">
+<link rel="icon" href="_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="index.md">
+<link rel="describedby" href="llms.txt">
+<link rel="stylesheet" href="_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo" id="logo"></div><nav><a href="slides/day1.html">Slides</a><a href="practice.html">Practice</a><a href="index.md" type="text/markdown">Markdown</a></nav></div>
+<div class="kicker">Data Science Track · SDAIA Academy · DS-310</div>
+<h1>Problem Framing and Analytical Review<span class="sub ar" lang="ar" dir="rtl">صياغة المشكلات التحليلية ومراجعة التحليلات</span></h1>
+<p>Turn vague requests into answerable decision questions, plan the analysis, and review analyses by people and assistants by consequence</p>
+<div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>21 hours</span><span>Level 300</span><span>Data Science · Associate badge</span></div>
+</div>
+</header>
+<main class="wrap">
+<h2>About the course</h2>
+<p>Participants practise the work before and after an analysis, using requests from Ghadeer Water Company, a fictional water utility. They turn vague requests into decision questions with an estimand, a metric and a decision rule, interview a role-played manager, use domain knowledge of metering, billing and repair to see where the data mislead, and test whether data and deadline make the question answerable. They then review analyses by peers and by an assistant and write review notes ranked by consequence. Metric definition is DS-307; team review standards are DS-407.</p>
+<p><b>Who it is for:</b> Practitioners. Data scientists and analysts who have completed the level 200 set or can show equivalent work: an analysis they framed, carried out and explained to a stakeholder.</p>
+<p><b>Format:</b> Intensive: 3 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task</p>
+<h2>The case study</h2>
+<div class="note info"><b>Ghadeer Water Company.</b> Ghadeer Water Company is a fictional water utility with six districts whose managers send vague requests about water loss, leak repair, billing and complaints. Participants frame those requests with an estimand and a decision rule, interview a role-played operations manager and metering engineer, map how meter reads become bills, stress-test the water-loss and customer-service metric tree, write and attack analysis plans, and review three seeded-flaw analyses, one written by the assistant Sareea. The capstone moves to a second case, the Building Permits Department of Hima Municipality and its permits backlog. All data is synthetic and generated with a fixed seed.</div>
+<h2>The course</h2>
+<div class="day">
+<div class="day-head c-teal"><div><div class="t">Day 1 · 4 sessions · 4 labs</div><h3>From request to question</h3></div><a class="btn" href="slides/day1.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Requests are not questions</b><br>From a manager's worry to a decision question with an estimand, a metric and a decision rule<ul><li>Separate the decision behind a request from the topic it names</li><li>State an estimand with population, variable, contrast and summary</li><li>Write a decision rule a peer can apply without asking you</li></ul></td><td><a href="labs/D1_1_reframe_two_vague.ipynb">Lab 1.1 · Two framing cards (AI-off)</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D1_1_reframe_two_vague.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Question types</b><br>Descriptive, predictive, causal or unanswerable, and the kind of analysis each one needs<ul><li>Classify a request as descriptive, predictive, causal or unanswerable</li><li>Match each type to description, an experiment, a causal analysis, a model or no analysis</li><li>Change the recommendation when a constraint changes</li></ul></td><td><a href="labs/D1_2_classify_eight_requests.ipynb">Lab 1.2 · Eight requests classified</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D1_2_classify_eight_requests.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Interviewing a stakeholder</b><br>Find the constraints, the acceptable evidence and the people affected before any analysis<ul><li>Map decision makers, users and affected groups for a request</li><li>Ask open questions that surface constraints and acceptable evidence</li><li>Record what was said apart from what was assumed</li></ul></td><td><a href="labs/D1_3_interview_role_played.ipynb">Lab 1.3 · Interview the operations manager</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D1_3_interview_role_played.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Feasibility and scope</b><br>Test a question against the data, their classification, the time to get them and the deadline<ul><li>Estimate when each dataset in a plan can be ready</li><li>Apply classification, sharing time limits and minimisation to a data request</li><li>Cut a question's scope until it fits the deadline</li></ul></td><td><a href="labs/D1_4_check_one_question.ipynb">Lab 1.4 · Check and cut one question</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D1_4_check_one_question.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-cyan"><div><div class="t">Day 2 · 4 sessions · 4 labs</div><h3>Know the domain, plan the work</h3></div><a class="btn" href="slides/day2.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>How the data are made</b><br>Meter reads become bills through estimates, billing cycles and meter swaps, and each step can mislead<ul><li>Read a briefing pack and an expert interview for how a metric is produced</li><li>Draw the meter-to-bill process as a diagram</li><li>Mark where the data can mislead, with a number from the data</li></ul></td><td><a href="labs/D2_1_map_meter_bill.ipynb">Lab 2.1 · The meter-to-bill map</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D2_1_map_meter_bill.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Metrics and proxies</b><br>A metric tree is a set of proxies; under a target, each one can be gamed<ul><li>Trace a goal to the proxies a metric tree uses for it</li><li>Recognise the four ways a proxy fails under pressure</li><li>Propose guardrail metrics that expose the gaming</li></ul></td><td><a href="labs/D2_2_stress_test_water.ipynb">Lab 2.2 · Stress-test the metric tree</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D2_2_stress_test_water.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Analysis plans</b><br>Data, method, threats and the result that would change the decision, fixed before outcomes are seen<ul><li>Write an analysis plan with data, method and threats to validity</li><li>Compute what change the available data can detect</li><li>State in advance the result that would change the decision</li></ul></td><td><a href="labs/D2_3_write_plan_framed.ipynb">Lab 2.3 · A plan for a framed question</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D2_3_write_plan_framed.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Threats to validity</b><br>What could make the answer wrong: selection, regression to the mean, measurement change and more<ul><li>Name the main threats to the validity of a plan</li><li>Show regression to the mean in data chosen for being extreme</li><li>Rank threats by how much they could change the decision</li></ul></td><td><a href="labs/D2_4_swap_plans_peer.ipynb">Lab 2.4 · Three threats each</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D2_4_swap_plans_peer.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-coral"><div><div class="t">Day 3 · 4 sessions · 4 labs</div><h3>Review others' work</h3></div><a class="btn" href="slides/day3.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>A review checklist</b><br>Rerun first, then check five areas from question to conclusion<ul><li>Rerun an analysis before judging it</li><li>Apply a checklist of five areas from question fit to communication</li><li>Score an analysis so another reviewer would score it alike</li></ul></td><td><a href="labs/D3_1_apply_checklist_short.ipynb">Lab 3.1 · Score a short notebook</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D3_1_apply_checklist_short.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Finding the flaws that matter</b><br>Rank flaws by what they do to the decision, not by how easy they were to find<ul><li>Locate seeded flaws cell by cell</li><li>Measure each flaw's consequence with a recomputed number</li><li>Rank flaws by their effect on the decision</li></ul></td><td><a href="labs/D3_2_review_seeded_flaw.ipynb">Lab 3.2 · Rank the flaws of your variant</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D3_2_review_seeded_flaw.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Reviewing assistant-generated analysis</b><br>An assistant's analysis looks finished; rerun it and verify every number before anyone uses it<ul><li>Name the failures typical of assistant-generated analyses</li><li>Rerun an assistant's notebook and reconcile its summary with its output</li><li>Write a verification note that meets the duty to verify</li></ul></td><td><a href="labs/D3_3_rerun_assistant_generated.ipynb">Lab 3.3 · Verify the assistant's analysis</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D3_3_rerun_assistant_generated.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Review notes people act on</b><br>Each note states the problem, its consequence and a fix; the note that matters most comes first<ul><li>Rewrite a vague note as problem, consequence and fix</li><li>Order notes by consequence for the decision</li><li>Recommend the kind of analysis the request needed</li></ul></td><td><a href="labs/D3_4_rewrite_review_notes.ipynb">Lab 3.4 · Notes that get acted on</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-310/blob/main/labs/D3_4_rewrite_review_notes.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-amber"><div><div class="t">Capstone</div><h3>Capstone: the permits backlog, framed and defended</h3></div><a class="btn" href="slides/capstone.html">Open the slides</a></div>
+<div class="scroll"><table><tr><td>An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence</td></tr></table></div>
+</div>
+<h2>Capstone</h2>
+<div class="two">
+<div><p>A framing card, analysis plan and peer review for a second synthetic case (a municipal permits backlog), submitted as a repository and presented while the role-played sponsor changes a constraint, with ten minutes of defence</p><p><b>What you submit:</b> A public GitHub repository link holding the framing card, the analysis plan and the review notes, with the capstone README filled in</p><p><b>Format:</b> 8 min talk and demo · 10 min Q&amp;A</p></div>
+<div><h3>Rubric</h3><div class="bar c-teal"><span>Framing card a peer can plan from<i style="--w:67%"></i></span><b>20%</b></div><div class="bar c-cyan"><span>Analysis plan, threats and the deciding result<i style="--w:67%"></i></span><b>20%</b></div><div class="bar c-coral"><span>Review notes ranked by consequence<i style="--w:67%"></i></span><b>20%</b></div><div class="bar c-purple"><span>The kind of analysis recommended<i style="--w:33%"></i></span><b>10%</b></div><div class="bar c-amber"><span>Defence under the changed constraint<i style="--w:100%"></i></span><b>30%</b></div></div>
+</div>
+<h2>Outcomes</h2>
+<p>By the end of the course, participants can:</p>
+<div class="day"><div class="scroll"><table>
+<tr><th></th><th>Outcomes</th><th>Level</th><th>Evidence</th></tr>
+<tr><td><b>LO1</b></td><td>Prepare a decision question with estimand, population, metric and decision rule from a vague request, given five requests from the utility's managers</td><td>Applied</td><td>framing cards a peer can plan from without further questions</td></tr>
+<tr><td><b>LO2</b></td><td>Analyse a metric set for proxy failure and gaming, and propose guardrail metrics, given the utility's metric tree for water loss and customer service</td><td>Applied</td><td>an annotated tree with two guardrails and the behaviour each prevents</td></tr>
+<tr><td><b>LO3</b></td><td>Use domain documents and an expert interview to map how the data behind a metric are produced, given a briefing pack on metering, billing cycles and leak repair, and a role-played engineer</td><td>Applied</td><td>a process map marking three points where the data can mislead</td></tr>
+<tr><td><b>LO4</b></td><td>Design an analysis plan stating data, method, threats to validity and the result that would change the decision, given a framed question, a data inventory and a two-week deadline</td><td>Performance</td><td>a two-page plan scored against a rubric</td></tr>
+<tr><td><b>LO5</b></td><td>Review an analysis for errors in question fit, data handling, method, inference and communication, given three seeded-flaw notebooks, one generated by an assistant</td><td>Performance</td><td>review notes ranking the critical flaws by consequence, each with a fix</td></tr>
+<tr><td><b>LO6</b></td><td>Decide whether a request needs description, an experiment, a causal analysis, a predictive model or no analysis, given a role-played sponsor whose constraints change during the meeting</td><td>Performance</td><td>a recommendation defended against the assessor's challenge</td></tr>
+</table></div></div>
+<h2>Tools</h2>
+<div class="grid">
+<div class="card c-teal"><h3>Notebook or report</h3><p>Jupyter · marimo · Quarto</p></div>
+<div class="card c-cyan"><h3>Diagrams for process maps and metric trees</h3><p>Mermaid · draw.io</p></div>
+<div class="card c-coral"><h3>Review comments</h3><p>pull or merge requests in Git · comments in a shared document</p></div>
+<div class="card c-purple"><h3>Assistant that generates the analysis under review</h3><p>a free hosted open-weight model · any commercial coding assistant</p></div>
+</div>
+<h2>Before you start</h2>
+<h3>Prerequisites</h3>
+<ul><li>DS-204 Machine Learning for Tabular Data: Baselines and Validation</li><li>DS-205 Designing and Reading Experiments</li><li>Has completed at least one analysis for a stakeholder</li><li>Reads a notebook in Python or R and reruns it</li><li>Setup: a laptop processor with uv, or Google Colab. Nothing downloads a model; a free hosted model key is optional (every assistant cell has a stand-in). Run 00_setup_check before Day 1; see labs/README.md.</li></ul>
+<div class="note tip">The labs are notebooks. Open each one in Google Colab from the table above, or clone the repository and run them locally.</div>
+<h2>Sources</h2>
+<h3>Framing and question types</h3>
+<ul><li><a href="https://doi.org/10.1126/science.aaa6146">Leek and Peng (2015), What is the question? Science 347(6228)</a></li><li><a href="https://database.ich.org/sites/default/files/E9-R1_Step4_Guideline_2019_1203.pdf">ICH E9(R1) Addendum on estimands and sensitivity analysis in clinical trials (2019)</a></li><li><a href="https://www.ibm.com/docs/en/spss-modeler/saas?topic=dm-crisp-help-overview">IBM SPSS Modeler, CRISP-DM Help Overview</a></li></ul>
+<h3>Metrics, plans and validity</h3>
+<ul><li><a href="https://arxiv.org/abs/1803.04585">Manheim and Garrabrant (2018), Categorizing Variants of Goodhart's Law</a></li><li><a href="https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf">Gelman and Loken (2013), The garden of forking paths</a></li></ul>
+<h3>Water utility domain</h3>
+<ul><li><a href="https://allianceforwaterefficiency.org/resource/water-audit/">Alliance for Water Efficiency, Water Audit (the IWA and AWWA water balance)</a></li></ul>
+<h3>National references</h3>
+<ul><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf">Personal Data Protection Law</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf">Implementing Regulation of the Personal Data Protection Law</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/DataClassificationPolicy.pdf">Data Classification Policy (NDMO)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/DataSharingPolicyEN.pdf">Data Sharing Policy (NDMO)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf">Principles of AI Ethics (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf">Generative AI Guidelines for Government (SDAIA)</a></li></ul>
+<h3>Tools</h3>
+<ul><li><a href="https://jupyter.org/">Jupyter</a></li><li><a href="https://marimo.io/">marimo</a></li><li><a href="https://quarto.org/">Quarto</a></li><li><a href="https://www.drawio.com/">draw.io</a></li><li><a href="https://openrouter.ai/models?max_price=0">OpenRouter free models</a></li></ul>
+<h2>Files and links</h2>
+<div class="files">
+<a href="practice.html"><b>practice.html</b><span>Practice questions with feedback</span></a>
+<a href="index.md"><b>index.md</b><span>This page as Markdown, for an AI assistant</span></a>
+<a href="llms.txt"><b>llms.txt</b><span>The course for AI assistants (llms.txt)</span></a>
+<a href="https://github.com/SDAIAAcademy/ds-310"><b>SDAIAAcademy/ds-310</b><span>The course repository</span></a>
+</div>
+</main>
+<footer><div class="wrap">SDAIA Academy · Data Science Track · Problem Framing and Analytical Review<br><span class="muted">Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit 95ffc6b</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:42:45Z","version":"2027.1.0","commit":"95ffc6b"},"course":{"id":"ds-310","code":"DS-310","title":"Problem Framing and Analytical Review","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-310/","repo":"SDAIAAcademy/ds-310","home":"index.html"},"ai":{"context":{"course":"context/course.md","courseJs":"context/course.js","day":null,"llms":"llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="_engine/academy.js"></script>
+</body>
+</html>

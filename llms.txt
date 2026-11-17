@@ -1,0 +1,41 @@
+# Problem Framing and Analytical Review
+
+> Turn vague requests into answerable decision questions, plan the analysis, and review analyses by people and assistants by consequence. SDAIA Academy course DS-310, version 2027.1.0, in English.
+
+Each slide is a heading such as "#### [day1#slide-id] Title": cite slides by that id, and each citation is a link (slides/day1.html#slide-id). These files are what a trainee sees: no speaker notes and no answer keys.
+
+## Course
+
+- [Course page](https://sdaiaacademy.github.io/ds-310/index.md): overview, outcomes, schedule and labs; the page itself is https://sdaiaacademy.github.io/ds-310/index.html
+- [The whole course](https://sdaiaacademy.github.io/ds-310/llms-full.txt): every unit, session and slide in one file, about 17,855 tokens
+- [Practice questions](https://sdaiaacademy.github.io/ds-310/practice.html): questions to check yourself, with feedback after each answer
+
+## Slides
+
+- [Day 1: From request to question](https://sdaiaacademy.github.io/ds-310/slides/day1.md): A request names a worry; a question names a decision, an estimand and a rule; sessions: Requests are not questions, Question types, Interviewing a stakeholder, Feasibility and scope; page: https://sdaiaacademy.github.io/ds-310/slides/day1.html; about 5,834 tokens
+- [Day 2: Know the domain, plan the work](https://sdaiaacademy.github.io/ds-310/slides/day2.md): Learn how the numbers are made before you plan what to do with them; sessions: How the data are made, Metrics and proxies, Analysis plans, Threats to validity; page: https://sdaiaacademy.github.io/ds-310/slides/day2.html; about 5,221 tokens
+- [Day 3: Review others' work](https://sdaiaacademy.github.io/ds-310/slides/day3.md): Review the question, the data, the method, the inference and the words, then rank by consequence; sessions: A review checklist, Finding the flaws that matter, Reviewing assistant-generated analysis, Review notes people act on; page: https://sdaiaacademy.github.io/ds-310/slides/day3.html; about 4,648 tokens
+- [Capstone: Capstone: the permits backlog, framed and defended](https://sdaiaacademy.github.io/ds-310/slides/capstone.md): An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence; page: https://sdaiaacademy.github.io/ds-310/slides/capstone.html; about 1,544 tokens
+
+## Labs
+
+- [Lab 1.1: Two framing cards (AI-off)](https://sdaiaacademy.github.io/ds-310/labs/D1_1_reframe_two_vague.ipynb): Day 1, Session 1, 25 min
+- [Lab 1.2: Eight requests classified](https://sdaiaacademy.github.io/ds-310/labs/D1_2_classify_eight_requests.ipynb): Day 1, Session 2, 25 min
+- [Lab 1.3: Interview the operations manager](https://sdaiaacademy.github.io/ds-310/labs/D1_3_interview_role_played.ipynb): Day 1, Session 3, 25 min
+- [Lab 1.4: Check and cut one question](https://sdaiaacademy.github.io/ds-310/labs/D1_4_check_one_question.ipynb): Day 1, Session 4, 25 min
+- [Lab 2.1: The meter-to-bill map](https://sdaiaacademy.github.io/ds-310/labs/D2_1_map_meter_bill.ipynb): Day 2, Session 1, 25 min
+- [Lab 2.2: Stress-test the metric tree](https://sdaiaacademy.github.io/ds-310/labs/D2_2_stress_test_water.ipynb): Day 2, Session 2, 25 min
+- [Lab 2.3: A plan for a framed question](https://sdaiaacademy.github.io/ds-310/labs/D2_3_write_plan_framed.ipynb): Day 2, Session 3, 25 min
+- [Lab 2.4: Three threats each](https://sdaiaacademy.github.io/ds-310/labs/D2_4_swap_plans_peer.ipynb): Day 2, Session 4, 25 min
+- [Lab 3.1: Score a short notebook](https://sdaiaacademy.github.io/ds-310/labs/D3_1_apply_checklist_short.ipynb): Day 3, Session 1, 25 min
+- [Lab 3.2: Rank the flaws of your variant](https://sdaiaacademy.github.io/ds-310/labs/D3_2_review_seeded_flaw.ipynb): Day 3, Session 2, 25 min
+- [Lab 3.3: Verify the assistant's analysis](https://sdaiaacademy.github.io/ds-310/labs/D3_3_rerun_assistant_generated.ipynb): Day 3, Session 3, 25 min
+- [Lab 3.4: Notes that get acted on](https://sdaiaacademy.github.io/ds-310/labs/D3_4_rewrite_review_notes.ipynb): Day 3, Session 4, 25 min
+
+## Context files
+
+- [context/course.md](https://sdaiaacademy.github.io/ds-310/context/course.md): the whole course, for an assistant that takes a file, about 17,855 tokens
+- [context/day1.md](https://sdaiaacademy.github.io/ds-310/context/day1.md): Day 1, about 5,834 tokens
+- [context/day2.md](https://sdaiaacademy.github.io/ds-310/context/day2.md): Day 2, about 5,221 tokens
+- [context/day3.md](https://sdaiaacademy.github.io/ds-310/context/day3.md): Day 3, about 4,648 tokens
+- [context/capstone.md](https://sdaiaacademy.github.io/ds-310/context/capstone.md): Capstone, about 1,544 tokens

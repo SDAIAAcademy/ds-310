@@ -1,0 +1,39 @@
+{
+ "key": {
+  "C1": [
+   "descriptive",
+   "description"
+  ],
+  "C2": [
+   "predictive",
+   "predictive model"
+  ],
+  "C3": [
+   "causal",
+   "causal analysis"
+  ],
+  "C4": [
+   "causal",
+   "experiment"
+  ],
+  "C5": [
+   "predictive",
+   "predictive model"
+  ],
+  "C6": [
+   "unanswerable",
+   "no analysis"
+  ],
+  "C7": [
+   "descriptive",
+   "description"
+  ],
+  "C8": [
+   "causal",
+   "causal analysis"
+  ]
+ },
+ "after_change": {
+  "C4": "no analysis"
+ }
+}

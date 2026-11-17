@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3 · Review others' work · Problem Framing and Analytical Review</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day3.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Problem Framing and Analytical Review" data-track="data-science" data-day="Day 3">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Problem Framing and Analytical Review</div>
+  <h1>Review others' work</h1>
+  <p class="lead mt">Day 3: Review the question, the data, the method, the inference and the words, then rank by consequence</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-310</span></div>
+  <aside class="notes"><p>Day 3 turns the participant into a reviewer. Three analyses: a short notebook, a seeded-flaw notebook with a variant per participant, and an assistant's analysis. The day ends with review notes people act on and the capstone kickoff. Hand out participant numbers 1 to 40 now: Lab 3.2 needs them.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Review others' work</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · A review checklist</b><small>Rerun first, then check five areas from question to conclusion</small></div></div><div class="item"><div><b>Session 2 · Finding the flaws that matter</b><small>Rank flaws by what they do to the decision, not by how easy they were to find</small></div></div><div class="item"><div><b>Session 3 · Reviewing assistant-generated analysis</b><small>An assistant's analysis looks finished; rerun it and verify every number before anyone uses it</small></div></div><div class="item"><div><b>Session 4 · Review notes people act on</b><small>Each note states the problem, its consequence and a fix; the note that matters most comes first</small></div></div></div>
+  <aside class="notes"><p>Every lab today starts from supplied files. The review notes of Lab 3.4 cover the analyses of Labs 3.2 and 3.3, but in their supplied form: nobody needs their own earlier output.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO2 LO4" data-n="3">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which plan is protected against yesterday's main threats?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="review-day2-q1">
+    <p class="lead">Three plans for the logger decision. Which one answers the bulk-meter drift and the month-13 changes?</p>
+    <div class="opts">
+      <div class="opt" data-why="Uses the drift months as the baseline: the recalibration then looks like a saving" data-k="A">Al-Wurud months 10 to 12 against 13 to 15</div>
+      <div class="opt" data-why="Answers seasonality but not history: everything that changed in month 13 still lands on detection" data-k="B">Al-Wurud year 1 against year 2</div>
+      <div class="opt" data-why="Measures an activity: leaks found rise with searching, whatever happens to water lost" data-k="C">Leaks found in Al-Wurud, year 1 against year 2</div>
+      <div class="opt" data-ok data-k="D">Al-Wurud against the other districts, months 1 to 9 against 15 to 24, without Al-Nakheel</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The comparison cancels shared history, the excluded months remove the drift, and leaving out Al-Nakheel removes its meter change.</div>
+  </div>
+  <aside class="notes"><p>Answer: the last. This plan is the "clean" analysis of Lab 3.2. Ask the room to predict whether it will say buy or not buy; reveal in Session 2.</p></aside>
+</section>
+
+<!-- Session 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>A review checklist</h1>
+  <ul class="bullets outcomes"><li>Rerun an analysis before judging it</li><li>Apply a checklist of five areas from question fit to communication</li><li>Score an analysis so another reviewer would score it alike</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="rerun-first" data-lo="LO5" data-n="5" data-session="1">
+  <div class="kicker">The first step</div>
+  <h2>A review starts by running the analysis, not by reading it</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>Rerun</b>does it run, from the supplied data?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>Reconcile</b>does every sentence match the output above it?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>Check five areas</b>from question to communication</div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> The reviewer reads a fluent text, agrees, and never sees that the code prints something else.</div>
+  <aside class="notes"><p>The order matters: rerunning first stops the prose from setting your expectations. In Lab 3.1 the rerun alone catches one of the flaws.</p></aside>
+</section>
+
+<section class="slide" id="five-areas" data-lo="LO5" data-n="6" data-session="1">
+  <div class="kicker">The checklist</div>
+  <h2>Five areas, from the question to the words, scored 0 to 2</h2>
+  <table class="t small">
+    <tr><th>Area</th><th>2</th><th>1</th><th>0</th></tr>
+    <tr><td><b>Question fit</b></td><td>Answers the decision asked</td><td>A nearby question</td><td>Another question</td></tr>
+    <tr><td><b>Data handling</b></td><td>Right rows and denominators, checked</td><td>One unchecked step</td><td>A step that changes the answer</td></tr>
+    <tr><td><b>Method</b></td><td>Fits the question type, with a comparison</td><td>Fits, but weak</td><td>Does not fit</td></tr>
+    <tr><td><b>Inference</b></td><td>Claims match evidence, uncertainty stated</td><td>Some overreach</td><td>Claims what the data cannot show</td></tr>
+    <tr><td><b>Communication</b></td><td>The reader acts correctly</td><td>Misleading in part</td><td>Misleads</td></tr>
+  </table>
+  <aside class="notes"><p>The five areas are those of outcome 5. Anchored levels are what make two reviewers agree: a score without a sentence of evidence is an opinion. DS-407 later turns such a checklist into a team standard; here it is a personal tool.</p></aside>
+</section>
+
+<section class="slide" id="short-notebook" data-lo="LO5" data-n="7" data-session="1">
+  <div class="kicker">The rerun catches it</div>
+  <h2>The sentence was not written from the output</h2>
+  <div class="cols cols-2">
+    <pre class="code" data-file="cell 2 output"><code class="language-text">district
+D5    707
+D4    705
+D3    699
+D6    684
+D1    668
+D2    635</code></pre>
+    <div class="stack">
+      <div class="card c-coral"><h4>Cell 3 prints</h4><p class="small mb0">"Al-Hamra (D4) has the most contacts, so it is where service is worst. Move two agents to the Al-Hamra queue."</p></div>
+      <div class="card c-teal"><h4>The output says</h4><p class="small mb0">Al-Salam (D5) has the most contacts, 707 against 705: and a count of contacts is not a measure of service anyway.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><p>From the Lab 3.1 rerun, contacts in months 13 to 24. Two flaws on one slide: the text contradicts the output (communication), and volume is read as quality (method and inference). Ask how many in the room would have caught the first without rerunning.</p></aside>
+</section>
+
+<section class="slide" id="service-measure" data-lo="LO5" data-n="8" data-session="1">
+  <div class="kicker">Method</div>
+  <h2>A measure of service ranks the districts differently</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>Al-Rawdah</span><div class="bar c-coral" style="--w:84%"></div><span class="val">28.0%</span></div>
+      <div class="row"><span>Al-Shifa</span><div class="bar c-amber" style="--w:82%"></div><span class="val">27.2%</span></div>
+      <div class="row"><span>Al-Salam</span><div class="bar c-cyan" style="--w:80%"></div><span class="val">26.6%</span></div>
+      <div class="row"><span>Al-Hamra</span><div class="bar c-cyan" style="--w:79%"></div><span class="val">26.4%</span></div>
+      <div class="row"><span>Al-Wurud</span><div class="bar c-cyan" style="--w:78%"></div><span class="val">26.0%</span></div>
+      <div class="row"><span>Al-Nakheel</span><div class="bar c-cyan" style="--w:76%"></div><span class="val">25.3%</span></div>
+    </div>
+    <ul class="bullets">
+      <li>Contacts followed by another within 7 days, months 13 to 24</li>
+      <li>The districts sit within three points of each other: no district stands out</li>
+      <li>A reviewer may run one check of their own; they do not redo the analysis</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Lab 3.1, task 3. The differences are small and likely noise: the honest finding is "no district is clearly worse", which also means moving agents to Al-Hamra is unsupported. Keep the reviewer's role clear: one check that tests the claim, then a note.</p></aside>
+</section>
+
+<section class="slide" id="score-sheet" data-lo="LO5" data-n="9" data-session="1">
+  <div class="kicker">The score</div>
+  <h2>Two points out of ten, each with its sentence</h2>
+  <table class="t small">
+    <tr><th>Area</th><th class="num">Score</th><th>Why</th></tr>
+    <tr><td>Question fit</td><td class="num">1</td><td>Answers "most contacts", not "worst service"</td></tr>
+    <tr><td>Data handling</td><td class="num">1</td><td>Raw counts; Al-Hamra's access problems drive billing calls</td></tr>
+    <tr><td>Method</td><td class="num">0</td><td>A count of contacts does not measure service</td></tr>
+    <tr><td>Inference</td><td class="num">0</td><td>Volume read as quality; staff moved on it</td></tr>
+    <tr><td>Communication</td><td class="num">0</td><td>Names Al-Hamra; the output shows Al-Salam first</td></tr>
+  </table>
+  <aside class="notes"><p>The reference score of Lab 3.1. The lab accepts a score within one point per area. Where a participant is two points away, ask for their sentence: usually they read the text and skipped the output.</p></aside>
+</section>
+
+<section class="slide" id="reviewer-agreement" data-lo="LO5" data-n="10" data-session="1">
+  <div class="kicker">Calibration</div>
+  <h2>A checklist is useful when two reviewers land within a point</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Anchors</h4><p class="small mb0">What a 2, a 1 and a 0 look like, written down before scoring</p></div>
+    <div class="card c-cyan"><h4>Evidence</h4><p class="small mb0">One sentence per score that points at a cell or a number</p></div>
+    <div class="card c-purple"><h4>Compare</h4><p class="small mb0">Two reviewers score alone, then discuss only the gaps of two points</p></div>
+  </div>
+  <div class="callout note mt"><b>Pointer.</b> Team review standards (who reviews what, sign-off rules) are DS-407.</div>
+  <aside class="notes"><p>Calibration is cheap: ten minutes on a shared notebook once a quarter. The pointer marks the boundary set by the catalog: this course is about the individual reviewer's judgement.</p></aside>
+</section>
+
+<section class="slide" id="check-checklist" data-lo="LO5" data-n="11" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which area does this flaw belong to?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-checklist-q1">
+    <p class="lead">An analysis of estimated bills prints "estimated share: 16.4%" for Al-Hamra. The summary below says "about one bill in four is estimated in Al-Hamra".</p>
+    <div class="opts">
+      <div class="opt" data-why="Blames the data step: the data were handled correctly and the right number was printed" data-k="A">Data handling</div>
+      <div class="opt" data-ok data-k="B">Communication: the words misstate the output</div>
+      <div class="opt" data-why="Confuses a wrong sentence with a wrong method: the computation is the right one for the question" data-k="C">Method</div>
+      <div class="opt" data-why="Inference is about claims beyond the evidence; here the claim contradicts the evidence printed above it" data-k="D">Inference</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The number is right and the sentence is wrong: one in six, not one in four. Only a reviewer who reads the output against the words catches it.</div>
+  </div>
+  <aside class="notes"><p>Answer: communication. A borderline case: some will say inference. Accept the discussion, and point to the anchors: inference is overreach from evidence; communication is the reader being misled about what the evidence is.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-1" data-auto="lab" data-lab="3.1" data-label="Lab 3.1" data-n="12" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.1 · 25 min</div><h2>Score a short notebook</h2><p class="lead small">Apply the checklist to a short notebook and score it in five areas, then compare with the reference score.</p><a class="nb" href="../labs/D3_1_apply_checklist_short.ipynb">D3_1_apply_checklist_short.ipynb</a></div><ul class="checklist"><li>Rerun the short notebook <span class="min">5 min</span></li><li>Score question fit and data handling <span class="min">6 min</span></li><li>Score method and inference <span class="min">6 min</span></li><li>Score communication and the total <span class="min">4 min</span></li><li>Compare with the reference score <span class="min">4 min</span></li><li class="stretch">✱ Stretch: Name the one change that would raise the score most</li></ul></div>
+  <aside class="notes"><p>Insist on the rerun before any score. Walk the room at minute 12: participants who scored communication 1 have not compared cell 3 with cell 2. Pairs compare scores in task 5 before the reference.</p></aside>
+</section>
+
+<!-- Session 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="13">
+  <div class="kicker">Session 2</div>
+  <h1>Finding the flaws that matter</h1>
+  <ul class="bullets outcomes"><li>Locate seeded flaws cell by cell</li><li>Measure each flaw's consequence with a recomputed number</li><li>Rank flaws by their effect on the decision</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="seven-kinds" data-lo="LO5" data-n="14" data-session="2">
+  <div class="kicker">The pool</div>
+  <h2>Seven kinds of flaw, four in each variant</h2>
+  <table class="t small">
+    <tr><th></th><th>Kind of flaw</th><th>Area</th></tr>
+    <tr><td>F1</td><td>Success measured by an activity, not the outcome</td><td>Question fit</td></tr>
+    <tr><td>F2</td><td>A join on a text key silently drops rows</td><td>Data handling</td></tr>
+    <tr><td>F3</td><td>Before-after in one unit, no comparison, months that mix changes</td><td>Method</td></tr>
+    <tr><td>F4</td><td>Significance or certainty claimed with no interval</td><td>Inference</td></tr>
+    <tr><td>F5</td><td>Volumes not adjusted for the billing period</td><td>Data handling</td></tr>
+    <tr><td>F6</td><td>A chart axis that does not start at zero</td><td>Communication</td></tr>
+    <tr><td>F7</td><td>Estimated bills dropped from billed volume</td><td>Data handling</td></tr>
+  </table>
+  <aside class="notes"><p>Every participant's variant of Sabah's analysis holds four of these, always with at least one of F1 or F3. F7 also flips the decision on its own (2.34 to 4.16 points in the Lab 3.2 run), so a participant who holds it has more than one decision-flipping flaw to rank first. The pool is public; which four you have is not. Each kind was met on Days 1 and 2: the review uses that domain knowledge.</p></aside>
+</section>
+
+<section class="slide" id="consequence-defined" data-lo="LO5" data-n="15" data-session="2">
+  <div class="kicker">Consequence</div>
+  <h2>The consequence of a flaw is what it does to the answer, measured</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>The analysis with no flaw</b>the reference answer</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>The analysis with only this flaw</b>the flawed answer</div>
+    <div class="arrow">→</div>
+    <div class="step c-navy"><b>The difference</b>points moved, and does the decision flip?</div>
+  </div>
+  <pre class="code mt" data-file="Lab 3.2"><code class="language-python">U.consequence(MY_NUMBER, <span class="hljs-string">&quot;F3&quot;</span>)
+<span class="hljs-comment"># clean 2.34 → flawed 4.12 points; decision: do not buy → buy</span></code></pre>
+  <aside class="notes"><p>Isolating one flaw at a time keeps flaws from masking each other: with F1 present, no flaw changes the printed number, because the headline is about leaks. In real reviews you rarely have the clean version; you estimate the consequence by fixing the flaw and rerunning, as the stretch does.</p></aside>
+</section>
+
+<section class="slide" id="variant-zero" data-lo="LO5" data-n="16" data-session="2">
+  <div class="kicker">Variant 0</div>
+  <h2>Two of four flaws reverse the recommendation; two change nothing</h2>
+  <table class="t">
+    <tr><th>Flaw alone</th><th class="num">Effect, points</th><th>Decision</th></tr>
+    <tr class="hl"><td>F1 · success measured as leaks found (rose 3.4 times)</td><td class="num">none</td><td>buy</td></tr>
+    <tr class="hl"><td>F3 · months 10 to 12 against 13 to 15, Al-Wurud only</td><td class="num">4.12</td><td>buy</td></tr>
+    <tr><td>F2 · join drops rows spelt "Al Wurud"</td><td class="num">2.34</td><td>do not buy</td></tr>
+    <tr><td>F6 · chart axis from 20%</td><td class="num">2.34</td><td>do not buy</td></tr>
+  </table>
+  <aside class="notes"><p>The Lab 3.2 run of variant 0, the one you demonstrate. F2 drops about a third of Al-Wurud's repair rows and changes the effect by nothing: the effect comes from the water balance. A reviewer who leads with F2 because it was the first found has the order wrong.</p></aside>
+</section>
+
+<section class="slide" id="clean-answer" data-lo="LO5 LO4" data-n="17" data-session="2">
+  <div class="kicker">The answer</div>
+  <h2>Without the flaws, detection cut non-revenue water by 2.3 points: do not buy</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">2.3</div><div class="lbl">points, 95% interval 1.4 to 3.3, against the other districts without Al-Nakheel</div></div>
+    <ul class="bullets">
+      <li>The plan of Lab 2.3 fixed the rule before: below 3 points, do not buy</li>
+      <li>Sabah's notebook said buy, on leaks found rising 3.4 times</li>
+      <li>The fall is real but small: worth knowing, not worth the loggers at this price</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Reveal the prediction from the Day 2 review checkpoint. The interval reaches above 3, so say it plainly: the data are consistent with a benefit up to 3.3 points, and the rule written in advance says do not buy. That is what pre-commitment is for.</p></aside>
+</section>
+
+<section class="slide" id="rank-rule" data-lo="LO5" data-n="18" data-session="2">
+  <div class="kicker">Ranking</div>
+  <h2>Rank by consequence, not by the order you found the flaws</h2>
+  <ol class="bullets">
+    <li><b>Flips the decision</b>: F1 and F3 in variant 0; F7 too where it appears (+1.8 points, past the rule)</li>
+    <li><b>Moves the number</b>, by how many points: none here; F5 moves it by 0.02 in other variants</li>
+    <li><b>Misleads without moving a number</b>: an axis, an unstated uncertainty</li>
+    <li><b>No effect on this answer</b>: still worth a note if it can bite elsewhere (the join)</li>
+  </ol>
+  <aside class="notes"><p>This is the ranking rule the lab checks. Flaws found first are usually the easiest to see (a chart, a spelling), which is exactly why the order of finding is a poor order of reporting.</p></aside>
+</section>
+
+<section class="slide" id="own-variant" data-lo="LO5" data-n="19" data-session="2">
+  <div class="kicker">Authenticity</div>
+  <h2>Each participant reviews a variant of their own, checked without a visible key</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Your participant number picks four flaws from the pool</li>
+      <li><code>U.flags_correct</code> compares a hash of your flags with the variant's</li>
+      <li>Right or wrong, without revealing which flaws you missed</li>
+    </ul>
+    <div class="card tint c-navy"><h4>In the capstone</h4><p class="small mb0">The assessed review uses unseen variants made for each participant; review notes are matched against your own seeded flaws.</p></div>
+  </div>
+  <aside class="notes"><p>The lab's variants are practice: their generator is in the public repository. The capstone variants are prepared by the trainer outside the repository and are never published. Tell participants this openly; it removes the temptation and explains the design.</p></aside>
+</section>
+
+<section class="slide" id="check-consequence" data-lo="LO5" data-n="20" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which flaw goes first in the review?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-consequence-q1">
+    <p class="lead">A variant holds: a chart from 20%, unadjusted billing periods (moves the effect by 0.02 points), significance with no interval, and a before-after with no comparison (moves the effect from 2.3 to 4.1, past the 3-point rule).</p>
+    <div class="opts">
+      <div class="opt" data-why="Ranks by visibility: the chart is the easiest to see but changes no number and no decision" data-k="A">The chart axis</div>
+      <div class="opt" data-why="Ranks by the area's prestige: an unstated interval misleads, but the decision flips elsewhere" data-k="B">The missing interval</div>
+      <div class="opt" data-ok data-k="C">The before-after with no comparison</div>
+      <div class="opt" data-why="Ranks a real but negligible flaw by principle: 0.02 points cannot change anything here" data-k="D">The unadjusted billing periods</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> It alone moves the answer across the decision rule, from do not buy to buy; the others mislead less or not at all.</div>
+  </div>
+  <aside class="notes"><p>Answer: the before-after. The numbers are those of variant 17 in the Lab 3.2 run (F5 moves 0.02 points). The missing interval is a close second: it would let a reader believe the wrong answer more firmly.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-2" data-auto="lab" data-lab="3.2" data-label="Lab 3.2" data-n="21" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.2 · 25 min</div><h2>Rank the flaws of your variant</h2><p class="lead small">Review a seeded-flaw notebook, a variant of its own for each participant, and rank its flaws by consequence.</p><a class="nb" href="../labs/D3_2_review_seeded_flaw.ipynb">D3_2_review_seeded_flaw.ipynb</a></div><ul class="checklist"><li>Load your variant and rerun it <span class="min">5 min</span></li><li>Find the flaws, cell by cell <span class="min">9 min</span></li><li>Consequence of each, with a recomputed number <span class="min">6 min</span></li><li>Rank by consequence <span class="min">3 min</span></li><li>Check your flags <span class="min">2 min</span></li><li class="stretch">✱ Stretch: Fix the top flaw and rerun the analysis</li></ul></div>
+  <aside class="notes"><p>Each participant sets MY_NUMBER to their number. Demonstrate variant 0 only. If the hash check fails, do not reveal the flaws: point to the area of the checklist they have not scored yet. Early finishers fix the top flaw and rerun.</p></aside>
+</section>
+
+<!-- Session 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="22">
+  <div class="kicker">Session 3</div>
+  <h1>Reviewing assistant-generated analysis</h1>
+  <ul class="bullets outcomes"><li>Name the failures typical of assistant-generated analyses</li><li>Rerun an assistant's notebook and reconcile its summary with its output</li><li>Write a verification note that meets the duty to verify</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="assistant-failures" data-lo="LO5" data-n="23" data-session="3">
+  <div class="kicker">What to expect</div>
+  <h2>An assistant's analysis looks finished; check five things before believing it</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>It may not run</b>: a column or a function that does not exist</li>
+      <li><b>Its numbers may not come from its code</b>: a summary written beside the output</li>
+      <li><b>Outside numbers</b> with no source: benchmarks, norms</li>
+    </ul>
+    <ul class="bullets">
+      <li><b>The direction</b> of a change reversed in the words</li>
+      <li><b>The method</b> answers an easier question than the one asked</li>
+    </ul>
+  </div>
+  <div class="callout note mt"><b>Recap.</b> Recomputing and running a request twice are DS-206; here you review someone else's assistant-generated work.</div>
+  <aside class="notes"><p>The perishable part of this session: which assistants are used and their typical failures change each edition. The five checks are durable. Lab 3.3 meets four of them at once.</p></aside>
+</section>
+
+<section class="slide" id="sareea-summary" data-lo="LO5" data-n="24" data-session="3">
+  <div class="kicker">The case</div>
+  <h2>Sareea's summary reversed the direction of the change</h2>
+  <table class="t">
+    <tr><th>Al-Nakheel, billed m3 per account per month</th><th class="num">Before</th><th class="num">After</th><th class="num">Change</th></tr>
+    <tr><td>Sareea's summary</td><td class="num">21.4</td><td class="num">19.6</td><td class="num">-8.2%</td></tr>
+    <tr class="hl"><td>Recomputed from reads.csv</td><td class="num">25.8</td><td class="num">28.7</td><td class="num">+11.5%</td></tr>
+  </table>
+  <div class="callout warn mt"><b>And.</b> The notebook stops at cell s2 (no column "consumption"), and the "industry benchmark of 15%" has no source.</div>
+  <aside class="notes"><p>Lab 3.3 run. None of the summary's numbers can be found in the data, and the notebook as delivered could never have produced them. Ask: how many of you would have forwarded the summary had it arrived with a chart?</p></aside>
+</section>
+
+<section class="slide" id="four-checks" data-lo="LO5" data-n="25" data-session="3">
+  <div class="kicker">Four checks</div>
+  <h2>All four checks fail, each with its evidence</h2>
+  <table class="t small">
+    <tr><th>Check</th><th>Result</th><th>Evidence</th></tr>
+    <tr><td>Reruns as delivered</td><td>fail</td><td>KeyError: "consumption" is not a column</td></tr>
+    <tr><td>Every number traced to output</td><td>fail</td><td>21.4, 19.6 and -8.2% appear nowhere</td></tr>
+    <tr><td>Outside numbers sourced</td><td>fail</td><td>The 15% benchmark has no source</td></tr>
+    <tr><td>Method fits the question</td><td>fail</td><td>Bills measure what the meters register, not what people use</td></tr>
+  </table>
+  <aside class="notes"><p>The last check is the one participants miss: even the corrected computation answers "did bills change", not "did consumption change". That is Day 2's measurement change, met again in an assistant's output.</p></aside>
+</section>
+
+<section class="slide" id="duty-to-verify" data-lo="LO5" data-n="26" data-session="3">
+  <div class="kicker">The national guideline</div>
+  <h2>Verifying assistant output before use is a duty, not a courtesy</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Identify content generated with generative AI</li>
+      <li>Check it for factual accuracy, especially in official reports</li>
+      <li>Verify generated code before using or running it</li>
+    </ul>
+    <div class="card tint c-navy"><h4>Source</h4><p class="small mb0">SDAIA's Generative AI Guidelines for Government, in its sections on reliability and on users' responsibilities.</p></div>
+  </div>
+  <aside class="notes"><p>Paraphrased, not quoted: the guideline asks users to identify generated content, proofread it for accuracy, verify outputs particularly for official reports, and verify generated code before executing it. The verification note of the lab is how a reviewer shows that duty was met.</p><p>Sources: SDAIA, Generative AI Guidelines for Government.</p></aside>
+</section>
+
+<section class="slide" id="verification-note" data-lo="LO5" data-n="27" data-session="3">
+  <div class="kicker">The deliverable</div>
+  <h2>A verification note says what may be used, what may not, and what next</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Status</h4><p class="small mb0">Not verified: do not use the summary</p></div>
+    <div class="card c-teal"><h4>May be used</h4><p class="small mb0">Billed m3 per account in Al-Nakheel rose from 25.8 to 28.7 (+11.5%) after the smart meters</p></div>
+    <div class="card c-amber"><h4>May not be used</h4><p class="small mb0">The 8.2% fall, the 15% benchmark, the roll-out advice</p></div>
+    <div class="card c-navy"><h4>Next</h4><p class="small mb0">Measure use another way (night flow at the district meter), against districts without smart meters</p></div>
+  </div>
+  <aside class="notes"><p>The note ends with a label: assistant-generated, by whom, verified by whom, and with what result. A verified analysis keeps its label too: the reader deserves to know how it was made.</p></aside>
+</section>
+
+<section class="slide" id="hosted-models" data-lo="LO5" data-n="28" data-session="3">
+  <div class="kicker">In the lab</div>
+  <h2>A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The stretch sends the same prompt to a free hosted open-weight model, and you verify its answer the same way</li>
+      <li>Without a key, the lab returns Sareea's recorded answer and says so</li>
+    </ul>
+    <div class="callout warn"><b>Classification.</b> Billing and contact extracts are Restricted: they do not go to a public assistant. The course data is synthetic, which is why it may.</div>
+  </div>
+  <aside class="notes"><p>Free model names change every few weeks: the lab reads ASSISTANT_MODEL and falls back to a stand-in. The classification rule is from Day 1; repeat it here because this is where people break it.</p></aside>
+</section>
+
+<section class="slide" id="check-assistant" data-lo="LO5" data-n="29" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What do you do with this summary?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-assistant-q1">
+    <p class="lead">An assistant's notebook runs, and its summary's three numbers all appear in the output. The summary concludes that smart meters "cut leakage in Al-Nakheel by nine points".</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">Withhold it: the numbers are right but the method measures billing, not leakage</div>
+      <div class="opt" data-why="Treats traced numbers as a verified conclusion: tracing checks the arithmetic, not what it measures" data-k="B">Accept it: every number traces to the output</div>
+      <div class="opt" data-why="Assumes the problem is presentation: a clearer chart of the wrong measure still misleads" data-k="C">Accept it once a chart is added</div>
+      <div class="opt" data-why="Blames the tool rather than the analysis: the same flaw would sink a human-written version" data-k="D">Reject it because an assistant wrote it</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Passing three checks is not passing four: non-revenue water fell because the new meters bill more, so the claim about leakage is a measurement change.</div>
+  </div>
+  <aside class="notes"><p>Answer: withhold it. The last option matters: assistant-generated is a reason to verify, not to reject. The checks apply to any analysis.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-3" data-auto="lab" data-lab="3.3" data-label="Lab 3.3" data-n="30" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.3 · 25 min</div><h2>Verify the assistant's analysis</h2><p class="lead small">Rerun an assistant-generated analysis, find where it fails and write a verification note.</p><a class="nb" href="../labs/D3_3_rerun_assistant_generated.ipynb">D3_3_rerun_assistant_generated.ipynb</a></div><ul class="checklist"><li>Read the prompt and the summary the assistant gave <span class="min">3 min</span></li><li>Rerun the notebook <span class="min">5 min</span></li><li>Where it fails: four checks <span class="min">9 min</span></li><li>Write the verification note <span class="min">6 min</span></li><li>Label the assistant's part <span class="min">2 min</span></li><li class="stretch">✱ Stretch: Ask a free hosted model for the same analysis and verify its answer</li></ul></div>
+  <aside class="notes"><p>Participants often fix the column and stop: push them to the fourth check. If a participant has a working key, the stretch shows a live model's answer; compare two participants' answers to the same prompt to show variability.</p></aside>
+</section>
+
+<!-- Session 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="31">
+  <div class="kicker">Session 4</div>
+  <h1>Review notes people act on</h1>
+  <ul class="bullets outcomes"><li>Rewrite a vague note as problem, consequence and fix</li><li>Order notes by consequence for the decision</li><li>Recommend the kind of analysis the request needed</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="weak-strong-note" data-lo="LO5" data-n="32" data-session="4">
+  <div class="kicker">One note, twice</div>
+  <h2>A note gets acted on when it names the problem, the consequence and the fix</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Weak</h4><p class="small mb0">"The join looks off."</p></div>
+    <div class="card c-teal"><h4>Acted on</h4><p class="small mb0"><b>Problem:</b> cell c2 joins repairs on the district name; rows spelt "Al Wurud" are dropped. <b>Consequence:</b> about a third of Al-Wurud's repairs vanish from the count. <b>Fix:</b> join on a district code and assert the row count.</p></div>
+  </div>
+  <aside class="notes"><p>Note N1 of Lab 3.4, before and after. The weak note is right: it is simply useless to the author, who cannot tell where, how much or what to do.</p></aside>
+</section>
+
+<section class="slide" id="note-parts" data-lo="LO5" data-n="33" data-session="4">
+  <div class="kicker">The parts</div>
+  <h2>Three parts, each a full sentence</h2>
+  <div class="cols cols-3">
+    <div class="card c-navy"><h4>Problem</h4><p class="small mb0">Where, and exactly what: the cell, the line, the number</p></div>
+    <div class="card c-coral"><h4>Consequence</h4><p class="small mb0">What it does to the number or the decision, in points or in the choice</p></div>
+    <div class="card c-teal"><h4>Fix</h4><p class="small mb0">An action: "join on the code", not "consider the join"</p></div>
+  </div>
+  <div class="callout tip mt"><b>Tone.</b> Write about the analysis, not the analyst: "cell c3 compares" rather than "you compared".</div>
+  <aside class="notes"><p>The lab's helper flags a note whose consequence names neither a number nor the decision, and a fix that starts with "consider" or "maybe". Tone matters because notes are read by the author first: a defensive author fixes less.</p></aside>
+</section>
+
+<section class="slide" id="ranked-notes" data-lo="LO5" data-n="34" data-session="4">
+  <div class="kicker">The order</div>
+  <h2>Eight notes, ranked by what they do to the decision</h2>
+  <table class="t small">
+    <tr><th>Rank</th><th>Note</th><th>Consequence</th></tr>
+    <tr class="hl"><td>1</td><td>Success measured as leaks found</td><td>Reverses the decision</td></tr>
+    <tr class="hl"><td>2</td><td>Before-after with no comparison</td><td>Adds about 1.8 points, past the rule</td></tr>
+    <tr><td>3 to 6</td><td>The unsourced 15%; estimates as actual reads; the join; no interval</td><td>A wrong or unverifiable number</td></tr>
+    <tr><td>7, 8</td><td>Chart axis; the spelling in the export</td><td>Cosmetic, or a cause handled elsewhere</td></tr>
+  </table>
+  <aside class="notes"><p>The order of the Lab 3.4 solution, which the check accepts when the two critical notes come first and the two cosmetic ones last. The middle four can be argued; ask two participants to defend different orders.</p></aside>
+</section>
+
+<section class="slide" id="verdict-first" data-lo="LO5 LO6" data-n="35" data-session="4">
+  <div class="kicker">The first lines</div>
+  <h2>A review opens with its verdict on the decision</h2>
+  <div class="card c-teal"><h4>For Nadia</h4><p class="small mb0">The recommendation to buy loggers does not hold. Measured on water lost against the other districts, detection cut non-revenue water by 2.3 points, below the 3-point rule; the analysis counted leaks found and compared the wrong months. Sabah will rerun it with the fixes below before the capital committee meets.</p></div>
+  <aside class="notes"><p>The Lab 3.4 stretch. Three sentences: verdict, main reason with its number, what happens next. Everything else is the numbered notes below it.</p></aside>
+</section>
+
+<section class="slide" id="recommend-kind" data-lo="LO6" data-n="36" data-session="4">
+  <div class="kicker">After the review</div>
+  <h2>A review can conclude that the request needed another kind of analysis</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Sareea's request asked a causal question and got a description of bills</li>
+      <li>The right answer is a causal analysis against districts without smart meters, on a measure of use</li>
+      <li>Sometimes the right recommendation is <b>no analysis yet</b>: the data cannot reach the question by the date</li>
+    </ul>
+    <div class="card tint c-navy"><h4>In the capstone defence</h4><p class="small mb0">You recommend the kind of analysis, and defend it when the sponsor changes a constraint.</p></div>
+  </div>
+  <aside class="notes"><p>Outcome 6 closes the loop with Day 1, Session 2. The capstone rubric gives this recommendation its own criterion. A changed constraint (a frozen budget, a shorter deadline) often moves it from "experiment" to "causal analysis" or to "no analysis now".</p></aside>
+</section>
+
+<section class="slide" id="capstone-brief" data-lo="LO1 LO4 LO5 LO6" data-n="37" data-session="4">
+  <div class="kicker">Capstone kickoff</div>
+  <h2>Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>Sponsor:</b> Fahda Al-Bishr, director of permits: "Should we hire six more plan reviewers?"</li>
+      <li><b>Data:</b> 3,600 synthetic applications, an inventory, and an assistant-drafted analysis to review</li>
+      <li><b>Hand in:</b> a framing card, a two-page plan, ranked review notes, in a public repository</li>
+    </ul>
+    <div class="stack dense">
+      <div class="stat center"><div class="big">8 + 10</div><div class="lbl">minutes: the talk, during which the sponsor changes a constraint, then the defence</div></div>
+    </div>
+  </div>
+  <aside class="notes"><p>The brief is labs/capstone/BRIEF.md. Point out the trap the head of plan review hints at: incomplete online applications, returned to applicants. The practice constraint change is in the repository; the one used in the defence is unseen. Individual work; AI-full is allowed, and an assistant-drafted analysis is itself an object of review.</p></aside>
+</section>
+
+<section class="slide" id="check-notes" data-lo="LO5" data-n="38" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which note will the author act on?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-notes-q1">
+    <p class="lead">Four notes on the same flaw in Sareea's analysis, which treats estimated bills as actual reads.</p>
+    <div class="opts">
+      <div class="opt" data-why="Names the topic only: the author cannot tell where or why it matters" data-k="A">"What about estimated reads?"</div>
+      <div class="opt" data-why="Has a fix but no consequence: the author cannot judge whether it is worth doing first" data-k="B">"Use actual reads only."</div>
+      <div class="opt" data-why="States a consequence with no location or fix, and about the author rather than the analysis" data-k="C">"You have overstated the change."</div>
+      <div class="opt" data-ok data-k="D">"Cell s2 averages estimated bills as reads, so the change mixes billing timing with metering; recompute on actual reads and report the estimated share."</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the last says where, what it does to the result, and what to do, in words about the analysis.</div>
+  </div>
+  <aside class="notes"><p>Answer: the last. Each wrong option is missing exactly one part, so use them to recap the three parts and the tone rule.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-4" data-auto="lab" data-lab="3.4" data-label="Lab 3.4" data-n="39" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.4 · 25 min</div><h2>Notes that get acted on</h2><p class="lead small">Rewrite review notes so each states the problem, its consequence and a fix, rank them, and choose the review target of the capstone.</p><a class="nb" href="../labs/D3_4_rewrite_review_notes.ipynb">D3_4_rewrite_review_notes.ipynb</a></div><ul class="checklist"><li>Read the eight weak notes <span class="min">3 min</span></li><li>Rewrite each: problem, consequence, fix <span class="min">12 min</span></li><li>Rank by consequence <span class="min">4 min</span></li><li>Tutor feedback and one revision <span class="min">4 min</span></li><li>Open the capstone brief <span class="min">2 min</span></li><li class="stretch">✱ Stretch: Write the summary paragraph a manager reads first</li></ul></div>
+  <aside class="notes"><p>Twelve minutes for eight rewrites is tight: suggest the two critical notes first, then the rest. The last two minutes are the capstone brief; collect questions on it for the start of the capstone day.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="40" data-session="4">
+  <div class="kicker">Day 3 · wrap-up</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Rerun, then read</h4><p class="small mb0">Run the analysis, reconcile every sentence with its output, then score five areas.</p></div>
+    <div class="card c-coral"><h4>Rank by consequence</h4><p class="small mb0">A flaw that flips the decision goes first, whatever order you found it in.</p></div>
+    <div class="card c-purple"><h4>Verify, label, then use</h4><p class="small mb0">Assistant output passes four checks and carries its label before anyone acts on it.</p></div>
+  </div>
+  <aside class="notes"><p>Close the teaching days by returning to the opening question of Day 1: an analysis nobody used. Now participants can frame it so it is usable, plan it so it is sound, and review it so it is trusted.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="41" data-session="4">
+  <div class="kicker">Next</div>
+  <h2>Capstone day: Hima Municipality's permits backlog</h2>
+  <p class="lead">Read <code>labs/capstone/BRIEF.md</code>, start your repository from <code>labs/capstone/README.md</code>, and draft the framing card. Bring questions for the sponsor.</p>
+  <aside class="notes"><p>The guided self-study hours of the format go here: framing card and first plan draft before the capstone day. The tracked follow-up task after the course is one framing card for a real request at work, with personal data kept out.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:42:45Z","version":"2027.1.0","commit":"95ffc6b"},"course":{"id":"ds-310","code":"DS-310","title":"Problem Framing and Analytical Review","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-310/","repo":"SDAIAAcademy/ds-310","home":"../index.html"},"deck":{"id":"day3","kind":"day","day":3,"label":"Day 3","title":"Review others' work","prev":"day2.html","next":"capstone.html","md":"day3.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"A review checklist","slide":"s1","outcomes":["Rerun an analysis before judging it","Apply a checklist of five areas from question fit to communication","Score an analysis so another reviewer would score it alike"],"minutes":50,"lab":{"id":"3.1","title":"Score a short notebook","minutes":25,"href":"../labs/D3_1_apply_checklist_short.ipynb"}},{"n":2,"label":"Session 2","title":"Finding the flaws that matter","slide":"s2","outcomes":["Locate seeded flaws cell by cell","Measure each flaw's consequence with a recomputed number","Rank flaws by their effect on the decision"],"minutes":50,"lab":{"id":"3.2","title":"Rank the flaws of your variant","minutes":25,"href":"../labs/D3_2_review_seeded_flaw.ipynb"}},{"n":3,"label":"Session 3","title":"Reviewing assistant-generated analysis","slide":"s3","outcomes":["Name the failures typical of assistant-generated analyses","Rerun an assistant's notebook and reconcile its summary with its output","Write a verification note that meets the duty to verify"],"minutes":50,"lab":{"id":"3.3","title":"Verify the assistant's analysis","minutes":25,"href":"../labs/D3_3_rerun_assistant_generated.ipynb"}},{"n":4,"label":"Session 4","title":"Review notes people act on","slide":"s4","outcomes":["Rewrite a vague note as problem, consequence and fix","Order notes by consequence for the decision","Recommend the kind of analysis the request needed"],"minutes":50,"lab":{"id":"3.4","title":"Notes that get acted on","minutes":25,"href":"../labs/D3_4_rewrite_review_notes.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Review others' work","kind":"title","session":0,"hash":"fa2da680","md":"#### [day3#title] Review others' work\n\n*SDAIA Academy · Problem Framing and Analytical Review*\n\nDay 3: Review the question, the data, the method, the inference and the words, then rank by consequence\n\nData Science Track · 3 teaching days + capstone day · 4 sessions · 4 labs · DS-310","notes":"Day 3 turns the participant into a reviewer. Three analyses: a short notebook, a seeded-flaw notebook with a variant per participant, and an assistant's analysis. The day ends with review notes people act on and the capstone kickoff. Hand out participant numbers 1 to 40 now: Lab 3.2 needs them.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Review others' work","kind":"content","session":0,"hash":"626c833c","md":"#### [day3#agenda] Review others' work\n\n*Today*\n\n- **Session 1 · A review checklist**: Rerun first, then check five areas from question to conclusion\n- **Session 2 · Finding the flaws that matter**: Rank flaws by what they do to the decision, not by how easy they were to find\n- **Session 3 · Reviewing assistant-generated analysis**: An assistant's analysis looks finished; rerun it and verify every number before anyone uses it\n- **Session 4 · Review notes people act on**: Each note states the problem, its consequence and a fix; the note that matters most comes first","notes":"Every lab today starts from supplied files. The review notes of Lab 3.4 cover the analyses of Labs 3.2 and 3.3, but in their supplied form: nobody needs their own earlier output.","minutes":null,"lo":[]},{"id":"review-day2","n":3,"title":"Which plan is protected against yesterday's main threats?","kind":"quiz","session":0,"hash":"dd0d3ca2","md":"#### [day3#review-day2] Which plan is protected against yesterday's main threats?\n\n*Review of Day 2*\n\n**Question:** Three plans for the logger decision. Which one answers the bulk-meter drift and the month-13 changes?\n\n- A. Al-Wurud months 10 to 12 against 13 to 15\n- B. Al-Wurud year 1 against year 2\n- C. Leaks found in Al-Wurud, year 1 against year 2\n- D. Al-Wurud against the other districts, months 1 to 9 against 15 to 24, without Al-Nakheel","notes":"Answer: the last. This plan is the \"clean\" analysis of Lab 3.2. Ask the room to predict whether it will say buy or not buy; reveal in Session 2.","minutes":null,"lo":["LO2","LO4"]},{"id":"s1","n":4,"title":"A review checklist","kind":"section","session":1,"hash":"ea570108","md":"#### [day3#s1] A review checklist\n\n*Session 1*\n\n- Rerun an analysis before judging it\n- Apply a checklist of five areas from question fit to communication\n- Score an analysis so another reviewer would score it alike","notes":"","minutes":null,"lo":["LO5"]},{"id":"rerun-first","n":5,"title":"A review starts by running the analysis, not by reading it","kind":"content","session":1,"hash":"f3d2a487","md":"#### [day3#rerun-first] A review starts by running the analysis, not by reading it\n\n*The first step*\n\n1. **Rerun** does it run, from the supplied data?\n2. **Reconcile** does every sentence match the output above it?\n3. **Check five areas** from question to communication\n\n> **What goes wrong.** The reviewer reads a fluent text, agrees, and never sees that the code prints something else.","notes":"The order matters: rerunning first stops the prose from setting your expectations. In Lab 3.1 the rerun alone catches one of the flaws.","minutes":null,"lo":["LO5"]},{"id":"five-areas","n":6,"title":"Five areas, from the question to the words, scored 0 to 2","kind":"content","session":1,"hash":"0cf84b33","md":"#### [day3#five-areas] Five areas, from the question to the words, scored 0 to 2\n\n*The checklist*\n\n| Area | 2 | 1 | 0 |\n| --- | --- | --- | --- |\n| **Question fit** | Answers the decision asked | A nearby question | Another question |\n| **Data handling** | Right rows and denominators, checked | One unchecked step | A step that changes the answer |\n| **Method** | Fits the question type, with a comparison | Fits, but weak | Does not fit |\n| **Inference** | Claims match evidence, uncertainty stated | Some overreach | Claims what the data cannot show |\n| **Communication** | The reader acts correctly | Misleading in part | Misleads |","notes":"The five areas are those of outcome 5. Anchored levels are what make two reviewers agree: a score without a sentence of evidence is an opinion. DS-407 later turns such a checklist into a team standard; here it is a personal tool.","minutes":null,"lo":["LO5"]},{"id":"short-notebook","n":7,"title":"The sentence was not written from the output","kind":"content","session":1,"hash":"7012d801","md":"#### [day3#short-notebook] The sentence was not written from the output\n\n*The rerun catches it*\n\n```text\n# file: cell 2 output\ndistrict\nD5    707\nD4    705\nD3    699\nD6    684\nD1    668\nD2    635\n```\n\n- **Cell 3 prints.** \"Al-Hamra (D4) has the most contacts, so it is where service is worst. Move two agents to the Al-Hamra queue.\"\n- **The output says.** Al-Salam (D5) has the most contacts, 707 against 705: and a count of contacts is not a measure of service anyway.","notes":"From the Lab 3.1 rerun, contacts in months 13 to 24. Two flaws on one slide: the text contradicts the output (communication), and volume is read as quality (method and inference). Ask how many in the room would have caught the first without rerunning.","minutes":null,"lo":["LO5"]},{"id":"service-measure","n":8,"title":"A measure of service ranks the districts differently","kind":"content","session":1,"hash":"4949b778","md":"#### [day3#service-measure] A measure of service ranks the districts differently\n\n*Method*\n\n| Item | Value |\n| --- | --- |\n| Al-Rawdah | 28.0% |\n| Al-Shifa | 27.2% |\n| Al-Salam | 26.6% |\n| Al-Hamra | 26.4% |\n| Al-Wurud | 26.0% |\n| Al-Nakheel | 25.3% |\n\n- Contacts followed by another within 7 days, months 13 to 24\n- The districts sit within three points of each other: no district stands out\n- A reviewer may run one check of their own; they do not redo the analysis","notes":"Lab 3.1, task 3. The differences are small and likely noise: the honest finding is \"no district is clearly worse\", which also means moving agents to Al-Hamra is unsupported. Keep the reviewer's role clear: one check that tests the claim, then a note.","minutes":null,"lo":["LO5"]},{"id":"score-sheet","n":9,"title":"Two points out of ten, each with its sentence","kind":"content","session":1,"hash":"00e13744","md":"#### [day3#score-sheet] Two points out of ten, each with its sentence\n\n*The score*\n\n| Area | Score | Why |\n| --- | --- | --- |\n| Question fit | 1 | Answers \"most contacts\", not \"worst service\" |\n| Data handling | 1 | Raw counts; Al-Hamra's access problems drive billing calls |\n| Method | 0 | A count of contacts does not measure service |\n| Inference | 0 | Volume read as quality; staff moved on it |\n| Communication | 0 | Names Al-Hamra; the output shows Al-Salam first |","notes":"The reference score of Lab 3.1. The lab accepts a score within one point per area. Where a participant is two points away, ask for their sentence: usually they read the text and skipped the output.","minutes":null,"lo":["LO5"]},{"id":"reviewer-agreement","n":10,"title":"A checklist is useful when two reviewers land within a point","kind":"content","session":1,"hash":"2c42035d","md":"#### [day3#reviewer-agreement] A checklist is useful when two reviewers land within a point\n\n*Calibration*\n\n- **Anchors.** What a 2, a 1 and a 0 look like, written down before scoring\n- **Evidence.** One sentence per score that points at a cell or a number\n- **Compare.** Two reviewers score alone, then discuss only the gaps of two points\n\n> **Pointer.** Team review standards (who reviews what, sign-off rules) are DS-407.","notes":"Calibration is cheap: ten minutes on a shared notebook once a quarter. The pointer marks the boundary set by the catalog: this course is about the individual reviewer's judgement.","minutes":null,"lo":["LO5"]},{"id":"check-checklist","n":11,"title":"Which area does this flaw belong to?","kind":"quiz","session":1,"hash":"da270b9b","md":"#### [day3#check-checklist] Which area does this flaw belong to?\n\n*Checkpoint*\n\n**Question:** An analysis of estimated bills prints \"estimated share: 16.4%\" for Al-Hamra. The summary below says \"about one bill in four is estimated in Al-Hamra\".\n\n- A. Data handling\n- B. Communication: the words misstate the output\n- C. Method\n- D. Inference","notes":"Answer: communication. A borderline case: some will say inference. Accept the discussion, and point to the anchors: inference is overreach from evidence; communication is the reader being misled about what the evidence is.","minutes":null,"lo":["LO5"]},{"id":"lab-3-1","n":12,"title":"Score a short notebook","kind":"lab","session":1,"hash":"499d67a3","md":"#### [day3#lab-3-1] Score a short notebook\n\nLab 3.1 · 25 min\n\nApply the checklist to a short notebook and score it in five areas, then compare with the reference score.\n\n[D3_1_apply_checklist_short.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D3_1_apply_checklist_short.ipynb)\n\n- [ ] Rerun the short notebook (5 min)\n- [ ] Score question fit and data handling (6 min)\n- [ ] Score method and inference (6 min)\n- [ ] Score communication and the total (4 min)\n- [ ] Compare with the reference score (4 min)\n- [ ] ✱ Stretch: Name the one change that would raise the score most","notes":"Insist on the rerun before any score. Walk the room at minute 12: participants who scored communication 1 have not compared cell 3 with cell 2. Pairs compare scores in task 5 before the reference.","minutes":null,"lo":[]},{"id":"s2","n":13,"title":"Finding the flaws that matter","kind":"section","session":2,"hash":"c20b2b67","md":"#### [day3#s2] Finding the flaws that matter\n\n*Session 2*\n\n- Locate seeded flaws cell by cell\n- Measure each flaw's consequence with a recomputed number\n- Rank flaws by their effect on the decision","notes":"","minutes":null,"lo":["LO5"]},{"id":"seven-kinds","n":14,"title":"Seven kinds of flaw, four in each variant","kind":"content","session":2,"hash":"69367f88","md":"#### [day3#seven-kinds] Seven kinds of flaw, four in each variant\n\n*The pool*\n\n|  | Kind of flaw | Area |\n| --- | --- | --- |\n| F1 | Success measured by an activity, not the outcome | Question fit |\n| F2 | A join on a text key silently drops rows | Data handling |\n| F3 | Before-after in one unit, no comparison, months that mix changes | Method |\n| F4 | Significance or certainty claimed with no interval | Inference |\n| F5 | Volumes not adjusted for the billing period | Data handling |\n| F6 | A chart axis that does not start at zero | Communication |\n| F7 | Estimated bills dropped from billed volume | Data handling |","notes":"Every participant's variant of Sabah's analysis holds four of these, always with at least one of F1 or F3. F7 also flips the decision on its own (2.34 to 4.16 points in the Lab 3.2 run), so a participant who holds it has more than one decision-flipping flaw to rank first. The pool is public; which four you have is not. Each kind was met on Days 1 and 2: the review uses that domain knowledge.","minutes":null,"lo":["LO5"]},{"id":"consequence-defined","n":15,"title":"The consequence of a flaw is what it does to the answer, measured","kind":"content","session":2,"hash":"8298e237","md":"#### [day3#consequence-defined] The consequence of a flaw is what it does to the answer, measured\n\n*Consequence*\n\n1. **The analysis with no flaw** the reference answer\n2. **The analysis with only this flaw** the flawed answer\n3. **The difference** points moved, and does the decision flip?\n\n```python\n# file: Lab 3.2\nU.consequence(MY_NUMBER, \"F3\")\n# clean 2.34 → flawed 4.12 points; decision: do not buy → buy\n```","notes":"Isolating one flaw at a time keeps flaws from masking each other: with F1 present, no flaw changes the printed number, because the headline is about leaks. In real reviews you rarely have the clean version; you estimate the consequence by fixing the flaw and rerunning, as the stretch does.","minutes":null,"lo":["LO5"]},{"id":"variant-zero","n":16,"title":"Two of four flaws reverse the recommendation; two change nothing","kind":"content","session":2,"hash":"927fdd86","md":"#### [day3#variant-zero] Two of four flaws reverse the recommendation; two change nothing\n\n*Variant 0*\n\n| Flaw alone | Effect, points | Decision |\n| --- | --- | --- |\n| F1 · success measured as leaks found (rose 3.4 times) | none | buy |\n| F3 · months 10 to 12 against 13 to 15, Al-Wurud only | 4.12 | buy |\n| F2 · join drops rows spelt \"Al Wurud\" | 2.34 | do not buy |\n| F6 · chart axis from 20% | 2.34 | do not buy |","notes":"The Lab 3.2 run of variant 0, the one you demonstrate. F2 drops about a third of Al-Wurud's repair rows and changes the effect by nothing: the effect comes from the water balance. A reviewer who leads with F2 because it was the first found has the order wrong.","minutes":null,"lo":["LO5"]},{"id":"clean-answer","n":17,"title":"Without the flaws, detection cut non-revenue water by 2.3 points: do not buy","kind":"content","session":2,"hash":"97047b2b","md":"#### [day3#clean-answer] Without the flaws, detection cut non-revenue water by 2.3 points: do not buy\n\n*The answer*\n\n**2.3** points, 95% interval 1.4 to 3.3, against the other districts without Al-Nakheel\n\n- The plan of Lab 2.3 fixed the rule before: below 3 points, do not buy\n- Sabah's notebook said buy, on leaks found rising 3.4 times\n- The fall is real but small: worth knowing, not worth the loggers at this price","notes":"Reveal the prediction from the Day 2 review checkpoint. The interval reaches above 3, so say it plainly: the data are consistent with a benefit up to 3.3 points, and the rule written in advance says do not buy. That is what pre-commitment is for.","minutes":null,"lo":["LO5","LO4"]},{"id":"rank-rule","n":18,"title":"Rank by consequence, not by the order you found the flaws","kind":"content","session":2,"hash":"78fad047","md":"#### [day3#rank-rule] Rank by consequence, not by the order you found the flaws\n\n*Ranking*\n\n1. **Flips the decision**: F1 and F3 in variant 0; F7 too where it appears (+1.8 points, past the rule)\n2. **Moves the number**, by how many points: none here; F5 moves it by 0.02 in other variants\n3. **Misleads without moving a number**: an axis, an unstated uncertainty\n4. **No effect on this answer**: still worth a note if it can bite elsewhere (the join)","notes":"This is the ranking rule the lab checks. Flaws found first are usually the easiest to see (a chart, a spelling), which is exactly why the order of finding is a poor order of reporting.","minutes":null,"lo":["LO5"]},{"id":"own-variant","n":19,"title":"Each participant reviews a variant of their own, checked without a visible key","kind":"content","session":2,"hash":"af481234","md":"#### [day3#own-variant] Each participant reviews a variant of their own, checked without a visible key\n\n*Authenticity*\n\n- Your participant number picks four flaws from the pool\n- `U.flags_correct` compares a hash of your flags with the variant's\n- Right or wrong, without revealing which flaws you missed\n\n- **In the capstone.** The assessed review uses unseen variants made for each participant; review notes are matched against your own seeded flaws.","notes":"The lab's variants are practice: their generator is in the public repository. The capstone variants are prepared by the trainer outside the repository and are never published. Tell participants this openly; it removes the temptation and explains the design.","minutes":null,"lo":["LO5"]},{"id":"check-consequence","n":20,"title":"Which flaw goes first in the review?","kind":"quiz","session":2,"hash":"2de9d039","md":"#### [day3#check-consequence] Which flaw goes first in the review?\n\n*Checkpoint*\n\n**Question:** A variant holds: a chart from 20%, unadjusted billing periods (moves the effect by 0.02 points), significance with no interval, and a before-after with no comparison (moves the effect from 2.3 to 4.1, past the 3-point rule).\n\n- A. The chart axis\n- B. The missing interval\n- C. The before-after with no comparison\n- D. The unadjusted billing periods","notes":"Answer: the before-after. The numbers are those of variant 17 in the Lab 3.2 run (F5 moves 0.02 points). The missing interval is a close second: it would let a reader believe the wrong answer more firmly.","minutes":null,"lo":["LO5"]},{"id":"lab-3-2","n":21,"title":"Rank the flaws of your variant","kind":"lab","session":2,"hash":"26461bd9","md":"#### [day3#lab-3-2] Rank the flaws of your variant\n\nLab 3.2 · 25 min\n\nReview a seeded-flaw notebook, a variant of its own for each participant, and rank its flaws by consequence.\n\n[D3_2_review_seeded_flaw.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D3_2_review_seeded_flaw.ipynb)\n\n- [ ] Load your variant and rerun it (5 min)\n- [ ] Find the flaws, cell by cell (9 min)\n- [ ] Consequence of each, with a recomputed number (6 min)\n- [ ] Rank by consequence (3 min)\n- [ ] Check your flags (2 min)\n- [ ] ✱ Stretch: Fix the top flaw and rerun the analysis","notes":"Each participant sets MY_NUMBER to their number. Demonstrate variant 0 only. If the hash check fails, do not reveal the flaws: point to the area of the checklist they have not scored yet. Early finishers fix the top flaw and rerun.","minutes":null,"lo":[]},{"id":"s3","n":22,"title":"Reviewing assistant-generated analysis","kind":"section","session":3,"hash":"cbb54894","md":"#### [day3#s3] Reviewing assistant-generated analysis\n\n*Session 3*\n\n- Name the failures typical of assistant-generated analyses\n- Rerun an assistant's notebook and reconcile its summary with its output\n- Write a verification note that meets the duty to verify","notes":"","minutes":null,"lo":["LO5"]},{"id":"assistant-failures","n":23,"title":"An assistant's analysis looks finished; check five things before believing it","kind":"content","session":3,"hash":"b69471b3","md":"#### [day3#assistant-failures] An assistant's analysis looks finished; check five things before believing it\n\n*What to expect*\n\n- **It may not run**: a column or a function that does not exist\n- **Its numbers may not come from its code**: a summary written beside the output\n- **Outside numbers** with no source: benchmarks, norms\n\n- **The direction** of a change reversed in the words\n- **The method** answers an easier question than the one asked\n\n> **Recap.** Recomputing and running a request twice are DS-206; here you review someone else's assistant-generated work.","notes":"The perishable part of this session: which assistants are used and their typical failures change each edition. The five checks are durable. Lab 3.3 meets four of them at once.","minutes":null,"lo":["LO5"]},{"id":"sareea-summary","n":24,"title":"Sareea's summary reversed the direction of the change","kind":"content","session":3,"hash":"49c17415","md":"#### [day3#sareea-summary] Sareea's summary reversed the direction of the change\n\n*The case*\n\n| Al-Nakheel, billed m3 per account per month | Before | After | Change |\n| --- | --- | --- | --- |\n| Sareea's summary | 21.4 | 19.6 | -8.2% |\n| Recomputed from reads.csv | 25.8 | 28.7 | +11.5% |\n\n> **And.** The notebook stops at cell s2 (no column \"consumption\"), and the \"industry benchmark of 15%\" has no source.","notes":"Lab 3.3 run. None of the summary's numbers can be found in the data, and the notebook as delivered could never have produced them. Ask: how many of you would have forwarded the summary had it arrived with a chart?","minutes":null,"lo":["LO5"]},{"id":"four-checks","n":25,"title":"All four checks fail, each with its evidence","kind":"content","session":3,"hash":"c135fe7d","md":"#### [day3#four-checks] All four checks fail, each with its evidence\n\n*Four checks*\n\n| Check | Result | Evidence |\n| --- | --- | --- |\n| Reruns as delivered | fail | KeyError: \"consumption\" is not a column |\n| Every number traced to output | fail | 21.4, 19.6 and -8.2% appear nowhere |\n| Outside numbers sourced | fail | The 15% benchmark has no source |\n| Method fits the question | fail | Bills measure what the meters register, not what people use |","notes":"The last check is the one participants miss: even the corrected computation answers \"did bills change\", not \"did consumption change\". That is Day 2's measurement change, met again in an assistant's output.","minutes":null,"lo":["LO5"]},{"id":"duty-to-verify","n":26,"title":"Verifying assistant output before use is a duty, not a courtesy","kind":"content","session":3,"hash":"3b2e5d22","md":"#### [day3#duty-to-verify] Verifying assistant output before use is a duty, not a courtesy\n\n*The national guideline*\n\n- Identify content generated with generative AI\n- Check it for factual accuracy, especially in official reports\n- Verify generated code before using or running it\n\n- **Source.** SDAIA's Generative AI Guidelines for Government, in its sections on reliability and on users' responsibilities.","notes":"Paraphrased, not quoted: the guideline asks users to identify generated content, proofread it for accuracy, verify outputs particularly for official reports, and verify generated code before executing it. The verification note of the lab is how a reviewer shows that duty was met.\n\nSources: SDAIA, Generative AI Guidelines for Government.","minutes":null,"lo":["LO5"]},{"id":"verification-note","n":27,"title":"A verification note says what may be used, what may not, and what next","kind":"content","session":3,"hash":"82d7f2bf","md":"#### [day3#verification-note] A verification note says what may be used, what may not, and what next\n\n*The deliverable*\n\n- **Status.** Not verified: do not use the summary\n- **May be used.** Billed m3 per account in Al-Nakheel rose from 25.8 to 28.7 (+11.5%) after the smart meters\n- **May not be used.** The 8.2% fall, the 15% benchmark, the roll-out advice\n- **Next.** Measure use another way (night flow at the district meter), against districts without smart meters","notes":"The note ends with a label: assistant-generated, by whom, verified by whom, and with what result. A verified analysis keeps its label too: the reader deserves to know how it was made.","minutes":null,"lo":["LO5"]},{"id":"hosted-models","n":28,"title":"A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside","kind":"content","session":3,"hash":"682c97dd","md":"#### [day3#hosted-models] A hosted model may analyse synthetic data; Ghadeer's real extracts stay inside\n\n*In the lab*\n\n- The stretch sends the same prompt to a free hosted open-weight model, and you verify its answer the same way\n- Without a key, the lab returns Sareea's recorded answer and says so\n\n> **Classification.** Billing and contact extracts are Restricted: they do not go to a public assistant. The course data is synthetic, which is why it may.","notes":"Free model names change every few weeks: the lab reads ASSISTANT_MODEL and falls back to a stand-in. The classification rule is from Day 1; repeat it here because this is where people break it.","minutes":null,"lo":["LO5"]},{"id":"check-assistant","n":29,"title":"What do you do with this summary?","kind":"quiz","session":3,"hash":"55f57e0c","md":"#### [day3#check-assistant] What do you do with this summary?\n\n*Checkpoint*\n\n**Question:** An assistant's notebook runs, and its summary's three numbers all appear in the output. The summary concludes that smart meters \"cut leakage in Al-Nakheel by nine points\".\n\n- A. Withhold it: the numbers are right but the method measures billing, not leakage\n- B. Accept it: every number traces to the output\n- C. Accept it once a chart is added\n- D. Reject it because an assistant wrote it","notes":"Answer: withhold it. The last option matters: assistant-generated is a reason to verify, not to reject. The checks apply to any analysis.","minutes":null,"lo":["LO5"]},{"id":"lab-3-3","n":30,"title":"Verify the assistant's analysis","kind":"lab","session":3,"hash":"b157d30f","md":"#### [day3#lab-3-3] Verify the assistant's analysis\n\nLab 3.3 · 25 min\n\nRerun an assistant-generated analysis, find where it fails and write a verification note.\n\n[D3_3_rerun_assistant_generated.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D3_3_rerun_assistant_generated.ipynb)\n\n- [ ] Read the prompt and the summary the assistant gave (3 min)\n- [ ] Rerun the notebook (5 min)\n- [ ] Where it fails: four checks (9 min)\n- [ ] Write the verification note (6 min)\n- [ ] Label the assistant's part (2 min)\n- [ ] ✱ Stretch: Ask a free hosted model for the same analysis and verify its answer","notes":"Participants often fix the column and stop: push them to the fourth check. If a participant has a working key, the stretch shows a live model's answer; compare two participants' answers to the same prompt to show variability.","minutes":null,"lo":[]},{"id":"s4","n":31,"title":"Review notes people act on","kind":"section","session":4,"hash":"4d703b01","md":"#### [day3#s4] Review notes people act on\n\n*Session 4*\n\n- Rewrite a vague note as problem, consequence and fix\n- Order notes by consequence for the decision\n- Recommend the kind of analysis the request needed","notes":"","minutes":null,"lo":["LO5","LO6"]},{"id":"weak-strong-note","n":32,"title":"A note gets acted on when it names the problem, the consequence and the fix","kind":"content","session":4,"hash":"04911ec3","md":"#### [day3#weak-strong-note] A note gets acted on when it names the problem, the consequence and the fix\n\n*One note, twice*\n\n- **Weak.** \"The join looks off.\"\n- **Acted on.** **Problem:** cell c2 joins repairs on the district name; rows spelt \"Al Wurud\" are dropped. **Consequence:** about a third of Al-Wurud's repairs vanish from the count. **Fix:** join on a district code and assert the row count.","notes":"Note N1 of Lab 3.4, before and after. The weak note is right: it is simply useless to the author, who cannot tell where, how much or what to do.","minutes":null,"lo":["LO5"]},{"id":"note-parts","n":33,"title":"Three parts, each a full sentence","kind":"content","session":4,"hash":"65589583","md":"#### [day3#note-parts] Three parts, each a full sentence\n\n*The parts*\n\n- **Problem.** Where, and exactly what: the cell, the line, the number\n- **Consequence.** What it does to the number or the decision, in points or in the choice\n- **Fix.** An action: \"join on the code\", not \"consider the join\"\n\n> **Tone.** Write about the analysis, not the analyst: \"cell c3 compares\" rather than \"you compared\".","notes":"The lab's helper flags a note whose consequence names neither a number nor the decision, and a fix that starts with \"consider\" or \"maybe\". Tone matters because notes are read by the author first: a defensive author fixes less.","minutes":null,"lo":["LO5"]},{"id":"ranked-notes","n":34,"title":"Eight notes, ranked by what they do to the decision","kind":"content","session":4,"hash":"ef653d94","md":"#### [day3#ranked-notes] Eight notes, ranked by what they do to the decision\n\n*The order*\n\n| Rank | Note | Consequence |\n| --- | --- | --- |\n| 1 | Success measured as leaks found | Reverses the decision |\n| 2 | Before-after with no comparison | Adds about 1.8 points, past the rule |\n| 3 to 6 | The unsourced 15%; estimates as actual reads; the join; no interval | A wrong or unverifiable number |\n| 7, 8 | Chart axis; the spelling in the export | Cosmetic, or a cause handled elsewhere |","notes":"The order of the Lab 3.4 solution, which the check accepts when the two critical notes come first and the two cosmetic ones last. The middle four can be argued; ask two participants to defend different orders.","minutes":null,"lo":["LO5"]},{"id":"verdict-first","n":35,"title":"A review opens with its verdict on the decision","kind":"content","session":4,"hash":"001de788","md":"#### [day3#verdict-first] A review opens with its verdict on the decision\n\n*The first lines*\n\n- **For Nadia.** The recommendation to buy loggers does not hold. Measured on water lost against the other districts, detection cut non-revenue water by 2.3 points, below the 3-point rule; the analysis counted leaks found and compared the wrong months. Sabah will rerun it with the fixes below before the capital committee meets.","notes":"The Lab 3.4 stretch. Three sentences: verdict, main reason with its number, what happens next. Everything else is the numbered notes below it.","minutes":null,"lo":["LO5","LO6"]},{"id":"recommend-kind","n":36,"title":"A review can conclude that the request needed another kind of analysis","kind":"content","session":4,"hash":"20bc5fa2","md":"#### [day3#recommend-kind] A review can conclude that the request needed another kind of analysis\n\n*After the review*\n\n- Sareea's request asked a causal question and got a description of bills\n- The right answer is a causal analysis against districts without smart meters, on a measure of use\n- Sometimes the right recommendation is **no analysis yet**: the data cannot reach the question by the date\n\n- **In the capstone defence.** You recommend the kind of analysis, and defend it when the sponsor changes a constraint.","notes":"Outcome 6 closes the loop with Day 1, Session 2. The capstone rubric gives this recommendation its own criterion. A changed constraint (a frozen budget, a shorter deadline) often moves it from \"experiment\" to \"causal analysis\" or to \"no analysis now\".","minutes":null,"lo":["LO6"]},{"id":"capstone-brief","n":37,"title":"Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it","kind":"content","session":4,"hash":"3b00ea14","md":"#### [day3#capstone-brief] Hima Municipality's permits backlog doubled: frame it, plan it, review an analysis of it\n\n*Capstone kickoff*\n\n- **Sponsor:** Fahda Al-Bishr, director of permits: \"Should we hire six more plan reviewers?\"\n- **Data:** 3,600 synthetic applications, an inventory, and an assistant-drafted analysis to review\n- **Hand in:** a framing card, a two-page plan, ranked review notes, in a public repository\n\n**8 + 10** minutes: the talk, during which the sponsor changes a constraint, then the defence","notes":"The brief is labs/capstone/BRIEF.md. Point out the trap the head of plan review hints at: incomplete online applications, returned to applicants. The practice constraint change is in the repository; the one used in the defence is unseen. Individual work; AI-full is allowed, and an assistant-drafted analysis is itself an object of review.","minutes":null,"lo":["LO1","LO4","LO5","LO6"]},{"id":"check-notes","n":38,"title":"Which note will the author act on?","kind":"quiz","session":4,"hash":"e1df6441","md":"#### [day3#check-notes] Which note will the author act on?\n\n*Checkpoint*\n\n**Question:** Four notes on the same flaw in Sareea's analysis, which treats estimated bills as actual reads.\n\n- A. \"What about estimated reads?\"\n- B. \"Use actual reads only.\"\n- C. \"You have overstated the change.\"\n- D. \"Cell s2 averages estimated bills as reads, so the change mixes billing timing with metering; recompute on actual reads and report the estimated share.\"","notes":"Answer: the last. Each wrong option is missing exactly one part, so use them to recap the three parts and the tone rule.","minutes":null,"lo":["LO5"]},{"id":"lab-3-4","n":39,"title":"Notes that get acted on","kind":"lab","session":4,"hash":"a0678c51","md":"#### [day3#lab-3-4] Notes that get acted on\n\nLab 3.4 · 25 min\n\nRewrite review notes so each states the problem, its consequence and a fix, rank them, and choose the review target of the capstone.\n\n[D3_4_rewrite_review_notes.ipynb](https://sdaiaacademy.github.io/ds-310/labs/D3_4_rewrite_review_notes.ipynb)\n\n- [ ] Read the eight weak notes (3 min)\n- [ ] Rewrite each: problem, consequence, fix (12 min)\n- [ ] Rank by consequence (4 min)\n- [ ] Tutor feedback and one revision (4 min)\n- [ ] Open the capstone brief (2 min)\n- [ ] ✱ Stretch: Write the summary paragraph a manager reads first","notes":"Twelve minutes for eight rewrites is tight: suggest the two critical notes first, then the rest. The last two minutes are the capstone brief; collect questions on it for the start of the capstone day.","minutes":null,"lo":[]},{"id":"wrap-up","n":40,"title":"Three things to keep","kind":"content","session":4,"hash":"22f0534b","md":"#### [day3#wrap-up] Three things to keep\n\n*Day 3 · wrap-up*\n\n- **Rerun, then read.** Run the analysis, reconcile every sentence with its output, then score five areas.\n- **Rank by consequence.** A flaw that flips the decision goes first, whatever order you found it in.\n- **Verify, label, then use.** Assistant output passes four checks and carries its label before anyone acts on it.","notes":"Close the teaching days by returning to the opening question of Day 1: an analysis nobody used. Now participants can frame it so it is usable, plan it so it is sound, and review it so it is trusted.","minutes":null,"lo":[]},{"id":"next","n":41,"title":"Capstone day: Hima Municipality's permits backlog","kind":"content","session":4,"hash":"027e6f64","md":"#### [day3#next] Capstone day: Hima Municipality's permits backlog\n\n*Next*\n\nRead `labs/capstone/BRIEF.md`, start your repository from `labs/capstone/README.md`, and draft the framing card. Bring questions for the sponsor.","notes":"The guided self-study hours of the format go here: framing card and first plan draft before the capstone day. The tracked follow-up task after the course is one framing card for a real request at work, with personal data kept out.","minutes":null,"lo":[]}],"activities":[{"id":"review-day2-q1","slide":"review-day2","type":"single","prompt":"Three plans for the logger decision. Which one answers the bulk-meter drift and the month-13 changes?","options":[{"key":"A","text":"Al-Wurud months 10 to 12 against 13 to 15"},{"key":"B","text":"Al-Wurud year 1 against year 2"},{"key":"C","text":"Leaks found in Al-Wurud, year 1 against year 2"},{"key":"D","text":"Al-Wurud against the other districts, months 1 to 9 against 15 to 24, without Al-Nakheel"}],"correct":[3],"explanation":"The comparison cancels shared history, the excluded months remove the drift, and leaving out Al-Nakheel removes its meter change.","misconceptions":["Uses the drift months as the baseline: the recalibration then looks like a saving","Answers seasonality but not history: everything that changed in month 13 still lands on detection","Measures an activity: leaks found rise with searching, whatever happens to water lost",""],"lo":["LO4"]},{"id":"check-checklist-q1","slide":"check-checklist","type":"single","prompt":"An analysis of estimated bills prints \"estimated share: 16.4%\" for Al-Hamra. The summary below says \"about one bill in four is estimated in Al-Hamra\".","options":[{"key":"A","text":"Data handling"},{"key":"B","text":"Communication: the words misstate the output"},{"key":"C","text":"Method"},{"key":"D","text":"Inference"}],"correct":[1],"explanation":"The number is right and the sentence is wrong: one in six, not one in four. Only a reviewer who reads the output against the words catches it.","misconceptions":["Blames the data step: the data were handled correctly and the right number was printed","","Confuses a wrong sentence with a wrong method: the computation is the right one for the question","Inference is about claims beyond the evidence; here the claim contradicts the evidence printed above it"],"lo":["LO5"]},{"id":"check-consequence-q1","slide":"check-consequence","type":"single","prompt":"A variant holds: a chart from 20%, unadjusted billing periods (moves the effect by 0.02 points), significance with no interval, and a before-after with no comparison (moves the effect from 2.3 to 4.1, past the 3-point rule).","options":[{"key":"A","text":"The chart axis"},{"key":"B","text":"The missing interval"},{"key":"C","text":"The before-after with no comparison"},{"key":"D","text":"The unadjusted billing periods"}],"correct":[2],"explanation":"It alone moves the answer across the decision rule, from do not buy to buy; the others mislead less or not at all.","misconceptions":["Ranks by visibility: the chart is the easiest to see but changes no number and no decision","Ranks by the area's prestige: an unstated interval misleads, but the decision flips elsewhere","","Ranks a real but negligible flaw by principle: 0.02 points cannot change anything here"],"lo":["LO5"]},{"id":"check-assistant-q1","slide":"check-assistant","type":"single","prompt":"An assistant's notebook runs, and its summary's three numbers all appear in the output. The summary concludes that smart meters \"cut leakage in Al-Nakheel by nine points\".","options":[{"key":"A","text":"Withhold it: the numbers are right but the method measures billing, not leakage"},{"key":"B","text":"Accept it: every number traces to the output"},{"key":"C","text":"Accept it once a chart is added"},{"key":"D","text":"Reject it because an assistant wrote it"}],"correct":[0],"explanation":"Passing three checks is not passing four: non-revenue water fell because the new meters bill more, so the claim about leakage is a measurement change.","misconceptions":["","Treats traced numbers as a verified conclusion: tracing checks the arithmetic, not what it measures","Assumes the problem is presentation: a clearer chart of the wrong measure still misleads","Blames the tool rather than the analysis: the same flaw would sink a human-written version"],"lo":["LO5"]},{"id":"check-notes-q1","slide":"check-notes","type":"single","prompt":"Four notes on the same flaw in Sareea's analysis, which treats estimated bills as actual reads.","options":[{"key":"A","text":"\"What about estimated reads?\""},{"key":"B","text":"\"Use actual reads only.\""},{"key":"C","text":"\"You have overstated the change.\""},{"key":"D","text":"\"Cell s2 averages estimated bills as reads, so the change mixes billing timing with metering; recompute on actual reads and report the estimated share.\""}],"correct":[3],"explanation":"Only the last says where, what it does to the result, and what to do, in words about the analysis.","misconceptions":["Names the topic only: the author cannot tell where or why it matters","Has a fix but no consequence: the author cannot judge whether it is worth doing first","States a consequence with no location or fix, and about the author rather than the analysis",""],"lo":["LO5"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day3.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

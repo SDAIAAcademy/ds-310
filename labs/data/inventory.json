@@ -1,0 +1,106 @@
+{
+ "deadline_business_days": 10,
+ "analysis_days_needed": 4,
+ "datasets": [
+  {
+   "id": "billing_reads",
+   "name": "Billing reads",
+   "holder": "Ghadeer",
+   "owner": "Khalil Al-Sabhi",
+   "classification": "Restricted",
+   "history_months": 24,
+   "access_business_days": 2,
+   "personal_data": [
+    "customer name",
+    "mobile number",
+    "national ID",
+    "address"
+   ],
+   "file": "reads.csv"
+  },
+  {
+   "id": "bulk_supply",
+   "name": "District bulk-meter input",
+   "holder": "Ghadeer",
+   "owner": "Mamdouh Al-Qarawi",
+   "classification": "Restricted",
+   "history_months": 24,
+   "access_business_days": 1,
+   "personal_data": [],
+   "file": "supply.csv"
+  },
+  {
+   "id": "repair_orders",
+   "name": "Leak-repair work orders",
+   "holder": "Ghadeer",
+   "owner": "Mamdouh Al-Qarawi",
+   "classification": "Restricted",
+   "history_months": 24,
+   "access_business_days": 1,
+   "personal_data": [],
+   "file": "repairs.csv"
+  },
+  {
+   "id": "contacts",
+   "name": "Contact-centre log",
+   "holder": "Ghadeer",
+   "owner": "Sultana Al-Kanaan",
+   "classification": "Restricted",
+   "history_months": 24,
+   "access_business_days": 3,
+   "personal_data": [
+    "mobile number",
+    "call recording"
+   ],
+   "file": "contacts.csv"
+  },
+  {
+   "id": "pipe_network",
+   "name": "Pipe network (age, material, location)",
+   "holder": "Ghadeer",
+   "owner": "Network asset team",
+   "classification": "Secret",
+   "history_months": 0,
+   "access_business_days": 8,
+   "personal_data": [],
+   "file": null
+  },
+  {
+   "id": "smart_interval",
+   "name": "Smart-meter hourly reads, Al-Nakheel",
+   "holder": "Ghadeer",
+   "owner": "Mamdouh Al-Qarawi",
+   "classification": "Restricted",
+   "history_months": 12,
+   "access_business_days": 4,
+   "personal_data": [
+    "household consumption pattern"
+   ],
+   "file": null
+  },
+  {
+   "id": "roadworks",
+   "name": "Road-works permits",
+   "holder": "Regional Roads Office (another government entity)",
+   "owner": "Regional Roads Office",
+   "classification": "Restricted",
+   "history_months": 36,
+   "external": true,
+   "sharing_assess_business_days": 10,
+   "sharing_deliver_business_days": 5,
+   "personal_data": [],
+   "file": null
+  },
+  {
+   "id": "weather",
+   "name": "Daily temperature, open data",
+   "holder": "Open data portal",
+   "owner": "Open data publisher",
+   "classification": "Public",
+   "history_months": 60,
+   "access_business_days": 0,
+   "personal_data": [],
+   "file": null
+  }
+ ]
+}

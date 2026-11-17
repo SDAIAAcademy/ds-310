@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone · Capstone: the permits backlog, framed and defended · Problem Framing and Analytical Review</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="capstone.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Problem Framing and Analytical Review" data-track="data-science" data-day="Capstone">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Problem Framing and Analytical Review</div>
+  <h1>Capstone: the permits backlog, framed and defended</h1>
+  <p class="lead mt">Capstone: An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>8 min talk and demo · 10 min Q&amp;A</span><span>DS-310</span></div>
+  <aside class="notes"><p>Capstone day. Check three things before the room fills: the three unseen requests for the supervised framing check, one unseen constraint change per defence, and each participant's own review variant of the backlog analysis. All three are prepared outside the repository and never published.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Capstone day</div>
+  <h2>Frame alone, finish, then present and defend</h2>
+  <div class="agenda">
+    <div class="item now"><div><b>Supervised framing check</b><small>three requests framed without AI assistance, on paper or offline</small></div></div>
+    <div class="item"><div><b>Finish and publish</b><small>framing card, plan and ranked review notes, in a public repository by the deadline</small></div></div>
+    <div class="item"><div><b>Present and defend</b><small>the talk, during which the sponsor changes a constraint, then the defence</small></div></div>
+    <div class="item"><div><b>Review and closing</b><small>what the room learned, the follow-up task</small></div></div>
+  </div>
+  <aside class="notes"><p>Write the publishing deadline on the board. A participant who is behind cuts scope in the plan (one method, fewer threats discussed) rather than missing the deadline: a short plan that a peer could run beats a long one that arrives late.</p></aside>
+</section>
+
+<section class="slide" id="framing-check" data-label="Framing check" data-lo="LO1" data-n="3">
+  <div class="kicker">20% of the result</div>
+  <h2>The supervised framing check: three requests, 40 minutes, no AI</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Three short requests you have not seen, from three managers</li>
+      <li>One framing card each: decision, estimand (population, variable, comparison, summary), metric, decision rule, what would change it</li>
+      <li>Marked on whether a peer could plan from it without further questions</li>
+    </ul>
+    <div class="stack dense">
+      <div class="timer" data-minutes="40"></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Phones and laptops closed, or laptops offline with only a text editor. The requests are in the trainer's private exam folder, a new set per cohort. Mark with the framing-card checklist of Lab 1.1 (the questions U.card_gaps asks); a missing decision rule is the most common loss.</p></aside>
+</section>
+
+<section class="slide" id="the-brief" data-label="The brief" data-lo="LO1 LO4 LO5 LO6" data-n="4">
+  <div class="kicker">The case</div>
+  <h2>Hima Municipality: the permits backlog doubled after applications moved online</h2>
+  <div class="cols cols-2">
+    <div class="chat">
+      <div class="msg user"><span class="who">Fahda Al-Bishr, director of permits</span>Should we hire six more plan reviewers? Tell me what to do.</div>
+      <div class="msg user"><span class="who">Daifallah Al-Juaid, head of plan review</span>Many online applications arrive without the documents we need, and files go back to applicants, sometimes twice.</div>
+    </div>
+    <ul class="bullets">
+      <li><code>permits.csv</code>: 3,600 synthetic applications of one year</li>
+      <li><code>inventory.json</code>: what data exist, who holds them, how long they take</li>
+      <li><code>review/backlog_analysis.py</code>: an analysis drafted with an assistant, to review</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The brief is labs/capstone/BRIEF.md. Do not help participants frame it: the framing is assessed. Answer questions as Fahda would, in a sentence, and only what she would know.</p></aside>
+</section>
+
+<section class="slide" id="hand-in" data-label="What you hand in" data-lo="LO1 LO4 LO5" data-n="5">
+  <div class="kicker">The repository</div>
+  <h2>Three files and a README, in a public repository</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>framing_card.md</h4><p class="small mb0">The decision, the estimand, the metric, the rule, and the guardrail you watch</p></div>
+    <div class="card c-cyan"><h4>analysis_plan.md</h4><p class="small mb0">At most two pages: data, method, threats, the result that would change the decision, feasibility by the date</p></div>
+    <div class="card c-coral"><h4>review_notes.md</h4><p class="small mb0">Notes on your variant of the backlog analysis: problem, consequence, fix, ranked by consequence</p></div>
+  </div>
+  <div class="callout note mt"><b>Start from</b> <code>labs/capstone/README.md</code>: copy it to your repository and fill it in. No personal data, and the synthetic data only.</div>
+  <aside class="notes"><p>The README records which parts were assistant-generated and how they were verified: AI-full is allowed in the capstone, and the label is part of the review criterion. A plan longer than two pages loses marks on the plan criterion: the limit is part of the skill.</p></aside>
+</section>
+
+<section class="slide" id="own-variant" data-label="Your variant" data-lo="LO5" data-n="6">
+  <div class="kicker">Authenticity</div>
+  <h2>Each participant reviews a variant of the backlog analysis of their own</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The repository holds one version, for practice</li>
+      <li>The trainer gives you your own variant this morning, with its seeded flaws</li>
+      <li>Your review notes are matched against your variant's flaws</li>
+    </ul>
+    <div class="card tint c-navy"><h4>As in Lab 3.2</h4><p class="small mb0">The same pool of kinds of flaw, the same ranking rule: what the flaw does to the decision comes first.</p></div>
+  </div>
+  <aside class="notes"><p>The variants and their key are prepared by the trainer outside the repository. The variant machinery of Lab 3.2 is public and is practice only: do not reuse its key for assessment. Hand the variants out as files, one per participant, and record which participant had which.</p></aside>
+</section>
+
+<section class="slide" id="rubric" data-label="The rubric" data-lo="LO1 LO4 LO5 LO6" data-n="7">
+  <div class="kicker">The capstone and its defence</div>
+  <h2>Five criteria, 100 points</h2>
+  <div class="bars">
+    <div class="row"><span>Framing card a peer can plan from</span><div class="bar c-teal" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>Analysis plan, threats and the deciding result</span><div class="bar c-cyan" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>Review notes ranked by consequence</span><div class="bar c-coral" style="--w:67%"></div><span class="val">20%</span></div>
+    <div class="row"><span>The kind of analysis recommended</span><div class="bar c-purple" style="--w:33%"></div><span class="val">10%</span></div>
+    <div class="row"><span>Defence under the changed constraint</span><div class="bar c-amber" style="--w:100%"></div><span class="val">30%</span></div>
+  </div>
+  <aside class="notes"><p>Full marks, one example each: a card a colleague turns into a plan without asking anything; a plan whose deciding result is a number written before the data; the note that flips the decision first; a recommendation that names its kind (description, experiment, causal analysis, prediction or none) and why; a defence that changes the plan where the constraint bites and keeps it where it does not.</p></aside>
+</section>
+
+<section class="slide" id="weights" data-label="How the result is made" data-n="8">
+  <div class="kicker">The result</div>
+  <h2>Three parts make the result; the defence has its own floor</h2>
+  <table class="t">
+    <tr><th>Part</th><th class="num">Weight</th></tr>
+    <tr><td>Supervised framing check, without AI</td><td class="num">20%</td></tr>
+    <tr><td>Framing card, plan and review notes, on the rubric</td><td class="num">50%</td></tr>
+    <tr><td>Live defence with an unseen change of constraint</td><td class="num">30%</td></tr>
+  </table>
+  <div class="callout tip mt"><b>To pass:</b> 70% overall, and at least 60% on the live defence.</div>
+  <aside class="notes"><p>The rubric's first four criteria (70 points) make the 50% of the written work; its fifth (30 points) is the defence. A strong repository cannot carry a defence below 60%: the defence is where the decisions are shown to be the participant's.</p></aside>
+</section>
+
+<section class="slide" id="format" data-label="The talk" data-lo="LO6" data-n="9">
+  <div class="kicker">Eight minutes, then ten</div>
+  <h2>The talk, the changed constraint, the defence</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>3 min · the question</h4><p class="small mb0">The framing card: the decision, the estimand, the rule</p></div>
+    <div class="card c-cyan"><h4>3 min · the plan</h4><p class="small mb0">Method, the main threat, the result that would change the decision</p></div>
+    <div class="card c-coral"><h4>2 min · the review</h4><p class="small mb0">The top note of your variant and its consequence</p></div>
+  </div>
+  <div class="callout warn mt"><b>During the talk</b> the sponsor changes one constraint. The ten-minute defence starts from it: what changes in your recommendation, and what does not?</div>
+  <aside class="notes"><p>The assessor plays Fahda. Deliver the change at about minute five, in her voice, in one sentence. Kinds of change that work: a frozen budget, a deadline brought forward, a dataset that becomes unavailable, a council member's new question. Use a different one for each participant.</p></aside>
+</section>
+
+<section class="slide" id="practice-change" data-label="Practise the change" data-lo="LO6" data-n="10">
+  <div class="kicker">Practise it now</div>
+  <h2>A practice constraint change: what happens to your plan?</h2>
+  <div class="chat">
+    <div class="msg user"><span class="who">Fahda Al-Bishr</span>The council has frozen hiring for this year. Whatever you recommend must work with the reviewers we have.</div>
+  </div>
+  <ul class="bullets mt">
+    <li>Does the decision still exist? Which options are left?</li>
+    <li>Does the kind of analysis change: from a causal question about staff to a description of where time is lost?</li>
+    <li>What stays the same in your plan, and why?</li>
+  </ul>
+  <aside class="notes"><p>This one is in the repository (practice_constraint_change.md); the defence uses another. Give pairs five minutes: one plays Fahda, one answers in two minutes. The common weak answer restarts the plan from nothing; the strong one says exactly which line of the card and the plan moves.</p></aside>
+</section>
+
+<section class="slide order" id="running-order" data-label="Running order" data-n="11">
+  <div class="kicker">Running order</div>
+  <h2>Who presents when</h2>
+  <table class="t small">
+    <tr><th>#</th><th>Participant</th><th>Repository</th></tr>
+    <tr><td>1</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>2</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>3</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>4</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>5</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+    <tr><td>6</td><td><input placeholder="Name"></td><td><input placeholder="Repository"></td></tr>
+  </table>
+  <aside class="notes"><p>Type the names in at the start; the fields are not saved, so keep the list in your notes. Eighteen minutes per participant plus two for changeover: six participants fill two hours.</p></aside>
+</section>
+
+<section class="slide dark" id="final-prep" data-label="Final prep" data-n="12">
+  <div class="kicker">Before the first talk</div>
+  <h1>Fifteen minutes: open your repository as a stranger would</h1>
+  <div class="timer" data-minutes="15"></div>
+  <p class="lead">Open the public link in a private window. Are the three files there, and could a peer plan from your card alone?</p>
+  <aside class="notes"><p>A private window catches a private repository and a missing push, the two most common reasons a submission cannot be marked.</p></aside>
+</section>
+
+<section class="slide dark presenting" id="now-presenting" data-label="Now presenting" data-n="13">
+  <div class="kicker center">Now presenting</div>
+  <div class="center"><input placeholder="Name and repository"></div>
+  <div class="timers mt">
+    <div><h3>Talk</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Defence</h3><div class="timer" data-minutes="10"></div></div>
+  </div>
+  <aside class="notes"><p>Start the talk timer; deliver the constraint change at about minute five. Start the defence timer when the talk ends. Questions to keep ready: which result would make you recommend hiring? What did your top review note change? Which kind of analysis now, and why not an experiment?</p></aside>
+</section>
+
+<section class="slide" id="review" data-label="Review" data-n="14">
+  <div class="kicker">After the defences</div>
+  <h2>What the room learned</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>The best framing</h4><p class="small mb0">Which card could the room plan from without a single question?</p></div>
+    <div class="card c-coral"><h4>The flaw most missed</h4><p class="small mb0">Which seeded flaw went unranked or ranked low most often?</p></div>
+    <div class="card c-purple"><h4>The best defence</h4><p class="small mb0">Who moved exactly the part of the plan the constraint touched?</p></div>
+  </div>
+  <aside class="notes"><p>Fill these in from your scoring notes during the last changeover. Name participants for strengths; keep gaps anonymous.</p></aside>
+</section>
+
+<section class="slide" id="what-next" data-label="After the course" data-n="15">
+  <div class="kicker">After the course</div>
+  <h2>The follow-up task, and what comes next</h2>
+  <ul class="bullets">
+    <li><b>Follow-up task.</b> Within four weeks, write one framing card for a real request at work and have a colleague plan from it; keep personal and Restricted data out of anything you share.</li>
+    <li><b>Keep the repository.</b> It is evidence for the DS Associate badge.</li>
+    <li><b>Next.</b> Metric definition in depth is DS-307; team review standards are DS-407.</li>
+  </ul>
+  <aside class="notes"><p>The catalog names a tracked follow-up task for this format; confirm its wording and deadline with the programme office before the cohort, and replace the first bullet if it differs.</p></aside>
+</section>
+
+<section class="slide dark" id="thanks" data-label="Thank you" data-n="16">
+  <div class="kicker">SDAIA Academy</div>
+  <h1>Thank you</h1>
+  <p class="lead">Problem Framing and Analytical Review</p>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T18:42:45Z","version":"2027.1.0","commit":"95ffc6b"},"course":{"id":"ds-310","code":"DS-310","title":"Problem Framing and Analytical Review","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-310/","repo":"SDAIAAcademy/ds-310","home":"../index.html"},"deck":{"id":"capstone","kind":"capstone","day":4,"label":"Capstone","title":"Capstone: the permits backlog, framed and defended","prev":"day3.html","next":null,"md":"capstone.md","alt":{}},"sessions":[],"slides":[{"id":"title","n":1,"title":"Capstone: the permits backlog, framed and defended","kind":"title","session":0,"hash":"b8beb6d6","md":"#### [capstone#title] Capstone: the permits backlog, framed and defended\n\n*SDAIA Academy · Problem Framing and Analytical Review*\n\nCapstone: An 8-minute talk while the sponsor changes a constraint, then 10 minutes of defence\n\nData Science Track · 3 teaching days + capstone day · 8 min talk and demo · 10 min Q&A · DS-310","notes":"Capstone day. Check three things before the room fills: the three unseen requests for the supervised framing check, one unseen constraint change per defence, and each participant's own review variant of the backlog analysis. All three are prepared outside the repository and never published.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Frame alone, finish, then present and defend","kind":"content","session":0,"hash":"7d3c46d5","md":"#### [capstone#agenda] Frame alone, finish, then present and defend\n\n*Capstone day*\n\n- **Supervised framing check**: three requests framed without AI assistance, on paper or offline\n- **Finish and publish**: framing card, plan and ranked review notes, in a public repository by the deadline\n- **Present and defend**: the talk, during which the sponsor changes a constraint, then the defence\n- **Review and closing**: what the room learned, the follow-up task","notes":"Write the publishing deadline on the board. A participant who is behind cuts scope in the plan (one method, fewer threats discussed) rather than missing the deadline: a short plan that a peer could run beats a long one that arrives late.","minutes":null,"lo":[]},{"id":"framing-check","n":3,"title":"The supervised framing check: three requests, 40 minutes, no AI","kind":"content","session":0,"hash":"1cc2df49","md":"#### [capstone#framing-check] The supervised framing check: three requests, 40 minutes, no AI\n\n*20% of the result*\n\n- Three short requests you have not seen, from three managers\n- One framing card each: decision, estimand (population, variable, comparison, summary), metric, decision rule, what would change it\n- Marked on whether a peer could plan from it without further questions","notes":"Phones and laptops closed, or laptops offline with only a text editor. The requests are in the trainer's private exam folder, a new set per cohort. Mark with the framing-card checklist of Lab 1.1 (the questions U.card_gaps asks); a missing decision rule is the most common loss.","minutes":null,"lo":["LO1"]},{"id":"the-brief","n":4,"title":"Hima Municipality: the permits backlog doubled after applications moved online","kind":"content","session":0,"hash":"0af298b6","md":"#### [capstone#the-brief] Hima Municipality: the permits backlog doubled after applications moved online\n\n*The case*\n\n**Fahda Al-Bishr, director of permits:** Should we hire six more plan reviewers? Tell me what to do.\n\n**Daifallah Al-Juaid, head of plan review:** Many online applications arrive without the documents we need, and files go back to applicants, sometimes twice.\n\n- `permits.csv`: 3,600 synthetic applications of one year\n- `inventory.json`: what data exist, who holds them, how long they take\n- `review/backlog_analysis.py`: an analysis drafted with an assistant, to review","notes":"The brief is labs/capstone/BRIEF.md. Do not help participants frame it: the framing is assessed. Answer questions as Fahda would, in a sentence, and only what she would know.","minutes":null,"lo":["LO1","LO4","LO5","LO6"]},{"id":"hand-in","n":5,"title":"Three files and a README, in a public repository","kind":"content","session":0,"hash":"3b0b53ad","md":"#### [capstone#hand-in] Three files and a README, in a public repository\n\n*The repository*\n\n- **framing_card.md.** The decision, the estimand, the metric, the rule, and the guardrail you watch\n- **analysis_plan.md.** At most two pages: data, method, threats, the result that would change the decision, feasibility by the date\n- **review_notes.md.** Notes on your variant of the backlog analysis: problem, consequence, fix, ranked by consequence\n\n> **Start from** `labs/capstone/README.md`: copy it to your repository and fill it in. No personal data, and the synthetic data only.","notes":"The README records which parts were assistant-generated and how they were verified: AI-full is allowed in the capstone, and the label is part of the review criterion. A plan longer than two pages loses marks on the plan criterion: the limit is part of the skill.","minutes":null,"lo":["LO1","LO4","LO5"]},{"id":"own-variant","n":6,"title":"Each participant reviews a variant of the backlog analysis of their own","kind":"content","session":0,"hash":"8795c589","md":"#### [capstone#own-variant] Each participant reviews a variant of the backlog analysis of their own\n\n*Authenticity*\n\n- The repository holds one version, for practice\n- The trainer gives you your own variant this morning, with its seeded flaws\n- Your review notes are matched against your variant's flaws\n\n- **As in Lab 3.2.** The same pool of kinds of flaw, the same ranking rule: what the flaw does to the decision comes first.","notes":"The variants and their key are prepared by the trainer outside the repository. The variant machinery of Lab 3.2 is public and is practice only: do not reuse its key for assessment. Hand the variants out as files, one per participant, and record which participant had which.","minutes":null,"lo":["LO5"]},{"id":"rubric","n":7,"title":"Five criteria, 100 points","kind":"content","session":0,"hash":"b468ef55","md":"#### [capstone#rubric] Five criteria, 100 points\n\n*The capstone and its defence*\n\n| Item | Value |\n| --- | --- |\n| Framing card a peer can plan from | 20% |\n| Analysis plan, threats and the deciding result | 20% |\n| Review notes ranked by consequence | 20% |\n| The kind of analysis recommended | 10% |\n| Defence under the changed constraint | 30% |","notes":"Full marks, one example each: a card a colleague turns into a plan without asking anything; a plan whose deciding result is a number written before the data; the note that flips the decision first; a recommendation that names its kind (description, experiment, causal analysis, prediction or none) and why; a defence that changes the plan where the constraint bites and keeps it where it does not.","minutes":null,"lo":["LO1","LO4","LO5","LO6"]},{"id":"weights","n":8,"title":"Three parts make the result; the defence has its own floor","kind":"content","session":0,"hash":"67094a61","md":"#### [capstone#weights] Three parts make the result; the defence has its own floor\n\n*The result*\n\n| Part | Weight |\n| --- | --- |\n| Supervised framing check, without AI | 20% |\n| Framing card, plan and review notes, on the rubric | 50% |\n| Live defence with an unseen change of constraint | 30% |\n\n> **To pass:** 70% overall, and at least 60% on the live defence.","notes":"The rubric's first four criteria (70 points) make the 50% of the written work; its fifth (30 points) is the defence. A strong repository cannot carry a defence below 60%: the defence is where the decisions are shown to be the participant's.","minutes":null,"lo":[]},{"id":"format","n":9,"title":"The talk, the changed constraint, the defence","kind":"content","session":0,"hash":"33b5843c","md":"#### [capstone#format] The talk, the changed constraint, the defence\n\n*Eight minutes, then ten*\n\n- **3 min · the question.** The framing card: the decision, the estimand, the rule\n- **3 min · the plan.** Method, the main threat, the result that would change the decision\n- **2 min · the review.** The top note of your variant and its consequence\n\n> **During the talk** the sponsor changes one constraint. The ten-minute defence starts from it: what changes in your recommendation, and what does not?","notes":"The assessor plays Fahda. Deliver the change at about minute five, in her voice, in one sentence. Kinds of change that work: a frozen budget, a deadline brought forward, a dataset that becomes unavailable, a council member's new question. Use a different one for each participant.","minutes":null,"lo":["LO6"]},{"id":"practice-change","n":10,"title":"A practice constraint change: what happens to your plan?","kind":"content","session":0,"hash":"e7cb1f11","md":"#### [capstone#practice-change] A practice constraint change: what happens to your plan?\n\n*Practise it now*\n\n**Fahda Al-Bishr:** The council has frozen hiring for this year. Whatever you recommend must work with the reviewers we have.\n\n- Does the decision still exist? Which options are left?\n- Does the kind of analysis change: from a causal question about staff to a description of where time is lost?\n- What stays the same in your plan, and why?","notes":"This one is in the repository (practice_constraint_change.md); the defence uses another. Give pairs five minutes: one plays Fahda, one answers in two minutes. The common weak answer restarts the plan from nothing; the strong one says exactly which line of the card and the plan moves.","minutes":null,"lo":["LO6"]},{"id":"running-order","n":11,"title":"Who presents when","kind":"order","session":0,"hash":"5aa9d419","md":"#### [capstone#running-order] Who presents when\n\n*Running order*\n\n| # | Participant | Repository |\n| --- | --- | --- |\n| 1 |  |  |\n| 2 |  |  |\n| 3 |  |  |\n| 4 |  |  |\n| 5 |  |  |\n| 6 |  |  |","notes":"Type the names in at the start; the fields are not saved, so keep the list in your notes. Eighteen minutes per participant plus two for changeover: six participants fill two hours.","minutes":null,"lo":[]},{"id":"final-prep","n":12,"title":"Fifteen minutes: open your repository as a stranger would","kind":"content","session":0,"hash":"4512ea64","md":"#### [capstone#final-prep] Fifteen minutes: open your repository as a stranger would\n\n*Before the first talk*\n\nOpen the public link in a private window. Are the three files there, and could a peer plan from your card alone?","notes":"A private window catches a private repository and a missing push, the two most common reasons a submission cannot be marked.","minutes":null,"lo":[]},{"id":"now-presenting","n":13,"title":"Talk","kind":"presenting","session":0,"hash":"cf07b072","md":"#### [capstone#now-presenting] Talk\n\n*Now presenting*\n\n##### Defence","notes":"Start the talk timer; deliver the constraint change at about minute five. Start the defence timer when the talk ends. Questions to keep ready: which result would make you recommend hiring? What did your top review note change? Which kind of analysis now, and why not an experiment?","minutes":null,"lo":[]},{"id":"review","n":14,"title":"What the room learned","kind":"content","session":0,"hash":"d60876b2","md":"#### [capstone#review] What the room learned\n\n*After the defences*\n\n- **The best framing.** Which card could the room plan from without a single question?\n- **The flaw most missed.** Which seeded flaw went unranked or ranked low most often?\n- **The best defence.** Who moved exactly the part of the plan the constraint touched?","notes":"Fill these in from your scoring notes during the last changeover. Name participants for strengths; keep gaps anonymous.","minutes":null,"lo":[]},{"id":"what-next","n":15,"title":"The follow-up task, and what comes next","kind":"content","session":0,"hash":"2cced842","md":"#### [capstone#what-next] The follow-up task, and what comes next\n\n*After the course*\n\n- **Follow-up task.** Within four weeks, write one framing card for a real request at work and have a colleague plan from it; keep personal and Restricted data out of anything you share.\n- **Keep the repository.** It is evidence for the DS Associate badge.\n- **Next.** Metric definition in depth is DS-307; team review standards are DS-407.","notes":"The catalog names a tracked follow-up task for this format; confirm its wording and deadline with the programme office before the cohort, and replace the first bullet if it differs.","minutes":null,"lo":[]},{"id":"thanks","n":16,"title":"Thank you","kind":"content","session":0,"hash":"2de96350","md":"#### [capstone#thanks] Thank you\n\n*SDAIA Academy*\n\nProblem Framing and Analytical Review","notes":"","minutes":null,"lo":[]}],"activities":[],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"capstone.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

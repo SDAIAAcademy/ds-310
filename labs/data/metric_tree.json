@@ -1,0 +1,61 @@
+{
+ "goal": "Deliver water with little loss and good service",
+ "nodes": [
+  {
+   "id": "nrw",
+   "name": "Non-revenue water, % of system input",
+   "parent": null,
+   "kind": "outcome"
+  },
+  {
+   "id": "real",
+   "name": "Real losses (leaks)",
+   "parent": "nrw",
+   "kind": "driver"
+  },
+  {
+   "id": "apparent",
+   "name": "Apparent losses (meters, estimates, theft)",
+   "parent": "nrw",
+   "kind": "driver"
+  },
+  {
+   "id": "repair_time",
+   "name": "Median days from job creation to job closed",
+   "parent": "real",
+   "kind": "target",
+   "target": "3 days or less, from month 13"
+  },
+  {
+   "id": "leaks_found",
+   "name": "Leaks found per month",
+   "parent": "real",
+   "kind": "activity"
+  },
+  {
+   "id": "estimated_share",
+   "name": "Share of bills estimated",
+   "parent": "apparent",
+   "kind": "driver"
+  },
+  {
+   "id": "service",
+   "name": "Customer service",
+   "parent": null,
+   "kind": "outcome"
+  },
+  {
+   "id": "fcr",
+   "name": "First-contact resolution, % of contacts marked resolved",
+   "parent": "service",
+   "kind": "target",
+   "target": "85% or more, from month 13"
+  },
+  {
+   "id": "aht",
+   "name": "Average handling minutes",
+   "parent": "service",
+   "kind": "activity"
+  }
+ ]
+}

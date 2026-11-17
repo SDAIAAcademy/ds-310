@@ -1,0 +1,40 @@
+{
+ "deadline_business_days": 10,
+ "datasets": [
+  {
+   "id": "permits",
+   "name": "Permit applications and decisions",
+   "holder": "Hima Municipality",
+   "classification": "Restricted",
+   "access_business_days": 1,
+   "personal_data": [
+    "applicant name",
+    "national ID",
+    "plot address"
+   ],
+   "file": "permits.csv"
+  },
+  {
+   "id": "reviewer_rota",
+   "name": "Plan reviewers' rota and leave",
+   "holder": "Hima Municipality",
+   "classification": "Restricted",
+   "access_business_days": 3,
+   "personal_data": [
+    "employee names"
+   ],
+   "file": null
+  },
+  {
+   "id": "civil_defence",
+   "name": "Civil-defence approvals",
+   "holder": "another government entity",
+   "classification": "Restricted",
+   "external": true,
+   "sharing_assess_business_days": 10,
+   "sharing_deliver_business_days": 5,
+   "personal_data": [],
+   "file": null
+  }
+ ]
+}
